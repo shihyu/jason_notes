@@ -1,0 +1,1320 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>VectorBT - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="simple_from_signals"><a class="header" href="#simple_from_signals">simple_from_signals</a></h2>
+<pre><code class="language-python">from binance.client import Client
+from dateutil import relativedelta
+import vectorbt as vbt
+import datetime as dt
+import pandas as pd
+import os
+import json
+import warnings
+
+warnings.simplefilter("ignore", UserWarning)
+
+
+class binanceAPI:
+    def __init__(self, configPath):
+        with open(configPath, "r") as f:
+            self.kw_login = json.loads(f.read())
+        self.api = self.__login(self.kw_login["PUBLIC"], self.kw_login["SECRET"])
+        self.__conncet_redis()
+
+    def __conncet_redis(self):
+        redis_info = {
+            "host": "127.0.0.1",
+            "port": 6379,
+            "max_connections": 2,
+            "db": 1,
+        }
+        pool = redis.ConnectionPool(**redis_info)
+        try:
+            self.rs = redis.Redis(connection_pool=pool)
+        except Exception as err:
+            logger.error(err)
+            raise err
+
+    def __login(self, PUBLIC, SECRET):
+        return Client(api_key=PUBLIC, api_secret=SECRET)
+
+
+def build_df(klines):
+    cols = [
+        "timestamp",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "close_time",
+        "quote_av",
+        "trades",
+        "tb_base_av",
+        "tb_quote_av",
+        "ignore",
+    ]
+    df = pd.DataFrame(klines, columns=cols)
+    df["timestamp"] = [dt.datetime.fromtimestamp(x / 1000.0) for x in df["timestamp"]]
+    df.set_index("timestamp", inplace=True)
+    df = df[["open", "high", "low", "close", "volume"]]
+    df[["open", "high", "low", "close", "volume"]] = df[
+        ["open", "high", "low", "close", "volume"]
+    ].astype(float)
+    df["idx"] = range(0, len(df))
+    return df
+
+
+def backtesting(df):
+    price = df["close"]
+    fast_ma = vbt.MA.run(price, 5)
+    slow_ma = vbt.MA.run(price, 50)
+    entries = fast_ma.ma_crossed_above(slow_ma)
+    exits = fast_ma.ma_crossed_below(slow_ma)
+    show_report(df, entries, exits)
+
+
+def show_report(df, long_entries, long_exits):
+    pf = vbt.Portfolio.from_signals(
+        df["close"],
+        long_entries,
+        long_exits,
+        init_cash=100000,
+        fees=0.000,
+    )
+    stats_info = pf.stats()
+    start = stats_info["Start"]
+    end = stats_info["End"]
+    winrate = stats_info[r"Win Rate [%]"]
+    total_return = stats_info[r"Total Return [%]"]
+    total_profit = pf.total_profit()
+    max_drawdown = pf.max_drawdown()
+    total_trades = len(pf.trades)
+    print(pf.stats())
+    print(
+        f"coin:{coin} {start} ~ {end}, winrate:{round(winrate, 2)}%, total_return:{round(total_return, 2)}, max_drawdown:{round(max_drawdown, 2)}, total_trades:{total_trades}"
+    )
+
+
+if __name__ == "__main__":
+    coin = "BTCUSDT"
+    configPath = os.environ["HOME"] + "/.mybin/jason/binance_login.txt"
+    KLINE_INTERVAL = Client.KLINE_INTERVAL_1MINUTE
+    with open(configPath, "r") as f:
+        kw_login = json.loads(f.read())
+
+    start_time = dt.datetime.now()
+    client = Client(api_key=kw_login["PUBLIC"], api_secret=kw_login["SECRET"])
+    klines = client.get_historical_klines(
+        symbol=coin,
+        interval=KLINE_INTERVAL,
+        start_str=(start_time - relativedelta.relativedelta(months=1)).strftime(
+            "%Y-%m-%d %H:%M:%S"
+        ),
+        end_str=start_time.strftime("%Y-%m-%d %H:%M:%S"),
+    )
+    df = build_df(klines)
+    backtesting(df)
+</code></pre>
+<h2 id="test_func_nb_order"><a class="header" href="#test_func_nb_order">test_func_nb_order</a></h2>
+<pre><code class="language-python">from numba import njit
+from binance.client import Client
+from dateutil import relativedelta
+from vectorbt.portfolio.enums import (
+    Direction,
+    NoOrder,
+    OrderStatus,
+    OrderSide,
+)
+from vectorbt.portfolio import nb
+import datetime as dt
+import json
+import os
+import numpy as np
+import pandas as pd
+import vectorbt as vbt
+import warnings
+
+warnings.filterwarnings("ignore")
+
+
+@njit
+def pre_sim_func_nb(c):
+    # We need to define stop price per column once
+    stop_price = np.full(c.target_shape[1], np.nan, dtype=np.float_)
+    return (stop_price,)
+
+
+@njit
+def order_func_nb(c, stop_price, entries, exits, size):
+    # Select info related to this order
+    entry_now = nb.get_elem_nb(c, entries)
+    exit_now = nb.get_elem_nb(c, exits)
+    size_now = nb.get_elem_nb(c, size)
+    price_now = nb.get_elem_nb(c, c.close)
+    stop_price_now = stop_price[c.col]
+
+    # Our logic
+    if entry_now:
+        if c.position_now == 0:
+            return nb.order_nb(
+                size=size_now, price=price_now, direction=Direction.LongOnly
+            )
+    elif exit_now or price_now &gt;= stop_price_now:
+        if c.position_now &gt; 0:
+            return nb.order_nb(
+                size=-size_now, price=price_now, direction=Direction.LongOnly
+            )
+    return NoOrder
+
+
+@njit
+def post_order_func_nb(c, stop_price, stop):
+    # Same broadcasting as for size
+    stop_now = nb.get_elem_nb(c, stop)
+
+    if c.order_result.status == OrderStatus.Filled:
+        if c.order_result.side == OrderSide.Buy:
+            # Position entered: Set stop condition
+            stop_price[c.col] = (1 + stop_now) * c.order_result.price
+        else:
+            # Position exited: Remove stop condition
+            stop_price[c.col] = np.nan
+
+
+def simulate(close, entries, exits, size, threshold):
+    return vbt.Portfolio.from_order_func(
+        close,
+        order_func_nb,
+        vbt.Rep("entries"),
+        vbt.Rep("exits"),
+        vbt.Rep("size"),  # order_args
+        pre_sim_func_nb=pre_sim_func_nb,
+        post_order_func_nb=post_order_func_nb,
+        post_order_args=(vbt.Rep("threshold"),),
+        broadcast_named_args=dict(  # broadcast against each other
+            entries=entries, exits=exits, size=size, threshold=threshold
+        ),
+    )
+
+
+def build_df(klines):
+    cols = [
+        "timestamp",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "close_time",
+        "quote_av",
+        "trades",
+        "tb_base_av",
+        "tb_quote_av",
+        "ignore",
+    ]
+    df = pd.DataFrame(klines, columns=cols)
+    df["timestamp"] = [dt.datetime.fromtimestamp(x / 1000.0) for x in df["timestamp"]]
+    df.set_index("timestamp", inplace=True)
+    df = df[["open", "high", "low", "close", "volume"]]
+    df[["open", "high", "low", "close", "volume"]] = df[
+        ["open", "high", "low", "close", "volume"]
+    ].astype(float)
+    return df
+
+
+def test():
+    close = pd.Series([10, 11, 12, 13, 14])
+    entries = pd.Series([True, True, False, False, False])
+    exits = pd.Series([False, False, False, True, True])
+    pf = simulate(close, entries, exits, np.inf, 0.1)  # .asset_flow()
+    print(pf.asset_flow())
+    print(pf.stats())
+
+
+if __name__ == "__main__":
+    # test()
+
+    coin = "BTCUSDT"
+    configPath = os.environ["HOME"] + "/.mybin/jason/binance_login.txt"
+    KLINE_INTERVAL = Client.KLINE_INTERVAL_1MINUTE
+    with open(configPath, "r") as f:
+        kw_login = json.loads(f.read())
+
+    start_time = dt.datetime.now()
+    client = Client(api_key=kw_login["PUBLIC"], api_secret=kw_login["SECRET"])
+    klines = client.get_historical_klines(
+        symbol=coin,
+        interval=KLINE_INTERVAL,
+        start_str=(start_time - relativedelta.relativedelta(months=1)).strftime(
+            "%Y-%m-%d %H:%M:%S"
+        ),
+        end_str=start_time.strftime("%Y-%m-%d %H:%M:%S"),
+    )
+    df = build_df(klines)
+    price = df["close"]
+    fast_ma = vbt.MA.run(price, 5)
+    slow_ma = vbt.MA.run(price, 50)
+    entries = fast_ma.ma_crossed_above(slow_ma)
+    exits = fast_ma.ma_crossed_below(slow_ma)
+    pf = simulate(price, entries, exits, np.inf, 0.1)  # .asset_flow()
+    print(pf.stats())
+</code></pre>
+<h2 id="from_orders"><a class="header" href="#from_orders">from_orders</a></h2>
+<pre><code class="language-python">import pandas as pd
+import vectorbt as vbt
+import numpy as np
+from datetime import datetime, timedelta
+
+
+# Entry trades
+pf_kwargs = dict(
+    close=pd.Series([1., 2., 3., 4., 5.]),
+    size=pd.Series([1., -2., 2., -2., 1.]),
+    fixed_fees=1.
+)
+
+entry_trades = vbt.Portfolio.from_orders(**pf_kwargs).entry_trades
+print(entry_trades.records_readable)
+exit_trades = vbt.Portfolio.from_orders(**pf_kwargs).exit_trades
+print(exit_trades.records_readable)
+
+# Entry positions
+positions = vbt.Portfolio.from_orders(**pf_kwargs).positions
+print(positions.records_readable)
+
+print(entry_trades.pnl.sum() == exit_trades.pnl.sum() == positions.pnl.sum())
+
+price = pd.Series([1., 2., 3., 4., 3., 2., 1.])
+size = pd.Series([1., -0.5, -0.5, 2., -0.5, -0.5, -0.5])
+trades = vbt.Portfolio.from_orders(price, size).trades
+
+print(trades.count())
+print(trades.pnl.sum())
+print(trades.winning.count())
+print(trades.winning.pnl.sum())
+print(trades.stats())
+
+np.random.seed(42)
+price = pd.DataFrame({
+    'a': np.random.uniform(1, 2, size=100),
+    'b': np.random.uniform(1, 2, size=100)
+}, index=[datetime(2020, 1, 1) + timedelta(days=i) for i in range(100)])
+size = pd.DataFrame({
+    'a': np.random.uniform(-1, 1, size=100),
+    'b': np.random.uniform(-1, 1, size=100),
+}, index=[datetime(2020, 1, 1) + timedelta(days=i) for i in range(100)])
+pf = vbt.Portfolio.from_orders(price, size, fees=0.01, freq='d')
+print(pf.trades['a'].stats(settings=dict(incl_open=True)))
+</code></pre>
+<h2 id="多幣種回測"><a class="header" href="#多幣種回測">多幣種回測</a></h2>
+<pre><code class="language-python">import numpy as np
+import pandas as pd
+import vectorbt as vbt
+import warnings
+from datetime import datetime
+
+
+# Prepare data
+start = "2019-01-01 UTC"  # crypto is in UTC
+end = "2020-01-01 UTC"
+btc_price = vbt.YFData.download("BTC-USD", start=start, end=end).get("Close")
+eth_price = vbt.YFData.download("ETH-USD", start=start, end=end).get("Close")
+comb_price = btc_price.vbt.concat(
+    eth_price, keys=pd.Index(["BTC", "ETH"], name="symbol")
+)
+comb_price.vbt.drop_levels(-1, inplace=True)
+
+fast_ma = vbt.MA.run(comb_price, [10, 20], short_name="fast")
+slow_ma = vbt.MA.run(comb_price, [30, 30], short_name="slow")
+
+entries = fast_ma.ma_crossed_above(slow_ma)
+exits = fast_ma.ma_crossed_below(slow_ma)
+
+pf = vbt.Portfolio.from_signals(comb_price, entries, exits)
+print(pf.total_return())
+print(pf.stats())
+</code></pre>
+<h2 id="multiple-assets-multiple-trade-signals-per-asset"><a class="header" href="#multiple-assets-multiple-trade-signals-per-asset">Multiple assets, multiple trade signals per asset</a></h2>
+<pre><code class="language-python">import pandas as pd
+import vectorbt as vbt
+
+price = pd.DataFrame({"p1": [1, 2, 3, 4], "p2": [5, 6, 7, 8]})
+price.columns.name = "asset"
+entries = pd.DataFrame(
+    {
+        "en1": [True, False, False, False],
+        "en2": [False, True, False, False],
+        "en3": [False, False, True, False],
+        "en4": [False, False, False, True],
+    }
+)
+entries.columns.name = "entries"
+exits = pd.DataFrame(
+    {
+        "ex1": [False, False, False, True],
+        "ex2": [False, False, False, True],
+        "ex3": [False, False, False, True],
+        "ex4": [False, False, False, True],
+    }
+)
+exits.columns.name = "exits"
+entries = entries.vbt.stack_index(pd.Index(["p1", "p1", "p2", "p2"], name="asset"))
+exits = exits.vbt.stack_index(pd.Index(["p1", "p1", "p2", "p2"], name="asset"))
+portfolio = vbt.Portfolio.from_signals(price, entries, exits)  # not grouped portfolio
+print(portfolio.total_return())
+print(portfolio.total_return(group_by='asset'))  # group not grouped portfolio
+
+portfolio = vbt.Portfolio.from_signals(price, entries, exits, group_by='asset')  # grouped portfolio
+print(portfolio.total_return())
+
+print(portfolio.total_return(group_by=False))  # ungroup grouped portfolio
+
+</code></pre>
+<h2 id="from_order_func-做資金加減碼"><a class="header" href="#from_order_func-做資金加減碼">from_order_func 做資金加減碼</a></h2>
+<pre><code class="language-python">from numba import njit
+from vectorbt.portfolio import nb
+from vectorbt.portfolio.enums import Direction
+
+import numpy as np
+import vectorbt as vbt
+import pandas as pd
+import warnings
+
+pd.options.display.float_format = lambda x: "%.2f" % x
+
+warnings.simplefilter("ignore", UserWarning)
+
+
+def simulate():
+    @njit
+    def order_func_nb(c, action, direction, fees):
+        # _size = 1000 / float(c.close[c.i, c.col])
+        # print(
+        #    "Close:",
+        #    c.close[c.i, c.col],
+        #    "Direction:",
+        #    direction,
+        #    "c.i:",
+        #    c.i,
+        #    "c.col:",
+        #    c.col,
+        #    "fees:",
+        #    fees,
+        #    "_size:",
+        #    round(_size, 2),
+        #    "position_now:",
+        #    c.position_now,
+        #    "action:",
+        #    action[c.i],
+        # )
+
+        size = 0
+        if action[c.i] == 1:
+            # 1000 / float(c.close[c.i, c.col]) 買入 1000 元的股票
+            size = 1000 / float(c.close[c.i, c.col])
+        elif action[c.i] == -1:
+            # -c.position_now 持有全部的股票賣出
+            size = -c.position_now
+
+        return nb.order_nb(
+            price=c.close[c.i, c.col], size=size, direction=direction, fees=fees,
+        )
+
+    # 加碼策略
+    action = pd.Series([1, 1, -1, 1, -1, 0, 0, 1, -1])
+    dates = pd.date_range("20220301", periods=len(action))
+    price = pd.DataFrame(
+        {"Price": [100, 200, 300, 400, 500, 600, 700, 800, 900]}, index=dates
+    )
+    fees = 0.002  # per frame
+    pf = vbt.Portfolio.from_order_func(
+        price,
+        order_func_nb,
+        np.asarray(action),
+        Direction.LongOnly,
+        fees,
+        init_cash=1000000,
+    )
+    orders_records_readable = pf.orders.records_readable.drop("Column", axis=1)
+    print(orders_records_readable.to_markdown(index=False, floatfmt=".2f"))
+    print(pf.assets().rename(columns={"Price": "assets"}))
+    print(pf.cash().rename(columns={"Price": "cash"}))
+    print(pf.stats())
+
+
+if __name__ == "__main__":
+    simulate()
+</code></pre>
+<h2 id="ordercontext"><a class="header" href="#ordercontext">OrderContext</a></h2>
+<pre><code class="language-python">class OrderContext(tp.NamedTuple):
+    target_shape: tp.Shape  # 目標形狀
+    group_lens: tp.Array1d  # 分組長度
+    init_cash: tp.Array1d  # 初始現金
+    cash_sharing: bool  # 是否共享現金
+    call_seq: tp.Optional[tp.Array2d]  # 呼叫順序
+    segment_mask: tp.ArrayLike  # 分段遮罩
+    call_pre_segment: bool  # 是否在分段之前呼叫
+    call_post_segment: bool  # 是否在分段之後呼叫
+    close: tp.ArrayLike  # 收盤價
+    ffill_val_price: bool  # 是否向前填充估值價格
+    update_value: bool  # 是否更新持倉估值
+    fill_pos_record: bool  # 是否填充持倉紀錄
+    flex_2d: bool  # 是否彈性處理2D數據
+    order_records: tp.RecordArray  # 訂單紀錄
+    log_records: tp.RecordArray  # 日誌紀錄
+    last_cash: tp.Array1d  # 上次現金
+    last_position: tp.Array1d  # 上次持倉
+    last_debt: tp.Array1d  # 上次負債
+    last_free_cash: tp.Array1d  # 上次自由現金
+    last_val_price: tp.Array1d  # 上次估值價格
+    last_value: tp.Array1d  # 上次持倉估值
+    second_last_value: tp.Array1d  # 倒數第二次持倉估值
+    last_return: tp.Array1d  # 上次收益率
+    last_oidx: tp.Array1d  # 上次訂單索引
+    last_lidx: tp.Array1d  # 上次日誌索引
+    last_pos_record: tp.RecordArray  # 上次持倉紀錄
+    group: int  # 分組
+    group_len: int  # 分組長度
+    from_col: int  # 起始欄位
+    to_col: int  # 終止欄位
+    i: int  # 迭代器
+    call_seq_now: tp.Optional[tp.Array1d]  # 當前呼叫順序
+    col: int  # 當前欄位
+    call_idx: int  # 當前呼叫索引
+    cash_now: float  # 現金餘額
+    position_now: float  # 持倉量
+    debt_now: float  # 負債金額
+    free_cash_now: float  # 自由現金餘額
+    val_price_now: float  # 估值價格
+    value_now: float  # 持倉估值
+    return_now: float  # 當前收益率
+</code></pre>
+<pre><code class="language-sh">報告列出了許多評估指標：
+
+Start：回測開始日期。
+End：回測結束日期。
+Period：回測時間段。
+Start Value：回測開始時的資產價值。
+End Value：回測結束時的資產價值。
+Total Return [%]：回測期間的總回報率。
+Benchmark Return [%]：基準指數的回報率。
+Max Gross Exposure [%]：最大總槓桿率。
+Total Fees Paid：交易費用總額。
+Max Drawdown [%]：最大回撤率。
+Max Drawdown Duration：最大回撤期間。
+Total Trades：總交易次數。
+Total Closed Trades：總平倉交易次數。
+Total Open Trades：總持倉交易次數。
+Open Trade PnL：未平倉交易的盈虧。
+Win Rate [%]：勝率。
+Best Trade [%]：最佳交易回報率。
+Worst Trade [%]：最差交易回報率。
+Avg Winning Trade [%]：平均勝利交易回報率。
+Avg Losing Trade [%]：平均虧損交易回報率。
+Avg Winning Trade Duration：平均勝利交易持續時間。
+Avg Losing Trade Duration：平均虧損交易持續時間。
+Profit Factor：盈虧比。
+Expectancy：預期值。
+Sharpe Ratio：夏普比率。
+Calmar Ratio：卡爾馬比率。
+Omega Ratio：歐米茄比率。
+Sortino Ratio：索提諾比率。
+
+其中一些指標的定義可能需要參考具體的金融概念，例如回報率、總槓桿率、回撤率、夏普比率等等。這些指標可以幫助用戶評估交易策略的表現，以便做出相應的調整和優化。
+</code></pre>
+<h2 id="asset_flow"><a class="header" href="#asset_flow">asset_flow</a></h2>
+<pre><code class="language-python">import numpy as np
+from vectorbt.records.nb import col_map_nb
+from vectorbt.portfolio.nb import simulate_from_orders_nb, asset_flow_nb
+from vectorbt.portfolio.enums import Direction
+
+close = np.array([1, 2, 3, 4, 5])[:, None]
+order_records, _ = simulate_from_orders_nb(
+    target_shape=close.shape,
+    close=close,
+    group_lens=np.array([1]),
+    init_cash=np.array([100]),
+    call_seq=np.full(close.shape, 0)
+)
+
+print(order_records)
+
+col_map = col_map_nb(order_records['col'], close.shape[1])
+asset_flow = asset_flow_nb(close.shape, order_records, col_map, Direction.Both)
+print(asset_flow)
+</code></pre>
+<h2 id="資金1000-加碼-size-統計"><a class="header" href="#資金1000-加碼-size-統計">資金1000 加碼 size 統計</a></h2>
+<pre><code class="language-python">import pandas as pd
+
+# create a date range
+dates = pd.date_range("20220301", periods=7)
+
+# create a price dataframe
+price = pd.DataFrame({"price": [50, 100, 200, 250, 300, 400, 500]}, index=dates)
+
+# create entry and exit dataframes
+entries = pd.DataFrame(
+    {"entry": [False, True, True, False, False, True, False]}, index=dates
+)
+exits = pd.DataFrame(
+    {"exit": [False, False, False, False, True, False, True]}, index=dates
+)
+
+# concatenate the dataframes horizontally
+df = pd.concat([price, entries, exits], axis=1)
+
+# calculate the size column based on entries and exits
+size = []
+current_size = 0
+for i in range(len(df)):
+    if df["entry"][i]:
+        current_size = 1000 / df["price"][i]
+    elif df["exit"][i]:
+        current_size = -sum(size)
+    elif not df["entry"][i] and not df["exit"][i]:
+        current_size = 0
+    size.append(current_size)
+
+# add the size column to the dataframe
+df["size"] = size
+
+# print the resulting dataframe
+print(df)
+</code></pre>
+<pre><code class="language-python">from numba import njit
+from vectorbt.portfolio import nb
+from vectorbt.portfolio.enums import (
+    SizeType,
+    Direction,
+    NoOrder,
+    OrderStatus,
+    OrderSide,
+)
+
+
+import numpy as np
+import vectorbt as vbt
+import pandas as pd
+import warnings
+
+warnings.simplefilter("ignore", UserWarning)
+
+
+@njit
+def pre_sim_func_nb(c):
+    # We need to define stop price per column once
+    stop_price = np.full(c.target_shape[1], np.nan, dtype=np.float_)
+    return (stop_price,)
+
+
+@njit
+def order_func_nb(c, stop_price, entries, exits, size):
+    # Select info related to this order
+    entry_now = nb.get_elem_nb(c, entries)
+    exit_now = nb.get_elem_nb(c, exits)
+    size_now = nb.get_elem_nb(c, size)
+    price_now = nb.get_elem_nb(c, c.close)
+    stop_price_now = stop_price[c.col]
+
+    # Our logic
+    if entry_now:
+        if c.position_now == 0:
+            return nb.order_nb(
+                size=size_now, price=price_now, direction=Direction.LongOnly
+            )
+    elif exit_now or price_now &gt;= stop_price_now:
+        if c.position_now &gt; 0:
+            return nb.order_nb(
+                size=-size_now, price=price_now, direction=Direction.LongOnly
+            )
+    return NoOrder
+
+
+@njit
+def post_order_func_nb(c, stop_price, stop):
+    # Same broadcasting as for size
+    stop_now = nb.get_elem_nb(c, stop)
+
+    if c.order_result.status == OrderStatus.Filled:
+        if c.order_result.side == OrderSide.Buy:
+            # Position entered: Set stop condition
+            stop_price[c.col] = (1 + stop_now) * c.order_result.price
+        else:
+            # Position exited: Remove stop condition
+            stop_price[c.col] = np.nan
+
+
+def simulate(close, entries, exits, size, threshold):
+    return vbt.Portfolio.from_order_func(
+        close,
+        order_func_nb,
+        vbt.Rep("entries"),
+        vbt.Rep("exits"),
+        vbt.Rep("size"),  # order_args
+        pre_sim_func_nb=pre_sim_func_nb,
+        post_order_func_nb=post_order_func_nb,
+        post_order_args=(vbt.Rep("threshold"),),
+        broadcast_named_args=dict(  # broadcast against each other
+            entries=entries, exits=exits, size=size, threshold=threshold
+        ),
+    )
+
+
+if __name__ == "__main__":
+    close = pd.Series([10, 11, 12, 13, 14])
+    entries = pd.Series([True, True, False, False, False])
+    exits = pd.Series([False, False, False, True, True])
+    pf = simulate(close, entries, exits, np.inf, 0.1)
+    print(pf.orders.records_readable)
+    print(pf.assets())
+    print(pf.cash())
+    print(pf.stats())
+
+</code></pre>
+<h2 id="使用-from_order_func-動態加碼"><a class="header" href="#使用-from_order_func-動態加碼">使用 from_order_func 動態加碼</a></h2>
+<pre><code class="language-python">from numba import njit
+from vectorbt.utils.enum_ import map_enum_fields
+from vectorbt.portfolio import nb
+from vectorbt.portfolio.enums import (
+    SizeType,
+    Direction,
+    NoOrder,
+    OrderStatus,
+    OrderSide,
+)
+
+
+import yfinance as yf
+import numpy as np
+import vectorbt as vbt
+import pandas as pd
+import warnings
+
+warnings.simplefilter("ignore", UserWarning)
+
+# 下載股票價格數據
+# symbols = ["GOOG"]
+# raw_data = yf.download(symbols, start="2010-01-01", end="2023-03-09")
+# close = raw_data.loc[:, "Close"]
+
+# Buy 10 units each tick using closing price:
+def test():
+    @njit
+    def order_func_nb(c, size):
+        return nb.order_nb(size=size)
+
+    close = pd.Series([1, 2, 3, 4, 5])
+    pf = vbt.Portfolio.from_order_func(close, order_func_nb, 10, init_cash=100000,)
+    print(pf.assets())
+    print(pf.cash())
+    print(pf.stats())
+
+
+def from_order_function_test():
+    @njit
+    def order_func_nb(c, size, direction, fees):
+        print(
+            "Close:",
+            c.close[c.i, c.col],
+            "Size:",
+            size[c.i],
+            "Direction:",
+            direction[c.col],
+            "c.i:",
+            c.i,
+            "c.col:",
+            c.col,
+            "fees:",
+            fees,
+        )
+        return nb.order_nb(
+            price=c.close[c.i, c.col],
+            size=size[c.i],
+            direction=direction[c.col],
+            fees=fees,
+        )
+
+    if True:
+        # 加碼策略
+        size = pd.Series([1, 1, -2, 1, -1])  # per row
+        dates = pd.date_range("20220301", periods=5)
+        price = pd.DataFrame(
+            {"a": [100, 200, 300, 400, 500], "b": [500, 400, 300, 200, 100]},
+            index=dates,
+        )  # per element
+    else:
+        size = pd.Series([1, -1, 1, -1])  # per row
+        dates = pd.date_range("20220301", periods=4)
+        price = pd.DataFrame(
+            {"a": [100, 200, 300, 400], "b": [400, 300, 200, 100]}, index=dates,
+        )  # per element
+
+    direction = ["longonly", "shortonly"]  # per column
+    fees = 0.01  # per frame
+    direction_num = map_enum_fields(direction, Direction)
+    pf = vbt.Portfolio.from_order_func(
+        price,
+        order_func_nb,
+        np.asarray(size),
+        np.asarray(direction_num),
+        fees,
+        init_cash=10000,
+    )
+    print(pf.orders.records_readable)
+    print(pf.assets())
+    print(pf.cash())
+    print(pf.stats())
+
+
+if __name__ == "__main__":
+    # Disable scientific notation
+    pd.options.display.float_format = lambda x: "%.2f" % x
+    test()
+    print("\n=================================================\n")
+    from_order_function_test()
+</code></pre>
+<h2 id="vectotbt--example"><a class="header" href="#vectotbt--example">VectotBT  example</a></h2>
+<pre><code class="language-py">from datetime import datetime
+import vectorbt as vbt
+
+interval = '4h'
+cols = ['Open', 'High', 'Low', 'Close', 'Volume']
+start_str = '360 days ago UTC'
+end_str = f'{datetime.now()}'
+#symbols = ["BTCUSDT", "ETHUSDT", "LTCUSDT", "BNBUSDT", "XRPUSDT"]
+symbols = ["BTCUSDT"]
+df = vbt.BinanceData.download(symbols,start=start_str,interval=interval).get(cols)
+ma99 = vbt.MA.run(df["Close"], 99, short_name="ma99")
+
+entries = ma99.close_crossed_above(ma99.ma) 
+exits = ma99.close_crossed_below(ma99.ma) 
+pf = vbt.Portfolio.from_signals(df["Close"], entries, exits)
+print(pf.stats())
+</code></pre>
+<h1 id="python筆記--股票策略回測-by-vectorbt"><a class="header" href="#python筆記--股票策略回測-by-vectorbt">Python筆記 : 股票策略回測 by Vectorbt</a></h1>
+<h2 id="大致介紹"><a class="header" href="#大致介紹">大致介紹</a></h2>
+<p>vectorbt是一套拿來進行量化分析的套件，特別的點在於他有numpy的速度,以及pandas的方便性。
+因此比起其他的回測套件，他擁有極佳的速度，可以在短時間之內分析大量的策略。其中，套到這個套件裡面的所有參數都可以進行向量化，允許我們同時對所有元素執行相同的操作。另外，也使用 Numba 解決了與向量化相關的路徑依賴問題。</p>
+<p>這邊大部分使用的套件說明都可以在<a href="https://vectorbt.pro/api/">這裡</a>看到詳細說明。</p>
+<h2 id="模組"><a class="header" href="#模組">模組</a></h2>
+<pre><code class="language-python">import vectorbt as vbt 
+# import plotly 可不用，因vectorbt有自帶視覺化套件
+import datetime
+import pandas as pd
+import numpy as np
+</code></pre>
+<h2 id="時間設定以及視覺化分析資料的位置"><a class="header" href="#時間設定以及視覺化分析資料的位置">時間設定以及視覺化分析資料的位置</a></h2>
+<pre><code class="language-python">filename='某個位置路徑'
+end_date=datetime.datetime.now()
+start_date=end_date - datetime.timedelta(days=3) #限制在3天之內
+</code></pre>
+<p>這邊設3天是因為等等要抓取的時間單位為一分鐘，故三天已經夠長了。</p>
+<h2 id="data-import"><a class="header" href="#data-import">Data Import</a></h2>
+<pre><code class="language-python">btc_price = vbt.YFData.download('BTC-USD',  
+                                #['BTC-USD','ETH-USD'], 可以用列表同時import多重的data
+                                interval='1m',  #改變時間的單位
+                                start = start_date,
+                                end=end_date,
+                                missing_idnex='drop').get('Close') 
+</code></pre>
+<p>vectorbt會自動抓取yfinace的api，只要yfinance有的，都可以抓的到。
+標的可以分為:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">臺股</th><th style="text-align: left">美股</th><th style="text-align: left">加密貨幣</th></tr></thead><tbody>
+<tr><td style="text-align: left">Ex : <a href="http://2330.tw/">2330.TW</a></td><td style="text-align: left">Ex : TSLA</td><td style="text-align: left">Ex : BTC-USD</td></tr>
+</tbody></table>
+</div>
+<h2 id="交易策略"><a class="header" href="#交易策略">交易策略</a></h2>
+<p>這裡使用的交易策略相當簡單，因為主要目的是為了熟悉vectorbt的使用。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">情況</th><th style="text-align: left">操作</th></tr></thead><tbody>
+<tr><td style="text-align: left">rsi&gt;設定的高標</td><td style="text-align: left">賣出</td></tr>
+<tr><td style="text-align: left">rsi&lt;設定的低標 且 最近的收盤價低於ma</td><td style="text-align: left">買入</td></tr>
+</tbody></table>
+</div>
+<p>當rsi大於我們設定的高標，代表目前股市可能進入過熱的壯臺，則我們可以選擇在這時候進行賣出的操作。當相反情況出現，rsi低於我們設定的低標的話，而且這時候的收盤價低於ma線，表示這時候或許是一個很好的入場點，則我們可以在這時候進行買入的操作。(這邊都是極度簡單的操作，要是這樣就可以穩穩贏過大盤就太感謝了…)</p>
+<h2 id="客製化訊號以及策略"><a class="header" href="#客製化訊號以及策略">客製化訊號以及策略</a></h2>
+<p>這邊主要可以分成三個區塊，分別為:</p>
+<ol>
+<li>Define一個函數，裡面主要用來計算出是否可以進入市場的訊號 -&gt; 1及-1。</li>
+<li>算是一個用來做出策略的食譜，裡面放著等等產出的資料變數名稱以及一些默認變數。</li>
+<li>實際執行策略，裡麵包含一些變數的範圍。</li>
+</ol>
+<h3 id="1-define-a-function"><a class="header" href="#1-define-a-function">1. Define a function</a></h3>
+<pre><code class="language-python">def custom_indicator(close,               #每當在這邊增加一個參數，就要在第二步驟的ind裡面的param_names裡面增加
+                     rsi_window = 14,
+                     ma_window = 50,
+                     entry=30,
+                     exits=70
+                     ):    
+    close_5m = close.resample('5T').last() #將資料型態從1min變成5min
+    rsi = vbt.RSI.run(close_5m, window = rsi_window).rsi  #rsi中的rsi值(因為在這裡的前面rsi出來的不會只有單純的rsi)
+    rsi, _ =rsi.align(close,    #將5min的資料重新展開成1min
+                     broadcast_axis=0,
+                     method='ffill',  #並將空值以第5分鐘的copy塞進去
+                     join='right'  #rsi是right table，close是left table
+                     ) #by doing so, rsi跟close有same shape，只是rsi是5min的資料，close是1分鐘的資料
+    close = close.to_numpy()
+    rsi = rsi.to_numpy()
+    ma = vbt.MA.run(close, window = ma_window).ma.to_numpy()
+    trend = np.where(rsi &gt; exits, -1, 0) #要是rsi&gt;70，則賣出(-1)，否則甚麼都不做(0)
+    trend = np.where((rsi &lt; entry)&amp;(close &lt; ma),  1, trend)  #要是rsi&lt;30而且收盤價&lt;ma，則買入(1)，如果沒有的話就按照原本的trend
+    return trend
+</code></pre>
+<h3 id="2-策略的食譜"><a class="header" href="#2-策略的食譜">2. 策略的食譜</a></h3>
+<pre><code class="language-python">ind = vbt.IndicatorFactory(   
+    class_name = 'Combination',
+    short_name = 'comb', 
+    input_names=['close'], #輸入的parameter的名字
+    #param_names=['window'], #hyper parameter的名字，也可用列表呈現
+    param_names=['rsi_window','ma_window','entry','exits'],
+    output_names=['value']  #output出來的名字
+    ).from_apply_func(   #提供一些默認值給recipe，就是上面define的function裡面的parameter
+        custom_indicator,
+        rsi_window=14,
+        ma_window=50,
+        entry=70,
+        exits=30,
+        keep_pd=True #保持資料型態為pandas，避免變成numpy arrays
+        )
+</code></pre>
+<h3 id="3-實際執行策略"><a class="header" href="#3-實際執行策略">3. 實際執行策略</a></h3>
+<pre><code class="language-python">res = ind.run(  #run 一個策略
+    btc_price,
+    #rsi_window = [14,35,21], #給定特定值
+    rsi_window = np.arange(10,40,step=3,dtype=int), #給定一個範圍
+    #ma_window = [21,50,100],
+    ma_window = np.arange(20,200,step=15,dtype=int),
+    #entry=[30,40],
+    entry = np.arange(10,40,step=4,dtype=int),
+    #exits=[60,70],
+    exits = np.arange(60,85,step=4,dtype=int),
+    param_product=True) #如果沒有這個的話，只會按照list的順序，並不會兩兩配對
+</code></pre>
+<p>這邊有兩種險方式來定義變數，一個是給定特定值的list，Ex:[14,35,21]，表示將rsi_window分別設定為14、35、21，代表只會嘗試這三個數值。另一種方式則是使用np.arange，將在這個range的數值全部帶進去進行計算，進而求出每一種狀況下的獲利。</p>
+<h3 id="執行結果"><a class="header" href="#執行結果">執行結果</a></h3>
+<pre><code>print(res.value)
+</code></pre>
+<p>output:</p>
+<pre><code class="language-python">comb_rsi_window                10                  ...      37                
+comb_ma_window                20                   ...     185                
+comb_entry                     10                  ...      38                
+comb_exits                     60              64  ...      80      84        
+symbol                    BTC-USD ETH-USD BTC-USD  ... ETH-USD BTC-USD ETH-USD
+Datetime                                           ...                        
+2022-08-11 03:07:00+00:00       0       0       0  ...       0       0       0
+2022-08-11 03:09:00+00:00       0       0       0  ...       0       0       0
+2022-08-11 03:11:00+00:00       0       0       0  ...       0       0       0
+2022-08-11 03:13:00+00:00       0       0       0  ...       0       0       0
+2022-08-11 03:15:00+00:00       0       0       0  ...       0       0       0
+                          ...     ...     ...  ...     ...     ...     ...
+2022-08-14 03:00:00+00:00       0       0       0  ...       0       0       0
+2022-08-14 03:01:00+00:00       0       0       0  ...       0       0       0
+2022-08-14 03:02:00+00:00       0       0       0  ...       0       0       0
+2022-08-14 03:03:00+00:00       0       0       0  ...       0       0       0
+2022-08-14 03:04:00+00:00       0       0       0  ...       0       0       0
+
+[3690 rows x 13440 columns]
+</code></pre>
+<p>如果將結果攤開來看，會呈現</p>
+<p><img src="images/cffT5wr.png" alt="img" /></p>
+<p>以及</p>
+<p><img src="images/BATll7T.png" alt="img" /></p>
+<p>代表著我們進出場的訊號。</p>
+<h2 id="將訊號帶入策略執行"><a class="header" href="#將訊號帶入策略執行">將訊號帶入策略執行</a></h2>
+<p>這時我們將剛剛得到的res進行處裡，其中1設定為entries，-1設定為exits。</p>
+<pre><code>entries = res.value == 1
+exits = res.value == -1
+</code></pre>
+<p>實際執行</p>
+<pre><code>pf = vbt.Portfolio.from_signals(btc_price, entries, exits)
+</code></pre>
+<p>試著看看執行結果</p>
+<pre><code>print(pf.stats().to_string()) #to_string()可以將全部結果攤開
+</code></pre>
+<p>會得到:</p>
+<pre><code>Output from spyder call 'get_namespace_view':
+Start                         2022-08-11 03:07:00+00:00
+End                           2022-08-14 03:04:00+00:00
+Period                                             3690
+Start Value                                       100.0
+End Value                                    100.179789
+Total Return [%]                               0.179789
+Benchmark Return [%]                           3.590516
+Max Gross Exposure [%]                        83.020833
+Total Fees Paid                                     0.0
+Max Drawdown [%]                               2.078304
+Max Drawdown Duration                       2193.187668
+Total Trades                                    4.26994
+Total Closed Trades                            3.966369
+Total Open Trades                              0.303571
+Open Trade PnL                                 0.076599
+Win Rate [%]                                  63.829362
+Best Trade [%]                                 0.680632
+Worst Trade [%]                                -0.39365
+Avg Winning Trade [%]                          0.607418
+Avg Losing Trade [%]                            -0.6351
+Avg Winning Trade Duration                   260.345941
+Avg Losing Trade Duration                    445.916595
+Profit Factor                                       inf
+Expectancy                                     0.202725
+</code></pre>
+<p>執行此段程式碼則可以獲得所有變數組合的報酬</p>
+<pre><code>print(pf.total_return().to_string())
+</code></pre>
+<p>只擷取其中一小段</p>
+<pre><code>                 170             10          60          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             64          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             68          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             72          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             76          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             80          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             84          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                 14          60          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             64          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             68          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             72          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             76          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             80          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+                                             84          BTC-USD    0.000000
+                                                         ETH-USD    0.000000
+</code></pre>
+<p>只抽取此策略的報酬率</p>
+<pre><code>returns = pf.total_return()
+print(returns.max()) #最大的報酬率
+print(returns.idxmax()) #最大的組合
+print(returns.to_string()) #所有組合
+</code></pre>
+<p>可以得到</p>
+<pre><code>0.06338762101981515 
+(37, 20, 30, 84, 'ETH-USD') #分別代表rsi_window, ma_window, entry, exits 
+</code></pre>
+<h2 id="資料視覺化"><a class="header" href="#資料視覺化">資料視覺化</a></h2>
+<p>vectorbt套件中有附兩種資料視覺化的模式，分別為:</p>
+<ol>
+<li>Heatmap</li>
+<li>Volume</li>
+</ol>
+<h3 id="heatmap"><a class="header" href="#heatmap">Heatmap</a></h3>
+<pre><code>fig = returns.vbt.heatmap(
+    x_level = 'comb_rsi_window',
+    #y_level = 'comb_ma_window',
+    y_level = 'comb_entry',
+    slider_level = 'symbol' #如果同時分析不同標的，則可以透過slider切換
+    )
+fig.write_html(filename,auto_open=True)#圖片儲存並自動展開
+</code></pre>
+<p><img src="images/A3dTzS8.png" alt="img" /></p>
+<h3 id="volume"><a class="header" href="#volume">Volume</a></h3>
+<p>將資料以3d的樣式呈現，可同時比較多個變數。</p>
+<pre><code>fig = returns.vbt.volume(
+    x_level = 'comb_exits',
+    y_level = 'comb_ma_window',
+    z_level = 'comb_entry',
+    slider_level = 'symbol'
+    )
+fig.write_html(filename,auto_open=True)#圖片儲存並自動展開
+</code></pre>
+<p><img src="images/RN85DH1.png" alt="img" /></p>
+<h2 id="vectorbt-多空範例"><a class="header" href="#vectorbt-多空範例">vectorbt 多空範例</a></h2>
+<pre><code class="language-python">from numba import njit
+from vectorbt.utils.enum_ import map_enum_fields
+from vectorbt.portfolio import nb
+from vectorbt.portfolio.enums import Direction, NoOrder
+
+import numpy as np
+import vectorbt as vbt
+import pandas as pd
+import warnings
+
+warnings.simplefilter("ignore", UserWarning)
+
+
+def from_order_function_test():
+    @njit
+    def order_func_nb(c, size, direction, fees):
+        print(
+            "Close:",
+            c.close[c.i, c.col],
+            "Size:",
+            size[c.i],
+            "Direction:",
+            direction[c.col],
+            "c.i:",
+            c.i,
+            "c.col:",
+            c.col,
+            "fees:",
+            fees,
+            "position_now:",
+            c.position_now,
+        )
+        return nb.order_nb(
+            price=c.close[c.i, c.col],
+            size=size[c.i],
+            direction=direction[c.col],
+            fees=fees,
+        )
+
+    if True:
+        # 加碼策略
+        size = pd.Series([1, 1, -2, 1, -1])  # per row
+        dates = pd.date_range("20220301", periods=5)
+        price = pd.DataFrame(
+            {"a": [100, 200, 300, 400, 500], "b": [500, 400, 300, 200, 100]},
+            index=dates,
+        )  # per element
+    else:
+        size = pd.Series([1, -1, 1, -1])  # per row
+        dates = pd.date_range("20220301", periods=4)
+        price = pd.DataFrame(
+            {"a": [100, 200, 300, 400], "b": [400, 300, 200, 100]},
+            index=dates,
+        )  # per element
+
+    direction = ["longonly", "shortonly"]  # per column
+    fees = 0.01  # per frame
+    direction_num = map_enum_fields(direction, Direction)
+    # size, direction, fees
+    pf = vbt.Portfolio.from_order_func(
+        price,
+        order_func_nb,
+        np.asarray(size),
+        np.asarray(direction_num),
+        fees,
+        init_cash=10000,
+    )
+    print(pf.orders.records_readable.to_markdown(tablefmt="heavy_grid"))
+    print(pf.assets().to_markdown(tablefmt="heavy_grid"))
+    print(pf.cash().to_markdown(tablefmt="heavy_grid"))
+    print(pf.stats().to_markdown(tablefmt="heavy_grid"))
+
+
+if __name__ == "__main__":
+    pd.options.display.float_format = lambda x: "%.2f" % x
+    from_order_function_test()
+</code></pre>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../strategy/Option/option_note.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../strategy/orderbook.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../strategy/Option/option_note.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../strategy/orderbook.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

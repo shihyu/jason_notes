@@ -1,0 +1,745 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Binance - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="python-binance-api-教學"><a class="header" href="#python-binance-api-教學">Python Binance API 教學</a></h1>
+<h2 id="幣安帳務下單-websocket"><a class="header" href="#幣安帳務下單-websocket">幣安帳務下單＆ websocket</a></h2>
+<pre><code class="language-python">import asyncio
+import json
+import websockets
+from binance.client import Client
+from binance.enums import *
+
+class mid_class:
+    def __init__(self, api_key, api_secret):
+        self.client = Client(api_key, api_secret)
+        self.balance = None
+        self.ticker = None
+        self.depth = None
+        self.order = None
+
+    def get_account(self):
+        self.balance = self.client.get_asset_balance(asset='USDT')
+
+    def get_ticker(self):
+        self.ticker = self.client.get_symbol_ticker(symbol='BTCUSDT')
+
+    def get_depth(self):
+        self.depth = self.client.get_order_book(symbol='BTCUSDT')
+
+    def create_order(self):
+        self.order = self.client.create_test_order(
+            symbol='BTCUSDT',
+            side=SIDE_BUY,
+            type=ORDER_TYPE_LIMIT,
+            timeInForce=TIME_IN_FORCE_GTC,
+            quantity=100,
+            price='1000')
+
+    def cancel_order(self):
+        self.client.cancel_order(
+            symbol='BTCUSDT',
+            orderId=self.order['orderId'])
+
+async def main():
+    api_key = 'your_api_key'
+    api_secret = 'your_api_secret'
+    mid = mid_class(api_key, api_secret)
+    #mid.get_account()
+    #mid.get_ticker()
+    #mid.get_depth()
+    #mid.create_order()
+    #mid.cancel_order()
+    await fetch_depth(mid)
+
+async def fetch_depth(mid):
+    async with websockets.connect('wss://stream.binance.com:9443/ws/btcusdt@depth@100ms') as websocket:
+        while True:
+            depth_json = await websocket.recv()
+            depth_dict = json.loads(depth_json)
+            print(depth_dict)
+
+if __name__ == '__main__':
+    asyncio.run(main())
+</code></pre>
+<h2 id="使用websocket-訂閱幣安-orderbook--100ms"><a class="header" href="#使用websocket-訂閱幣安-orderbook--100ms">使用Websocket 訂閱幣安 orderbook  100ms</a></h2>
+<pre><code class="language-python">import asyncio
+import json
+import websockets
+
+async def fetch_depth(symbol):
+    while True:
+        try:
+            async with websockets.connect(f'wss://stream.binance.com:9443/ws/{symbol}@depth@100ms') as websocket:
+                while True:
+                    depth = await websocket.recv()
+                    depth = json.loads(depth)
+                    print(depth)
+        except websockets.exceptions.ConnectionClosed:
+            print(f'Connection to {symbol} WebSocket closed, reconnecting...')
+
+async def main():
+    tasks = [
+        asyncio.create_task(fetch_depth('btcusdt')),
+        asyncio.create_task(fetch_depth('ethusdt'))
+    ]
+    await asyncio.gather(*tasks)
+
+asyncio.run(main())
+</code></pre>
+<h2 id="如何獲取-sma-等技術指標"><a class="header" href="#如何獲取-sma-等技術指標">如何獲取 SMA 等技術指標？</a></h2>
+<p>我們已經討論瞭如何將 DataFrame 輸出為 CSV 檔。你可以用 Python Pandas 做更多的事情，計算移動平均線就是其中之一。</p>
+<p>下面是一個示例：</p>
+<pre><code class="language-python">import btalib
+import pandas as pd
+
+# load DataFrame
+btc_df = pd.read_csv('btc_bars3.csv', index_col=0)
+btc_df.set_index('date', inplace=True)
+btc_df.index = pd.to_datetime(btc_df.index, unit='ms')
+
+# calculate 20 moving average using Pandas
+btc_df['20sma'] = btc_df.close.rolling(20).mean()
+print(btc_df.tail(5))
+</code></pre>
+<p>在上面的代碼中，我們從之前創建的CSV檔載入了數據。然後，我們使用mean（） 函數來計算收盤列上的平均值。</p>
+<p>滾動函數允許我們為移動平均線設置一個週期。所有這些內容都將附加到現有的數據幀中。這就是結果的樣子。</p>
+<p><img src="images/20sma_dataframe.jpg" alt="img" /></p>
+<p>如您所見，已使用 20 移動平均線創建了一個新列。</p>
+<p>假設您只需要知道移動平均線現在的位置。或者從數據幀中的最後一個價位開始。</p>
+<p>我們可以使用相同的 mean（） 函數，只需在 DataFrame 的最後 20 行上運行它，如下所示：</p>
+<pre><code class="language-python"># calculate just the last value for the 20 moving average
+mean = btc_df.close.tail(20).mean()
+</code></pre>
+<p>熊貓可以做的還有很多。我們可以很容易地抓住今年交易的最高價格比特幣，如下所示 –</p>
+<pre><code class="language-python"># get the highest closing price in 2020
+max_val = btc_df.close['2020'].max()
+</code></pre>
+<p>但Pandas無法計算其他技術指標，如RSI或MACD。幣安 API 也不提供此資訊。</p>
+<p>TA-LIB一直是一個流行的庫一段時間了。我們最近有機會測試了一個新的庫 – bta-lib。</p>
+<p>該庫由Backtrader的作者創建。他在博客上討論TA-LIB有幾個指標實施不當。</p>
+<p>此外，TA-LIB不是為Python設計的。有一個可用的包裝器，但是為Python設計的解決方案的開銷要少得多。</p>
+<p>可以使用 PIP 安裝 Bta-lib，如下所示。</p>
+<pre><code>pip install bta-lib
+</code></pre>
+<p>讓我們嘗試用庫計算相同的移動平均線作為比較 –</p>
+<pre><code class="language-python">sma = btalib.sma(btc_df.close)
+print(sma.df)
+</code></pre>
+<p>現在，我們有一個單獨的數據幀，其中包含移動平均線的值。它看起來像這樣：</p>
+<p><img src="images/btalib_20sma.jpg" alt="img" /></p>
+<p>請注意，bta-lib 將返回一個對象到我們的 sma 變數。若要訪問其中包含的數據幀，只需在變數名稱後鍵入即可。<code>.df</code></p>
+<p>默認情況下，該庫使用 30 週期移動平均線。</p>
+<p>我們可以複製我們之前的相同函數，並計算20條移動平均線，並將其作為列附加到我們原來的DataFrame上，就像這樣。</p>
+<pre><code class="language-python"># create sma and attach as column to original df
+btc_df['sma'] = btalib.sma(btc_df.close, period=20).df
+print(btc_df.tail())
+</code></pre>
+<p>讓我們再創建幾個指標。以下是我們使用bta-lib庫計算RSI的方法 –</p>
+<pre><code class="language-python">rsi = btalib.rsi(btc_df, period=14)
+</code></pre>
+<p>再次返回包含 df 的物件。我們可以像這樣訪問最後一個值。</p>
+<pre><code class="language-python">print(rsi.df.rsi[-1])
+</code></pre>
+<p>在實時環境中，您可能只需要最後一個值。</p>
+<p>以下是我們如何計算bta-lib中比特幣的MACD。</p>
+<pre><code class="language-python">macd = btalib.macd(btc_df, pfast=20, pslow=50, psignal=13)
+</code></pre>
+<p>最後，我們將把RSI和MACD值加入到我們的原始比特幣價格DataFrame中。</p>
+<pre><code class="language-python"># join the rsi and macd calculations as columns in original df
+btc_df = btc_df.join([rsi.df, macd.df])
+print(btc_df.tail())
+</code></pre>
+<p>現在，我們可以從一個數據幀輕鬆訪問所有計算 –</p>
+<p><img src="images/btc_df_all_indicators-1024x253-1.jpg" alt="img" /></p>
+<h2 id="如何使用幣安api觸發乙太坊訂單"><a class="header" href="#如何使用幣安api觸發乙太坊訂單">如何使用幣安API觸發乙太坊訂單？</a></h2>
+<p>我們使用的庫具有一個函數，允許我們創建測試訂單。下面是一個示例：</p>
+<pre><code class="language-python">buy_order_limit = client.create_test_order(
+    symbol='ETHUSDT',
+    side='BUY',
+    type='LIMIT',
+    timeInForce='GTC',
+    quantity=100,
+    price=200)
+</code></pre>
+<p>我們可以確保我們的語法是正確的，而不必提交實時訂單。當您瞭解 API 時，這非常有用。</p>
+<p>例如，如果我們將上述代碼中的類型更改為”MARKET”，它將引發異常。原因是<strong>timeInForce</strong>和<strong>價格</strong>參數不用於市場訂單。相反，市場訂單將如下所示：</p>
+<pre><code class="language-python">buy_order = client.create_test_order(symbol='ETHUSDT', side='BUY', type='MARKET', quantity=100)
+</code></pre>
+<p>一旦您滿意語法正確，只需將 替換為 .<code>create_test_order function``create_order function</code></p>
+<p>注意：如果您按照示例進行操作，則在將上述限價訂單代碼用於ETHUSDT時，如果自編寫本文以來價格已大幅變動，則可能會收到API錯誤。幣安只允許與硬幣當前交易價格相差一定百分比的訂單。</p>
+<p>由於可能存在異常，因此我們將代碼包裝在 try/except 塊中，並從庫中導入一些定義的異常。</p>
+<pre><code class="language-python">import os
+
+from binance.client import Client
+from binance.enums import *
+from binance.exceptions import BinanceAPIException, BinanceOrderException
+
+# init
+api_key = os.environ.get('binance_api')
+api_secret = os.environ.get('binance_secret')
+
+client = Client(api_key, api_secret)
+</code></pre>
+<p>除了用戶端和自定義異常之外，我們還導入了 binance.enums，我們稍後將對此進行討論。</p>
+<p>這是訂單代碼塊。</p>
+<pre><code class="language-python"># create a real order if the test orders did not raise an exception
+
+try:
+    buy_limit = client.create_order(
+        symbol='ETHUSDT',
+        side='BUY',
+        type='LIMIT',
+        timeInForce='GTC',
+        quantity=100,
+        price=200)
+
+except BinanceAPIException as e:
+    # error handling goes here
+    print(e)
+except BinanceOrderException as e:
+    # error handling goes here
+    print(e)
+</code></pre>
+<p>訂單確認將從交易所發回並存儲在我們的buy_limit變數中。這是它的樣子：</p>
+<p><img src="images/buy_eth.jpg" alt="img" /></p>
+<p>它是字典格式。請注意，它包含一個 orderId。我們可以使用此ID來取消像這樣的限價訂單 –</p>
+<pre><code class="language-python">    # cancel previous orders
+    cancel = client.cancel_order(symbol='ETHUSDT', orderId=buy_limit['orderId'])
+</code></pre>
+<p>我們再次收到確認。我們可以列印出 cancel 變數來查看它。</p>
+<p><img src="images/cancel_eth_buy.jpg" alt="img" /></p>
+<p>該函數是下訂單的主要方法。我們可以在這裡傳遞幾個參數。<code>create_order</code></p>
+<p>但是有一些常見的順序，並且已經為它們創建了説明器函數。它們縮短了下訂單所需的代碼，使事情變得容易一些。以下是一些範例：</p>
+<pre><code class="language-python">    # same order but with helper function
+    buy_limit = client.order_limit_buy(symbol='ETHUSDT', quantity=100, price=200)
+
+    # market order using a helper function
+    market_order = client.order_market_sell(symbol='ETHUSDT', quantity=100)
+</code></pre>
+<p>以下是您可能希望使用的一些幫助程式函數：</p>
+<ul>
+<li><code>order_limit_buy()</code></li>
+<li><code>order_limit_sell()</code></li>
+<li><code>order_market_buy()</code></li>
+<li><code>order_market_sell()</code></li>
+<li><code>order_oco_buy()</code></li>
+<li><code>order_ocosell()</code></li>
+</ul>
+<p>最後兩個被視為高級訂單類型。<strong>OCO</strong>代表<strong>O</strong>ne <strong>C</strong>ancels the <strong>O</strong>ther。</p>
+<p>一個很好的例子是當您使用止損和止盈目標時。如果其中一個訂單被擊中，您可能希望另一個訂單被取消。</p>
+<p>某些訂單類型需要字串常量，例如**「MARKET」<strong>或</strong>「BUY」。。**另一個經紀人可能會使用「<strong>MKT」 所以</strong>關於你應該使用什麼並不總是有一個合乎邏輯的答案。</p>
+<p>如果需要，您可以在文檔中查找這些內容。或者，該庫將硬編碼字串轉換為您可以使用的變數。</p>
+<p>如果您的編碼編輯器具有自動完成功能，這將特別有用，因為您可以快速確定要使用的參數，而無需拉出文檔。</p>
+<p>下面是一個不使用內置變數的訂單示例：</p>
+<pre><code class="language-python">buy_order = client.create_test_order(symbol='ETHUSDT', side='BUY', type='MARKET', quantity=100)
+</code></pre>
+<p>使用內置變數也是一樣的。</p>
+<pre><code class="language-python">buy_order = client.create_test_order(symbol='ETHUSDT', side=SIDE_BUY, type=ORDER_TYPE_MARKET, quantity=100)
+</code></pre>
+<p>如果計劃採用此路由，則需要前面討論的枚舉導入。</p>
+<p>所有硬編碼字串的完整清單可以<a href="https://python-binance.readthedocs.io/en/latest/constants.html#">在這裡</a>找到。</p>
+<h2 id="如何使用幣安api實現止損或止盈"><a class="header" href="#如何使用幣安api實現止損或止盈">如何使用幣安API實現止損或止盈？</a></h2>
+<p>與其他市場（如股票或外匯）相比，加密貨幣的止損或止盈方法不同。</p>
+<p>原因是，對於股票，你有一個基礎貨幣。這通常以美元為單位。一旦你買了一隻股票，你就處於”交易”中。在某些時候，您將希望出售該股票並返回到您的基礎美元貨幣。</p>
+<p>對於加密貨幣，實際上沒有基礎貨幣的概念。當您進行交易時，您正在將一種貨幣換成另一種貨幣。系統不會將其視為您最終想要擺脫的”交易”。</p>
+<p>因此，幣安不允許您將止損和止盈本機附加到主訂單上。</p>
+<p>但是我們仍然可以手動實現一個。</p>
+<p>為此，我們可以下OCO訂單。這個想法是，如果止損或止盈被擊中，另一個訂單應該被取消。</p>
+<p>回到我們的ETH訂單，以下是我們如何實現止損和止盈。</p>
+<pre><code class="language-python">try:
+    order = client.create_oco_order(
+        symbol='ETHUSDT',
+        side='SELL',
+        quantity=100,
+        price=250,
+        stopPrice=150,
+        stopLimitPrice=150,
+        stopLimitTimeInForce='GTC')
+
+except BinanceAPIException as e:
+    # error handling goes here
+    print(e)
+except BinanceOrderException as e:
+    # error handling goes here
+    print(e)
+</code></pre>
+<p>請注意，我們正在傳遞<strong>止損價格</strong>和<strong>止損限價</strong>。一旦<strong>達到止損價格</strong>水準，將使用<strong>止損限價</strong>。在大多數情況下，這兩個參數的價格將相同。</p>
+<p>雖然大多數資產都接受止損限價單，但並非所有資產都接受止損限價單。在下訂單之前，最好檢查它是否受支援。</p>
+<p>為此，可以使用交換信息終結點。</p>
+<pre><code class="language-python"># use exchange info to confirm order types
+info = client.get_symbol_info('ETHUSDT')
+print(info['orderTypes'])
+</code></pre>
+<p>以下是回應 –</p>
+<p><img src="images/exchange_info-1-719x1024-1.jpg" alt="img" /></p>
+<p>在<strong>orderTypes</strong>下，它表明該資產確實接受止損限值。</p>
+<p>這裡還有其他有用的資訊，例如資產是否可以以保證金交易，最小數量和價格變動大小。</p>
+<h2 id="如何使用幣安幣bnb獲得交易手續費折扣"><a class="header" href="#如何使用幣安幣bnb獲得交易手續費折扣">如何使用幣安幣（BNB）獲得交易手續費折扣？</a></h2>
+<p>幸運的是，幣安有一個交易手續費折扣計劃。</p>
+<p><img src="images/fee_schedule-1011x1024-3.jpg" alt="img" /></p>
+<p>The image above shows the fee schedule and discounts for trading the spot market. There are discounts for futures trading too.</p>
+<p>You can either qualify for a discount depending on your trading volume or the quantity of Binance coin you own.</p>
+<p>Binance coin or BNB was created by Binance in 2017. It can be used as a currency although perhaps the more common usage for it is to pay trading fees.</p>
+<p>If you’re not keen on owning BNB, it still makes sense to own just a little bit to pay your trading fees with. After all, any amount of BNB will qualify you for the first tier.</p>
+<p>Keep in mind, if you’re using BNB to pay for trading fees, your balance will reduce over time.</p>
+<p>The function below ensures there is a minimum amount of BNB in your account and tops it up if there isn’t.</p>
+<pre><code class="language-python">def topup_bnb(min_balance: float, topup: float):
+	''' Top up BNB balance if it drops below minimum specified balance '''
+	bnb_balance = client.get_asset_balance(asset='BNB')
+	bnb_balance = float(bnb_balance['free'])
+	if bnb_balance &lt; min_balance:
+		qty = round(topup - bnb_balance, 5)
+		print(qty)
+		order = client.order_market_buy(symbol='BNBUSDT', quantity=qty)
+		return order
+	return False
+</code></pre>
+<p>Trading scripts are usually run in a loop, so periodically calling the above function will ensure there is enough BNB in the account to qualify for the minimum discount.</p>
+<p>As an example, we can call the above function like this –</p>
+<pre><code class="language-python">min_balance = 1.0
+topup = 2.5
+order = topup_bnb(min_balance, topup)
+</code></pre>
+<p>這將檢查至少1 BNB的餘額。如果BNB的金額低於此值，它將使其達到2.5 BNB。</p>
+<p>要使用BNB支付交易費用並獲得折扣，需要啟用它。在幣安主頁面中，登錄後按兩下右上角的個人資料圖標。</p>
+<p>第一個選項應該是您的電子郵件位址，按下該位址以訪問您的儀錶板。從那裡，將有一個看起來像這樣的部分 –</p>
+<p><img src="/home/shihyu/github/jason_note/src/cryptotrade/binance/images/BNB_fees.jpg" alt="img" /></p>
+<p>在這裡，您可以啟用和禁用使用BNB支付交易費用的選項。</p>
+<h2 id="當btc達到一定價格時如何在eth上執行交易"><a class="header" href="#當btc達到一定價格時如何在eth上執行交易">當BTC達到一定價格時，如何在ETH上執行交易？</a></h2>
+<p>在下一個示例中，當比特幣突破10，000美元的價格點時，我們將在乙太坊中下達買入訂單。</p>
+<p>我們將使用Binance WebSocket來跟蹤比特幣的價格。</p>
+<pre><code class="language-python">import os
+from time import sleep
+
+from binance.client import Client
+from binance import ThreadedWebsocketManager
+
+# init
+api_key = os.environ.get('binance_api')
+api_secret = os.environ.get('binance_secret')
+client = Client(api_key, api_secret)
+price = {'BTCUSDT': None, 'error': False}
+</code></pre>
+<p>上面的代碼看起來與前面的示例非常相似，我們在前面的例子中展示瞭如何使用 WebSocket。</p>
+<pre><code class="language-python">def btc_pairs_trade(msg):
+    ''' define how to process incoming WebSocket messages '''
+    if msg['e'] != 'error':
+        price['BTCUSDT'] = float(msg['c'])
+    else:
+        price['error'] = True
+</code></pre>
+<p>接下來，我們有回調函數。這是所有 WebSocket 數據流經的地方。我們也可以在這裡對交易邏輯進行程式設計。</p>
+<p>但是，由於我們需要對訂單輸入使用 try/except 塊，因此最好不要這樣做，因為這可能會干擾在庫中的後端進行的錯誤檢查。</p>
+<p>我們將啟動 WebSocket 並將其定向到我們剛剛創建的函數。<code>btc_pairs_trade</code></p>
+<pre><code class="language-python">bsm = ThreadedWebsocketManager()
+bsm.start()
+bsm.start_symbol_ticker_socket(symbol='BTCUSDT', callback=btc_pairs_trade)
+</code></pre>
+<p>在開始之前，請快速檢查以確保我們有數據。</p>
+<pre><code class="language-python">while not price['BTCUSDT']:
+    # wait for WebSocket to start streaming data
+    sleep(0.1)
+</code></pre>
+<p>一旦WebSocket用新值填充我們的價格字典，上述無限迴圈就會中斷。</p>
+<p>關於主要的交易邏輯。</p>
+<pre><code class="language-python">while True:
+    # error check to make sure WebSocket is working
+    if price['error']:
+        # stop and restart socket
+	bsm.stop()
+	sleep(2)
+	bsm.start()
+        price['error'] = False
+
+    else:
+        if price['BTCUSDT'] &gt; 10000:
+            try:
+                order = client.order_market_buy(symbol='ETHUSDT', quantity=100)
+                break
+            except Exception as e:
+                print(e)
+
+    sleep(0.1)
+</code></pre>
+<p>在這裡，我們正在檢查價格是否高於我們的參數，在這種情況下為10，000美元。如果是這樣，我們會發送市場訂單以購買ETHUSDT。</p>
+<p>在發送買入訂單後，我們打破迴圈，我們的腳本完成。</p>
+<p>不要忘記正確終止 WebSocket</p>
+<pre><code class="language-python">bsm.stop()
+</code></pre>
+<h2 id="當btc在過去5分鐘內移動5時如何執行eth交易"><a class="header" href="#當btc在過去5分鐘內移動5時如何執行eth交易">當BTC在過去5分鐘內移動5%時，如何執行ETH交易？</a></h2>
+<p>我們將再次做出基於比特幣的乙太坊交易決策。儘管在此示例中，我們正在尋找過去五分鐘內大於5%的價格變動。</p>
+<p>因此，如果比特幣漲幅超過5%，我們就會買入乙太坊。如果它下跌超過5%，我們將出售乙太坊。</p>
+<p>由於我們可能在這裡持有空頭頭寸，因此我們將交易期貨。在現貨市場上，只有當您已經擁有該加密貨幣時，您才能出售。</p>
+<p>我們的導入和腳本的大部分初始部分都沒有改變。這裡的主要區別在於我們使用Pandas，因為我們將從WebSocket的傳入數據存儲到DataFrame中。</p>
+<pre><code class="language-python">import os
+from time import sleep
+
+import pandas as pd
+from binance import ThreadedWebsocketManager
+from binance.client import Client
+
+# init
+api_key = os.environ.get('binance_api')
+api_secret = os.environ.get('binance_secret')
+client = Client(api_key, api_secret)
+price = {'BTCUSDT': pd.DataFrame(columns=['date', 'price']), 'error': False}
+</code></pre>
+<p>因此，我們導入了Pandas，並在價格字典中創建了一個空白的數據幀。數據幀有兩列，一列用於日期，或者更確切地說是時間。另一列將持有價格。</p>
+<p>回調函數包含用於從 WebSocket 數據填充數據幀的代碼。</p>
+<pre><code class="language-python">def btc_pairs_trade(msg):
+	''' define how to process incoming WebSocket messages '''
+    if msg['e'] != 'error':
+        price['BTCUSDT'].loc[len(price['BTCUSDT'])] = [pd.Timestamp.now(), float(msg['c'])]
+    else:
+        price['error'] = True
+</code></pre>
+<p>我們使用該函數通過最後一個索引值將數據追加到 DataFrame 中。我們使用數據幀的長度來確定索引值。<code>.loc</code></p>
+<p>此時，我們只是插入當前時間（使用 Pandas 中的時間戳函數獲得）和來自套接字流的價格。</p>
+<p>現在我們已經創建了回調函數，我們將啟動 WebSocket。</p>
+<pre><code class="language-python"># init and start the WebSocket
+bsm = ThreadedWebsocketManager()
+bsm.start()
+bsm.start_symbol_ticker_socket(symbol='BTCUSDT', callback=btc_pairs_trade)
+</code></pre>
+<p>再一次，我們將進行快速檢查，以確保數據正在流式傳輸。</p>
+<pre><code class="language-python">## main
+while len(price['BTCUSDT']) == 0:
+	# wait for WebSocket to start streaming data
+	sleep(0.1)
+	
+sleep(300)
+</code></pre>
+<p>在開始主交易邏輯之前，我們將把腳本休眠五分鐘，因為我們至少需要那麼多數據。</p>
+<pre><code class="language-python">while True:
+	# error check to make sure WebSocket is working
+    if price['error']:
+        # stop and restart socket
+        bsm.stop()
+	sleep(2)
+        bsm.start()
+        price['error'] = False
+    else:
+		df = price['BTCUSDT']
+		start_time = df.date.iloc[-1] - pd.Timedelta(minutes=5)
+		df = df.loc[df.date &gt;= start_time]
+		max_price = df.price.max()
+		min_price = df.price.min()
+</code></pre>
+<p>在主迴圈中，我們首先從字典檔中獲取DataFrame並將其分配給變數<strong>df</strong>。此步驟不是必需的，但會使我們的示例中的代碼更易於閱讀。</p>
+<p>接下來，我們確定五分鐘前的時間。我們可以通過從DataFrame中獲取最後一個日期值並使用Pandas內置的Timedelta函數減去5分鐘來做到這一點。我們將此值分配給變數start_time。</p>
+<p>使用<strong>start_time</strong>值，我們可以向下篩選數據幀，使其僅包含最後五分鐘的數據。</p>
+<p>從那裡，我們可以使用Pandas的max（）和min（）函數來找到最高和最低的價格。</p>
+<p>現在我們需要做的就是確定最後一個價格與最大值或最小值之間的變動是否大於5%。</p>
+<pre><code class="language-python">		if df.price.iloc[-1] &lt; max_price * 0.95:
+			try:
+				order = client.futures_create_order(symbol='ETHUSDT', side='SELL', type='MARKET', quantity=100)
+				break
+			except Exception as e:
+				print(e)
+
+		elif df.price.iloc[-1] &gt; min_price * 1.05:
+			try:
+				order = client.futures_create_order(symbol='ETHUSDT', side='BUY', type='MARKET', quantity=100)
+				break
+			except Exception as e:
+				print(e)
+
+	sleep(0.1)
+</code></pre>
+<p>如果最新價格比上一個值大5%，我們知道比特幣正在上漲，我們將做空乙太坊作為我們均值回歸策略的一部分。</p>
+<p>如果最後一個價格比數據幀中的最高價格低 5%，那麼我們就會反其道而行之。</p>
+<p>請注意，該庫沒有期貨市場訂單的説明器函數，因此我們使用的方法類似於用於現貨市場的create_order函數。</p>
+<p>再一次，如果我們的訂單被填滿，我們將打破我們的主循環並正確終止WebSocket。</p>
+<pre><code># properly stop and terminate WebSocket
+bsm.stop()
+</code></pre>
+<p>但是，你的策略可能是無限期運行的策略。如果您不打算在下訂單後突破，最好將腳本置於睡眠狀態一段時間。</p>
+<p>否則，每逢價格變動時都會發送新訂單，直到 5% 的背離缺口關閉。</p>
+<h2 id="出處"><a class="header" href="#出處">出處</a></h2>
+<p>https://www.coreenginepro.com/python/python-binance-api-%e6%95%99%e5%ad%b8-4-%e6%8a%80%e8%a1%93%e6%8c%87%e6%a8%99%e5%88%86%e6%9e%90/</p>
+<hr />
+<pre><code class="language-python">from binance.client import Client
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+import json
+
+
+class binanceAPI:
+    def __init__(self, configPath):
+        with open(configPath, "r") as f:
+            self.kw_login = json.loads(f.read())
+        self.api = self.__login(self.kw_login["PUBLIC"], self.kw_login["SECRET"])
+
+    def __login(self, PUBLIC, SECRET):
+        return Client(api_key=PUBLIC, api_secret=SECRET)
+
+
+if __name__ == "__main__":
+    cols = [
+        "timestamp",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "close_time",
+        "quote_av",
+        "trades",
+        "tb_base_av",
+        "tb_quote_av",
+        "ignore",
+    ]
+    """
+    Jan
+    Feb
+    Mar
+    Apr
+    May
+    Jun
+    Jul
+    Aug
+    Sep
+    Oct
+    Nov
+    Dec
+    """
+    # client = binanceAPI(os.environ["HOME"] + f"/.mybin/jason/binance_login.txt")
+    # klines = client.api.get_historical_klines(
+    #    "BTCUSDT", "1m", "1 JAN, 2022", "20 JUN, 2023"
+    # )
+    # df = pd.DataFrame(klines, columns=cols)
+    # df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms")
+    # df["close"] = df["close"].astype(float)
+    # df["change"] = round(df["close"].pct_change() * 100, 4)
+    # df = df.set_index("timestamp")
+    # print(df)
+    # df.to_csv("BTCUSDT_1m.csv")
+
+    # Load the DataFrame from the CSV file
+    df = pd.read_csv("BTCUSDT_1m.csv", index_col="timestamp")
+    df["change"] = df["change"].astype(float)
+
+    # Create a line chart for the "change" column
+    plt.plot(df["change"])
+
+    # Add a title and axis labels
+    plt.title("BTCUSDT 1m Change")
+    plt.xlabel("Time")
+    plt.ylabel("Change (%)")
+
+    # Display the chart
+    plt.show()
+</code></pre>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../cryptotrade/cryptotrade.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../cryptotrade/binance/oco.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../cryptotrade/cryptotrade.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../cryptotrade/binance/oco.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

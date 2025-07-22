@@ -1,0 +1,2221 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Go編程實戰派基礎入門 - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="學習筆記之第1章-go基礎入門"><a class="header" href="#學習筆記之第1章-go基礎入門">學習筆記之第1章 Go基礎入門</a></h2>
+<ul>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#1_Go_2">第1章 Go基礎入門</a></li>
+<li>
+<ul>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#11_Go_3">1.1 安裝Go</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#12_Go_7">1.2 第一個Go程序</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#13_Go_71">1.3 Go基礎語法與使用</a></li>
+<li>
+<ul>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#131__72">1.3.1 基礎語法</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#132__126">1.3.2 變量</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#133__244">1.3.3 常量</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#134__325">1.3.4 運算符</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#135__359">1.3.5 流程控制語句</a></li>
+</ul>
+</li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#14_Go_611">1.4 Go數據類型</a></li>
+<li>
+<ul>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#141__619">1.4.1 布爾型</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#142__650">1.4.2 數字類型</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#143__653">1.4.3 字符串類型</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#144__752">1.4.4 指針類型</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#145__854">1.4.5 復合類型</a></li>
+</ul>
+</li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#15__1043">1.5 函數</a></li>
+<li>
+<ul>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#151__1045">1.5.1 聲明函數</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#152__1109">1.5.2 函數參數</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#153__1173">1.5.3 匿名函數</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#154_defer_1244">1.5.4 defer延遲語句</a></li>
+</ul>
+</li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#16_Go_1341">1.6 Go面向對象編程</a></li>
+<li>
+<ul>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#161__1342">1.6.1 封裝</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#162__1430">1.6.2 繼承</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#163__1449">1.6.3 多態</a></li>
+</ul>
+</li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#17__1491">1.7 接口</a></li>
+<li>
+<ul>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#171__1493">1.7.1 接口定義</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#172__1539">1.7.2 接口賦值</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#173__1667">1.7.3 接口查詢</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#174__1707">1.7.4 接口組合</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#175__1725">1.7.5 接口應用</a></li>
+</ul>
+</li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#18__1796">1.8 反射</a></li>
+<li>
+<ul>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#181__1797">1.8.1 反射的定義</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#182__1809">1.8.2 反射的三大法則</a></li>
+</ul>
+</li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#19_goroutine_1936">1.9 goroutine簡介</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#110_go_test_1962">1.10 單元測試（go test）</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#111_Go_2006">1.11 Go編譯與工具</a></li>
+<li>
+<ul>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#1111_go_build_2007">1.11.1 編譯（go build）</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#1112_go_run_2103">1.11.2 編譯後運行（go run）</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#1113_go_install_2120">1.11.3 編譯並安裝（go install）</a></li>
+<li><a href="https://blog.csdn.net/oqqyx1234567/article/details/119815145#1114_go_get_2153">1.11.4 獲取代碼（go get）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="第1章-go基礎入門"><a class="header" href="#第1章-go基礎入門">第1章 Go基礎入門</a></h1>
+<h2 id="11-安裝go"><a class="header" href="#11-安裝go">1.1 安裝Go</a></h2>
+<p>https://golang.google.cn/dl/</p>
+<h2 id="12-第一個go程序"><a class="header" href="#12-第一個go程序">1.2 第一個Go程序</a></h2>
+<pre><code>package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World～")
+}
+</code></pre>
+<ol>
+<li>包聲明</li>
+</ol>
+<p>包管理單位。</p>
+<pre><code class="language-go">package xxx
+</code></pre>
+<ul>
+<li>目錄下同級文件屬於同一個包</li>
+<li>包名與目錄名可以不同</li>
+<li>有且僅有一個main包（入口包）</li>
+</ul>
+<ol>
+<li>包導入</li>
+</ol>
+<p>調用其他包的變量或方法。</p>
+<pre><code class="language-go">import "package_name"
+import (
+	"os"
+	"fmt"
+)
+別名
+import (
+	alias1 "os"
+	alias2 "fmt"
+)
+import (
+	_ "os" //只初始化包(調用包中init函數)，不使用包中變量或函數。
+	alias2 "fmt"
+)
+</code></pre>
+<ol>
+<li>main函數</li>
+</ol>
+<p>入口函數，只能聲明在main包中，有且僅有一個。</p>
+<pre><code class="language-go">func 函數名(參數列表) (返回值列表) {
+	函數體
+}
+</code></pre>
+<h2 id="13-go基礎語法與使用"><a class="header" href="#13-go基礎語法與使用">1.3 Go基礎語法與使用</a></h2>
+<h3 id="131-基礎語法"><a class="header" href="#131-基礎語法">1.3.1 基礎語法</a></h3>
+<ol>
+<li>Go語言標記</li>
+</ol>
+<p>Go程序由關鍵字、標識符、常量、字符串、符號等多種標記組成。</p>
+<pre><code class="language-go">fmt . Println ( "Hi" )
+</code></pre>
+<ol>
+<li>行分隔符</li>
+</ol>
+<p>一般一行一個語句，多個語句用；隔開。</p>
+<ol>
+<li>注釋</li>
+</ol>
+<p>//單行注釋
+/*
+多行注釋
+多行注釋
+*/</p>
+<ol>
+<li>標識符</li>
+</ol>
+<p>標識符通常用來對變量、類型等命名。[a-zA-Z0-9_]組成，不能以數字開始，不能是Go語言關鍵字。</p>
+<ol>
+<li>字符串連接</li>
+</ol>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("hello" + " world")
+}
+</code></pre>
+<ol>
+<li>關鍵字</li>
+</ol>
+<div class="table-wrapper"><table><thead><tr><th>continue</th><th>for</th><th>import</th><th>return</th><th>var</th></tr></thead><tbody>
+<tr><td>const</td><td>fallthrough</td><td>if</td><td>range</td><td>type</td></tr>
+<tr><td>chan</td><td>else</td><td>goto</td><td>package</td><td>swith</td></tr>
+<tr><td>case</td><td>defer</td><td>go</td><td>map</td><td>struct</td></tr>
+<tr><td>break</td><td>default</td><td>func</td><td>interface</td><td>select</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>常量相關預定義標識符：true、false、ioto、nil</li>
+<li>類型相關預定義標識符：int、int8、int16、int32、int64、uint、uint8、uint16、uint32、uint64、uintptr、float32、float64、complex128、complex64、bool、byte、rune、string、error</li>
+<li>函數相關預定義標識符：make、len、cap、new、append、copy、close、delete、complex、real、imag、panic、recover</li>
+</ul>
+<ol>
+<li>Go語言空格</li>
+</ol>
+<p>var name string
+name = “y” + “x”</p>
+<h3 id="132-變量"><a class="header" href="#132-變量">1.3.2 變量</a></h3>
+<p>變量（variable）是一段或多段用來存儲數據的內存，有明確類型。</p>
+<pre><code class="language-go">var name type
+var c, d *int
+</code></pre>
+<p>默認零值或空值，int為0，float為0.0，bool為false，string為""，指針為nil。
+建議駝峰命名法totalPrice或下劃線命名法total_price。</p>
+<pre><code class="language-go">var (
+	age int
+	name string
+	balance float32
+)
+</code></pre>
+<p>名字 := 表達式
+簡短模式（short variable declaration）限制：</p>
+<ul>
+<li>只用於定義變量，同時顯示初始化</li>
+<li>表達式自動推導數據類型</li>
+<li>用於函數內部，即不能聲明全局變量</li>
+</ul>
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	//var 變量名 [類型] = 變量值
+	var language1 string = "Go"
+	fmt.Printf("language1=%s\n", language1)
+	var language2 = "Go"
+	fmt.Printf("language2=%s\n", language2)
+	
+	//變量名 := 變量值
+	language3 := "Go"
+	fmt.Printf("language3=%s\n", language3)
+	
+	/*
+	var (
+		變量名1 [變量類型1] = 變量值1
+		變量名2 [變量類型2] = 變量值2
+	)
+	*/
+	var (
+		age1 int = 18
+		name1 string = "yx"
+		balance1 = 999.9
+	)
+	fmt.Printf("age1=%d, name1=%s, balance1=%f\n", age1, name1, balance1)
+	
+	//var 變量名1, 變量名2 = 變量值1, 變量值2
+	var age2, name2, balance2 = 18, "yx", 999.9
+	fmt.Printf("age2=%d, name2=%s, balance2=%f\n", age2, name2, balance2)
+	
+	//變量名1, 變量名2 := 變量值1, 變量值2
+	age3, name3, balance3 := 18, "yx", 999.9
+	fmt.Printf("age3=%d, name3=%s, balance3=%f\n", age3, name3, balance3)
+	
+	//變量交換值
+	d, c := "D", "C"
+	fmt.Printf("d=%s, c=%s\n", d, c)
+	c, d = d, c
+	fmt.Printf("d=%s, c=%s\n", d, c)
+}
+</code></pre>
+<p>局部變量，函數體內聲明的變量，參數和返回值變量都是局部變量。</p>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	var local1, local2, local3 int
+
+	local1 = 8
+	local2 = 10
+	local3 = local1 + local2 
+	
+	fmt.Printf("local1=%d, local2=%d, local3=%d\n", local1, local2, local3)
+}
+</code></pre>
+<p>全局變量，函數體外聲明的變量，可以在整個包甚至外部包（被導出）中使用，也可在任何函數中使用。</p>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+var global int
+
+func main() {
+	var local1, local2 int
+
+	local1 = 8
+	local2 = 10
+	global = local1 + local2 
+	
+	fmt.Printf("local1=%d, local2=%d, global=%d\n", local1, local2, global)
+}
+package main
+
+import "fmt"
+
+var global int = 8
+
+func main() {
+	var global int = 99
+	fmt.Printf("global=%d\n", global)
+}
+</code></pre>
+<h3 id="133-常量"><a class="header" href="#133-常量">1.3.3 常量</a></h3>
+<p>const聲明，編譯時創建（聲明在函數內部也是），存儲不會改變的數據，只能是布爾型、數字型（整數、浮點和復數）和字符串型。</p>
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+//const 常量名 [類型] = 常量表達式
+const PI float32 = 3.1415926
+
+//itoa用於生成一組以相似規則初始化的常量。
+type Direction int
+const (
+	North Direction = iota
+	East
+	South
+	West
+)
+
+/*
+常量間算術、邏輯、比較運算都是常量。
+常量進行類型轉換，返回常量結果。
+len()，cap()，real()，imag()，complex()和unsafe.Sizeof()等函數調用返回常量結果。
+*/
+const IPv4Len = 4
+func paraseIPv4(s string) ([4]byte, error) {
+	var p [IPv4Len]byte	
+	return p, nil
+}
+
+func main() {
+	const (
+		e = 2.7182818
+		pi = 3.1415926
+	)
+
+	fmt.Printf("PI=%v\n", PI)
+	fmt.Printf("e=%v, pi=%v\n", e, pi)
+	
+	fmt.Printf("West=%v\n", West)
+
+	if ip, err := paraseIPv4("192.168.1.1"); err != nil {
+		fmt.Printf("ip=%v\n", ip)
+	}
+}
+</code></pre>
+<p>6種未明確類型的常量類型：</p>
+<ul>
+<li>無類型的布爾型(true和false)</li>
+<li>無類型的整數(0)</li>
+<li>無類型的字符(\u0000)</li>
+<li>無類型的浮點數(0.0)</li>
+<li>無類型的復數(0i)</li>
+<li>無類型的字符串("")</li>
+</ul>
+<p>延遲明確常量的具體類型，可以直接用於更多的表達式而不需要顯示的類型轉換。</p>
+<pre><code class="language-go">package main
+
+import (
+	"math"
+	"fmt"
+)
+
+func main() {
+	var a float32 = math.Pi
+	var b float64 = math.Pi
+	var c complex128 = math.Pi
+	fmt.Printf("a=%v, b=%v, c=%v\n", a, b, c)
+	
+	const Pi64 float64 = math.Pi
+	a = float32(Pi64)
+	b = Pi64
+	c = complex128(Pi64)
+	fmt.Printf("a=%v, b=%v, c=%v\n", a, b, c)
+}
+</code></pre>
+<h3 id="134-運算符"><a class="header" href="#134-運算符">1.3.4 運算符</a></h3>
+<p>運算符是用來在程序運行時執行數學運算或邏輯運算的符號。</p>
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var a, b, c = 3, 6, 9
+	d := a + b * c
+	fmt.Printf("d=%v\n", d)
+}
+</code></pre>
+<p>優先級是指，同一表達式中多個運算符，先執行哪一個。</p>
+<div class="table-wrapper"><table><thead><tr><th>優先級</th><th>分類</th><th>運算符</th><th>結合性</th></tr></thead><tbody>
+<tr><td>1</td><td>逗號運算符</td><td>,</td><td>從左到右</td></tr>
+<tr><td>2</td><td>賦值運算符</td><td>=、+=、-=、*=、/=、%=、&gt;=、&lt;&lt;=、&amp;=、^=、|=</td><td>從右到左</td></tr>
+<tr><td>3</td><td>邏輯或</td><td>||</td><td>從左到右</td></tr>
+<tr><td>4</td><td>邏輯與</td><td>&amp;&amp;</td><td>從左到右</td></tr>
+<tr><td>5</td><td>按位或</td><td>|</td><td>從左到右</td></tr>
+<tr><td>6</td><td>按位異或</td><td>^</td><td>從左到右</td></tr>
+<tr><td>7</td><td>按位與</td><td>&amp;</td><td>從左到右</td></tr>
+<tr><td>8</td><td>等不等</td><td>==、!=</td><td>從左到右</td></tr>
+<tr><td>9</td><td>關系運算符</td><td>&lt;、&lt;=、&gt;、&gt;=</td><td>從左到右</td></tr>
+<tr><td>10</td><td>位移運算符</td><td>&lt;&lt;、&gt;&gt;</td><td>從左到右</td></tr>
+<tr><td>11</td><td>加減法</td><td>+、-</td><td>從左到右</td></tr>
+<tr><td>12</td><td>乘除法取餘</td><td>*（乘號）、/、%</td><td>從左到右</td></tr>
+<tr><td>13</td><td>單目運算符</td><td>!、*（指針）、&amp;（取址）、++、–、+（正號）、-（負號）</td><td>從右到左</td></tr>
+<tr><td>14</td><td>後綴運算符</td><td>()、[]</td><td>從左到右</td></tr>
+</tbody></table>
+</div>
+<h3 id="135-流程控制語句"><a class="header" href="#135-流程控制語句">1.3.5 流程控制語句</a></h3>
+<pre><code>if-else
+package main
+
+import (
+	"fmt"
+)
+
+func if_else_return(b int) int {
+	if b &gt; 10 {
+		return 1
+	} else if b == 10 {
+		return 2
+	} else {
+		return 3
+	}
+}
+
+func main() {
+	fmt.Println(if_else_return(10))
+}
+</code></pre>
+<p><code>for</code>
+Go不支持while和do while。</p>
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	product := 1
+	for i := 1; i &lt; 5; i++ {
+		product *= i
+	}
+	fmt.Println(product)
+
+	i := 0
+	for {
+		if i &gt; 50 {
+			break
+		}
+		i++
+	}
+	fmt.Println(i)
+
+	j := 2
+	for ; j &gt; 0; j-- {
+		fmt.Println(j)
+	}
+
+JumpLoop:
+	for i := 0; i &lt; 5; i++ {
+		for j := 0; j &lt; 5; j++ {
+			if i &gt; 2 {
+				break JumpLoop
+			}
+			fmt.Println(i)
+			if j == 2 {
+				continue
+			}
+		}
+	}
+}
+</code></pre>
+<p><code>for-range</code>
+可以遍歷數組、切片、字符串、map和channel。</p>
+<pre><code class="language-go">for key, val := range 復合變量值 {
+	//val對應索引值的復制值，只讀。
+	//修改val值，不會影響原有集合中的值。
+}
+for position, runeChar := range str {
+	//
+}
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	//遍歷數組、切片
+	for key, value := range []int{0, 1, -1, -2} {
+		fmt.Printf("key:%d value:%d\n", key, value)
+	}
+
+	//遍歷字符串
+	var str = "hi 加油"
+	for key, value := range str {
+		fmt.Printf("key:%d value:0x%x\n", key, value)
+	}
+
+	//遍歷map
+	m1 := map[string]int{
+		"go":  100,
+		"web": 100,
+	}
+	//輸出無序
+	for key, value := range m1 {
+		fmt.Printf(key, value)
+	}
+
+	//遍歷通道
+	c := make(chan int)
+	go func() {
+		c &lt;- 7
+		c &lt;- 8
+		c &lt;- 9
+		close(c)
+	}()
+	for v := range c {
+		fmt.Println(v)
+	}
+
+	//_匿名變量，佔位符，不參與空間分配，也不佔用變量名字。
+	m2 := map[string]int{
+		"go":  100,
+		"web": 100,
+	}
+	for _, v := range m2 {
+		fmt.Println(v)
+	}
+	for key, _ := range []int{0, 1, -1, -2} {
+		fmt.Printf("key:%d\n", key)
+	}
+}
+</code></pre>
+<p><code>swith-case</code>
+表達式不必為常量，甚至整數，不需通過break跳出，各case中類型一致。</p>
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var a = "love"
+	switch a {
+	default:
+		fmt.Println("none")
+	case "love":
+		fmt.Println("love")
+	case "programming":
+		fmt.Println("programming")
+	}
+	switch a {
+	default:
+		fmt.Println("none")
+	case "love", "programming":
+		fmt.Println("find")
+	}
+
+	var r int = 6
+	switch {
+	case r &gt; 1 &amp;&amp; r &lt; 10:
+		fmt.Println(r)
+	}
+}
+goto
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var isBreak bool
+	for x := 0; x &lt; 20; x++ {
+		for y := 0; y &lt; 20; y++ {
+			if y == 2 {
+				isBreak = true
+				break
+			}
+		}
+		if isBreak {
+			break
+		}
+	}
+	fmt.Println("over")
+}
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	for x := 0; x &lt; 20; x++ {
+		for y := 0; y &lt; 20; y++ {
+			if y == 2 {
+				goto breakTag
+			}
+		}
+	}
+breakTag:
+	fmt.Println("over")
+}
+</code></pre>
+<p>goto在<code>多錯誤處理</code>中優勢</p>
+<pre><code class="language-go">func main() {
+	err := getUserInfo()
+	if err != nil {
+		fmt.Println(err)
+		exitProcess()
+	}
+
+	err = getEmail()
+	if err != nil {
+		fmt.Println(err)
+		exitProcess()
+	}
+	
+	fmt.Println("over")
+}
+func main() {
+	err := getUserInfo()
+	if err != nil {
+		goto doExit
+	}
+
+	err = getEmail()
+	if err != nil {
+		goto doExit
+	}
+	
+	fmt.Println("over")
+	return
+
+doExit:
+	fmt.Println(err)
+	exitProcess()
+}
+</code></pre>
+<h2 id="14-go數據類型"><a class="header" href="#14-go數據類型">1.4 Go數據類型</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>類型</th><th>說明</th></tr></thead><tbody>
+<tr><td>布爾型</td><td>true或false</td></tr>
+<tr><td>數字類型</td><td>uint8、uint16、uint32、uint64、int8、int16、int32、int64 、float32（IEEE-754）、float64（IEEE-754）、complex64、complex128、byte（uint8）、rune（int32）、uint（32或64）、int（32或64）、uintptr（存放指針）</td></tr>
+<tr><td>字符串類型</td><td>一串固定長度的字符連接起來的字符序列，utf-8編碼</td></tr>
+<tr><td>復合類型</td><td>數組、切片、map、結構體</td></tr>
+</tbody></table>
+</div>
+<h3 id="141-布爾型"><a class="header" href="#141-布爾型">1.4.1 布爾型</a></h3>
+<p>只有兩個相同類型的值才能比較：</p>
+<ul>
+<li>值的類型是接口（interface），兩者必須都實現了相同的接口。</li>
+<li>一個是常量，另一個不是常量，類型必須和常量類型相同。</li>
+<li>類型不同，必須轉換為相同類型，才能比較。</li>
+</ul>
+<p>&amp;&amp;優先級高於||，有短路現象。</p>
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+func bool2int(b bool) int {
+	if b {
+		return 1
+	} else {
+		return 0
+	}
+}
+
+func int2bool(i int) bool { return i != 0 }
+
+func main() {
+	fmt.Println(bool2int(true))
+	fmt.Println(int2bool(0))
+}
+</code></pre>
+<h3 id="142-數字類型"><a class="header" href="#142-數字類型">1.4.2 數字類型</a></h3>
+<p>位運算採用補碼。int、uint和uintptr，長度由操作系統類型決定。</p>
+<h3 id="143-字符串類型"><a class="header" href="#143-字符串類型">1.4.3 字符串類型</a></h3>
+<p>由一串固定長度的字符連接起來的字符序列，utf-8編碼。值類型，字節的定長數組。</p>
+<pre><code class="language-go">//聲明和初始化
+str := "string"
+</code></pre>
+<p>字符串字面量用"或`創建</p>
+<ul>
+<li>"創建可解析的字符串，支持轉義，不能引用多行</li>
+<li>`創建原生的字符串字面量，不支持轉義，可多行，不能包含反引號字符</li>
+</ul>
+<pre><code class="language-go">str1 := "\"hello\"\nI love you"
+str2 := `"hello"
+I love you
+`
+//字符串連接
+str := "I love" + " Go Web"
+str += " programming"
+package main
+
+import (
+	"fmt"
+	"unicode/utf8"
+)
+
+func main() {
+	str := "我喜歡Go Web"
+	fmt.Println(len(str))
+	fmt.Println(utf8.RuneCountInString(str))
+	fmt.Println(str[9])
+	fmt.Println(string(str[9]))
+	fmt.Println(str[:3])
+	fmt.Println(string(str[:3]))
+	fmt.Println(str[3:])
+	fmt.Println([]rune(str))
+}
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	str := "我喜歡Go Web"
+	chars := []rune(str)
+	for ind, char := range chars {
+		fmt.Printf("%d: %s\n", ind, string(char))
+	}
+	for ind, char := range str {
+		fmt.Printf("%d: %s\n", ind, string(char))
+	}
+	for ind, char := range str {
+		fmt.Printf("%d: %U %c\n", ind, char, char)
+	}
+}
+var buffer bytes.Buffer
+for {
+	if piece, ok := getNextString(); ok {
+		buffer.WriteString(piece)
+	} else {
+		break
+	}
+}
+fmt.Println(buffer.String())
+</code></pre>
+<p>不能通過str[i]方式修改字符串中的字符。
+只能將字符串內容復制到可寫變量（[]byte或[]rune），然後修改。轉換類型過程中會自動復制數據。</p>
+<pre><code class="language-go">str := "hi 世界"
+by := []byte(str)
+by[2] = ','
+fmt.Printf("%s\n", str)
+fmt.Printf("%s\n", by)
+fmt.Printf("%s\n", string(by))
+str := "hi 世界"
+by := []rune(str)
+by[3] = '中'
+by[4] = '國'
+fmt.Println(str)
+fmt.Println(by)
+fmt.Println(string(by))
+</code></pre>
+<h3 id="144-指針類型"><a class="header" href="#144-指針類型">1.4.4 指針類型</a></h3>
+<p>指針類型指存儲內存地址的變量類型。</p>
+<pre><code class="language-go">var b int = 66
+var p * int = &amp;b
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var score int = 100
+	var name string = "barry"
+	fmt.Printf("%p %p\n", &amp;score, &amp;name)
+}
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var address string = "hangzhou, China"
+	ptr := &amp;address
+	
+	fmt.Printf("address type: %T\n", address)
+	fmt.Printf("address value: %v\n", address)
+	fmt.Printf("address address: %p\n", &amp;address)
+	
+	fmt.Printf("ptr type: %T\n", ptr)
+	fmt.Printf("ptr value: %v\n", ptr)
+	fmt.Printf("ptr address: %p\n", &amp;ptr)
+	fmt.Printf("point value of ptr : %v\n", *ptr)
+}
+package main
+
+import (
+	"fmt"
+)
+
+func exchange1(c, d int) {
+	t := c
+	c = d
+	d = t
+}
+
+func exchange2(c, d int) {
+	c, d = d, c
+}
+
+func exchange3(c, d *int) {
+	t := *c
+	*c = *d
+	*d = t
+}
+
+func exchange4(c, d *int) {
+	d, c = c, d
+}
+
+func exchange5(c, d *int) {
+	*d, *c = *c, *d
+}
+
+func main() {
+	x, y := 6, 8
+	x, y = y, x
+	fmt.Println(x, y)
+
+	x, y = 6, 8
+	exchange1(x, y)
+	fmt.Println(x, y)
+	
+	x, y = 6, 8
+	exchange2(x, y)
+	fmt.Println(x, y)
+	
+	x, y = 6, 8
+	exchange3(&amp;x, &amp;y)
+	fmt.Println(x, y)
+	
+	x, y = 6, 8
+	exchange4(&amp;x, &amp;y)
+	fmt.Println(x, y)
+	
+	x, y = 6, 8
+	exchange5(&amp;x, &amp;y)
+	fmt.Println(x, y)
+}
+</code></pre>
+<h3 id="145-復合類型"><a class="header" href="#145-復合類型">1.4.5 復合類型</a></h3>
+<ol>
+<li>數組類型</li>
+</ol>
+<p>數組是具有相同類型（整數、字符串、自定義類型等）的一組長度固定的數據項的序列。</p>
+<pre><code class="language-go">var array [10]int
+var numbers = [5]float32{100.0, 8.0, 9.4, 6.8, 30.1}
+var numbers = [...]float32{100.0, 8.0, 9.4, 6.8, 30.1}
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var arr [6]int
+	var i, j int
+	for i = 0; i &lt; 6; i++ {
+		arr[i] = i + 66
+	}
+	for j = 0; j &lt; 6; j++ {
+		fmt.Printf("arr[%d] = %d\n", j, arr[j])
+	}
+}
+</code></pre>
+<ol>
+<li>結構體類型</li>
+</ol>
+<p>結構體是由0或多個任意類型的數據構成的數據集合。</p>
+<pre><code class="language-go">type 類型名 struct {
+	字段1 類型1
+	結構體成員2 類型2
+}
+type Pointer struct {
+	A float32
+	B float32
+}
+
+type Color struct {
+	Red, Green, Blue byte
+}
+
+variable_name := struct_variable_type {value1, value2, ...}
+variable_name := struct_variable_type {key2: value2, key1: value1, ...}
+package main
+
+import "fmt"
+
+type Book struct {
+	title string
+	author string
+	subject string
+	press string
+}
+
+func main() {
+	fmt.Println(Book{author: "yx", title: "學習 Go Web"})
+	
+	var bookGo Books
+	bookGo.title = "學習 Go Web"
+	bookGo.author = "yx"
+	bookGo.subject = "Go"
+	bookGo.press = "電力工業出版社"
+	fmt.Printf("bookGo.title: %s\n", bookGo.title)
+	fmt.Printf("bookGo.author: %s\n", bookGo.author)
+	fmt.Printf("bookGo.subject: %s\n", bookGo.subject)
+	fmt.Printf("bookGo.press: %s\n", bookGo.press)
+	printBook(bookGo)
+	printBook(&amp;bookGo)
+}
+
+func printBook(book Books) {
+	fmt.Printf("book.title: %s\n", book.title)
+	fmt.Printf("book.author: %s\n", book.author)
+	fmt.Printf("book.subject: %s\n", book.subject)
+	fmt.Printf("book.press: %s\n", book.press)
+}
+
+func printBook2(book *Books) {
+	fmt.Printf("book.title: %s\n", book.title)
+	fmt.Printf("book.author: %s\n", book.author)
+	fmt.Printf("book.subject: %s\n", book.subject)
+	fmt.Printf("book.press: %s\n", book.press)
+}
+</code></pre>
+<ol>
+<li>切片類型</li>
+</ol>
+<p>slice是對數組或切片連續片段的引用。
+切片內部結構包含內存地址pointer、大小len和容量cap。</p>
+<pre><code class="language-go">//不含結束位置
+slice[開始位置:結束位置]
+var sliceBuilder [20]int
+for i := 0; i &lt; 20; i++ {
+	sliceBuilder[i] = i + 1
+}
+fmt.Println(sliceBuilder[5:15])
+fmt.Println(sliceBuilder[15:])
+fmt.Println(sliceBuilder[:2])
+b := []int{6, 7, 8}
+fmt.Println(b[:])
+fmt.Println(b[0:0])
+var sliceStr []string
+var sliceNum []int
+var emptySliceNum = []int{}
+fmtp.Println(sliceStr, sliceNum, emptySliceNum)
+fmtp.Println(len(sliceStr), len(sliceNum), (emptySliceNum))
+fmtp.Println(sliceStr == nil, sliceNum == nil, emptySliceNum == nil)
+slice1 := make([]int, 6)
+slice2 := make([]int, 6, 10)
+fmtp.Println(slice1, slice2)
+fmtp.Println(len(slice1), len(slice2))
+fmtp.Println(cap(slice1), cap(slice2))
+</code></pre>
+<ol>
+<li>map類型</li>
+</ol>
+<p>關聯數組，字典，元素對（pair）的無序集合，引用類型。</p>
+<pre><code class="language-go">var name map[key_type]value_type
+var literalMap map[string]string
+var assignedMap map[string]string
+literalMap = map[string]string{"first": "go", "second": "web"}
+createdMap := make(map[string]float32)
+assignedMap = literalMap	//引用
+createdMap["k1"] = 99
+createdMap["k2"] = 199
+assignedMap["second"] = "program"
+
+fmt.Println(literalMap["first"])
+fmt.Println(literalMap["second"])
+fmt.Println(literalMap["third"])
+fmt.Println(createdMap["k2"])
+createdMap := new(map[string]float32)
+//錯誤
+//聲明瞭一個未初始化的變量並取了它的地址
+//map到達容量上限，自動增1
+make(map[key_type]value_type, cap)
+map := make(map[string]float32, 100)
+
+achievement := map[string]float32{
+	"zhang": 99.5, "xiao": 88,
+	"wange": 96, "ma": 100,
+}
+map1 := make(map[int][]int)
+map2 := make(map[int]*[]int)
+</code></pre>
+<h2 id="15-函數"><a class="header" href="#15-函數">1.5 函數</a></h2>
+<h3 id="151-聲明函數"><a class="header" href="#151-聲明函數">1.5.1 聲明函數</a></h3>
+<pre><code class="language-go">func function_name([parameter list]) [return_types] {
+	//bunction_body
+}
+package main
+
+import "fmt"
+
+func main() {
+	array := []int{6, 8, 10}
+	var ret int
+	ret = min(array)
+	fmt.Println("最小值是: %d\n", ret)
+}
+
+func min(arr []int) (m int) {
+	m = arr[0]
+	for _, v := range arr {
+		if v &lt; m {
+			m = v
+		}
+	}
+	return
+}
+package main
+
+import "fmt"
+
+func compute(x, y int) (int, int) {
+	return x+y, x*y
+}
+func main() {
+	a, b := compute(6, 8)
+	fmt.Println(a, b)
+}
+package main
+
+import "fmt"
+
+func change(a, b int) (x, y int) {
+	x = a + 100
+	y = b + 100
+	return
+	//return x, y
+	//return y, x
+}
+func main() {
+	a := 1
+	b := 2
+	c, d := compute(a, b)
+	fmt.Println(c,d)
+}
+</code></pre>
+<h3 id="152-函數參數"><a class="header" href="#152-函數參數">1.5.2 函數參數</a></h3>
+<ol>
+<li>參數使用</li>
+</ol>
+<ul>
+<li>形參：定義函數時，用於接收外部傳入的數據。</li>
+<li>實參：調用函數時，傳給形參的實際的數據。</li>
+</ul>
+<ol>
+<li>可變參數</li>
+</ol>
+<pre><code class="language-go">func myFunc(arg ...string) {
+	for _, v := range arg {
+		fmt.Printf("the string is: %s\n", v)
+	}
+}
+</code></pre>
+<ol>
+<li>參數傳遞</li>
+</ol>
+<ul>
+<li>值傳遞</li>
+</ul>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func exchange(a, b int) {
+	var tmp int
+	tmp = a
+	a = b
+	b = tmp
+}
+func main() {
+	a := 1
+	b := 2
+	fmt.Printf("交換前a=%d\n", a)
+	fmt.Printf("交換前b=%d\n", b)
+	exchange(a, b)
+	fmt.Printf("交換後a=%d\n", a)
+	fmt.Printf("交換後b=%d\n", b)
+}
+</code></pre>
+<ul>
+<li>引用傳遞</li>
+</ul>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func exchange(a, b *int) {
+	var tmp int
+	tmp = *a
+	*a = *b
+	*b = tmp
+}
+func main() {
+	a := 1
+	b := 2
+	fmt.Printf("交換前a=%d\n", a)
+	fmt.Printf("交換前b=%d\n", b)
+	exchange(&amp;a, &amp;b)
+	fmt.Printf("交換後a=%d\n", a)
+	fmt.Printf("交換後b=%d\n", b)
+}
+</code></pre>
+<h3 id="153-匿名函數"><a class="header" href="#153-匿名函數">1.5.3 匿名函數</a></h3>
+<p>匿名函數（閉包），一類無須定義標識符（函數名）的函數或子程序。</p>
+<ol>
+<li>定義</li>
+</ol>
+<pre><code class="language-go">func (參數列表) (返回值列表) {
+	//函數體
+}
+package main
+
+import "fmt"
+
+func main() {
+	x, y := 6, 8
+	defer func(a int) {
+		fmt.Println("defer x, y = ", a, y) //y為閉包引用
+	}(x)
+	x += 10
+	y += 100
+	fmt.Println(x, y)
+}
+/*
+輸出
+16 108
+defer x,y = 6 108
+*/
+</code></pre>
+<ol>
+<li>調用</li>
+</ol>
+<ul>
+<li>定義時調用</li>
+</ul>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	//定義匿名函數並賦值給f變量
+	f := func(data int) {
+		fmt.Println("closure", data)
+	}
+	f(6)
+
+	//直接聲明並調用
+	func(data int) {
+		fmt.Println("closure, directly", data)
+	}(8)
+}
+</code></pre>
+<ul>
+<li>回調函數（call then back）</li>
+</ul>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func visitPrint(list []int, f func(int)) {
+	for _, value := range list {
+		f(value)
+	}
+}
+
+func main() {
+	sli := []int{1, 6, 8}
+	visitPrint(sli, func(value int) {
+		fmt.Println(value)
+	})
+}
+</code></pre>
+<h3 id="154-defer延遲語句"><a class="header" href="#154-defer延遲語句">1.5.4 defer延遲語句</a></h3>
+<p>defer用於函數結束（return或panic）前最後執行的動作，便於及時的釋放資源（數據庫連接、文件句柄、鎖等）。</p>
+<p>defer語句執行邏輯：</p>
+<ol>
+<li>函數執行到defer時，將defer後的語句壓入專門存儲defer語句的棧中，然後繼續執行函數下一個語句。</li>
+<li>函數執行完畢，從defer棧頂依次取出語句執行（先進後出，後進先出）。</li>
+<li>defer語句放在defer棧時，相關值會復制入棧中。</li>
+</ol>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	deferCall()
+}
+
+func deferCall() {
+	defer func1()
+	defer func2()
+	defer func3()
+}
+
+func func1() {
+	fmt.Println("A")
+}
+
+func func2() {
+	fmt.Println("B")
+}
+
+func func3() {
+	fmt.Println("C")
+}
+
+//輸出
+//C
+//B
+//A
+package main
+
+import "fmt"
+
+var name string = "go"
+
+func myfunc() string {
+	defer func() {
+		name = "python"	//最後一個動作，修改全局變量name為"python"
+	}()
+
+	fmt.Printf("myfunc()函數裡的name: %s\n", name)//全局變量name（"go"）未修改
+	return name	//倒數第二個動作，將全局變量name（"go"）賦值給myfunc函數返回值
+}
+
+func main() {
+	myname := myfunc()
+	fmt.Printf("main()函數裡的name: %s\n", name)
+	fmt.Printf("main()函數裡的myname: %s\n", myname)
+}
+
+//輸出
+//myfunc()函數裡的name: go
+//main()函數裡的name: python
+//main()函數裡的myname: go
+</code></pre>
+<p>defer常用應用場景：</p>
+<ol>
+<li>關閉資源。
+創建資源（數據庫連接、文件句柄、鎖等）語句下一行，defer語句註冊關閉資源，避免忘記。</li>
+<li>和recover()函數一起使用。
+程序宕機或panic時，recover()函數恢復執行，而不報錯。</li>
+</ol>
+<pre><code class="language-go">func f() {
+    defer func() {
+        if r := recover(); r != nil {
+            fmt.Println("Recovered in f", r)
+        }
+    }()	//func()函數含recover，不可封裝成外部函數調用，必須defer func(){}()匿名函數調用
+    fmt.Println("Calling g.")
+    g(0)
+    fmt.Println("Returned normally from g.")
+}
+
+func g(i int) {
+    if i &gt; 3 {
+        fmt.Println("Panicking!")
+        panic(fmt.Sprintf("%v", i))
+    }
+    defer fmt.Println("Defer in g", i)
+    fmt.Println("Printing in g", i)
+    g(i + 1)
+}
+</code></pre>
+<h2 id="16-go面向對象編程"><a class="header" href="#16-go面向對象編程">1.6 Go面向對象編程</a></h2>
+<h3 id="161-封裝"><a class="header" href="#161-封裝">1.6.1 封裝</a></h3>
+<p>隱藏對象屬性和實現細節，僅公開訪問方式。
+Go使用結構體封裝屬性。</p>
+<pre><code class="language-go">type Triangle struct {
+	Bottom float32
+	Height float32
+}
+</code></pre>
+<p>方法（Methods）是作用在接收者（receiver）（某種類型的變量）上的函數。</p>
+<pre><code class="language-go">func (recv recv_type) methodName(parameter_list) (return_value_list) {...}
+package main
+
+import "fmt"
+
+type Triangle struct {
+	Bottom float32
+	Height float32
+}
+
+func (t *Triangle) Area() float32 {
+	return (t.Bottom * t.Height) / 2
+}
+
+func main() {
+	t := Triangle(6, 8)
+	fmt.Println(t.Area())
+}
+</code></pre>
+<p>訪問權限指類屬性是公開還是私有的，Go通過首字母大小寫來控制可見性。
+常量、變量、類型、接口、結構體、函數等若是大寫字母開頭，則能被其他包訪問或調用（public）；非大寫開頭則只能包內使用（private）。</p>
+<pre><code class="language-go">package person
+type Student struct {
+	name string
+	score float32
+	Age int
+}
+
+package pkg
+import (
+	person
+	"fmt"
+)
+s := new(person.Student)
+s.name = "yx" //錯誤
+s.Age = 22
+fmt.Println(s.Age)
+package person
+
+type Student struct {
+	name string
+	score float32
+}
+
+func (s *Student) GetName() string {
+	return s.name
+}
+
+func (s *Student) SetName(newName string) {
+	s.name = newName
+}
+
+package main
+
+import (
+	person
+	"fmt"
+)
+
+func main() {
+	s := new(person.Student)
+	s.SetName("yx")
+	s.Age = 22
+	fmt.Println(s.GetName())
+}
+</code></pre>
+<h3 id="162-繼承"><a class="header" href="#162-繼承">1.6.2 繼承</a></h3>
+<p>結構體中內嵌匿名類型的方法來實現繼承。</p>
+<pre><code class="language-go">type Engine interface {
+	Run()
+	Stop()
+}
+
+type Bus struct {
+	Engine
+}
+
+func (c *Bus) Working() {
+	c.Run()
+	c.Stop()
+}
+</code></pre>
+<h3 id="163-多態"><a class="header" href="#163-多態">1.6.3 多態</a></h3>
+<p>多態指不同對象中同種行為的不同實現方法，通過接口實現。</p>
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+type Shape interface {
+	Area() float32
+}
+
+type Square struct {
+	sideLen float32
+}
+
+func (sq *Square) Area() float32 {
+	return sq.sideLen * sq.sideLen
+}
+
+type Triangle struct {
+	Bottom float32
+	Height float32
+}
+
+func (t *Triangle) Area() float32 {
+	return t.Bottom * t.Height
+}
+
+func main() {
+	t := &amp;Tri8angle{6, 8}
+	s := &amp;Square{}
+	shapes := []Shape{t, s}
+	for n, _ := range shapes {
+		fmt.Println("圖形數據：", shapes[n])
+		fmt.Println("面積：", shapes[n].Area())
+	}
+}
+</code></pre>
+<h2 id="17-接口"><a class="header" href="#17-接口">1.7 接口</a></h2>
+<h3 id="171-接口定義"><a class="header" href="#171-接口定義">1.7.1 接口定義</a></h3>
+<p>接口類型是對其他類型行為的概括與抽象，定義了零及以上個方法，但沒具體實現這些方法。
+接口本質上是指針類型，可以實現多態。</p>
+<pre><code class="language-go">//接口定義格式
+type 接口名稱 interface {
+	method1(參數列表) 返回值列表
+	method2(參數列表) 返回值列表
+	//...
+	methodn(參數列表) 返回值列表
+}
+</code></pre>
+<p>空接口（interface{}），無任何方法聲明，類似面向對象中的根類型，c中的void*，默認值nil。實現接口的類型支持相等運算，才能比較。</p>
+<pre><code class="language-go">var var1, var2 interface{}
+fmt.Println(var1 == nil, var1 == var2)
+var1, var2 = 66, 88
+fmt.Println(var1 == var2)
+//比較map[string]interface{}
+func CompareTwoMapInterface(data1 map[string]interface{}, data2 map[string]interface{}) bool {
+	keySlice := make([]string, 0)
+	dataSlice1 := make([]interface{}, 0)
+	dataSlice2 := make([]interface{}, 0)
+	for key, value := range data1 {
+		keySlice = append(keySlice, key)
+		dataSlice1 = append(dataSlice1, value)
+	}
+	for _, key := range keySlice {
+		if data, ok := data2[key]; ok {
+			dataSlice2 = append(dataSlice2, data)
+		} else {
+			return false
+		}
+	}
+	dataStr1, _ := json.Marshal(dataSlice1)
+	dataStr2, _ := json.Marshal(dataSlice2)
+
+	return string(dataStr1) == string(dataStr2)
+}
+</code></pre>
+<h3 id="172-接口賦值"><a class="header" href="#172-接口賦值">1.7.2 接口賦值</a></h3>
+<p>接口不支持直接實例化，但支持賦值操作。</p>
+<ol>
+<li>實現接口的對象實例賦值給接口</li>
+</ol>
+<p>要求該對象實例實現了接口的所有方法。</p>
+<pre><code class="language-go">type Num int
+
+func (x Num) Equal(i Num) bool {
+	return x == i
+}
+
+func (x Num) LessThan(i Num) bool {
+	return x &lt; i
+}
+
+func (x Num) MoreThan(i Num) bool {
+	return x &gt; i
+}
+
+func (x *Num) Multiple(i Num) {
+	*x = *x * i
+}
+
+func (x *Num) Divide(i Num) {
+	*x = *x / i
+}
+
+type NumI interface {
+	Equal(i Num) bool
+	LessThan(i Num) bool
+	MoreThan(i Num) bool
+	Multiple(i Num)
+	Divide(i Num)
+}
+
+//&amp;Num實現NumI所有方法
+//Num未實現NumI所有方法
+var x Num = 8
+var y NumI = &amp;x
+
+/*
+Go語言會根據非指針成員方法，自動生成對應的指針成員方法
+func (x Num) Equal(i Num) bool
+func (x *Num) Equal(i Num) bool
+*/
+</code></pre>
+<ol>
+<li>一個接口賦值給另一個接口</li>
+</ol>
+<p>兩個接口擁有相同的方法列表（與順序無關），則等同，可相互賦值。</p>
+<pre><code class="language-go">package oop1
+
+type NumInterface1 interface {
+	Equal(i int) bool
+	LessThan(i int) bool
+	BiggerThan(i int) bool
+}
+
+package oop2
+
+type NumInterface2 interface {
+	Equal(i int) bool
+	BiggerThan(i int) bool
+	LessThan(i int) bool
+}
+
+type Num int
+
+//int不能改為Num
+func (x Num) Equal(i int) bool {
+	return int(x) == i
+}
+
+func (x Num) LessThan(i int) bool {
+	return int(x) &lt; i
+}
+
+func (x Num) BiggerThan(i int) bool {
+	return int(x) &gt; i
+}
+
+var f1 Num = 6
+var f2 oop1.NumInterface1 = f1
+var f3 oop2.NumInterface2 = f2
+</code></pre>
+<p>若接口A的方法列表是接口B的方法列表的子集，則接口B可以直接賦值給接口A。</p>
+<pre><code class="language-go">type NumInterface1 interface {
+	Equal(i int) bool
+	LessThan(i int) bool
+	BiggerThan(i int) bool
+}
+
+type NumInterface2 interface {
+	Equal(i int) bool
+	BiggerThan(i int) bool
+	LessThan(i int) bool
+	Sum(i int)
+}
+
+type Num int
+
+func (x Num) Equal(i int) bool {
+	return int(x) == i
+}
+
+func (x Num) LessThan(i int) bool {
+	return int(x) &lt; i
+}
+
+func (x Num) BiggerThan(i int) bool {
+	return int(x) &gt; i
+}
+
+func (x *Num) Sum(i int) {
+	*x = *x + Num(i)
+}
+
+var f1 Num = 6
+var f2 NumInterface2 = &amp;f1
+var f3 NumInterface1 = f2
+</code></pre>
+<h3 id="173-接口查詢"><a class="header" href="#173-接口查詢">1.7.3 接口查詢</a></h3>
+<p>程序運行時，詢問接口指向的對像是否時某個類型。</p>
+<pre><code class="language-go">var filewriter Write = ...
+if filew, ok := filewriter.(*File); ok {
+	//...
+}
+slice := make([]int, 0)
+slice = append(slice, 6, 7, 8)
+var I interface{} = slice
+if res, ok := I.([]int); ok {
+	fmt.Println(res) //[6 7 8]
+	fmt.Println(ok) //true
+}
+func Len(array interface{}) int {
+	var length int
+	
+	switch b := array.(type) {
+	case nil:
+		length = 0
+	case []int:
+		length = len(b)
+	case []string:
+		length = len(b)
+	case []float32:
+		length = len(b)
+	default:
+		length = 0
+	}
+	return length
+}
+</code></pre>
+<h3 id="174-接口組合"><a class="header" href="#174-接口組合">1.7.4 接口組合</a></h3>
+<p>接口間通過嵌套創造出新接口。</p>
+<pre><code class="language-go">type Interface1 interface {
+	Write(p []byte) (n int, err error)
+}
+
+type Interface2 interface {
+	Close() error
+}
+
+type InterfaceCombine interface {
+	Interface1
+	Interface2
+}
+</code></pre>
+<h3 id="175-接口應用"><a class="header" href="#175-接口應用">1.7.5 接口應用</a></h3>
+<ol>
+<li>類型推斷</li>
+</ol>
+<p>類型推斷可將接口還原為原始類型，或用來判斷是否實現了某種更具體的接口類型。</p>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	var a interface{} = func(a int) string {
+		rteurn fmt.Sprintf("d:%d", a)
+	}
+	
+	switch b := a.(type) {
+	case nil:
+		fmt.Println("nil")
+	case *int:
+		fmt.Println(*b)
+	case func(int) string:
+		fmt.Println(b(66))
+	case fmt.Stringer:
+		fmt.Println(b)
+	default:
+		fmt.Println("unknown")
+	}
+}
+</code></pre>
+<ol>
+<li>實現多態功能</li>
+</ol>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+type Message interface {
+	sending()
+}
+
+type User struct {
+	name string
+	phone string
+}
+
+func (u *User) sending() {
+	fmt.Printf("Sending user phone to %s&lt;%s&gt;\n", u.name, u.phone)
+}
+
+type admin struct {
+	name string
+	phone string
+}
+
+func (a *admin) sending() {
+	fmt.Printf("Sending admin phone to %s&lt;%s&gt;\n", a.name, a.phone)
+}
+
+func main() {
+	bill := User{"Barry", "barry@gmail.com"}
+	sendMessage(&amp;bill)
+	
+	lisa := admin{"Barry", "barry@gmail.com"}
+	sendMessage(&amp;lisa)
+}
+
+func sendMessage(n Message) {
+	n.sending()
+}
+</code></pre>
+<h2 id="18-反射"><a class="header" href="#18-反射">1.8 反射</a></h2>
+<h3 id="181-反射的定義"><a class="header" href="#181-反射的定義">1.8.1 反射的定義</a></h3>
+<p>反射指，編譯時不知道變量的具體類型，運行時（Run time）可以訪問、檢測和修改狀態或行為的能力。</p>
+<p>reflect包定義了接口和結構體，獲取類型信息。</p>
+<ul>
+<li>reflect.Type接口提供類型信息</li>
+<li>reflect.Value結構體提供值相關信息，可以獲取甚至改變類型的值</li>
+</ul>
+<pre><code class="language-go">func TypeOf(i interface{}) Type
+func ValueOf(i interface{}) Value
+</code></pre>
+<h3 id="182-反射的三大法則"><a class="header" href="#182-反射的三大法則">1.8.2 反射的三大法則</a></h3>
+<ol>
+<li>接口類型變量轉換為反射類型對象</li>
+</ol>
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+func main() {
+	var x float64 = 3.4
+	fmt.Println("type:", reflect.TypeOf(x))
+	fmt.Println("value:", reflect.ValueOf(x))
+	
+	v := reflect.ValueOf(x)
+	fmt.Println("type:", v.Type())
+	fmt.Println("kind is float64:", v.Kind() == reflect.Float64)
+	fmt.Println("value:", v.Float())
+}
+//輸出
+//type: float64
+//value: 3.4
+//kind is float64: true
+//type: float64
+//value: 3.4
+</code></pre>
+<ol>
+<li>反射類型對象轉換為接口類型變量</li>
+</ol>
+<pre><code class="language-go">func (v Value) Interface() interface{}
+y := v.Interface().(float64)
+fmt.Println(y)
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+func main() {
+	var name interface{} = "shirdon"
+	fmt.Printf("原始接口變量類型為%T，值為%v\n", name, name)
+	
+	t := reflect.TypeOf(name)
+	v := reflect.ValueOf(name)
+	fmt.Printf("Type類型為%T，值為%v\n", t, t)
+	fmt.Printf("Value類型為%T，值為%v\n", v, v)
+	
+	i := v.Interface()
+	fmt.Printf("新對象interface{}類型為%T，值為%v\n", i, i)
+}
+//輸出
+//原始接口變量類型為string，值為shirdon
+//Type類型為*reflect.rtype，值為string
+//Value類型為reflect.Value，值為shirdon
+//新對象interface{}類型為string，值為shirdon
+</code></pre>
+<ol>
+<li>修改反射類型對象，其值必須是可寫的（settable）</li>
+</ol>
+<p>reflect.TypeOf()和reflect.ValueOf()函數中若傳遞的不是指針，則只是變量復制，對該反射對象修改，不會影響原始變量。
+反射對象可寫性要點:</p>
+<ul>
+<li>變量指針創建的反射對象</li>
+<li>CanSet()可判斷</li>
+<li>Elem()返回指針指向的數據</li>
+</ul>
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+func main() {
+	var name string = "shirdon"
+	//var name int = 12
+	
+	v1 := reflect.ValueOf(&amp;name)
+	v2 := v1.Elem()
+	fmt.Println("可寫性:", v1.CanSet())
+	fmt.Println("可寫性:", v2.CanSet())
+}
+
+//輸出
+//可寫性：false
+//可寫性：true
+func (v Value) SetBool(x bool)
+func (v Value) SetBytes(x []byte)
+func (v Value) SetFloat(x float64)
+func (v Value) SetInt(x int64)
+func (v Value) SetString(x string)
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+func main() {
+	var name string = "shirdon"
+	fmt.Println("name原始值:", name)
+	
+	v1 := reflect.ValueOf(&amp;name)
+	v2 := v1.Elem()
+	
+	v2.SetString("yx")
+	fmt.Println("反射對象修改後，name值:", name)
+}
+
+//輸出
+//name原始值: shirdon
+//反射對象修改後，name值: yx
+</code></pre>
+<h2 id="19-goroutine簡介"><a class="header" href="#19-goroutine簡介">1.9 goroutine簡介</a></h2>
+<p>每一個並發執行的活動叫goroutine。</p>
+<pre><code class="language-go">go func_name()
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func hello() {
+	fmt.Println("hello")
+}
+
+func main() {
+	go hello()
+	time.Sleep(1*time.Second)
+	fmt.Println("end")
+}
+</code></pre>
+<h2 id="110-單元測試go-test"><a class="header" href="#110-單元測試go-test">1.10 單元測試（go test）</a></h2>
+<p>testing庫，*_test.go文件。</p>
+<pre><code class="language-go">//sum.go
+package testexample
+
+func Min(arr []int) (min int) {
+	min = arr[0]
+	for _, v := range arr {
+		if v &lt; min {
+			min = v
+		}
+	}
+	return
+}
+
+//sum_test.go
+package testexample
+
+import (
+	"fmt"
+	"testing"
+)
+
+func TestMin(t *testing.T) {
+	array := []int{6, 8, 10}
+	ret := Min(array)
+	fmt.Println(ret)
+}
+
+//go test
+//go test -v
+//go test -v -run="Test"
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th>參數</th><th>作用</th></tr></thead><tbody>
+<tr><td>-v</td><td>打印每個測試函數的名字和運行時間</td></tr>
+<tr><td>-c</td><td>生成測試可執行文件，但不執行，默認命名pkg.test</td></tr>
+<tr><td>-i</td><td>重新安裝運行測試依賴包，但不編譯和運行測試代碼</td></tr>
+<tr><td>-o</td><td>指定生成測試可執行文件的名稱</td></tr>
+</tbody></table>
+</div>
+<h2 id="111-go編譯與工具"><a class="header" href="#111-go編譯與工具">1.11 Go編譯與工具</a></h2>
+<h3 id="1111-編譯go-build"><a class="header" href="#1111-編譯go-build">1.11.1 編譯（go build）</a></h3>
+<pre><code class="language-go">//build
+//----main.go
+//----utils.go
+
+//main.go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	printString()
+	fmt.Println("go build")
+}
+
+//utils.go
+package main
+
+import "fmt"
+
+func printString() {
+	fmt.Println("test")
+}
+
+//cd build
+//go build
+//go build main.go utils.go
+//go build -o file.exe main.go utils.go
+//pkg
+//----mainpkg.go
+//----buildpkg.go
+
+//mainpkg.go
+package main
+
+import (
+	"fmt"
+	"pkg"
+)
+
+func main() {
+	pkg.CallFunc()
+	fmt.Println("go build")
+}
+
+//buildpkg.go
+package pkg
+
+import "fmt"
+
+func CallFunc() {
+	fmt.Println("test")
+}
+//go build .../pkg
+//compile.go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("go build")
+}
+//CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build compile.go
+</code></pre>
+<ul>
+<li>CGO_ENABLED: 是否使用C語言的Go編譯器；</li>
+<li>GOOS：目標操作系統</li>
+<li>GOARCH：目標操作系統的架構</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>系統編譯參數</th><th>架構</th></tr></thead><tbody>
+<tr><td>linux(&gt;=Linux 2.6)</td><td>386 / amd64 / arm</td></tr>
+<tr><td>darwin(OS X(Snow Lepoard + Lion))</td><td>386 / amd64</td></tr>
+<tr><td>freebsd(&gt;=FreeBSD 7)</td><td>386 / amd64</td></tr>
+<tr><td>windows(&gt;=Windows 2000)</td><td>386 / amd64</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>附加參數</th><th>作用</th></tr></thead><tbody>
+<tr><td>-v</td><td>編譯時顯示包名</td></tr>
+<tr><td>-p n</td><td>開啟並發編譯，默認值為CPU邏輯核數</td></tr>
+<tr><td>-a</td><td>強制重新構建</td></tr>
+<tr><td>-n</td><td>打印編譯時會用到的所有命令，但不真正執行</td></tr>
+<tr><td>-x</td><td>打印編譯時會用到的所有命令</td></tr>
+<tr><td>-race</td><td>開啟競態檢測</td></tr>
+</tbody></table>
+</div>
+<h3 id="1112-編譯後運行go-run"><a class="header" href="#1112-編譯後運行go-run">1.11.2 編譯後運行（go run）</a></h3>
+<p>編譯後直接運行，且無可執行文件。</p>
+<pre><code class="language-go">//hello.go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("go run")
+}
+//go run hello.go
+</code></pre>
+<h3 id="1113-編譯並安裝go-install"><a class="header" href="#1113-編譯並安裝go-install">1.11.3 編譯並安裝（go install）</a></h3>
+<p>類似go build，只是編譯中間文件放在$GOPATH/pkg目錄下，編譯結果放在$GOPATH/bin目錄下。</p>
+<pre><code class="language-go">//install
+//|----main.go
+//|----pkg
+//    |----installpkg.go
+
+//main.go
+package main
+
+import (
+	"fmt"
+	"pkg"
+)
+
+func main() {
+	pkg.CallFunc()
+	fmt.Println("go build")
+}
+
+//installpkg.go
+package pkg
+
+import "fmt"
+
+func CallFunc() {
+	fmt.Println("test")
+}
+//go install
+</code></pre>
+<h3 id="1114-獲取代碼go-get"><a class="header" href="#1114-獲取代碼go-get">1.11.4 獲取代碼（go get）</a></h3>
+<p>動態遠程拉取或更新代碼包及其依賴包，自動完成編譯和安裝。需要安裝Git，SVN，HG等。</p>
+<div class="table-wrapper"><table><thead><tr><th>標記名稱</th><th>標記描述</th></tr></thead><tbody>
+<tr><td>-d</td><td>只下載，不安裝</td></tr>
+<tr><td>-f</td><td>使用-u時才有效，忽略對已下載代碼包導入路徑的檢查。適用於從別人處Fork代碼包</td></tr>
+<tr><td>-fix</td><td>下載代碼包後先修正，然後編譯和安裝</td></tr>
+<tr><td>-insecure</td><td>運行非安全scheme(如HTTP)下載代碼包。</td></tr>
+<tr><td>-t</td><td>同時下載測試源碼文件中的依賴代碼包</td></tr>
+<tr><td>-u</td><td>更新已有代碼包及其依賴包</td></tr>
+</tbody></table>
+</div>
+<pre><code class="language-go">go get -u github.com/shirdon1/TP-Link-HS110
+</code></pre>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../go/pytago.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../go/Go編程實戰派Web開發基礎.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../go/pytago.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../go/Go編程實戰派Web開發基礎.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

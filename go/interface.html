@@ -1,0 +1,719 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>interface - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="golang---深入理解-interface-常見用法"><a class="header" href="#golang---深入理解-interface-常見用法">Golang - 深入理解 interface 常見用法</a></h1>
+<p>出處: https://blog.kennycoder.io/2020/02/03/Golang-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3interface%E5%B8%B8%E8%A6%8B%E7%94%A8%E6%B3%95/</p>
+<p>此篇文章介紹在 Golang 中 interface 的常見用法，interface 在 Golang 中是一個很重要的環節。interface 可以拿來實現多種用途，請看介紹。</p>
+<h2 id="interface-定義"><a class="header" href="#interface-定義">interface 定義</a></h2>
+<p>interface 又稱接口，其實功能有點類似於 Java 中的 interface，但是在一些地方完全不同於 Java 中 interface 的設計。</p>
+<p>在 Golang 中，interface 其中一個功能就是可以使用 interface 定義行為，也就是說 interface 中可以定義一些方法來表示一個對象的行為，而當我們有自定義的型態假設想要擁有這些行為，就是去實踐 interface 裡面的方法。</p>
+<h2 id="interface-定義行為"><a class="header" href="#interface-定義行為">interface 定義行為</a></h2>
+<p>來看個例子：</p>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+type Animal interface {
+	Eat()
+	Run()
+}
+
+type Dog struct {
+	Name string
+}
+
+func (d *Dog) Eat() {
+	fmt.Printf("%s is eating\n", d.Name)
+}
+
+func (d *Dog) Run() {
+	fmt.Printf("%s is running\n", d.Name)
+}
+
+func ShowEat(animal Animal) {
+	animal.Eat()
+}
+
+func ShowRun(animal Animal) {
+	animal.Run()
+}
+
+func main() {
+	dog := Dog{Name:"Kenny"}
+	ShowEat(&amp;dog)
+	ShowRun(&amp;dog)
+}
+</code></pre>
+<ol>
+<li>建立一個 Animal 型態的 interface，其定義了 Eat () 跟 Run ()，來表達動物都會擁有的行為。</li>
+<li>建立一個 Dog Struct，並且實踐 interface 裡面的 Eat () 跟 Run ()。要注意的是，由於在實作 <code>Eat</code> 與 <code>Run</code> 方法時，都是用指標 <code>(d *Dog)</code> ，這個所代表的意思是透過傳遞指標來操控同一個 Struct 實例，如果沒有用指標則會導致淺複製的行為，並不是操控同一個 Struct。</li>
+<li>建立 ShowEat、ShowRun 方法，並且參數型態用 Animal。</li>
+</ol>
+<p>以上的程式碼可以得知以下兩件事情：</p>
+<ol>
+<li>在 Golang 中如果自定義型態實現了 interface 的所有方法，那麼它就會認定該自定義型態也是 interface 型態的一種。也就是所謂的鴨子型別 (Duck typing) 的實現。只要你有符合這些種種的行為，即使你不是真的鴨子，那麼還是會認定你是一隻鴨子。</li>
+<li>透過 ShowRun 跟 ShowEat () 得知實現了多型的行為。所謂多型的意思是相同的訊息給予不同的物件會引發不同的動作，因為參數型態用 Animal 所以，每個動物會有各自的吃跟跑的行為，執行出來的結果也會各自不一樣。</li>
+</ol>
+<h2 id="interface-型態與值"><a class="header" href="#interface-型態與值">interface 型態與值</a></h2>
+<p>將 main 裡面程式碼改成這樣：</p>
+<pre><code class="language-go">func main() {
+	var animal Animal
+	fmt.Println(animal)
+}
+</code></pre>
+<p>這樣輸出會是 nil。</p>
+<ol>
+<li>
+<p>這代表著 <code>animal</code> 在底層儲存的型態為 <code>nil</code>。interface 類型默認是一個指針 (引用類型)，如果沒有對 interface 初始化就使用，那麼會輸出 <code>nil</code>。</p>
+</li>
+<li>
+<p>但是我們可以指定自定義型態給 nil interface，如果該自定義型態有實現該 interface 方法即可。</p>
+<pre><code class="language-go">func main() {
+	var animal Animal
+	animal = &amp;Dog{Name:"Kenny"}
+	fmt.Println(animal)
+}
+</code></pre>
+<p>運行結果為 <code>&amp;{Kenny}</code>。</p>
+<p>也就是說 <code>animal</code> 底層儲存的型態會 <code>*Dog</code>，而值是 <code>Dog</code> 結構實例的位址值。</p>
+</li>
+</ol>
+<h2 id="interface-繼承"><a class="header" href="#interface-繼承">interface 繼承</a></h2>
+<p>一個自定義型態是可以實現多個 interface 的。此外，interface 也可以繼承別的 interface 的行為：</p>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+type Eater interface {
+	Eat()
+}
+
+type Runner interface {
+	Run()
+}
+
+type Animal interface {
+	Eater
+	Runner
+}
+
+type Dog struct {
+	Name string
+}
+
+func (d *Dog) Eat() {
+	fmt.Printf("%s is eating\n", d.Name)
+}
+
+func (d *Dog) Run() {
+	fmt.Printf("%s is running\n", d.Name)
+}
+
+func ShowEat(animal Animal) {
+	animal.Eat()
+}
+
+func ShowRun(animal Animal) {
+	animal.Run()
+}
+
+func ShowEat2(eater Eater) {
+	eater.Eat()
+}
+
+func ShowRun2(runner Runner) {
+	runner.Run()
+}
+
+func main() {
+	dog := Dog{Name:"Kenny"}
+	ShowEat(&amp;dog)
+	ShowRun(&amp;dog)
+	ShowEat2(&amp;dog)
+	ShowRun2(&amp;dog)
+}
+</code></pre>
+<p>在 Animal interface 透過內嵌的方式，將 Eater interface、Runner interface 定義的行為放進去。</p>
+<p>這樣的話 Dog Struct 必須都實現 Eat () 跟 Run () 才能是 Animal 的一種。此外，因為這樣做也代表，Dog Struct 也是 Eater 及 Runner 的一種。</p>
+<p>所以看到定義的 ShowEat2 () 跟 ShowRun2 () 皆能接受 Dog Struct。</p>
+<h2 id="透過-interface-儲存異質陣列或-slice"><a class="header" href="#透過-interface-儲存異質陣列或-slice">透過 interface 儲存異質陣列或 slice</a></h2>
+<p>前面說過 Golang 會檢查類型的實例，是否都有實現 interface 定義的行為，如果是的話就可以接受介面型態是不同型態實例的指定。</p>
+<p>透過這種特性，假設我們有個需求是一個陣列或 slice 存放的型態無法事先確定，且每個元素的型態可能都不是一樣，就可以透過 interface 來解決！</p>
+<pre><code class="language-go">package main
+
+import "fmt"
+
+type Eater interface {
+	Eat()
+}
+
+type Runner interface {
+	Run()
+}
+
+type Animal interface {
+	Eater
+	Runner
+}
+
+type Dog struct {
+	Name string
+}
+
+func (d *Dog) Eat() {
+	fmt.Printf("%s is eating\n", d.Name)
+}
+
+func (d *Dog) Run() {
+	fmt.Printf("%s is running\n", d.Name)
+}
+
+type Cat struct {
+	Name string
+}
+
+func (c *Cat) Eat() {
+	fmt.Printf("%s is eating\n", c.Name)
+}
+
+func (c *Cat) Run() {
+	fmt.Printf("%s is running\n", c.Name)
+}
+
+func ShowEat(animal Animal) {
+	animal.Eat()
+}
+
+func ShowRun(animal Animal) {
+	animal.Run()
+}
+
+func ShowEat2(eater Eater) {
+	eater.Eat()
+}
+
+func ShowRun2(runner Runner) {
+	runner.Run()
+}
+
+func main() {
+	animals := [...]Animal{
+		&amp;Dog{Name:"Kenny"},
+		&amp;Cat{Name:"Nicole"},
+	}
+
+	for _, animal := range animals {
+		fmt.Println(animal)
+	}
+
+	instances := [...]interface{}{
+		123,
+		"Hello World",
+		&amp;Dog{Name:"Kenny"},
+		&amp;Cat{Name:"Nicole"},
+	}
+
+	for _, instance := range instances {
+		fmt.Println(instance)
+	}
+}
+</code></pre>
+<p>在這邊多定義了 Cat Struct，並且同樣實現了 Animal interface。</p>
+<p>因此在前面可以建立 Animal 型態的陣列，裡面可以放不同結構體的實例，只要裡面放置的結構體有實現 Animal interface 行為，就會被當作 Animal 實例。</p>
+<p>而第二個例子是利用空接口型態，裡面可以放置各種型態的元素，以這個例子來看既能放 int、string、Dog Struct、Cat Struct。</p>
+<p>也因為空接口的特性也是實現泛型的重要關鍵。</p>
+<h2 id="型態斷言"><a class="header" href="#型態斷言">型態斷言</a></h2>
+<p>但是根據以上的例子會發現一個問題：</p>
+<p>假設利用自定義型態為 Animal interface 指定型態的話，該型態就能存取 interface 的行為，並不能存取自定義型態的屬性及其它自定義型態的方法。</p>
+<p>這時候可以利用 Golang 提供的型態斷言的特性，請看：</p>
+<pre><code class="language-go">func main() {
+	var animal Animal
+	animal = &amp;Dog{Name:"Kenny"}
+	dog := animal.(*Dog)
+	fmt.Println(dog.Name)
+
+	animal = &amp;Cat{Name:"Nicole"}
+	cat := animal.(*Dog)
+	fmt.Println(cat.Name)
+}
+</code></pre>
+<p>透過<code>.(type)</code> 的方式來斷定該接口實際上是存放哪個實例。但是有個缺點是如果型態判斷錯誤，會直接造成 panic。</p>
+<p>出現以下錯誤訊息：</p>
+<pre><code>panic: interface conversion: main.Animal is *main.Cat, not *main.Dog
+</code></pre>
+<p>這是因為後面的 animal 是指定 Cat 實例，結果後面型態斷言用 Dog，會造成執行時期的錯誤。</p>
+<p>要怎麼避免呢？</p>
+<p>可以透過 switch 的方式一一去判斷型態：</p>
+<pre><code class="language-go">func main() {
+	animals := [...]Animal{
+			&amp;Dog{Name:"Kenny"},
+			&amp;Cat{Name:"Nicole"},
+		}
+
+	for _, animal := range animals {
+		switch animal.(type) {
+		case *Dog:
+			fmt.Println(animal.(*Dog).Name)
+		case *Cat:
+			fmt.Println(animal.(*Cat).Name)
+		default:
+			fmt.Println("you are not animal!!")
+		}
+	}
+}
+</code></pre>
+<p>透過<code>.(type)</code> 來一一比對出對的型態。</p>
+<p>此外，Golang 型態斷言也提供了檢測機制：</p>
+<pre><code class="language-go">func main() {
+	animals := [...]Animal{
+			&amp;Dog{Name:"Kenny"},
+			&amp;Cat{Name:"Nicole"},
+		}
+
+	for _, animal := range animals {
+		if dog, ok := animal.(*Dog); ok {
+			fmt.Println(dog.Name)
+		}
+
+		if cat, ok := animal.(*Cat); ok {
+			fmt.Println(cat.Name)
+		}
+	}
+}
+</code></pre>
+<p>當然了，如果斷言的形態越多用 switch 相對可讀性會較高。</p>
+<h2 id="空-interface-的限制"><a class="header" href="#空-interface-的限制">空 interface 的限制</a></h2>
+<p>根據以上的例子可以空接口提供很多便利性，但是也有其限制：</p>
+<p>一個空的接口會隱藏值對應的表示方式和所有的公開的方法，必須使用類型斷言才能來來訪問內部的值，如果事先不知道空接口指向的值的具體類型，就無法操作。</p>
+<p>為此，才需要 <strong>reflect 機制</strong>，可以知道一個接口類型的變量具體是什麼（什麼類型），有什麼能力（有哪些方法）。這也是在寫 Golang 程式庫常常會用到的特性，因為有 interface 可以實現泛型的特性，有了泛型的特性又可以透過 reflect 機制來促發其不同型態的屬性及方法。</p>
+<h2 id="總結"><a class="header" href="#總結">總結</a></h2>
+<ul>
+<li>Golang interface 重點是「行為」，不管定義的介面型態是什麼，只要行為符合就屬於該介面型態的一種。</li>
+<li>Golang interface 可以說是動態語言鴨子型別的展現。</li>
+<li>利用 interface 可實現泛型、多型的功能，從而可以調用同一個函數名的函數但實現完全不同的功能。</li>
+</ul>
+<p>所以根據以上 interface 的特點，在看看 Golang 的標準程式庫裡面運用大量的 interface 的特性來完成，例如標準程式庫定義檔案讀寫的 Reader、Writer interface：</p>
+<pre><code class="language-go">type Reader interface {
+	Read(p []byte) (n int, err error)
+}
+
+type Writer interface {
+	Write(p []byte) (n int, err error)
+}
+</code></pre>
+<p>利用 <code>os.File</code> 實現了 Reader、Writer interface，來實作檔案讀寫的實現。</p>
+<hr />
+<h2 id="interface-接口"><a class="header" href="#interface-接口">Interface 接口</a></h2>
+<p>要特別注意，這個interface跟其他語言中的定義與作用會不太一樣。</p>
+<p>首先讓我們回憶一下golang的特性，會想起他是「輕量級的物件導向」，也就是他沒有完全實作物件導向的所有特徵。具體來說，golang沒有class（類別）與繼承（這樣還能稱之為物件導向嗎？）。但是現代軟體開發，如果需要類似「多型」的需求怎麼辦呢？interface就是golang中用來實踐多型的利器，雖然並不是完全符合多型的概念，但至少在概念上是接近的。尤其是在golang這種強型別的語言，interface可以發揮更高的潛能。</p>
+<p>interface有兩種，分別是型態與定義。<strong>interface可以代表任何型態，這在開發上可以帶來極大的便利（弱型別語言表示）</strong>，我們來看看具體上要如何實作：</p>
+<pre><code class="language-go">func Hello(value interface{}) {  
+}
+</code></pre>
+<p>將interface作為參數宣告，這個函數就可以接受任意型態的參數。但在實際使用之前，我們還是必須先辨別傳遞進來的參數型別，才能做接下來的邏輯實作，畢竟golang依然是個強型別的語言，沒有因為有了interface就做出讓步。</p>
+<pre><code class="language-go">func Hello(value interface{}) {  
+    // 透過型態斷言揭露 interface{} 真正的型態。
+    switch v := value.(type) {
+        // 如果 value 是字串型態。
+        case string:
+            fmt.Println("value 是字串，內容是 " + v)
+        // 如果 value 是 int 型態。
+        case int:
+            fmt.Printf("value 是數值，加上二就是 %d", v + 2)
+    }
+}
+</code></pre>
+<p>延續第一個範例，我們從外部得到型別未知的參數<code>value</code>，透過<code>switch</code>與<code>value.(type)</code>方法，可以將不同型別的邏輯分離出來，做不同的處理。如果你很確定參數的型別，也可以直接使用宣告的方式來取代<code>switch</code>判斷，方法如下：</p>
+<pre><code class="language-go">func Hello(value interface{}) {  
+    fmt.Println("value 是字串，內容是 " + value.(string))
+}
+</code></pre>
+<p>但如果interface參數與你預期的型別不同，會出現<code>panic</code>警告。作為參數可以為任意類別，如果函數的返回值為interface，也就代表函數可以返回任意類別值。</p>
+<p>在變數的方面，<strong>當我們定義一個空的interface，它可以指定為任意型別</strong>：</p>
+<pre><code class="language-go">var a interface{}
+var i int = 5
+s := "Hello world"
+// a可以儲存任意類別的值
+a = i
+a = s
+</code></pre>
+<p>到這邊你可能會想，一個強型別語言為什麼需要想辦法實作一個可以是任何型態的參數或變數，這不是根本否定的強型別的價值嗎？我想到一個長久以來在工程師圈關於「限制-自由」的拉扯，有一句名言是這樣總結的：</p>
+<blockquote>
+<p>限制帶給你新的自由</p>
+</blockquote>
+<p>限制的好處是當我們在規則與紀律之中妥協，我們可以更早發現不協調之處，讓bug無所遁形。如果毫無限制邊界，反而讓人無從發揮。我認為這並不是一個布林的問題，而是float，在光譜之中有眾多選擇，可以讓每個人依喜好與需求做選擇。</p>
+<p>這樣的設計讓golang在大部份的時候受到型別拘束保護，不會產生型別的意外狀況；當在需要開發套件與第三方程式串接的時候，又不需要把自己綁死侷限了開發空間的可能，是語言設計者的一個優雅的權衡。</p>
+<p>我們來看另一個例子，如何在golang中用interface實現多型：</p>
+<pre><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+type Animal interface {
+	Speak() string
+}
+
+type Dog struct {
+}
+
+func (d Dog) Speak() string {
+	return "Woof!"
+}
+
+type Cat struct {
+}
+
+func (c Cat) Speak() string {
+	return "Meow!"
+}
+
+type Pikachu struct {
+}
+
+func (p Pikachu) Speak() string {
+	return "Pika pika!"
+}
+
+type Programmer struct {
+}
+
+func (j Programmer) Speak() string {
+	return "Design patterns!"
+}
+func main() {
+	animals := []Animal{Dog{}, Cat{}, Pikachu{}, Programmer{}}
+	for _, animal := range animals {
+		fmt.Println(animal.Speak())
+	}
+}
+</code></pre>
+<p>如果執行這段程式，我們會得到：</p>
+<pre><code class="language-repl">Woof!
+Meow!
+Pika pika!
+Design patterns!
+</code></pre>
+<p>Animal作為一個interface定義一個空的<code>Speak()</code>方法，藉由宣告一個Animal陣列<code>animals</code>將貓、狗、皮卡丘、工程師實體傳進陣列中，接著實體各自執行自己實作的<code>Speak()</code>方法。</p>
+<hr />
+<p><strong>struct</strong></p>
+<p>struct 用來自定義複雜資料結構，可以包含多個欄位（屬性），可以巢狀；go中的struct型別理解為類，可以定義方法，和函式定義有些許區別；struct型別是值型別。</p>
+<pre><code class="language-go">package main
+
+type User struct {
+	Name string
+	Age  int32
+	mess string
+}
+
+var user User
+var user1 *User = &amp;User{}
+var user2 *User = new(User)
+</code></pre>
+<p><strong>struct的方法</strong></p>
+<p>在go語言中，我們可以為自定義型別定義型別相關的方法，比如：</p>
+<pre><code class="language-go">func (p *player) Name() string {
+	return p.name
+}
+</code></pre>
+<p>上面的程式碼為player這個自定義型別宣告一個名為Name的方法，該方法返回一個string。值得注意的是（p *player）這段程式碼指定了我們是<strong>為player建立方法</strong>，並將呼叫該方法的例項指標當作變數p傳入該函式，如果沒有（p *player）這段程式碼，這個方法就變成了一個普通的全域性函式。</p>
+<p><strong>struct的嵌入（Embedding）</strong></p>
+<p>go語言中的“繼承”和其他語言中的繼承有很大區別，比如：</p>
+<pre><code class="language-go">type player struct {
+	User
+}
+</code></pre>
+<p>這是一種<strong>繼承</strong>的寫法，在go語言中這種方式叫做<strong>嵌入（embed）</strong>，此時player型別就擁有了User型別的Name, Age, mess 等變數</p>
+<p><strong>struct的tag</strong></p>
+<p>這種方式主要是用在xml，json和struct間相互轉換，非常方便直觀，比如介面給的引數一般是json傳過來，但是內部我們要轉為struct再進行處理。</p>
+<pre><code class="language-go">package main
+
+import "encoding/json"
+import "fmt"
+
+type User struct {
+	Name string `json:"userName"`
+	Age  int    `json:"userAge"`
+}
+
+func main() {
+	var user User
+	user.Name = "nick"
+	user.Age = 18
+	conJson, _ := json.Marshal(user)
+	fmt.Println(string(conJson)) //{"userName":"nick","userAge":0}
+}
+</code></pre>
+<p><strong>interface</strong></p>
+<p>golang不支援完整的物件導向思想，它沒有繼承，多型則完全依賴介面實現。golang只能模擬繼承，<strong>其本質是組合</strong>，只不過golang語言為我們提供了一些語法糖使其看起來達到了繼承的效果。Golang中的介面，不需要顯示的實現。Interface型別可以定義一組方法，但是這些不需要實現。並且interface不能包含任何變數。只要一個變數，含有介面型別中的所有方法，那麼這個變數就實現這個介面。因此，golang中沒有implement類似的關鍵字；如果一個變數含有了一個interface型別的多個方法，那麼這個變數就實現了多個介面；如果一個變數只含有了一個interface的方部分方法，那麼這個變數沒有實現這個介面。</p>
+<p><strong>interface的定義</strong></p>
+<p>interface型別預設是一個指標。</p>
+<pre><code class="language-go">package main
+
+type Car interface {
+	NameGet() string
+	Run(n int)
+	Stop()
+}
+</code></pre>
+<p>空介面 Interface{}：空介面沒有任何方法，所以所有型別都實現了空介面。</p>
+<pre><code class="language-go">var a int
+var b interface{} //空介面
+b = a
+</code></pre>
+<p><strong>interface的多型</strong></p>
+<p>一種事物的多種形態，都可以按照統一的介面進行操作。這種方式是用的最多的，有點像c 中的類繼承。</p>
+<pre><code class="language-go">package main
+
+type Item interface {
+	Name() string
+	Price() float64
+}
+type VegBurger struct {
+}
+
+func (r *VegBurger) Name() string {
+	return "vegburger"
+}
+func (r *VegBurger) Price() float64 {
+	return 1.5
+}
+
+type ChickenBurger struct {
+}
+
+func (r *ChickenBurger) Name() string {
+	return "chickenburger"
+}
+func (r *ChickenBurger) Price() float64 {
+	return 5.5
+}
+</code></pre>
+<p><strong>Interface巢狀</strong></p>
+<p>一個介面可以巢狀在另外的介面。即需要實現2個介面的方法。在下面的例子中Used就包含了Car這個介面的所有方法。</p>
+<pre><code class="language-go">package main
+
+type Car interface {
+	NameGet() string
+	Run(n int)
+	Stop()
+}
+type Used interface {
+	Car
+	Cheap()
+}
+</code></pre>
+<p><strong>總結</strong></p>
+<p>以上就是這篇文章的全部內容了，希望本文的內容對大家的學習或者工作具有一定的參考學習價值，如果有疑問大家可以留言交流，謝謝大家對指令碼之家的支援。</p>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../go/mutex-rwmutex.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../go/example.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../go/mutex-rwmutex.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../go/example.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

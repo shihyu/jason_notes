@@ -1,0 +1,1231 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Gdb - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="gdb"><a class="header" href="#gdb">GDB</a></h1>
+<pre><code class="language-sh">sudo apt-get install libgmp-dev libmpfr-dev
+
+git clone https://github.com/bminor/binutils-gdb
+
+../configure --enable-targets=all \
+--prefix=/home/shihyu/.mybin/gdb
+
+make -j8 &amp;&amp; make
+</code></pre>
+<hr />
+<h2 id="編譯-gdb-79-build-gdbserver-and-gdb"><a class="header" href="#編譯-gdb-79-build-gdbserver-and-gdb">編譯 gdb-7.9 build gdbserver and gdb</a></h2>
+<p>建議： 給特定用戶安裝 GDB 的 pretty-printer 打印出可讀性更好的 stdc++ 的 STL 容器 在編譯 GDB 之前，先安裝 ncurses 庫和 Python 庫（用於在 GDB 中 開啟 Python 支持，編譯 GDB 時必須添加 --with-python 選項）。</p>
+<pre><code class="language-sh">sudo apt-get install texinfo libncurses-dev libreadline-dev python-dev
+gdb 編譯新版修改  // 因為 gdb 會出現  'g' packet reply is too long:
+修改gdb/remote.c文件，屏蔽process_g_packet函數中的下列兩行：
+if (buf_len &gt; 2 * rsa-&gt;sizeof_g_packet)
+error (_(“Remote ‘g’ packet reply is too long: %s”), rs-&gt;buf);
+在其後添加：
+if (buf_len &gt; 2 * rsa-&gt;sizeof_g_packet) {
+    rsa-&gt;sizeof_g_packet = buf_len ;
+    for (i = 0; i &lt; gdbarch_num_regs (gdbarch); i++)
+    {
+        if (rsa-&gt;regs[i].pnum == -1)
+            continue;
+
+        if (rsa-&gt;regs[i].offset &gt;= rsa-&gt;sizeof_g_packet)
+            rsa-&gt;regs[i].in_g_packet = 0;
+        else
+            rsa-&gt;regs[i].in_g_packet = 1;
+    }
+}
+</code></pre>
+<h4 id="找到python可執行程序的位置"><a class="header" href="#找到python可執行程序的位置">找到python可執行程序的位置</a></h4>
+<pre><code class="language-sh">which python
+
+/home/shihyu/anaconda2/bin/python
+</code></pre>
+<h4 id="若為-anaconda則使用-anacondalib"><a class="header" href="#若為-anaconda則使用-anacondalib">若為 Anaconda，則使用 Anaconda/lib</a></h4>
+<pre><code class="language-sh">設置環境變量
+
+export LDFLAGS="-Wl,-rpath,/home/shihyu/anaconda3/lib -L/home/shihyu/anaconda3/lib"
+
+../configure --enable-targets=all \
+             --enable-64-bit-bfd  \
+             --with-python=python3.7 \
+             --with-system-readline \
+             --prefix=/home/shihyu/.mybin/gdb8.3_python3
+設置環境變量
+
+export LDFLAGS="-Wl,-rpath,/home/shihyu/anaconda2/lib -L/home/shihyu/anaconda2/lib"
+
+./configure --enable-targets=all \
+            --enable-64-bit-bfd \
+            --with-python="/home/shihyu/anaconda2/bin/" \
+            --with-system-readline \
+            --prefix=/home/shihyu/.mybin/gdb_8.1
+mkdir build ; cd build
+
+export LDFLAGS="-Wl,-rpath,/home/shihyu/anaconda3/lib -L/home/shihyu/anaconda3/lib"
+
+../configure --enable-targets=all \
+             --enable-64-bit-bfd  \
+             --with-python=python3.6 \
+             --with-system-readline \
+             --prefix=/home/shihyu/.mybin/gdb_python3
+../configure --enable-targets=all \
+             --enable-64-bit-bfd  \
+             --with-python=python3 \
+             --with-system-readline \
+             --prefix=/home/shihyu/.mybin/gdb_python3
+./configure --enable-targets=all \
+            --enable-64-bit-bfd \
+            --with-python \
+            --with-system-readline \
+            --prefix=/home/shihyu/.mybin/gdb_8.1
+
+
+
+
+# --target=arm-linux表示生成的gdb調試的目標是在arm核心Linux系統中運行的程序
+# --enable-targets=all  gdb可以用同一個版本支持x86，ppc等多種體系結構。
+# 比較新的bfd中，當設置的target是64位或者打開--enable-targets=all的時候，不需要設置會自動打開這個選項，不過保險起見還是打開。這樣編譯出的GDB就能支持GDB支持的全部體系結構了。
+make
+sudo make install
+</code></pre>
+<p>把[GCC源碼目錄]/libstdc++-v3/python 複製到任意一個目錄（比如 ~/.mybin/gdb_8.1 目錄下）， 如果源碼目錄下沒有上述 python 目錄，也可以用如下方式從遠程庫拉取之後再放到 ~/.mybin/gdb_8.1 目錄下：</p>
+<pre><code class="language-sh">svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python
+</code></pre>
+<p>然後，編輯 ~/.gdbinit，添加如下內容</p>
+<pre><code class="language-sh">python
+import sys
+import os
+p = os.path.expanduser('~/.gdb/python') 
+print p
+if os.path.exists(p):
+    sys.path.insert(0, p)
+    from libstdcxx.v6.printers import register_libstdcxx_printers
+    register_libstdcxx_printers(None)
+end
+(gdb) set architecture
+Display all 204 possibilities? (y or n)
+alpha                          m68k:isa-c:nodiv:mac
+alpha:ev4                      m88k:88100
+alpha:ev5                      mep
+alpha:ev6                      mips
+am33                           mips:10000
+am33-2                         mips:12000
+arm                            mips:16
+armv2                          mips:3000
+armv2a                         mips:3900
+armv3                          mips:4000
+armv3m                         mips:4010
+armv4                          mips:4100
+armv4t                         mips:4111
+armv5                          mips:4120
+armv5t                         mips:4300
+armv5te                        mips:4400
+auto                           mips:4600
+avr                            mips:4650
+avr:1                          mips:5000
+avr:2                          mips:5400
+avr:3                          mips:5500
+avr:4                          mips:6000
+avr:5                          mips:7000
+avr:6                          mips:8000
+cris                           mips:9000
+cris:common_v10_v32            mips:isa32
+crisv32                        mips:isa32r2
+ep9312                         mips:isa64
+fr300                          mips:isa64r2
+fr400                          mips:loongson_2e
+fr450                          mips:loongson_2f
+fr500                          mips:mips5
+fr550                          mips:octeon
+frv                            mips:sb1
+h1                             mn10300
+h8300                          ms1
+h8300h                         ms1-003
+h8300hn                        ms2
+h8300s                         powerpc:403
+h8300sn                        powerpc:601
+h8300sx                        powerpc:603
+h8300sxn                       powerpc:604
+hppa1.0                        powerpc:620
+i386                           powerpc:630
+i386:intel                     powerpc:7400
+i386:x86-64                    powerpc:750
+i386:x86-64:intel              powerpc:EC603e
+i8086                          powerpc:MPC8XX
+ia64-elf32                     powerpc:a35
+ia64-elf64                     powerpc:common
+iq10                           powerpc:common64
+iq2000                         powerpc:e500
+iwmmxt                         powerpc:rs64ii
+iwmmxt2                        powerpc:rs64iii
+m16c                           rs6000:6000
+m32c                           rs6000:rs1
+m32r                           rs6000:rs2
+m32r2                          rs6000:rsc
+m32rx                          s390:31-bit
+m68hc11                        s390:64-bit
+m68hc12                        score
+m68k                           sh
+m68k:5200                      sh-dsp
+m68k:5206e                     sh2
+m68k:521x                      sh2a
+m68k:5249                      sh2a-nofpu
+m68k:528x                      sh2a-nofpu-or-sh3-nommu
+m68k:5307                      sh2a-nofpu-or-sh4-nommu-nofpu
+m68k:5407                      sh2a-or-sh3e
+m68k:547x                      sh2a-or-sh4
+m68k:548x                      sh2e
+m68k:68000                     sh3
+m68k:68008                     sh3-dsp
+m68k:68010                     sh3-nommu
+m68k:68020                     sh3e
+m68k:68030                     sh4
+m68k:68040                     sh4-nofpu
+m68k:68060                     sh4-nommu-nofpu
+m68k:cfv4e                     sh4a
+m68k:cpu32                     sh4a-nofpu
+m68k:fido                      sh4al-dsp
+m68k:isa-a                     sh5
+m68k:isa-a:emac                simple
+m68k:isa-a:mac                 sparc
+m68k:isa-a:nodiv               sparc:sparclet
+m68k:isa-aplus                 sparc:sparclite
+m68k:isa-aplus:emac            sparc:sparclite_le
+m68k:isa-aplus:mac             sparc:v8plus
+m68k:isa-b                     sparc:v8plusa
+m68k:isa-b:emac                sparc:v8plusb
+m68k:isa-b:float               sparc:v9
+m68k:isa-b:float:emac          sparc:v9a
+m68k:isa-b:float:mac           sparc:v9b
+m68k:isa-b:mac                 spu:256K
+m68k:isa-b:nousp               tomcat
+m68k:isa-b:nousp:emac          v850
+m68k:isa-b:nousp:mac           v850e
+m68k:isa-c                     v850e1
+m68k:isa-c:emac                vax
+m68k:isa-c:mac                 xscale
+m68k:isa-c:nodiv               xstormy16
+m68k:isa-c:nodiv:emac          xtensa
+set architecture arm:指定arm硬體
+</code></pre>
+<ul>
+<li>Toolchain 無法使用 android 的 arm 編譯器目前原因不清楚</li>
+</ul>
+<pre><code>https://launchpad.net/linaro-toolchain-binaries/trunk/2013.10/+download/gcc-linaro-arm-linux-gnueabihf-4.8-2013.10_linux.tar.bz2
+</code></pre>
+<ul>
+<li>build.env</li>
+</ul>
+<pre><code># -*- shell-script -*-
+TOOLCHAIN=gcc-linaro-arm-linux-gnueabihf-4.8-2013.10_linux
+DIR=$(pushd $(dirname $BASH_SOURCE) &gt; /dev/null; pwd; popd &gt; /dev/null)
+echo $DIR
+export PATH=${PATH}:${DIR}/${TOOLCHAIN}/bin
+export CC=arm-linux-gnueabihf-gcc
+</code></pre>
+<h2 id="gdbserver--要注意gdb和gdbserver版本一致"><a class="header" href="#gdbserver--要注意gdb和gdbserver版本一致">gdbserver , 要注意gdb和gdbserver版本一致</a></h2>
+<pre><code>source build.env
+./configure --target=arm-linux --host=arm-linux LDFLAGS="-static"
+# 這裡的--host指定這個程序的目標平臺。這一步中會檢查系統中是否有交叉編譯器的。
+# We must add the above LDFLAGS to let gdb statically linked, otherwise it cannot
+run on Android.
+
+time make -j8 2&gt;&amp;1 | tee build.log
+file ./gdbserver
+
+./gdbserver: ELF 32-bit LSB  executable, ARM, EABI5 version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 3.1.1, BuildID[sha1]=4eec8a5a6893ed8ce65eea5d0741a55cc621236a, not stripped
+</code></pre>
+<hr />
+<h2 id="cgdb"><a class="header" href="#cgdb">cgdb</a></h2>
+<p>安裝 cgdb</p>
+<p>cgdb 是一個開源的 gdb 前端，可以提供實時的代碼預覽，極大的方便了調試。</p>
+<p>獲取源碼</p>
+<pre><code class="language-sh">$ git clone git://github.com/cgdb/cgdb.git
+</code></pre>
+<p>依賴</p>
+<pre><code class="language-sh">flex( gettext )，autoconf, aclocal, automake, help2man
+</code></pre>
+<p>安裝依賴 （1） flex</p>
+<pre><code class="language-sh">$ sudo apt-get install flex
+</code></pre>
+<p>（2） aclocal, automake, autoconf, autoheader 這些 utilities 都在 automake 包中，因此安裝automake 就夠了。</p>
+<pre><code class="language-sh">$ sudo apt-get install automake
+$ sudo apt-get install autotools-dev
+</code></pre>
+<p>(3) makeinfo，這個 utility 在 texinfo 包中</p>
+<pre><code class="language-sh">$ sudo apt-get install texinfo
+</code></pre>
+<p>（3）help2man</p>
+<pre><code class="language-sh">$ sudo apt-get install help2man
+</code></pre>
+<h2 id="編譯和安裝"><a class="header" href="#編譯和安裝">編譯和安裝</a></h2>
+<pre><code class="language-sh">$ cd cgdb
+$ ./autogen.sh
+$ ./configure --prefix=/usr/local
+$ make
+$ sudo make install
+</code></pre>
+<hr />
+<ul>
+<li>~/.gdbinit</li>
+</ul>
+<pre><code class="language-sh">#    ``                                                                                                    
+#   STL GDB evaluators/views/utilities - 1.03
+#
+#   The new GDB commands:                                                         
+#         are entirely non instrumental                                             
+#         do not depend on any "inline"(s) - e.g. size(), [], etc
+#       are extremely tolerant to debugger settings
+#                                                                                 
+#   This file should be "included" in .gdbinit as following:
+#   source stl-views.gdb or just paste it into your .gdbinit file
+#
+#   The following STL containers are currently supported:
+#
+#       std::vector&lt;T&gt; -- via pvector command
+#       std::list&lt;T&gt; -- via plist or plist_member command
+#       std::map&lt;T,T&gt; -- via pmap or pmap_member command
+#       std::multimap&lt;T,T&gt; -- via pmap or pmap_member command
+#       std::set&lt;T&gt; -- via pset command
+#       std::multiset&lt;T&gt; -- via pset command
+#       std::deque&lt;T&gt; -- via pdequeue command
+#       std::stack&lt;T&gt; -- via pstack command
+#       std::queue&lt;T&gt; -- via pqueue command
+#       std::priority_queue&lt;T&gt; -- via ppqueue command
+#       std::bitset&lt;n&gt; -- via pbitset command
+#       std::string -- via pstring command
+#       std::widestring -- via pwstring command
+#
+#   The end of this file contains (optional) C++ beautifiers
+#   Make sure your debugger supports $argc
+#
+#   Simple GDB Macros writen by Dan Marinescu (H-PhD) - License GPL
+#   Inspired by intial work of Tom Malnar, 
+#     Tony Novac (PhD) / Cornell / Stanford,
+#     Gilad Mishne (PhD) and Many Many Others.
+#   Contact: dan_c_marinescu@yahoo.com (Subject: STL)
+#
+#   Modified to work with g++ 4.3 by Anders Elton
+#   Also added _member functions, that instead of printing the entire class in map, prints a member.
+
+
+
+#
+# std::vector&lt;&gt;
+#
+
+define pvector
+    if $argc == 0
+        help pvector
+    else
+        set $size = $arg0._M_impl._M_finish - $arg0._M_impl._M_start
+        set $capacity = $arg0._M_impl._M_end_of_storage - $arg0._M_impl._M_start
+        set $size_max = $size - 1
+    end
+    if $argc == 1
+        set $i = 0
+        while $i &lt; $size
+            printf "elem[%u]: ", $i
+            p *($arg0._M_impl._M_start + $i)
+            set $i++
+        end
+    end
+    if $argc == 2
+        set $idx = $arg1
+        if $idx &lt; 0 || $idx &gt; $size_max
+            printf "idx1, idx2 are not in acceptable range: [0..%u].\n", $size_max
+        else
+            printf "elem[%u]: ", $idx
+            p *($arg0._M_impl._M_start + $idx)
+        end
+    end
+    if $argc == 3
+      set $start_idx = $arg1
+      set $stop_idx = $arg2
+      if $start_idx &gt; $stop_idx
+        set $tmp_idx = $start_idx
+        set $start_idx = $stop_idx
+        set $stop_idx = $tmp_idx
+      end
+      if $start_idx &lt; 0 || $stop_idx &lt; 0 || $start_idx &gt; $size_max || $stop_idx &gt; $size_max
+        printf "idx1, idx2 are not in acceptable range: [0..%u].\n", $size_max
+      else
+        set $i = $start_idx
+        while $i &lt;= $stop_idx
+            printf "elem[%u]: ", $i
+            p *($arg0._M_impl._M_start + $i)
+            set $i++
+        end
+      end
+    end
+    if $argc &gt; 0
+        printf "Vector size = %u\n", $size
+        printf "Vector capacity = %u\n", $capacity
+        printf "Element "
+        whatis $arg0._M_impl._M_start
+    end
+end
+
+document pvector
+    Prints std::vector&lt;T&gt; information.
+    Syntax: pvector &lt;vector&gt; &lt;idx1&gt; &lt;idx2&gt;
+    Note: idx, idx1 and idx2 must be in acceptable range [0..&lt;vector&gt;.size()-1].
+    Examples:
+    pvector v - Prints vector content, size, capacity and T typedef
+    pvector v 0 - Prints element[idx] from vector
+    pvector v 1 2 - Prints elements in range [idx1..idx2] from vector
+end 
+
+#
+# std::list&lt;&gt;
+#
+
+define plist
+    if $argc == 0
+        help plist
+    else
+        set $head = &amp;$arg0._M_impl._M_node
+        set $current = $arg0._M_impl._M_node._M_next
+        set $size = 0
+        while $current != $head
+            if $argc == 2
+                printf "elem[%u]: ", $size
+                p *($arg1*)($current + 1)
+            end
+            if $argc == 3
+                if $size == $arg2
+                    printf "elem[%u]: ", $size
+                    p *($arg1*)($current + 1)
+                end
+            end
+            set $current = $current._M_next
+            set $size++
+        end
+        printf "List size = %u \n", $size
+        if $argc == 1
+            printf "List "
+            whatis $arg0
+            printf "Use plist &lt;variable_name&gt; &lt;element_type&gt; to see the elements in the list.\n"
+        end
+    end
+end
+
+document plist
+    Prints std::list&lt;T&gt; information.
+    Syntax: plist &lt;list&gt; &lt;T&gt; &lt;idx&gt;: Prints list size, if T defined all elements or just element at idx
+    Examples:
+    plist l - prints list size and definition
+    plist l int - prints all elements and list size
+    plist l int 2 - prints the third element in the list (if exists) and list size
+end
+
+define plist_member
+    if $argc == 0
+        help plist_member
+    else
+        set $head = &amp;$arg0._M_impl._M_node
+        set $current = $arg0._M_impl._M_node._M_next
+        set $size = 0
+        while $current != $head
+            if $argc == 3
+                printf "elem[%u]: ", $size
+                p (*($arg1*)($current + 1)).$arg2
+            end
+            if $argc == 4
+                if $size == $arg3
+                    printf "elem[%u]: ", $size
+                    p (*($arg1*)($current + 1)).$arg2
+                end
+            end
+            set $current = $current._M_next
+            set $size++
+        end
+        printf "List size = %u \n", $size
+        if $argc == 1
+            printf "List "
+            whatis $arg0
+            printf "Use plist_member &lt;variable_name&gt; &lt;element_type&gt; &lt;member&gt; to see the elements in the list.\n"
+        end
+    end
+end
+
+document plist_member
+    Prints std::list&lt;T&gt; information.
+    Syntax: plist &lt;list&gt; &lt;T&gt; &lt;idx&gt;: Prints list size, if T defined all elements or just element at idx
+    Examples:
+    plist_member l int member - prints all elements and list size
+    plist_member l int member 2 - prints the third element in the list (if exists) and list size
+end
+
+
+#
+# std::map and std::multimap
+#
+
+define pmap
+    if $argc == 0
+        help pmap
+    else
+        set $tree = $arg0
+        set $i = 0
+        set $node = $tree._M_t._M_impl._M_header._M_left
+        set $end = $tree._M_t._M_impl._M_header
+        set $tree_size = $tree._M_t._M_impl._M_node_count
+        if $argc == 1
+            printf "Map "
+            whatis $tree
+            printf "Use pmap &lt;variable_name&gt; &lt;left_element_type&gt; &lt;right_element_type&gt; to see the elements in the map.\n"
+        end
+        if $argc == 3
+            while $i &lt; $tree_size
+                set $value = (void *)($node + 1)
+                printf "elem[%u].left: ", $i
+                p *($arg1*)$value
+                set $value = $value + sizeof($arg1)
+                printf "elem[%u].right: ", $i
+                p *($arg2*)$value
+                if $node._M_right != 0
+                    set $node = $node._M_right
+                    while $node._M_left != 0
+                        set $node = $node._M_left
+                    end
+                else
+                    set $tmp_node = $node._M_parent
+                    while $node == $tmp_node._M_right
+                        set $node = $tmp_node
+                        set $tmp_node = $tmp_node._M_parent
+                    end
+                    if $node._M_right != $tmp_node
+                        set $node = $tmp_node
+                    end
+                end
+                set $i++
+            end
+        end
+        if $argc == 4
+            set $idx = $arg3
+            set $ElementsFound = 0
+            while $i &lt; $tree_size
+                set $value = (void *)($node + 1)
+                if *($arg1*)$value == $idx
+                    printf "elem[%u].left: ", $i
+                    p *($arg1*)$value
+                    set $value = $value + sizeof($arg1)
+                    printf "elem[%u].right: ", $i
+                    p *($arg2*)$value
+                    set $ElementsFound++
+                end
+                if $node._M_right != 0
+                    set $node = $node._M_right
+                    while $node._M_left != 0
+                        set $node = $node._M_left
+                    end
+                else
+                    set $tmp_node = $node._M_parent
+                    while $node == $tmp_node._M_right
+                        set $node = $tmp_node
+                        set $tmp_node = $tmp_node._M_parent
+                    end
+                    if $node._M_right != $tmp_node
+                        set $node = $tmp_node
+                    end
+                end
+                set $i++
+            end
+            printf "Number of elements found = %u\n", $ElementsFound
+        end
+        if $argc == 5
+            set $idx1 = $arg3
+            set $idx2 = $arg4
+            set $ElementsFound = 0
+            while $i &lt; $tree_size
+                set $value = (void *)($node + 1)
+                set $valueLeft = *($arg1*)$value
+                set $valueRight = *($arg2*)($value + sizeof($arg1))
+                if $valueLeft == $idx1 &amp;&amp; $valueRight == $idx2
+                    printf "elem[%u].left: ", $i
+                    p $valueLeft
+                    printf "elem[%u].right: ", $i
+                    p $valueRight
+                    set $ElementsFound++
+                end
+                if $node._M_right != 0
+                    set $node = $node._M_right
+                    while $node._M_left != 0
+                        set $node = $node._M_left
+                    end
+                else
+                    set $tmp_node = $node._M_parent
+                    while $node == $tmp_node._M_right
+                        set $node = $tmp_node
+                        set $tmp_node = $tmp_node._M_parent
+                    end
+                    if $node._M_right != $tmp_node
+                        set $node = $tmp_node
+                    end
+                end
+                set $i++
+            end
+            printf "Number of elements found = %u\n", $ElementsFound
+        end
+        printf "Map size = %u\n", $tree_size
+    end
+end
+
+document pmap
+    Prints std::map&lt;TLeft and TRight&gt; or std::multimap&lt;TLeft and TRight&gt; information. Works for std::multimap as well.
+    Syntax: pmap &lt;map&gt; &lt;TtypeLeft&gt; &lt;TypeRight&gt; &lt;valLeft&gt; &lt;valRight&gt;: Prints map size, if T defined all elements or just element(s) with val(s)
+    Examples:
+    pmap m - prints map size and definition
+    pmap m int int - prints all elements and map size
+    pmap m int int 20 - prints the element(s) with left-value = 20 (if any) and map size
+    pmap m int int 20 200 - prints the element(s) with left-value = 20 and right-value = 200 (if any) and map size
+end
+
+
+define pmap_member
+    if $argc == 0
+        help pmap_member
+    else
+        set $tree = $arg0
+        set $i = 0
+        set $node = $tree._M_t._M_impl._M_header._M_left
+        set $end = $tree._M_t._M_impl._M_header
+        set $tree_size = $tree._M_t._M_impl._M_node_count
+        if $argc == 1
+            printf "Map "
+            whatis $tree
+            printf "Use pmap &lt;variable_name&gt; &lt;left_element_type&gt; &lt;right_element_type&gt; to see the elements in the map.\n"
+        end
+        if $argc == 5
+            while $i &lt; $tree_size
+                set $value = (void *)($node + 1)
+                printf "elem[%u].left: ", $i
+                p (*($arg1*)$value).$arg2
+                set $value = $value + sizeof($arg1)
+                printf "elem[%u].right: ", $i
+                p (*($arg3*)$value).$arg4
+                if $node._M_right != 0
+                    set $node = $node._M_right
+                    while $node._M_left != 0
+                        set $node = $node._M_left
+                    end
+                else
+                    set $tmp_node = $node._M_parent
+                    while $node == $tmp_node._M_right
+                        set $node = $tmp_node
+                        set $tmp_node = $tmp_node._M_parent
+                    end
+                    if $node._M_right != $tmp_node
+                        set $node = $tmp_node
+                    end
+                end
+                set $i++
+            end
+        end
+        if $argc == 6
+            set $idx = $arg5
+            set $ElementsFound = 0
+            while $i &lt; $tree_size
+                set $value = (void *)($node + 1)
+                if *($arg1*)$value == $idx
+                    printf "elem[%u].left: ", $i
+                    p (*($arg1*)$value).$arg2
+                    set $value = $value + sizeof($arg1)
+                    printf "elem[%u].right: ", $i
+                    p (*($arg3*)$value).$arg4
+                    set $ElementsFound++
+                end
+                if $node._M_right != 0
+                    set $node = $node._M_right
+                    while $node._M_left != 0
+                        set $node = $node._M_left
+                    end
+                else
+                    set $tmp_node = $node._M_parent
+                    while $node == $tmp_node._M_right
+                        set $node = $tmp_node
+                        set $tmp_node = $tmp_node._M_parent
+                    end
+                    if $node._M_right != $tmp_node
+                        set $node = $tmp_node
+                    end
+                end
+                set $i++
+            end
+            printf "Number of elements found = %u\n", $ElementsFound
+        end
+        printf "Map size = %u\n", $tree_size
+    end
+end
+
+document pmap_member
+    Prints std::map&lt;TLeft and TRight&gt; or std::multimap&lt;TLeft and TRight&gt; information. Works for std::multimap as well.
+    Syntax: pmap &lt;map&gt; &lt;TtypeLeft&gt; &lt;TypeRight&gt; &lt;valLeft&gt; &lt;valRight&gt;: Prints map size, if T defined all elements or just element(s) with val(s)
+    Examples:
+    pmap_member m class1 member1 class2 member2 - prints class1.member1 : class2.member2
+    pmap_member m class1 member1 class2 member2 lvalue - prints class1.member1 : class2.member2 where class1 == lvalue
+end
+
+
+#
+# std::set and std::multiset
+#
+
+define pset
+    if $argc == 0
+        help pset
+    else
+        set $tree = $arg0
+        set $i = 0
+        set $node = $tree._M_t._M_impl._M_header._M_left
+        set $end = $tree._M_t._M_impl._M_header
+        set $tree_size = $tree._M_t._M_impl._M_node_count
+        if $argc == 1
+            printf "Set "
+            whatis $tree
+            printf "Use pset &lt;variable_name&gt; &lt;element_type&gt; to see the elements in the set.\n"
+        end
+        if $argc == 2
+            while $i &lt; $tree_size
+                set $value = (void *)($node + 1)
+                printf "elem[%u]: ", $i
+                p *($arg1*)$value
+                if $node._M_right != 0
+                    set $node = $node._M_right
+                    while $node._M_left != 0
+                        set $node = $node._M_left
+                    end
+                else
+                    set $tmp_node = $node._M_parent
+                    while $node == $tmp_node._M_right
+                        set $node = $tmp_node
+                        set $tmp_node = $tmp_node._M_parent
+                    end
+                    if $node._M_right != $tmp_node
+                        set $node = $tmp_node
+                    end
+                end
+                set $i++
+            end
+        end
+        if $argc == 3
+            set $idx = $arg2
+            set $ElementsFound = 0
+            while $i &lt; $tree_size
+                set $value = (void *)($node + 1)
+                if *($arg1*)$value == $idx
+                    printf "elem[%u]: ", $i
+                    p *($arg1*)$value
+                    set $ElementsFound++
+                end
+                if $node._M_right != 0
+                    set $node = $node._M_right
+                    while $node._M_left != 0
+                        set $node = $node._M_left
+                    end
+                else
+                    set $tmp_node = $node._M_parent
+                    while $node == $tmp_node._M_right
+                        set $node = $tmp_node
+                        set $tmp_node = $tmp_node._M_parent
+                    end
+                    if $node._M_right != $tmp_node
+                        set $node = $tmp_node
+                    end
+                end
+                set $i++
+            end
+            printf "Number of elements found = %u\n", $ElementsFound
+        end
+        printf "Set size = %u\n", $tree_size
+    end
+end
+
+document pset
+    Prints std::set&lt;T&gt; or std::multiset&lt;T&gt; information. Works for std::multiset as well.
+    Syntax: pset &lt;set&gt; &lt;T&gt; &lt;val&gt;: Prints set size, if T defined all elements or just element(s) having val
+    Examples:
+    pset s - prints set size and definition
+    pset s int - prints all elements and the size of s
+    pset s int 20 - prints the element(s) with value = 20 (if any) and the size of s
+end
+
+
+
+#
+# std::dequeue
+#
+
+define pdequeue
+    if $argc == 0
+        help pdequeue
+    else
+        set $size = 0
+        set $start_cur = $arg0._M_impl._M_start._M_cur
+        set $start_last = $arg0._M_impl._M_start._M_last
+        set $start_stop = $start_last
+        while $start_cur != $start_stop
+            p *$start_cur
+            set $start_cur++
+            set $size++
+        end
+        set $finish_first = $arg0._M_impl._M_finish._M_first
+        set $finish_cur = $arg0._M_impl._M_finish._M_cur
+        set $finish_last = $arg0._M_impl._M_finish._M_last
+        if $finish_cur &lt; $finish_last
+            set $finish_stop = $finish_cur
+        else
+            set $finish_stop = $finish_last
+        end
+        while $finish_first != $finish_stop
+            p *$finish_first
+            set $finish_first++
+            set $size++
+        end
+        printf "Dequeue size = %u\n", $size
+    end
+end
+
+document pdequeue
+    Prints std::dequeue&lt;T&gt; information.
+    Syntax: pdequeue &lt;dequeue&gt;: Prints dequeue size, if T defined all elements
+    Deque elements are listed "left to right" (left-most stands for front and right-most stands for back)
+    Example:
+    pdequeue d - prints all elements and size of d
+end
+
+
+
+#
+# std::stack
+#
+
+define pstack
+    if $argc == 0
+        help pstack
+    else
+        set $start_cur = $arg0.c._M_impl._M_start._M_cur
+        set $finish_cur = $arg0.c._M_impl._M_finish._M_cur
+        set $size = $finish_cur - $start_cur
+        set $i = $size - 1
+        while $i &gt;= 0
+            p *($start_cur + $i)
+            set $i--
+        end
+        printf "Stack size = %u\n", $size
+    end
+end
+
+document pstack
+    Prints std::stack&lt;T&gt; information.
+    Syntax: pstack &lt;stack&gt;: Prints all elements and size of the stack
+    Stack elements are listed "top to buttom" (top-most element is the first to come on pop)
+    Example:
+    pstack s - prints all elements and the size of s
+end
+
+
+
+#
+# std::queue
+#
+
+define pqueue
+    if $argc == 0
+        help pqueue
+    else
+        set $start_cur = $arg0.c._M_impl._M_start._M_cur
+        set $finish_cur = $arg0.c._M_impl._M_finish._M_cur
+        set $size = $finish_cur - $start_cur
+        set $i = 0
+        while $i &lt; $size
+            p *($start_cur + $i)
+            set $i++
+        end
+        printf "Queue size = %u\n", $size
+    end
+end
+
+document pqueue
+    Prints std::queue&lt;T&gt; information.
+    Syntax: pqueue &lt;queue&gt;: Prints all elements and the size of the queue
+    Queue elements are listed "top to bottom" (top-most element is the first to come on pop)
+    Example:
+    pqueue q - prints all elements and the size of q
+end
+
+
+
+#
+# std::priority_queue
+#
+
+define ppqueue
+    if $argc == 0
+        help ppqueue
+    else
+        set $size = $arg0.c._M_impl._M_finish - $arg0.c._M_impl._M_start
+        set $capacity = $arg0.c._M_impl._M_end_of_storage - $arg0.c._M_impl._M_start
+        set $i = $size - 1
+        while $i &gt;= 0
+            p *($arg0.c._M_impl._M_start + $i)
+            set $i--
+        end
+        printf "Priority queue size = %u\n", $size
+        printf "Priority queue capacity = %u\n", $capacity
+    end
+end
+
+document ppqueue
+    Prints std::priority_queue&lt;T&gt; information.
+    Syntax: ppqueue &lt;priority_queue&gt;: Prints all elements, size and capacity of the priority_queue
+    Priority_queue elements are listed "top to buttom" (top-most element is the first to come on pop)
+    Example:
+    ppqueue pq - prints all elements, size and capacity of pq
+end
+
+
+
+#
+# std::bitset
+#
+
+define pbitset
+    if $argc == 0
+        help pbitset
+    else
+        p /t $arg0._M_w
+    end
+end
+
+document pbitset
+    Prints std::bitset&lt;n&gt; information.
+    Syntax: pbitset &lt;bitset&gt;: Prints all bits in bitset
+    Example:
+    pbitset b - prints all bits in b
+end
+
+
+
+#
+# std::string
+#
+
+define pstring
+    if $argc == 0
+        help pstring
+    else
+        printf "String \t\t\t= \"%s\"\n", $arg0._M_data()
+        printf "String size/length \t= %u\n", $arg0._M_rep()._M_length
+        printf "String capacity \t= %u\n", $arg0._M_rep()._M_capacity
+        printf "String ref-count \t= %d\n", $arg0._M_rep()._M_refcount
+    end
+end
+
+document pstring
+    Prints std::string information.
+    Syntax: pstring &lt;string&gt;
+    Example:
+    pstring s - Prints content, size/length, capacity and ref-count of string s
+end 
+
+#
+# std::wstring
+#
+
+define pwstring
+    if $argc == 0
+        help pwstring
+    else
+        call printf("WString \t\t= \"%ls\"\n", $arg0._M_data())
+        printf "WString size/length \t= %u\n", $arg0._M_rep()._M_length
+        printf "WString capacity \t= %u\n", $arg0._M_rep()._M_capacity
+        printf "WString ref-count \t= %d\n", $arg0._M_rep()._M_refcount
+    end
+end
+
+document pwstring
+    Prints std::wstring information.
+    Syntax: pwstring &lt;wstring&gt;
+    Example:
+    pwstring s - Prints content, size/length, capacity and ref-count of wstring s
+end 
+
+#
+# C++ related beautifiers (optional)
+#
+
+set height 0
+set history size 10000
+set history filename ~/.gdb_history
+set history save on
+
+#退出時不顯示提示信息
+set confirm off
+
+#按照派生類型打印對象
+set print object on
+
+#打印數組的索引下標
+set print array-indexes on
+
+#每行打印一個結構體成員
+set print pretty on
+
+set print union on
+
+set print address on 
+
+set print static-members on
+set print vtbl on
+set print demangle on
+set demangle-style gnu-v3
+set print sevenbit-strings off
+set step-mode on
+
+shell rm -f ./gdb.log
+set logging off
+set logging file ./gdb.log
+set logging on
+
+python
+import sys
+import os
+p = os.path.expanduser('/home/shihyu/.mybin/gdb_8.1/python') 
+print(p)
+if os.path.exists(p):
+    sys.path.insert(0, p)
+    from libstdcxx.v6.printers import register_libstdcxx_printers
+    register_libstdcxx_printers(None)
+end
+</code></pre>
+<h2 id="core-dump"><a class="header" href="#core-dump">core dump</a></h2>
+<pre><code class="language-sh"># 查看當前系統允許的 Core Dump 文件大小限制
+# 如果顯示 "0"，表示 Core Dump 文件生成被禁用
+ulimit -c
+
+# 設置 Core Dump 文件大小無限制
+# 這條命令允許程序崩潰時生成 Core Dump 文件，便於調試
+ulimit -c unlimited
+
+# 停止 Apport 服務，Apport 是 Ubuntu 的錯誤報告系統
+# Ubuntu 默認使用 Apport 來攔截崩潰錯誤，會干擾 Core Dump 文件的生成
+# 通過停止 Apport，可以讓系統直接生成標準的 Core Dump 文件
+sudo service apport stop
+</code></pre>
+<h2 id="100個gdb小技巧"><a class="header" href="#100個gdb小技巧">100個gdb小技巧</a></h2>
+<ul>
+<li>https://github.com/hellogcc/100-gdb-tips</li>
+</ul>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../vim/tabnine.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../gdb/常用指令.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../vim/tabnine.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../gdb/常用指令.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

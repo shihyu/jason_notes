@@ -1,0 +1,1750 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Finlab - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="低波動-飆股長相"><a class="header" href="#低波動-飆股長相">低波動 飆股長相</a></h2>
+<pre><code class="language-python">def compute_candle_volatility(timeperiod=20):
+    close = data.get("price:收盤價")
+    high = data.get("price:最高價")
+    low = data.get("price:最低價")
+    open_ = data.get("price:開盤價")
+
+    bullish_candle = close &gt;= open_
+    bullish_volatility = (
+        abs(close.shift() - open_)
+        + abs(open_ - low)
+        + abs(low - high)
+        + abs(high - close)
+    )
+    bearish_volatility = (
+        abs(close.shift() - open_)
+        + abs(open_ - high)
+        + abs(high - low)
+        + abs(low - close)
+    )
+    candle_volatility = FinlabDataFrame(
+        np.nan, index=close.index, columns=close.columns
+    )
+    candle_volatility[bullish_candle] = bullish_volatility
+    candle_volatility[~bullish_candle] = bearish_volatility
+    volatility = (
+        candle_volatility.average(timeperiod) / close.average(timeperiod) * 100
+    )
+    return volatility
+</code></pre>
+<h2 id="收盤價跟月營收合併"><a class="header" href="#收盤價跟月營收合併">收盤價跟月營收合併</a></h2>
+<pre><code class="language-python">import finlab
+import pandas as pd
+from finlab import data
+
+pd.options.display.float_format = lambda x: "%.2f" % x
+
+
+if __name__ == "__main__":
+    close = data.get("price:收盤價")
+    rev = data.get("monthly_revenue:當月營收")
+    print(close)
+    print(rev)
+
+    merged_df = close.merge(rev, on='date', how='left', suffixes=('_close', '_rev'))
+    merged_df.fillna(method='bfill', inplace=True)
+    print(merged_df, merged_df.columns)
+    print(merged_df['2330_close'], merged_df['2330_rev'])
+</code></pre>
+<h2 id="臺股漲跌與市值板塊圖"><a class="header" href="#臺股漲跌與市值板塊圖">臺股漲跌與市值板塊圖</a></h2>
+<p>出處: https://www.finlab.tw/dashboard2-plotly-treemap/</p>
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+import finlab
+from finlab import data
+import plotly.express as px
+
+
+"""
+https://www.finlab.tw/dashboard2-plotly-treemap/
+Treemap
+"""
+
+
+def df_date_filter(df, start=None, end=None):
+    if start:
+        df = df[df.index &gt;= start]
+    if end:
+        df = df[df.index &lt;= end]
+    return df
+
+
+def create_treemap_data(start, end, item, clip=None):
+    close = data.get("price:收盤價")
+    basic_info = data.get("company_basic_info")
+    turnover = data.get("price:成交金額")
+    close_data = df_date_filter(close, start, end)
+    turnover_data = df_date_filter(turnover, start, end).iloc[1:].sum() / 100000000
+    return_ratio = (
+        (close_data.iloc[-1] / close_data.iloc[-2]).dropna().replace(np.inf, 0)
+    )
+    return_ratio = round((return_ratio - 1) * 100, 2)
+
+    concat_list = [close_data.iloc[-1], turnover_data, return_ratio]
+    col_names = ["stock_id", "close", "turnover", "return_ratio"]
+    if item not in ["return_ratio", "turnover_ratio"]:
+        try:
+            custom_item = df_date_filter(data.get(item), start, end).iloc[-1].fillna(0)
+        except Exception as e:
+            logger.error("data error, check the data is existed between start and end.")
+            logger.error(e)
+            return None
+        if clip:
+            custom_item = custom_item.clip(*clip)
+        concat_list.append(custom_item)
+        col_names.append(item)
+
+    df = pd.concat(concat_list, axis=1).dropna()
+    df = df.reset_index()
+    df.columns = col_names
+
+    basic_info_df = basic_info.copy()
+    basic_info_df["stock_id_name"] = basic_info_df["stock_id"] + basic_info_df["公司簡稱"]
+
+    df = df.merge(
+        basic_info_df[["stock_id", "stock_id_name", "產業類別", "市場別", "實收資本額(元)"]],
+        how="left",
+        on="stock_id",
+    )
+    df = df.rename(columns={"產業類別": "category", "市場別": "market", "實收資本額(元)": "base"})
+    df = df.dropna(thresh=5)
+    df["market_value"] = round(df["base"] / 10 * df["close"] / 100000000, 2)
+    df["turnover_ratio"] = df["turnover"] / (df["turnover"].sum()) * 100
+    df["country"] = "TW-Stock"
+    return df
+
+
+def plot_tw_stock_treemap(
+    start=None,
+    end=None,
+    area_ind="market_value",
+    item="return_ratio",
+    clip=None,
+    color_scales="Temps",
+):
+    """Plot treemap chart for tw_stock
+
+    Treemap charts visualize hierarchical data using nested rectangles,
+    it is good for judging the overall market dynamics.
+
+    Args:
+      start(str): The date of data start point.ex:2021-01-02
+      end(str):The date of data end point.ex:2021-01-05
+      area_ind(str):The indicator to control treemap area size .
+                    Select range is in ["market_value","turnover","turnover_ratio"]
+      item(str): The indicator to control treemap area color .
+                 Select range is in ["return_ratio", "turnover_ratio"]
+                 or use the other customized data which you could find from finlab database page,
+                 ex:'price_earning_ratio:本益比'
+      clip(tuple):lower and upper pd.clip() setting for item values to make distinct colors.ex:(0,100)
+      color_scales(str):Used for the built-in named continuous
+                        (sequential, diverging and cyclical) color scales in Plotly
+                        Ref:https://plotly.com/python/builtin-colorscales/
+    Returns:
+        figure
+    """
+    df = create_treemap_data(start, end, item, clip)
+    if df is None:
+        return None
+    df["custom_item_label"] = round(df[item], 2).astype(str)
+
+    if area_ind not in ["market_value", "turnover", "turnover_ratio"]:
+        return None
+
+    if item in ["return_ratio"]:
+        color_continuous_midpoint = 0
+    else:
+        color_continuous_midpoint = np.average(df[item], weights=df[area_ind])
+
+    fig = px.treemap(
+        df,
+        path=["country", "market", "category", "stock_id_name"],
+        values=area_ind,
+        color=item,
+        color_continuous_scale=color_scales,
+        color_continuous_midpoint=color_continuous_midpoint,
+        custom_data=["custom_item_label", "close", "turnover"],
+        title=f"TW-Stock Market TreeMap({start}~{end})"
+        f"---area_ind:{area_ind}---item:{item}",
+        width=1600,
+        height=800,
+    )
+
+    fig.update_traces(
+        textposition="middle center",
+        textfont_size=24,
+        texttemplate="%{label}(%{customdata[1]})&lt;br&gt;%{customdata[0]}",
+    )
+    return fig
+
+
+if __name__ == "__main__":
+    # @title 臺股漲跌與市值板塊圖
+    start = "2021-07-01"  # @param {type:"date"}
+    end = "2021-07-02"  # @param {type:"date"}
+    area_ind = "turnover_ratio"  # @param ["market_value","turnover","turnover_ratio"] {allow-input: true}
+    item = (
+        "return_ratio"  # @param ["return_ratio", "turnover_ratio"] {allow-input: true}
+    )
+    clip = 1000  # @param {type:"number"}
+
+    plot_tw_stock_treemap(start, end, area_ind, item, clip)
+
+</code></pre>
+<h2 id="finlab--的-mae--gmfe--bmfe"><a class="header" href="#finlab--的-mae--gmfe--bmfe">finlab  的 mae  gmfe  bmfe</a></h2>
+<p>以 2063 世鎧 mae 是  0 代表  2023-01-03 進場～ 2023-02-01 出場 的所有日K open 價都高過 進場當天開盤價</p>
+<p>是以進場價格做基準點～ 藏獒策略以開盤價進場  開盤價出場</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right">trade_index</th><th style="text-align: left">stock_id</th><th style="text-align: left">entry_date</th><th style="text-align: left">exit_date</th><th style="text-align: left">entry_sig_date</th><th style="text-align: left">exit_sig_date</th><th style="text-align: right">return</th><th style="text-align: right">trade_price@entry_date</th><th style="text-align: right">trade_price@exit_date</th><th style="text-align: right">mae</th><th style="text-align: right">gmfe</th><th style="text-align: right">bmfe</th><th style="text-align: right">mdd</th><th style="text-align: right">return_include_fee</th></tr></thead><tbody>
+<tr><td style="text-align: right">630</td><td style="text-align: left">2063 世鎧</td><td style="text-align: left">2023-01-03</td><td style="text-align: left">2023-02-01</td><td style="text-align: left">2022-12-30</td><td style="text-align: left">2023-01-31</td><td style="text-align: right">0.0159</td><td style="text-align: right">43.9000</td><td style="text-align: right">44.6000</td><td style="text-align: right">0.0000</td><td style="text-align: right">0.0342</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.0287</td><td style="text-align: right">1.0000</td></tr>
+<tr><td style="text-align: right">631</td><td style="text-align: left">3498 陽程</td><td style="text-align: left">2023-01-03</td><td style="text-align: left">2023-02-01</td><td style="text-align: left">2022-12-30</td><td style="text-align: left">2023-01-31</td><td style="text-align: right">-0.0225</td><td style="text-align: right">37.8000</td><td style="text-align: right">36.9500</td><td style="text-align: right">-0.0542</td><td style="text-align: right">0.0582</td><td style="text-align: right">0.0582</td><td style="text-align: right">-0.1062</td><td style="text-align: right">-2.8200</td></tr>
+<tr><td style="text-align: right">632</td><td style="text-align: left">8996 高力</td><td style="text-align: left">2023-01-03</td><td style="text-align: left">2023-02-01</td><td style="text-align: left">2022-12-30</td><td style="text-align: left">2023-01-31</td><td style="text-align: right">0.1568</td><td style="text-align: right">185.0000</td><td style="text-align: right">214.0000</td><td style="text-align: right">-0.0270</td><td style="text-align: right">0.1568</td><td style="text-align: right">0.0270</td><td style="text-align: right">-0.0526</td><td style="text-align: right">15.0000</td></tr>
+<tr><td style="text-align: right">633</td><td style="text-align: left">1104 環泥</td><td style="text-align: left">2023-02-01</td><td style="text-align: left">2023-03-01</td><td style="text-align: left">2023-01-31</td><td style="text-align: left">2023-02-24</td><td style="text-align: right">0.0253</td><td style="text-align: right">23.7000</td><td style="text-align: right">24.3000</td><td style="text-align: right">-0.0042</td><td style="text-align: right">0.0316</td><td style="text-align: right">0.0274</td><td style="text-align: right">-0.0308</td><td style="text-align: right">1.9300</td></tr>
+<tr><td style="text-align: right">634</td><td style="text-align: left">1707 葡萄王</td><td style="text-align: left">2023-01-03</td><td style="text-align: left">2023-03-01</td><td style="text-align: left">2022-12-30</td><td style="text-align: left">2023-02-24</td><td style="text-align: right">0.0737</td><td style="text-align: right">169.5000</td><td style="text-align: right">182.0000</td><td style="text-align: right">-0.0619</td><td style="text-align: right">0.0737</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.0619</td><td style="text-align: right">6.7500</td></tr>
+<tr><td style="text-align: right">635</td><td style="text-align: left">2727 王品</td><td style="text-align: left">2023-02-01</td><td style="text-align: left">2023-03-01</td><td style="text-align: left">2023-01-31</td><td style="text-align: left">2023-02-24</td><td style="text-align: right">0.4865</td><td style="text-align: right">185.0000</td><td style="text-align: right">275.0000</td><td style="text-align: right">0.0000</td><td style="text-align: right">0.4865</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.0455</td><td style="text-align: right">47.7800</td></tr>
+<tr><td style="text-align: right">636</td><td style="text-align: left">6612 奈米醫材</td><td style="text-align: left">2023-02-01</td><td style="text-align: left">2023-03-01</td><td style="text-align: left">2023-01-31</td><td style="text-align: left">2023-02-24</td><td style="text-align: right">0.2284</td><td style="text-align: right">116.0000</td><td style="text-align: right">142.5000</td><td style="text-align: right">0.0000</td><td style="text-align: right">0.3405</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.0870</td><td style="text-align: right">22.1300</td></tr>
+<tr><td style="text-align: right">637</td><td style="text-align: left">2916 滿心</td><td style="text-align: left">2023-03-01</td><td style="text-align: left">2023-04-06</td><td style="text-align: left">2023-02-24</td><td style="text-align: left">2023-03-31</td><td style="text-align: right">-0.0046</td><td style="text-align: right">32.8000</td><td style="text-align: right">32.6500</td><td style="text-align: right">-0.0244</td><td style="text-align: right">0.0549</td><td style="text-align: right">0.0549</td><td style="text-align: right">-0.0751</td><td style="text-align: right">-1.0400</td></tr>
+<tr><td style="text-align: right">638</td><td style="text-align: left">3004 豐達科</td><td style="text-align: left">2023-03-01</td><td style="text-align: left">2023-04-06</td><td style="text-align: left">2023-02-24</td><td style="text-align: left">2023-03-31</td><td style="text-align: right">0.0650</td><td style="text-align: right">89.2000</td><td style="text-align: right">93.9000</td><td style="text-align: right">-0.0695</td><td style="text-align: right">0.0650</td><td style="text-align: right">0.0381</td><td style="text-align: right">-0.1037</td><td style="text-align: right">4.6500</td></tr>
+<tr><td style="text-align: right">639</td><td style="text-align: left">3052 夆典</td><td style="text-align: left">2023-03-01</td><td style="text-align: left">2023-04-06</td><td style="text-align: left">2023-02-24</td><td style="text-align: left">2023-03-31</td><td style="text-align: right">-0.0560</td><td style="text-align: right">11.6000</td><td style="text-align: right">10.9500</td><td style="text-align: right">-0.0560</td><td style="text-align: right">0.0000</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.0560</td><td style="text-align: right">-6.1500</td></tr>
+<tr><td style="text-align: right">640</td><td style="text-align: left">6664 群翊</td><td style="text-align: left">2023-03-01</td><td style="text-align: left">2023-04-06</td><td style="text-align: left">2023-02-24</td><td style="text-align: left">2023-03-31</td><td style="text-align: right">0.0648</td><td style="text-align: right">108.0000</td><td style="text-align: right">115.0000</td><td style="text-align: right">-0.0648</td><td style="text-align: right">0.0648</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.0648</td><td style="text-align: right">5.8600</td></tr>
+<tr><td style="text-align: right">641</td><td style="text-align: left">8931 大汽電</td><td style="text-align: left">2023-02-01</td><td style="text-align: left">2023-04-06</td><td style="text-align: left">2023-01-31</td><td style="text-align: left">2023-03-31</td><td style="text-align: right">0.6282</td><td style="text-align: right">46.8000</td><td style="text-align: right">76.2000</td><td style="text-align: right">0.0000</td><td style="text-align: right">0.7286</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.0581</td><td style="text-align: right">61.8700</td></tr>
+<tr><td style="text-align: right">642</td><td style="text-align: left">3078 僑威</td><td style="text-align: left">2023-04-06</td><td style="text-align: left">nan</td><td style="text-align: left">2023-03-31</td><td style="text-align: left">2023-04-30</td><td style="text-align: right">0.2362</td><td style="text-align: right">44.2500</td><td style="text-align: right">54.7000</td><td style="text-align: right">-0.0147</td><td style="text-align: right">0.3107</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.0569</td><td style="text-align: right">22.8900</td></tr>
+<tr><td style="text-align: right">643</td><td style="text-align: left">3540 曜越</td><td style="text-align: left">2023-04-06</td><td style="text-align: left">nan</td><td style="text-align: left">2023-03-31</td><td style="text-align: left">2023-04-30</td><td style="text-align: right">0.0773</td><td style="text-align: right">38.8000</td><td style="text-align: right">41.8000</td><td style="text-align: right">-0.0052</td><td style="text-align: right">0.1521</td><td style="text-align: right">0.0013</td><td style="text-align: right">-0.0649</td><td style="text-align: right">7.1000</td></tr>
+<tr><td style="text-align: right">644</td><td style="text-align: left">4119 旭富</td><td style="text-align: left">2023-04-06</td><td style="text-align: left">nan</td><td style="text-align: left">2023-03-31</td><td style="text-align: left">2023-04-30</td><td style="text-align: right">0.0496</td><td style="text-align: right">121.0000</td><td style="text-align: right">127.0000</td><td style="text-align: right">0.0000</td><td style="text-align: right">0.0992</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.0451</td><td style="text-align: right">4.3500</td></tr>
+<tr><td style="text-align: right">645</td><td style="text-align: left">4153 鈺緯</td><td style="text-align: left">2023-04-06</td><td style="text-align: left">nan</td><td style="text-align: left">2023-03-31</td><td style="text-align: left">2023-04-30</td><td style="text-align: right">0.1000</td><td style="text-align: right">48.0000</td><td style="text-align: right">52.8000</td><td style="text-align: right">0.0000</td><td style="text-align: right">0.2625</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.1287</td><td style="text-align: right">9.3600</td></tr>
+<tr><td style="text-align: right">646</td><td style="text-align: left">4190 佐登-KY</td><td style="text-align: left">2023-04-06</td><td style="text-align: left">nan</td><td style="text-align: left">2023-03-31</td><td style="text-align: left">2023-04-30</td><td style="text-align: right">0.0741</td><td style="text-align: right">94.5000</td><td style="text-align: right">101.5000</td><td style="text-align: right">-0.0169</td><td style="text-align: right">0.1111</td><td style="text-align: right">0.0000</td><td style="text-align: right">-0.0333</td><td style="text-align: right">6.7800</td></tr>
+</tbody></table>
+</div>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+"""correlationMatrix.ipynb
+
+Automatically generated by Colaboratory.
+
+Original file is located at
+    https://colab.research.google.com/drive/1jmq3ycgp65_NURP8cY3vg2SvTDXc5X8n
+"""
+
+#!pip install yfinance &gt; log.txt
+#@title 輸入 Yahoo 股票代號(例如: 2330.TW, AAPL, BTC-USD)
+stock_ids = "2454.TW,2330.TW, AAPL, BTC-USD" #@param {type:"string"}
+
+import yfinance as yf
+import time
+import pandas as pd
+
+stocks = stock_ids.replace(' ', '').split(',')
+price = {}
+
+for s in stocks:
+
+  print(f'download {s}')
+
+  ss = yf.Ticker(s)
+
+  # get historical market data
+  hist = ss.history(period='1y')
+
+  price[s] = hist['Close']
+  time.sleep(3)
+
+import seaborn
+import matplotlib.pyplot as plt
+
+plt.rcParams['figure.figsize'] = (10, 6)
+seaborn.heatmap(pd.DataFrame(price).pct_change().dropna(how='any').corr(), cmap="YlGnBu",vmax=1,vmin=-1, annot=True)
+</code></pre>
+<p><img src="images/correlationMatrix.png" alt="" /></p>
+<h2 id="finlab策略"><a class="header" href="#finlab策略">finlab策略</a></h2>
+<pre><code class="language-python">from finlab import data
+from finlab.backtest import sim
+import pandas as pd
+import redis
+import finlab
+
+def connect_redis():
+    r = None
+    pool = redis.ConnectionPool(host="localhost", port=6379, db=8)
+    try:
+        r = redis.Redis(connection_pool=pool, charset="utf-8")
+    except Exception as err:
+        logger.error(err)
+    return r
+
+# rs = connect_redis()
+# rs.flushdb()
+
+finlab.login("")
+score = data.get('etl:finlab_tw_stock_market_ind')['score']
+close = data.get("price:收盤價")
+vol = data.get("price:成交股數")
+vol_ma = vol.average(10)
+rev = data.get('monthly_revenue:當月營收')
+rev_year_growth = data.get('monthly_revenue:去年同月增減(%)')
+rev_month_growth = 	data.get('monthly_revenue:上月比較增減(%)')
+
+# 股價創年新高
+cond1 = (close == close.rolling(250).max())
+
+# 排除月營收連3月衰退10%以上
+cond2 = ~(rev_year_growth &lt; -10).sustain(3) 
+
+# 排除月營收成長趨勢過老(12個月內有至少8個月單月營收年增率大於60%)
+cond3 = ~(rev_year_growth &gt; 60).sustain(12,8) 
+
+# 確認營收底部，近月營收脫離近年穀底(連續3月的"單月營收近12月最小值/近月營收" &lt; 0.8)
+cond4 = ((rev.rolling(12).min())/(rev) &lt; 0.8).sustain(3)
+
+# 單月營收月增率連續3月大於-40%
+cond5 = (rev_month_growth &gt; -40).sustain(3)
+
+# 流動性條件
+cond6 = vol_ma &gt; 200*1000
+
+buy = cond1 &amp; cond2  &amp; cond3 &amp; cond4 &amp; cond5 &amp; cond6
+
+# 買比較冷門的股票
+buy = vol_ma*buy
+buy = buy[buy&gt;0]
+buy = buy.is_smallest(5)
+long_position = buy.resample('M').last().reindex(close.index,method='ffill')
+
+score_df = score &gt;= 4
+long_position *= score_df
+
+# 做空訊號～多單遇大盤訊號轉空時出場，並反手做空指數避險
+short_target = '00632R'
+short_position = close[[short_target]].notna() * ~score_df
+position = pd.concat([long_position, short_position], axis=1)
+
+report = sim(position, upload=True, position_limit=1/3, fee_ratio=1.425/1000/3, stop_loss=0.08,  trade_at_price='open' ,name='XXXX', live_performance_start='2022-06-01')
+print(report.get_trades().to_markdown())
+
+</code></pre>
+<pre><code class="language-python">from finlab import data
+from finlab.backtest import sim
+import finlab
+
+finlab.login("")
+
+close = data.get("price:收盤價")
+vol = data.get("price:成交股數")
+vol_ma = vol.average(10)
+rev = data.get('monthly_revenue:當月營收')
+rev_year_growth = data.get('monthly_revenue:去年同月增減(%)')
+rev_month_growth = 	data.get('monthly_revenue:上月比較增減(%)')
+
+# 股價創年新高
+cond1 = (close == close.rolling(250).max())
+
+# 排除月營收連3月衰退10%以上
+cond2 = ~(rev_year_growth &lt; -10).sustain(3) 
+
+# 排除月營收成長趨勢過老(12個月內有至少8個月單月營收年增率大於60%)
+cond3 = ~(rev_year_growth &gt; 60).sustain(12,8)
+
+# 確認營收底部(單月營收月增率連續3月大於-40)
+cond4 = ((rev.rolling(12).min())/(rev) &lt; 0.8).sustain(3)
+
+# 單月營收月增率連續3月大於-40%
+cond5 = (rev_month_growth &gt; -40).sustain(3)
+
+# 流動性條件
+cond6 = vol_ma &gt; 200*1000
+
+buy = cond1 &amp; cond2  &amp; cond3 &amp; cond4 &amp; cond5 &amp; cond6
+
+# 買比較冷門的股票
+buy = vol_ma*buy
+buy = buy[buy&gt;0]
+buy = buy.is_smallest(5)
+
+report = sim(buy , resample="M", upload=True, position_limit=1/3, fee_ratio=1.425/1000/3, stop_loss=0.08,  trade_at_price='open',name='XXX', live_performance_start='2022-05-01')
+print(report.get_trades().to_markdown())
+
+</code></pre>
+<pre><code class="language-py">from loguru import logger
+from finlab import data
+from finlab.backtest import sim
+import finlab
+import pandas as pd
+import pickle
+import redis
+import zlib
+
+
+def data_to_redis(r):
+    score = data.get("etl:finlab_tw_stock_market_ind")["score"]
+    close = data.get("price:收盤價")
+    vol = data.get("price:成交股數")
+    vol_ma = vol.average(10)
+    rev = data.get("monthly_revenue:當月營收")
+    rev_year_growth = data.get("monthly_revenue:去年同月增減(%)")
+    rev_month_growth = data.get("monthly_revenue:上月比較增減(%)")
+    EXPIRATION_SECONDS = 86400
+    # Set
+    r.setex("score", EXPIRATION_SECONDS, zlib.compress(pickle.dumps(score)))
+    r.setex("close", EXPIRATION_SECONDS, zlib.compress(pickle.dumps(close)))
+    r.setex("vol", EXPIRATION_SECONDS, zlib.compress(pickle.dumps(vol)))
+    r.setex("vol_ma", EXPIRATION_SECONDS, zlib.compress(pickle.dumps(vol_ma)))
+    r.setex("rev", EXPIRATION_SECONDS, zlib.compress(pickle.dumps(rev)))
+    r.setex(
+        "rev_year_growth",
+        EXPIRATION_SECONDS,
+        zlib.compress(pickle.dumps(rev_year_growth)),
+    )
+    r.setex(
+        "rev_month_growth",
+        EXPIRATION_SECONDS,
+        zlib.compress(pickle.dumps(rev_month_growth)),
+    )
+
+def backtest(r):
+    # Get
+    score_df = pickle.loads(zlib.decompress(r.get("score")))
+    close_df = pickle.loads(zlib.decompress(r.get("close")))
+    vol_df = pickle.loads(zlib.decompress(r.get("vol")))
+    vol_ma_df = pickle.loads(zlib.decompress(r.get("vol_ma")))
+    rev_df = pickle.loads(zlib.decompress(r.get("rev")))
+    rev_year_growth_df = pickle.loads(zlib.decompress(r.get("rev_year_growth")))
+    rev_month_growth_df = pickle.loads(zlib.decompress(r.get("rev_month_growth")))
+    # print(score_df)
+    # print(close_df)
+    # print(vol_df)
+    # print(vol_ma_df)
+    # print(rev_df)
+    # print(rev_year_growth_df)
+    # print(rev_month_growth_df)
+    # 股價創年新高
+    cond1 = close_df == close_df.rolling(250).max()
+
+    # 排除月營收連3月衰退10%以上
+    cond2 = ~(rev_year_growth_df &lt; -10).sustain(3)
+
+    # 排除月營收成長趨勢過老(12個月內有至少8個月單月營收年增率大於60%)
+    cond3 = ~(rev_year_growth_df &gt; 60).sustain(12, 8)
+
+    # 確認營收底部，近月營收脫離近年穀底(連續3月的"單月營收近12月最小值/近月營收" &lt; 0.8)
+    cond4 = ((rev_df.rolling(12).min()) / (rev_df) &lt; 0.8).sustain(3)
+
+    # 單月營收月增率連續3月大於-40%
+    cond5 = (rev_month_growth_df &gt; -40).sustain(3)
+
+    # 流動性條件
+    cond6 = vol_ma_df &gt; 200 * 1000
+    buy = cond1 &amp; cond2 &amp; cond3 &amp; cond4 &amp; cond5 &amp; cond6
+
+    # 買比較冷門的股票
+    buy = vol_ma_df * buy
+    buy = buy[buy &gt; 0]
+    buy = buy.is_smallest(5)
+    long_position = buy.resample("M").last().reindex(close_df.index, method="ffill")
+    score_df = score_df &gt;= 4
+    long_position *= score_df
+
+    # 做空訊號～多單遇大盤訊號轉空時出場，並反手做空指數避險
+    short_target = "00632R"
+    short_position = close_df[[short_target]].notna() * ~score_df
+    position = pd.concat([long_position, short_position], axis=1)
+
+    report = sim(
+        position,
+        upload=True,
+        position_limit=1 / 3,
+        fee_ratio=1.425 / 1000 / 3,
+        stop_loss=0.08,
+        trade_at_price="open",
+        name="XXXXX",
+        live_performance_start="2022-06-01",
+    )
+    # print(report.get_stats())
+
+
+def connect_redis():
+    pool = redis.ConnectionPool(host="localhost", port=6379, db=0)
+    try:
+        r = redis.Redis(connection_pool=pool, charset="utf-8")
+    except Exception as err:
+        logger.error(err)
+    return r
+
+
+if __name__ == "__main__":
+    finlab.login(
+        ""
+    )
+    r = connect_redis()
+    # data_to_redis(r)
+    backtest(r)
+
+</code></pre>
+<h2 id="highcharts_股價走勢ipynb"><a class="header" href="#highcharts_股價走勢ipynb">highcharts_股價走勢.ipynb</a></h2>
+<p>https://colab.research.google.com/drive/1W1kH3cwNUTj7hMMyF8W4wcehiWLSyAUF?usp=sharing#scrollTo=Mij5sRmwbtCP</p>
+<pre><code class="language-python">import yfinance as yf
+
+# 取得股價歷史資料(含臺股\美股\加密貨幣)
+
+symbol = '2330.TW' # 臺股上市:TW 臺股上櫃:TWO 
+start = '2018-01-01' # 起始時間
+end = '2022-12-31' # 結束時間
+
+ohlcv = yf.Ticker(symbol).history('max').loc[start:end]
+
+
+from highcharts import Highchart
+import datetime
+from IPython.display import HTML,display
+import os
+
+# 客製化調整參數
+color = '#4285f4' # 線的顏色 (red/green/blue/purple)
+linewidth = 2 # 線的粗細
+title = symbol # 標題名稱
+width = 800 # 圖的寬度
+height = 500 # 圖的高度
+
+
+# 繪圖設定
+H = Highchart(width=width,height=height)
+
+x = ohlcv.index
+y = round(ohlcv.Close,2)
+
+data = [[index,s] for index,s in zip(x,y)]
+H.add_data_set(data,'line','data',color=color)
+
+H.set_options('xAxis',{'type':'datetime'})
+H.set_options('title',{'text':title,'style':{'color':'black'}}) # 設定title
+H.set_options('plotOptions',{'line':{'lineWidth':linewidth,'dataLabels':{'enabled': False}}}) # 設定線的粗度
+H.set_options('tooltip',{'shared':True,'crosshairs':True}) # 設定為可互動式
+
+# 顯示圖表
+H.save_file('chart')
+display(HTML('chart.html'))
+os.remove('chart.html')
+</code></pre>
+<h2 id="突破策略豆知識--如何避免假突破"><a class="header" href="#突破策略豆知識--如何避免假突破">突破策略豆知識 | 如何避免假突破?</a></h2>
+<p>https://colab.research.google.com/drive/1M0XxnAMZoqoOrJQP9dyJVer5Q7YyRFOA?usp=sharing</p>
+<p>https://www.finlab.tw/breakthrough_stock_picking_strategies/</p>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+"""股價創新高動能.ipynb
+
+Automatically generated by Colaboratory.
+
+Original file is located at
+    https://colab.research.google.com/drive/1M0XxnAMZoqoOrJQP9dyJVer5Q7YyRFOA
+
+## 安裝套件
+"""
+
+# Commented out IPython magic to ensure Python compatibility.
+# %%capture
+# !pip install finlab &gt; log.txt
+# !pip install talib-binary &gt; log.txt
+
+"""## 股價創新高動能"""
+
+from finlab.backtest import sim
+from finlab import data
+
+# 標的範圍為上市櫃普通股
+with data.universe(market='TSE_OTC'):
+    # 取得收盤價
+    close = data.get("price:收盤價")
+    # 股價創近200日新高
+    position = (close == close.rolling(200).max())
+    # 每兩週再平衡，單檔最大持股比例限制20%，停損20%
+    report = sim(position, resample="2W", position_limit=0.2, stop_loss=0.2, name="股價創新高策略", upload=False)
+    report.display()
+
+"""## 創新高延續動能策略
+
+"""
+
+from finlab.backtest import sim
+from finlab import data
+with data.universe(market='TSE_OTC'):
+    close = data.get("price:收盤價")
+    # 近5日內有3日以上的股價創前200日新高
+    position = (close == close.rolling(200).max()).sustain(5,3)
+    report = sim(position, resample="2W", position_limit=0.2, stop_loss=0.2, name="創新高延續動能策略", upload=False)
+    report.display()
+</code></pre>
+<pre><code class="language-python">import yfinance as yf
+
+# 下載臺積電股票資料
+df = yf.download("2317.TW", start="2014-01-01", end="2023-01-01")
+
+# 將時間單位轉換為月份，取得每個月份的最後一筆資料，並填補缺失值
+df = df.resample("M").last().bfill()
+
+# 根據原始資料的時間索引重新排序，並填補缺失值
+df = df.reindex(df.index, method="bfill")
+
+print(df)
+</code></pre>
+<ul>
+<li>FinlabDataFrame</li>
+</ul>
+<pre><code class="language-python">from finlab.utils import logger
+import datetime
+import numpy as np
+import pandas as pd
+from finlab import data
+import functools
+
+
+class FinlabDataFrame(pd.DataFrame):
+    """回測語法糖
+    除了使用熟悉的 Pandas 語法外，我們也提供很多語法糖，讓大家開發程式時，可以用簡易的語法完成複雜的功能，讓開發策略更簡潔！
+    我們將所有的語法糖包裹在 `FinlabDataFrame` 中，用起來跟 `pd.DataFrame` 一樣，但是多了很多功能！
+    只要使用 `finlab.data.get()` 所獲得的資料，皆為 `FinlabDataFrame` 格式，
+    接下來我們就來看看， `FinlabDataFrame` 有哪些好用的語法糖吧！
+
+    當資料日期沒有對齊（例如: 財報 vs 收盤價 vs 月報）時，在使用以下運算符號：`+`, `-`, `*`, `/`, `&gt;`, `&gt;=`, `==`, `&lt;`, `&lt;=`, `&amp;`, `|`, `~`，不需要先將資料對齊，因為 `FinlabDataFrame` 會自動幫你處理，以下是示意圖。
+
+    &lt;img src="https://i.ibb.co/pQr5yx5/Screen-Shot-2021-10-26-at-5-32-44-AM.png" alt="Screen-Shot-2021-10-26-at-5-32-44-AM"&gt;
+
+    以下是範例：`cond1` 與 `cond2` 分別為「每天」，和「每季」的資料，假如要取交集的時間，可以用以下語法：
+
+    ```py
+    from finlab import data
+    # 取得 FinlabDataFrame
+    close = data.get('price:收盤價')
+    roa = data.get('fundamental_features:ROA稅後息前')
+
+    # 運算兩個選股條件交集
+    cond1 = close &gt; 37
+    cond2 = roa &gt; 0
+    cond_1_2 = cond1 &amp; cond2
+</code></pre>
+<pre><code>擷取 1101 臺泥 的訊號如下圖，可以看到 `cond1` 跟 `cond2` 訊號的頻率雖然不相同，但是由於 `cond1` 跟 `cond2` 是 `FinlabDataFrame`，所以可以直接取交集，而不用處理資料頻率對齊的問題。
+&lt;br /&gt;
+&lt;img src="https://i.ibb.co/m9chXSQ/imageconds.png" alt="imageconds"&gt;
+
+總結來說，FinlabDataFrame 與一般 dataframe 唯二不同之處：
+1. 多了一些 method，如`df.is_largest()`, `df.sustain()`...等。
+2. 在做四則運算、不等式運算前，會將 df1、df2 的 index 取聯集，column 取交集。
+"""
+
+@property
+def _constructor(self):
+    return FinlabDataFrame
+
+@staticmethod
+def reshape(df1, df2):
+
+    isfdf1 = isinstance(df1, FinlabDataFrame)
+    isfdf2 = isinstance(df2, FinlabDataFrame)
+    isdf1 = isinstance(df1, pd.DataFrame)
+    isdf2 = isinstance(df2, pd.DataFrame)
+
+    both_are_dataframe = (isfdf1 + isdf1) * (isfdf2 + isdf2) != 0
+
+    d1_index_freq = df1.get_index_str_frequency() if isfdf1 else None
+    d2_index_freq = df2.get_index_str_frequency() if isfdf2 else None
+
+    if ((d1_index_freq or d2_index_freq)
+      and (d1_index_freq != d2_index_freq)
+      and both_are_dataframe):
+
+        df1 = df1.index_str_to_date() if isfdf1 else df1
+        df2 = df2.index_str_to_date() if isfdf2 else df2
+
+    if isinstance(df2, pd.Series):
+        df2 = pd.DataFrame({c: df2 for c in df1.columns})
+
+    if both_are_dataframe:
+        index = df1.index.union(df2.index)
+        columns = df1.columns.intersection(df2.columns)
+
+        if len(df1.index) * len(df2.index) != 0:
+          index_start = max(df1.index[0], df2.index[0])
+          index = [t for t in index if index_start &lt;= t]
+
+        return df1.reindex(index=index, method='ffill')[columns], \
+            df2.reindex(index=index, method='ffill')[columns]
+    else:
+        return df1, df2
+
+def __lt__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__lt__(df1, df2)
+
+def __gt__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__gt__(df1, df2)
+
+def __le__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__le__(df1, df2)
+
+def __ge__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__ge__(df1, df2)
+
+def __eq__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__eq__(df1, df2)
+
+def __ne__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__ne__(df1, df2)
+
+def __sub__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__sub__(df1, df2)
+
+def __add__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__add__(df1, df2)
+
+def __mul__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__mul__(df1, df2)
+
+def __truediv__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__truediv__(df1, df2)
+
+def __rshift__(self, other):
+    return self.shift(-other)
+
+def __lshift__(self, other):
+    return self.shift(other)
+
+def __and__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__and__(df1, df2)
+
+def __or__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__or__(df1, df2)
+
+def __getitem__(self, other):
+    df1, df2 = self.reshape(self, other)
+    return pd.DataFrame.__getitem__(df1, df2)
+
+def index_str_to_date(self):
+  """財務月季報索引格式轉換
+
+    將以下資料的索引轉換成datetime格式:
+
+    月營收 (ex:2022-M1) 從文字格式轉為公告截止日。
+
+    財務季報 (ex:2022-Q1) 從文字格式轉為財報電子檔資料上傳日。
+
+    通常使用情境為對不同週期的dataframe做reindex，常用於以公告截止日作為訊號產生日。
+
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+
+        ```py
+        data.get('monthly_revenue:當月營收').index_str_to_date()
+        data.get('financial_statement:現金及約當現金').index_str_to_date()
+        ```
+  """
+  if len(self.index) == 0 or not isinstance(self.index[0], str):
+    return self
+
+  if self.index[0].find('M') != -1:
+    return self._index_str_to_date_month()
+  elif self.index[0].find('Q') != -1:
+    return self._index_str_to_date_season()
+
+  return self
+
+@staticmethod
+def to_business_day(date):
+
+    def skip_weekend(d):
+        add_days = {5: 2, 6: 1}
+        wd = d.weekday()
+        if wd in add_days: d += datetime.timedelta(days=add_days[wd])
+        return d
+
+    close = data.get('price:收盤價')
+    return pd.Series(date).apply(lambda d: skip_weekend(d) if d in close.index or d &lt; close.index[0] or d &gt; close.index[-1] else close.loc[d:].index[0]).values
+
+def get_index_str_frequency(self):
+
+    if len(self.index) == 0:
+      return None
+
+    if not isinstance(self.index[0], str):
+      return None
+
+    if (self.index.str.find('M') != -1).all():
+      return 'month'
+
+    if (self.index.str.find('Q') != -1).all():
+      return 'season'
+
+    return None
+
+def _index_date_to_str_month(self):
+
+    # index is already str
+    if len(self.index) == 0 or not isinstance(self.index[0], pd.Timestamp):
+      return self
+
+    index = (self.index - datetime.timedelta(days=30)).strftime('%Y-M%m')
+    return FinlabDataFrame(self.values, index=index, columns=self.columns)
+
+def _index_str_to_date_month(self):
+
+    # index is already timestamps
+    if len(self.index) == 0 or not isinstance(self.index[0], str):
+      return self
+
+    if not (self.index.str.find('M') != -1).all():
+      logger.warning('FinlabDataFrame: invalid index, cannot format index to monthly timestamp.')
+      return self
+
+    index = pd.to_datetime(self.index, format='%Y-M%m') + pd.offsets.MonthBegin() + datetime.timedelta(days=9)
+    # chinese new year and covid-19 impact monthly revenue deadline
+    replacements = {
+                    datetime.datetime(2020, 2, 10): datetime.datetime(2020, 2, 15),
+                    datetime.datetime(2021, 2, 10): datetime.datetime(2021, 2, 15),
+                    datetime.datetime(2022, 2, 10): datetime.datetime(2022, 2, 14),
+                    }
+    replacer = replacements.get
+    index = [replacer(n, n) for n in index]
+
+    index = self.to_business_day(index)
+
+    ret = FinlabDataFrame(self.values, index=index, columns=self.columns)
+    ret.index.name = 'date'
+ 
+    return ret
+def _index_date_to_str_season(self):
+
+    # index is already str
+    if len(self.index) == 0 or not isinstance(self.index[0], pd.Timestamp):
+      return self
+
+    q = self.index.strftime('%m').astype(int).map({5:1, 8:2, 9:2, 10:3, 11:3, 3:4, 4:4})
+    year = self.index.year.copy()
+    year -= (q == 4)
+    index = year.astype(str) + '-Q' + q.astype(str)
+
+    return FinlabDataFrame(self.values, index=index, columns=self.columns)
+
+def deadline(self):
+    """財務季報索引轉換成公告截止日
+
+      將財務季報 (ex:2022Q1) 從文字格式轉為公告截止日的datetime格式，
+      通常使用情境為對不同週期的dataframe做reindex，常用於以公告截止日作為訊號產生日。
+      Returns:
+        (pd.DataFrame): data
+      Examples:
+          ```py
+          data.get('financial_statement:現金及約當現金').deadline()
+          ```
+    """
+    return self._index_str_to_date_season(detail=False)
+
+def _index_str_to_date_season(self, detail=True):
+
+  disclosure_dates = (calc_disclosure_dates(detail)
+                      .reindex_like(self)
+                      .unstack())
+
+  self.columns.name = 'stock_id'
+
+  unstacked = self.unstack()
+
+  ret = (pd.DataFrame({
+      'value': unstacked.values,
+      'disclosures': disclosure_dates.values,
+    }, unstacked.index)
+    .reset_index()
+    .drop_duplicates(['disclosures', 'stock_id'])
+    .pivot(index='disclosures', columns='stock_id', values='value').ffill()
+    .pipe(lambda df: df.loc[df.index.notna()])
+    .pipe(lambda df: FinlabDataFrame(df))
+    .rename_axis('date')
+  )
+
+  if not detail:
+      ret.index = self.to_business_day(ret.index)
+
+  return ret
+
+def average(self, n):
+    """取 n 筆移動平均
+
+    若股票在時間窗格內，有 N/2 筆 NaN，則會產生 NaN。
+    Args:
+      n (positive-int): 設定移動窗格數。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+        股價在均線之上
+        ```py
+        from finlab import data
+        close = data.get('price:收盤價')
+        sma = close.average(10)
+        cond = close &gt; sma
+        ```
+        只需要簡單的語法，就可以將其中一部分的訊號繪製出來檢查：
+        ```py
+        import matplotlib.pyplot as plt
+
+        close.loc['2021', '2330'].plot()
+        sma.loc['2021', '2330'].plot()
+        cond.loc['2021', '2330'].mul(20).add(500).plot()
+
+        plt.legend(['close', 'sma', 'cond'])
+        ```
+        &lt;img src="https://i.ibb.co/Mg1P85y/sma.png" alt="sma"&gt;
+    """
+    return self.rolling(n, min_periods=int(n/2)).mean()
+
+def is_largest(self, n):
+    """取每列前 n 筆大的數值
+
+    若符合 `True` ，反之為 `False` 。用來篩選每天數值最大的股票。
+
+    &lt;img src="https://i.ibb.co/8rh3tbt/is-largest.png" alt="is-largest"&gt;
+    Args:
+      n (positive-int): 設定每列前 n 筆大的數值。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+        每季 ROA 前 10 名的股票
+        ```py
+        from finlab import data
+
+        roa = data.get('fundamental_features:ROA稅後息前')
+        good_stocks = roa.is_largest(10)
+        ```
+    """
+    return self.astype(float).apply(lambda s: s.nlargest(n), axis=1).reindex_like(self).notna()
+
+def is_smallest(self, n):
+    """取每列前 n 筆小的數值
+
+    若符合 `True` ，反之為 `False` 。用來篩選每天數值最小的股票。
+    Args:
+      n (positive-int): 設定每列前 n 筆小的數值。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+        股價淨值比最小的 10 檔股票
+        ```py
+        from finlab import data
+
+        pb = data.get('price_earning_ratio:股價淨值比')
+        cheap_stocks = pb.is_smallest(10)
+        ```
+    """
+    return self.astype(float).apply(lambda s: s.nsmallest(n), axis=1).reindex_like(self).notna()
+
+def is_entry(self):
+    """進場點
+
+    取進場訊號點，若符合條件的值則為True，反之為False。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+      策略為每日收盤價前10高，取進場點。
+        ```py
+        from finlab import data
+        data.get('price:收盤價').is_largest(10).is_entry()
+        ```
+    """
+    return (self &amp; ~self.shift(fill_value=False))
+
+def is_exit(self):
+    """出場點
+
+    取出場訊號點，若符合條件的值則為 True，反之為 False。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+      策略為每日收盤價前10高，取出場點。
+        ```py
+        from finlab import data
+        data.get('price:收盤價').is_largest(10).is_exit()
+        ```
+    """
+    return (~self &amp; self.shift(fill_value=False))
+
+def rise(self, n=1):
+    """數值上升中
+
+    取是否比前第n筆高，若符合條件的值則為True，反之為False。
+    &lt;img src="https://i.ibb.co/Y72bN5v/Screen-Shot-2021-10-26-at-6-43-41-AM.png" alt="Screen-Shot-2021-10-26-at-6-43-41-AM"&gt;
+    Args:
+      n (positive-int): 設定比較前第n筆高。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+        收盤價是否高於10日前股價
+        ```py
+        from finlab import data
+        data.get('price:收盤價').rise(10)
+        ```
+    """
+    return self &gt; self.shift(n)
+
+def fall(self, n=1):
+    """數值下降中
+
+    取是否比前第n筆低，若符合條件的值則為True，反之為False。
+    &lt;img src="https://i.ibb.co/Y72bN5v/Screen-Shot-2021-10-26-at-6-43-41-AM.png" alt="Screen-Shot-2021-10-26-at-6-43-41-AM"&gt;
+    Args:
+      n (positive-int): 設定比較前第n筆低。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+        收盤價是否低於10日前股價
+        ```py
+        from finlab import data
+        data.get('price:收盤價').fall(10)
+        ```
+    """
+    return self &lt; self.shift(n)
+
+def groupby_category(self):
+    """資料按產業分群
+
+    類似 `pd.DataFrame.groupby()`的處理效果。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+      半導體平均股價淨值比時間序列
+        ```py
+        from finlab import data
+        pe = data.get('price_earning_ratio:股價淨值比')
+        pe.groupby_category().mean()['半導體'].plot()
+        ```
+        &lt;img src="https://i.ibb.co/Tq2fKBp/pbmean.png" alt="pbmean"&gt;
+
+        全球 2020 量化寬鬆加上晶片短缺，使得半導體股價淨值比衝高。
+    """
+    categories = data.get('security_categories')
+    cat = categories.set_index('stock_id').category.to_dict()
+    org_set = set(cat.values())
+    set_remove_illegal = set(
+        o for o in org_set if isinstance(o, str) and o != 'nan')
+    set_remove_illegal
+
+    refine_cat = {}
+    for s, c in cat.items():
+        if c == None or c == 'nan':
+            refine_cat[s] = '其他'
+            continue
+
+        if c == '電腦及週邊':
+            refine_cat[s] = '電腦及週邊設備業'
+            continue
+
+        if c[-1] == '業' and c[:-1] in set_remove_illegal:
+            refine_cat[s] = c[:-1]
+        else:
+            refine_cat[s] = c
+
+    col_categories = pd.Series(self.columns.map(
+        lambda s: refine_cat[s] if s in cat else '其他'))
+
+    return self.groupby(col_categories.values, axis=1)
+
+def entry_price(self, trade_at='close'):
+
+    signal = self.is_entry()
+    adj = data.get('etl:adj_close') if trade_at == 'close' else data.get(
+        'etl:adj_open')
+    adj, signal = adj.reshape(
+        adj.loc[signal.index[0]: signal.index[-1]], signal)
+    return adj.bfill()[signal.shift(fill_value=False)].ffill()
+
+def sustain(self, nwindow, nsatisfy=None):
+    """持續 N 天滿足條件
+
+    取移動 nwindow 筆加總大於等於nsatisfy，若符合條件的值則為True，反之為False。
+
+    Args:
+      nwindow (positive-int): 設定移動窗格。
+      nsatisfy (positive-int): 設定移動窗格計算後最低滿足數值。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+        收盤價是否連兩日上漲
+        ```py
+        from finlab import data
+        data.get('price:收盤價').rise().sustain(2)
+        ```
+    """
+    nsatisfy = nsatisfy or nwindow
+    return self.rolling(nwindow).sum() &gt;= nsatisfy
+
+def industry_rank(self, categories=None):
+    """計算產業 ranking 排名，0 代表產業內最低，1 代表產業內最高
+    Args:
+      categories (list of str): 欲考慮的產業，ex: ['貿易百貨', '雲端運算']，預設為全產業，請參考 `data.get('security_industry_themes')` 中的產業項目。
+    Examples:
+        本意比產業排名分數
+        ```py
+        from finlab import data
+
+        pe = data.get('price_earning_ratio:本益比')
+        pe_rank = pe.industry_rank()
+        print(pe_rank)
+        ```
+    """
+
+    themes = (data.get('security_industry_themes')
+        .copy() # 複製
+        .assign(category=lambda self: self.category
+            .apply(lambda s: eval(s))) # 從文字格式轉成陣列格
+        .explode('category') # 展開資料
+    )
+
+    categories = (categories 
+        or set(themes.category[themes.category.str.find(':') == -1]))
+
+    def calc_rank(ind):
+        stock_ids = themes.stock_id[themes.category == ind]
+        return (self[stock_ids].pipe(lambda self: self.rank(axis=1, pct=True)))
+
+    return (pd.concat([calc_rank(ind) for ind in categories],axis=1)
+        .groupby(level=0, axis=1).mean())
+
+def quantile_row(self, c):
+    """股票當天數值分位數
+
+    取得每列c定分位數的值。
+    Args:
+      c (positive-int): 設定每列 n 定分位數的值。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+        取每日股價前90％分位數
+        ```py
+        from finlab import data
+        data.get('price:收盤價').quantile_row(0.9)
+        ```
+    """
+    s = self.quantile(c, axis=1)
+    return s
+
+def exit_when(self, exit):
+
+    df, exit = self.reshape(self, exit)
+
+    df.fillna(False, inplace=True)
+    exit.fillna(False, inplace=True)
+
+    entry_signal = df.is_entry()
+    exit_signal = df.is_exit()
+    exit_signal |= exit
+
+    # build position using entry_signal and exit_signal
+    position = pd.DataFrame(np.nan, index=df.index, columns=df.columns)
+    position[entry_signal] = 1
+    position[exit_signal] = 0
+
+    position.ffill(inplace=True)
+    position = position == 1
+    position.fillna(False)
+    return position
+
+def hold_until(self, exit, nstocks_limit=None, stop_loss=-np.inf, take_profit=np.inf, trade_at='close', rank=None):
+    """訊號進出場
+
+    這大概是所有策略撰寫中，最重要的語法糖，上述語法中 `entries` 為進場訊號，而 `exits` 是出場訊號。所以 `entries.hold_until(exits)` ，就是進場訊號為 `True` 時，買入並持有該檔股票，直到出場訊號為 `True ` 則賣出。
+    &lt;img src="https://i.ibb.co/PCt4hPd/Screen-Shot-2021-10-26-at-6-35-05-AM.png" alt="Screen-Shot-2021-10-26-at-6-35-05-AM"&gt;
+    此函式有很多細部設定，可以讓你最多選擇 N 檔股票做輪動。另外，當超過 N 檔進場訊號發生，也可以按照客製化的排序，選擇優先選入的股票。最後，可以設定價格波動當輪動訊號，來增加出場的時機點。
+
+    Args:
+      exit (pd.Dataframe): 出場訊號。
+      nstocks_limit (int)`: 輪動檔數上限，預設為None。
+      stop_loss (float): 價格波動輪動訊號，預設為None，不生成輪動訊號。範例：0.1，代表成本價下跌 10% 時產生出場訊號。
+      take_profit (float): 價格波動輪動訊號，預設為None，不生成輪動訊號。範例：0.1，代表成本價上漲 10% 時產生出場訊號。
+      trade_at (str): 價格波動輪動訊號參考價，預設為'close'。可選 `close` 或 `open`。
+      rank (pd.Dataframe): 當天進場訊號數量超過 nstocks_limit 時，以 rank 數值越大的股票優先進場。
+    Returns:
+      (pd.DataFrame): data
+    Examples:
+        價格 &gt; 20 日均線入場, 價格 &lt; 60 日均線出場，最多持有10檔，超過 10 個進場訊號，則以股價淨值比小的股票優先選入。
+
+        ```python
+        from finlab import data
+        from finlab.backtest import sim
+
+        close = data.get('price:收盤價')
+        pb = data.get('price_earning_ratio:股價淨值比')
+
+        sma20 = close.average(20)
+        sma60 = close.average(60)
+
+        entries = close &gt; sma20
+        exits = close &lt; sma60
+
+        ＃pb前10小的標的做輪動
+        position = entries.hold_until(exits, nstocks_limit=10, rank=-pb)
+        sim(position)
+        ```
+    """
+    if nstocks_limit is None:
+        nstocks_limit = len(self.columns)
+
+    union_index = self.index.union(exit.index)
+    intersect_col = self.columns.intersection(exit.columns)
+
+    if stop_loss != -np.inf or take_profit != np.inf:
+        price = data.get(f'etl:adj_{trade_at}')
+        union_index = union_index.union(
+            price.loc[union_index[0]: union_index[-1]].index)
+        intersect_col = intersect_col.intersection(price.columns)
+    else:
+        price = pd.DataFrame()
+
+    if rank is not None:
+        union_index = union_index.union(rank.index)
+        intersect_col = intersect_col.intersection(rank.columns)
+
+    entry = self.reindex(union_index, columns=intersect_col,
+                         method='ffill').ffill().fillna(False)
+    exit = exit.reindex(union_index, columns=intersect_col,
+                        method='ffill').ffill().fillna(False)
+
+    if price is not None:
+        price = price.reindex(
+            union_index, columns=intersect_col, method='ffill')
+
+    if rank is not None:
+        rank = rank.reindex(
+            union_index, columns=intersect_col, method='ffill')
+    else:
+        rank = pd.DataFrame(1, index=union_index, columns=intersect_col)
+
+    max_rank = rank.max().max()
+    min_rank = rank.min().min()
+    rank = (rank - min_rank) / (max_rank - min_rank)
+    rank.fillna(0, inplace=True)
+
+    def rotate_stocks(ret, entry, exit, nstocks_limit, stop_loss=-np.inf, take_profit=np.inf, price=None, ranking=None):
+
+        nstocks = 0
+
+        ret[0][np.argsort(entry[0])[-nstocks_limit:]] = 1
+        ret[0][exit[0] == 1] = 0
+        ret[0][entry[0] == 0] = 0
+
+        entry_price = np.empty(entry.shape[1])
+        entry_price[:] = np.nan
+
+        for i in range(1, entry.shape[0]):
+
+            # regitser entry price
+            if stop_loss != -np.inf or take_profit != np.inf:
+                is_entry = ((ret[i-2] == 0) if i &gt;
+                            1 else (ret[i-1] == 1))
+
+                is_waiting_for_entry = np.isnan(entry_price) &amp; (ret[i-1] == 1)
+
+                is_entry |= is_waiting_for_entry
+
+                entry_price[is_entry == 1] = price[i][is_entry == 1]
+
+                # check stop_loss and take_profit
+                returns = price[i] / entry_price
+                stop = (returns &gt; 1 + abs(take_profit)
+                        ) | (returns &lt; 1 - abs(stop_loss))
+                exit[i] |= stop
+
+            # run signal
+            rank = (entry[i] * ranking[i] + ret[i-1] * 3)
+            rank[exit[i] == 1] = -1
+            rank[(entry[i] == 0) &amp; (ret[i-1] == 0)] = -1
+
+            ret[i][np.argsort(rank)[-nstocks_limit:]] = 1
+            ret[i][rank == -1] = 0
+
+        return ret
+
+    ret = pd.DataFrame(0, index=entry.index, columns=entry.columns)
+    ret = rotate_stocks(ret.values,
+                        entry.astype(int).values,
+                        exit.astype(int).values,
+                        nstocks_limit,
+                        stop_loss,
+                        take_profit,
+                        price=price.values,
+                        ranking=rank.values)
+
+    return pd.DataFrame(ret, index=entry.index, columns=entry.columns)
+</code></pre>
+<p>@functools.lru_cache
+def calc_disclosure_dates(detail=True):</p>
+<p>cinfo = data.get('company_basic_info').copy()
+cinfo['id'] = cinfo.stock_id.str.split(' ').str[0]
+cinfo = cinfo.set_index('id')
+cinfo = cinfo[~cinfo.index.duplicated(keep='last')]</p>
+<p>def calc_default_disclosure_dates(s):
+sid = s.name
+cat = cinfo.loc[sid].產業類別 if sid in cinfo.index else 'etf'
+short_name = cinfo.loc[sid].公司簡稱 if sid in cinfo.index else 'etf'</p>
+<pre><code>if cat == '金融業':
+  calendar = {
+    '1': '-05-15',
+    '2': '-08-31',
+    '3': '-11-14',
+    '4': '-03-31',
+  }
+elif cat == '金融保險業':
+  calendar = {
+    '1': '-04-30',
+    '2': '-08-31',
+    '3': '-10-31',
+    '4': '-03-31',
+  }
+elif 'KY' in short_name:
+    calendar = {
+    'old':{
+        '1': '-05-15',
+        '2': '-08-14',
+        '3': '-11-14',
+        '4': '-03-31',
+          },
+    'new':{
+        '1': '-05-15',
+        '2': '-08-31',
+        '3': '-11-14',
+        '4': '-03-31',
+          },
+    }
+else:
+  calendar = {
+    '1': '-05-15',
+    '2': '-08-14',
+    '3': '-11-14',
+    '4': '-03-31',
+  }
+get_year = lambda year, season: str(year) if int(season) != 4 else str(int(year) + 1)
+ky_policy_check = lambda year: 'new' if year &gt;= '2021' else 'old'
+return pd.to_datetime(s.index.map(lambda d: get_year(d[:4], d[-1]) + calendar[ky_policy_check(d[:4])][d[-1]]) if 'KY' in short_name else s.index.map(lambda d: get_year(d[:4], d[-1]) + calendar[d[-1]]))
+</code></pre>
+<p>def season_end(s):</p>
+<pre><code>calendar = {
+  '1': '-3-31',
+  '2': '-6-30',
+  '3': '-9-30',
+  '4': '-12-31',
+}
+return pd.to_datetime(s.index.map(lambda d: d[:4] + calendar[d[-1]]))
+</code></pre>
+<p>disclosure_dates = data.get('financial_statements_upload_detail:upload_date')
+disclosure_dates = disclosure_dates.apply(pd.to_datetime)</p>
+<p>financial_season_end = disclosure_dates.apply(season_end)
+default_disclosure_dates = disclosure_dates.apply(calc_default_disclosure_dates)</p>
+<p>disclosure_dates[(disclosure_dates &gt; default_disclosure_dates)
+| (disclosure_dates &lt; financial_season_end)] = pd.NaT
+disclosure_dates[(disclosure_dates.diff() &lt;= datetime.timedelta(days=0))] = pd.NaT
+disclosure_dates.loc['2019-Q1', '3167'] = pd.NaT
+disclosure_dates.loc['2015-Q1', '5536'] = pd.NaT
+disclosure_dates.loc['2018-Q1', '5876'] = pd.NaT</p>
+<p>disclosure_dates = disclosure_dates.fillna(default_disclosure_dates)
+disclosure_dates.columns.name = 'stock_id'</p>
+<p>if detail:
+return disclosure_dates
+return default_disclosure_dates</p>
+<pre><code>
+## 本益成長比(月營收截止日換股)
+
+https://doc.finlab.tw/tools/guide_for_beginners/
+
+```python
+from finlab import data
+from finlab.backtest import sim
+import finlab
+
+finlab.login("cdnE+4n53DXjKkN8J7spHLvPq3xwycL6gfd0PaUL+UDWOAKroWHcXUNsN82ibihU#free")
+
+
+rev = data.get('monthly_revenue:當月營收')
+rev_ma3 = rev.average(3)
+rev_ma12 = rev.average(12)
+
+# 營收趨勢多頭策略
+cond1 = rev_ma3/rev_ma12 &gt; 1.1
+cond2 = rev/rev.shift(1) &gt; 0.9
+cond_all = cond1 &amp; cond2
+
+pe = data.get('price_earning_ratio:本益比')
+營業利益成長率 = data.get('fundamental_features:營業利益成長率')
+
+# 本益成長比
+peg = (pe/營業利益成長率)
+
+# 本益成長比和原訊號相乘，若不持有則相乘後等於0
+position = peg*(cond_all)
+
+# 原訊號為0的不要選，若沒加這行且策略只選到7檔，之後還是會選3檔訊號為0(不持有)的補足10檔，執行這行就會排除訊號為0。
+position = position[position&gt;0]
+
+# 選股挑本益成長比前10小的
+position = position.is_smallest(10)
+
+print(position)
+
+
+
+# 月營收截止日換股
+position = position.reindex(rev.index_str_to_date().index, method='ffill')
+print(position)
+input()
+report = sim(position=position, name="策略教學範例:peg_rev", stop_loss=0.1, upload=False)
+report.display()
+</code></pre>
+<h2 id="股價淨值比"><a class="header" href="#股價淨值比">股價淨值比</a></h2>
+<pre><code class="language-python">from finlab import data
+from finlab.backtest import sim
+
+pb = data.get('price_earning_ratio:股價淨值比')
+close = data.get('price:收盤價')
+
+position = (1/(pb * close) * (close &gt; close.average(60)) * (close &gt; 5)).is_largest(20)
+report = sim(position, resample='Q',mae_mfe_window=30,mae_mfe_window_step=2)
+report.display_mae_mfe_analysis()
+</code></pre>
+<h2 id="is_smallest"><a class="header" href="#is_smallest">is_smallest</a></h2>
+<pre><code class="language-python">import pandas as pd
+
+def is_smallest(df, n):
+    return df.astype(float).apply(lambda s: s.nsmallest(n), axis=1).reindex_like(df).notna()
+
+df = pd.DataFrame({
+    'A': [1.2, 2.5, 3.1],
+    'B': [2.2, 1.8, 5.5],
+    'C': [3.3, 4.5, 0.7],
+    'D': [4.4, 5.5, 2.2],
+    'E': [5.5, 3.3, 4.4]
+})
+
+print(df)
+result = is_smallest(df, 2)
+print(result)
+
+#這個 DataFrame 有 5 列 3 行，包含 15 個浮點數值。現在需要按行找到每行最小的 2 個數值所在的列，將其對應的索引置為 True。
+#
+#使用以下程式碼進行處理：
+#
+#複製
+#n = 2
+#result = df.astype(float).apply(lambda s: s.nsmallest(n), axis=1).reindex_like(df).notna()
+#這裡的 n 為 2，在上面的程式碼中，先將 df 轉換為浮點格式，然後按行進行遍歷，對每一行調用 s.nsmallest(n) 函數找到最小的 2 個數值所在的列，其它位置置為 NaN，返回一個 Series 對象。接著把這個 Series 對象與原始 DataFrame 進行重索引，並且補缺失值為 False，最終得到一個與原始 DataFrame 一樣大小的布林值 DataFrame。
+#
+#執行上述程式之後，可以得到以下結果：
+#
+#複製
+#       A      B      C      D      E
+#0  False   True  False  False  False
+#1   True  False  False  False   True
+#2  False   True   True  False  False
+#這個結果的含義是：
+#
+#第一行最小的 2 個數值分別位於 B 列，因此 B 列為 True，其餘為 False；
+</code></pre>
+<h2 id="夏普值"><a class="header" href="#夏普值">夏普值</a></h2>
+<p>出處： https://www.finlab.tw/python%e6%96%b0%e6%89%8b%e6%95%99%e5%ad%b8%ef%bc%9a%e5%a4%8f%e6%99%ae%e6%8c%87%e6%95%b8%e7%ad%96%e7%95%a5/</p>
+<pre><code class="language-python">import yfinance as yf
+import pandas as pd
+import numpy as np
+
+def crawl_price(stock_id):
+    stock = yf.Ticker(stock_id)
+    df = stock.history(period="max")
+    return df
+
+
+twii = crawl_price("^TWII")
+print(twii)
+mean = twii['Close'].pct_change().rolling(252).mean()
+std = twii['Close'].pct_change().rolling(252).std()
+
+sharpe = mean / std
+
+# sharpe ratio 平滑
+sr = sharpe
+srsma = sr.rolling(60).mean()
+
+# sharpe ratio 的斜率
+srsmadiff = srsma.diff()
+
+# 計算買入賣出點
+buy = (srsmadiff &gt; 0) &amp; (srsmadiff.shift() &lt; 0)
+sell = (srsmadiff &lt; 0) &amp; (srsmadiff.shift() &gt; 0)
+
+# 計算持有時間
+hold = pd.Series(np.nan, index=buy.index)
+hold[buy] = 1
+hold[sell] = 0
+hold.ffill(inplace=True)
+hold.plot()
+
+# 持有時候的績效
+adj = twii['Close'][buy.index]
+(adj.pct_change().shift(-1)+1).fillna(1)[hold == 1].cumprod().plot()
+
+
+def backtest(a, b, c, d, plot=False):
+    sr = sharpe
+    srsma = sr.rolling(a).mean()
+
+    srsmadiff = srsma.diff() * 100
+    ub = srsmadiff.quantile(b)
+    lb = srsmadiff.quantile(c)
+    
+    buy = ((srsmadiff.shift(d) &lt; lb) &amp; (srsmadiff &gt; ub))
+    sell = ((srsmadiff.shift(d) &gt; ub) &amp; (srsmadiff &lt; lb))
+
+    hold = pd.Series(np.nan, index=buy.index)
+    hold[buy] = 1
+    hold[sell] = 0
+
+    hold.ffill(inplace=True)
+    
+    adj = twii['Close'][buy.index]
+
+    if plot:
+        (adj.pct_change().shift(-1)+1).fillna(1)[hold == 1].cumprod().plot()
+        hold.plot()
+
+    eq = (adj.pct_change().shift(-1)+1).fillna(1)[hold == 1].cumprod()
+    if len(eq) &gt; 0:
+        return eq.iloc[-1]
+    else:
+        return 1
+
+
+maxeq = 0
+for a in range(100,200,20):
+    for b in np.arange(0.3, 0.9, 0.03):
+        for c in np.arange(0.3, 0.6, 0.03):
+            for d in range(60, 180, 10):
+                
+                eq = backtest(a,b,c,d)
+                
+                if maxeq &lt; eq:
+                    maxeq = eq
+                    print(eq, a,b,c,d)
+</code></pre>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../strategy/投資投機的觀念與心得分享.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../strategy/backtrader/basis.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../strategy/投資投機的觀念與心得分享.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../strategy/backtrader/basis.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

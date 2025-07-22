@@ -1,0 +1,847 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>import-concept - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="python-import-概念"><a class="header" href="#python-import-概念">[Python] import 概念</a></h1>
+<h1 id="基礎介紹"><a class="header" href="#基礎介紹">基礎介紹</a></h1>
+<ul>
+<li>package (套件/包) : 資料夾，含有 <code>__init__.py</code></li>
+<li>module (模塊) : 檔案</li>
+<li>import 的方式有兩種 : 絕對路徑 / 相對路徑</li>
+<li>sys.modules : 是個 dictionary，用於存放已經 import 過的 modules</li>
+<li>sys.path : 是個 list，用於搜尋 import module 的各種路徑</li>
+</ul>
+<h1 id="import-流程"><a class="header" href="#import-流程">import 流程</a></h1>
+<p>雖然 import 的<strong>方式</strong>有兩種 : 絕對路徑 / 相對路徑
+但是 import 的<strong>流程</strong>是相同的</p>
+<pre><code>import xxxModule
+</code></pre>
+<ol>
+<li>檢查 <code>xxxModule</code> 是否存在於 <code>sys.modules</code></li>
+<li>若存在，則直接從 <code>sys.modules</code> 取出使用即可</li>
+<li>若不存在，則依據 import 的<strong>方式</strong>來搜尋 <code>xxxModule.py</code> 的檔案位置</li>
+<li>接著生成 <code>xxxModule</code></li>
+<li>再來放入 <code>sys.modules</code></li>
+<li>最後執行 <code>xxxModule.py</code> 裡面的 source code (以剛生成的 <code>xxxModule</code> 作為 scope 來執行)</li>
+</ol>
+<h1 id="syntax-比較"><a class="header" href="#syntax-比較">syntax 比較</a></h1>
+<pre><code class="language-python"># 絕對路徑
+import xxxModule
+from xxxModule import xxxMethod
+
+# 相對路徑
+from . import xxxModule # 同一層目錄
+from .. import xxxModule # 上一層目錄
+from ... import xxxModule # 上上層目錄
+from .xxxModule import xxxMethod
+
+# 錯誤寫法
+import .xxxModule # . 只能出現在 from 後面 
+</code></pre>
+<h1 id="絕對路徑"><a class="header" href="#絕對路徑">絕對路徑</a></h1>
+<p>有了以上的概念後，接著我們利用範例來實際操作下 (<a href="https://github.com/hochun836/python_absolute_import">範例下載</a>)
+為求簡單，這邊 import 的方式都先使用絕對路徑</p>
+<ul>
+<li><a href="https://blog.hochun836.com/2020/10/03/python/import-concept.html#%E5%9F%BA%E7%A4%8E%E7%B7%B4%E7%BF%92-1">基礎練習 1</a></li>
+<li><a href="https://blog.hochun836.com/2020/10/03/python/import-concept.html#%E5%9F%BA%E7%A4%8E%E7%B7%B4%E7%BF%92-2">基礎練習 2</a></li>
+<li><a href="https://blog.hochun836.com/2020/10/03/python/import-concept.html#%E5%9F%BA%E7%A4%8E%E7%B7%B4%E7%BF%92-3">基礎練習 3</a></li>
+<li><a href="https://blog.hochun836.com/2020/10/03/python/import-concept.html#%E5%9F%BA%E7%A4%8E%E7%B7%B4%E7%BF%92-4">基礎練習 4</a></li>
+<li><a href="https://blog.hochun836.com/2020/10/03/python/import-concept.html#%E5%9F%BA%E7%A4%8E%E7%B7%B4%E7%BF%92-5">基礎練習 5</a></li>
+</ul>
+<h2 id="基礎練習-1"><a class="header" href="#基礎練習-1">基礎練習 1</a></h2>
+<p>執行 <code>D:\hochun\example\python_absolute_import&gt;python app1.py</code></p>
+<pre><code class="language-python"># 檔案結構
+python_absolute_import
+│  app1.py
+│
+└─packageA
+  │  moduleA.py
+  │  __init__.py
+  │
+  └─packageB
+      │  moduleB.py
+      └─  __init__.py
+</code></pre>
+<pre><code class="language-python"># packageA/__init__.py
+print('&amp; packageA')
+
+# packageA/moduleA.py
+print('&amp; moduleA')
+
+# packageA/packageB/__init__.py
+print('&amp; packageB')
+
+# packageA/packageB/moduleB.py
+print('&amp; moduleB')
+</code></pre>
+<pre><code class="language-python"># app1.py
+import sys
+for idx, path in enumerate(sys.path):
+    print(f'sys.path[{idx}]: {path}')
+
+print('========== phase1 ==========')
+print('"packageA" in sys.modules:', 'packageA' in sys.modules)
+print('"packageA.moduleA" in sys.modules:', 'packageA.moduleA' in sys.modules)
+print('"packageA.packageB" in sys.modules:', 'packageA.packageB' in sys.modules)
+print('"packageA.packageB.moduleB" in sys.modules:', 'packageA.packageB.moduleB' in sys.modules)
+
+print('========== phase2 ==========')
+from packageA.packageB import moduleB
+print('"packageA" in sys.modules:', 'packageA' in sys.modules)
+print('"packageA.moduleA" in sys.modules:', 'packageA.moduleA' in sys.modules)
+print('"packageA.packageB" in sys.modules:', 'packageA.packageB' in sys.modules)
+print('"packageA.packageB.moduleB" in sys.modules:', 'packageA.packageB.moduleB' in sys.modules)
+
+print('========== phase3 ==========')
+from packageA import moduleA
+print('"packageA" in sys.modules:', 'packageA' in sys.modules)
+print('"packageA.moduleA" in sys.modules:', 'packageA.moduleA' in sys.modules)
+print('"packageA.packageB" in sys.modules:', 'packageA.packageB' in sys.modules)
+print('"packageA.packageB.moduleB" in sys.modules:', 'packageA.packageB.moduleB' in sys.modules)
+
+print('========== phase4 ==========')
+import packageA
+print('packageA:', packageA)
+</code></pre>
+<p>輸出</p>
+<pre><code class="language-sh">&amp; app1.py
+sys.path[0]: D:\hochun\example\python_absolute_import #sys.path[0] 是當前路徑
+sys.path[1]: C:\ProgramData\Anaconda3\python38.zip
+sys.path[2]: C:\ProgramData\Anaconda3\DLLs
+sys.path[3]: C:\ProgramData\Anaconda3\lib
+sys.path[4]: C:\ProgramData\Anaconda3
+sys.path[5]: C:\ProgramData\Anaconda3\lib\site-packages
+sys.path[6]: C:\ProgramData\Anaconda3\lib\site-packages\win32
+sys.path[7]: C:\ProgramData\Anaconda3\lib\site-packages\win32\lib
+sys.path[8]: C:\ProgramData\Anaconda3\lib\site-packages\Pythonwin
+========== phase1 ==========
+"packageA" in sys.modules: False
+"packageA.moduleA" in sys.modules: False
+"packageA.packageB" in sys.modules: False
+"packageA.packageB.moduleB" in sys.modules: False
+========== phase2 ==========
+&amp; packageA # from packageA.packageB import moduleB 先執行 packageA.py
+&amp; packageB # from packageA.packageB import moduleB 再執行 packageB.py
+&amp; moduleB # from packageA.packageB import moduleB 最後執行 moduleB.py
+"packageA" in sys.modules: True # False 改變為 True
+"packageA.moduleA" in sys.modules: False
+"packageA.packageB" in sys.modules: True # False 改變為 True
+"packageA.packageB.moduleB" in sys.modules: True # False 改變為 True
+========== phase3 ==========
+&amp; moduleA # 由於 sys.modules 已經有了 packageA，所以不會再執行 packageA.py
+"packageA" in sys.modules: True
+"packageA.moduleA" in sys.modules: True # False 改變為 True
+"packageA.packageB" in sys.modules: True
+"packageA.packageB.moduleB" in sys.modules: True
+========== phase4 ==========
+packageA: &lt;module 'packageA' from 'D:\hochun\example\python_absolute_import\packageA\__init__.py'&gt;
+</code></pre>
+<p>說明</p>
+<ul>
+<li>
+<pre><code class="language-plaintext">from packageA.packageB import moduleB
+</code></pre>
+<ol>
+<li>檢查 <code>packageA</code> / <code>packageB</code> / <code>moduleB</code> 是否存在於 <code>sys.modules</code></li>
+<li>發現沒有，所以依據 import 的方式來搜尋 <code>packageA.py</code> / <code>packageB.py</code> / <code>moduleB.py</code> 的檔案位置</li>
+<li>此處用的是絕對路徑，所以會利用 <code>sys.path</code> 來尋找檔案位置</li>
+<li>有看到 <code>sys.path[0]</code> 就是根目錄嗎 ? 就是因為這個路徑，才找的到 <code>packageA.py</code> / <code>packageB.py</code> / <code>moduleB.py</code></li>
+<li>如果在 <code>sys.path</code> 中都找不到的話，就會出現 <code>ModuleNotFoundError</code></li>
+</ol>
+</li>
+<li>
+<pre><code class="language-plaintext">from packageA import moduleA
+</code></pre>
+<ol>
+<li>由於 <code>packageA</code> 已存在於 <code>sys.modules</code>，所以不會執行 <code>packageA.py</code></li>
+<li>但是 <code>moduleA</code> 還不存在於 <code>sys.modules</code>，所以會依據 import 的方式來搜尋 <code>moduleA.py</code> 的檔案位置</li>
+<li>此處用的是絕對路徑，所以會利用 <code>sys.path</code> 來尋找檔案位置</li>
+</ol>
+</li>
+<li>
+<pre><code class="language-plaintext">import packageA
+</code></pre>
+<ol>
+<li>經過上面的說明，很清楚知道 import 同樣的 package or module，只要 <code>sys.modules</code> 中還存在，就不會執行第二次</li>
+</ol>
+</li>
+<li>
+<pre><code class="language-plaintext">print(packageA)
+</code></pre>
+<ol>
+<li>有注意到嗎 ? 輸出的結果是一個名叫 <code>packageA</code> 的 <code>module</code> from <code>__init__.py</code></li>
+</ol>
+</li>
+</ul>
+<h2 id="基礎練習-2"><a class="header" href="#基礎練習-2">基礎練習 2</a></h2>
+<p>執行 <code>D:\hochun\example\python_absolute_import&gt;python app2.py</code></p>
+<pre><code class="language-python"># app2.py
+print('&amp; app2.py')
+
+print('dir():', dir())
+
+import sys
+print('dir():', dir())
+
+a = 101
+print('a be loaded')
+
+b = 102
+print('b be loaded')
+
+c = 103
+print('c be loaded')
+
+print('dir():', dir())
+</code></pre>
+<p>輸出</p>
+<pre><code class="language-python">&amp; app2.py
+dir(): ['__annotations__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__']
+dir(): ['__annotations__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'sys'] # 增加 'sys'
+a be loaded
+b be loaded
+c be loaded
+dir(): ['__annotations__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'a', 'b', 'c', 'sys'] # 增加 'a', 'b', 'c'
+</code></pre>
+<p>觀察</p>
+<ol>
+<li>import 之後，或是宣告一個變數之後，我們可以在 <code>dir()</code> 中看到增加的名稱</li>
+</ol>
+<h2 id="基礎練習-3"><a class="header" href="#基礎練習-3">基礎練習 3</a></h2>
+<p>執行 <code>D:\hochun\example\python_absolute_import&gt;python app3_1.py</code></p>
+<pre><code class="language-python"># 檔案結構
+python_absolute_import
+│  app3_1.py
+└─ app3_2.py
+</code></pre>
+<pre><code class="language-python"># app3_1.py
+print('&amp; app3_1.py')
+
+import sys
+
+import app3_2
+
+print('sys == app3_2.sys:', sys == app3_2.sys)
+</code></pre>
+<pre><code class="language-python"># app3_2.py
+print('&amp; app3_2.py')
+
+import sys
+</code></pre>
+<p>輸出</p>
+<pre><code class="language-python">&amp; app3_1.py
+&amp; app3_2.py
+sys == app3_2.sys: True # 兩者的 sys 是相同的
+</code></pre>
+<p>觀察</p>
+<ol>
+<li>不論在哪隻 module 中， <code>import sys</code> 後的 <code>sys</code> 是指向相同的記憶體位置</li>
+<li>所以，不論在哪隻 module 中，我們常用的 <code>sys.modules</code> / <code>sys.path</code> 也都會指向相同的記憶體位置</li>
+</ol>
+<h2 id="基礎練習-4"><a class="header" href="#基礎練習-4">基礎練習 4</a></h2>
+<p>執行 <code>D:\hochun\example\python_absolute_import&gt;python app4_1.py</code></p>
+<pre><code class="language-python"># 檔案結構
+python_absolute_import
+│  app4_1.py
+└─ app4_2.py
+</code></pre>
+<pre><code class="language-python"># app4_1.py
+print('&amp; app4_1.py')
+
+import sys
+
+print('[in app4_1.py] "app4_1" in sys.modules:', 'app4_1' in sys.modules)
+print('[in app4_1.py] "app4_2" in sys.modules:', 'app4_2' in sys.modules)
+
+import app4_2
+
+print('[in app4_1.py] "app4_1" in sys.modules:', 'app4_1' in sys.modules)
+print('[in app4_1.py] "app4_2" in sys.modules:', 'app4_2' in sys.modules)
+</code></pre>
+<pre><code class="language-python"># app4_2.py
+print('&amp; app4_2.py')
+
+import sys
+
+print('[in app4_2.py] "app4_1" in sys.modules:', 'app4_1' in sys.modules)
+print('[in app4_2.py] "app4_2" in sys.modules:', 'app4_2' in sys.modules)
+</code></pre>
+<p>輸出</p>
+<pre><code class="language-python">&amp; app4_1.py
+[in app4_1.py] "app4_1" in sys.modules: False # 一開始都是 False
+[in app4_1.py] "app4_2" in sys.modules: False # 一開始都是 False
+&amp; app4_2.py
+[in app4_2.py] "app4_1" in sys.modules: False
+[in app4_2.py] "app4_2" in sys.modules: True # False 變成 True，因為 import app4_2
+[in app4_1.py] "app4_1" in sys.modules: False
+[in app4_1.py] "app4_2" in sys.modules: True
+</code></pre>
+<p>觀察</p>
+<ol>
+<li><code>app4_1.py</code> 依賴於 <code>app4_2.py</code></li>
+<li>想想看如果情況變成兩隻 module 互相依賴，那該怎麼辦 ? (別擔心，待下面範例解釋)</li>
+</ol>
+<h2 id="基礎練習-5"><a class="header" href="#基礎練習-5">基礎練習 5</a></h2>
+<p>執行 <code>D:\hochun\example\python_absolute_import&gt;python app5_1.py</code></p>
+<pre><code class="language-python"># 檔案結構
+python_absolute_import
+│  app5_1.py
+└─ app5_2.py
+</code></pre>
+<pre><code class="language-python"># app5_1.py
+print('&amp; app5_1.py')
+
+firstName = 'peter'
+
+print('[in app5_1.py] before import app5_2.py')
+
+# (A)
+import app5_2
+
+# (B)
+# import app5_2
+# print('[in app5_1.py] name:', firstName, app5_2.lastName)
+
+# (C)
+# from app5_2 import lastName
+# print('[in app5_1.py] name:', firstName, lastName)
+</code></pre>
+<pre><code class="language-python"># app5_2.py
+print('&amp; app5_2.py')
+
+print('[in app5_2.py] before import app5_1.py')
+
+import app5_1
+
+lastName = 'kang'
+
+print('[in app5_2.py] after import app5_1.py')
+</code></pre>
+<p>輸出</p>
+<pre><code class="language-python"># (A)
+&amp; app5_1.py
+[in app5_1.py] before import app5_2.py
+&amp; app5_2.py
+[in app5_2.py] before import app5_1.py
+&amp; app5_1.py
+[in app5_1.py] before import app5_2.py
+[in app5_2.py] after import app5_1.py
+[in app5_2.py] name: peter kang
+</code></pre>
+<pre><code class="language-python"># (B)
+&amp; app5_1.py
+[in app5_1.py] before import app5_2.py
+&amp; app5_2.py
+[in app5_2.py] before import app5_1.py
+&amp; app5_1.py
+[in app5_1.py] before import app5_2.py # 在這之前都與 (A) 一致
+Traceback (most recent call last):
+  File "app5_1.py", line 14, in &lt;module&gt;
+    import app5_2
+  File "D:\hochun\example\python_absolute_import\app5_2.py", line 5, in &lt;module&gt;
+    import app5_1
+  File "D:\hochun\example\python_absolute_import\app5_1.py", line 15, in &lt;module&gt;
+    print('[in app5_1.py] name:', firstName, app5_2.lastName)
+AttributeError: partially initialized module 'app5_2' has no attribute 'lastName'
+(most likely due to a circular import)
+</code></pre>
+<pre><code class="language-python"># (C)
+&amp; app5_1.py
+[in app5_1.py] before import app5_2.py
+&amp; app5_2.py
+[in app5_2.py] before import app5_1.py
+&amp; app5_1.py
+[in app5_1.py] before import app5_2.py # 在這之前都與 (A) 一致
+Traceback (most recent call last):
+  File "app5_1.py", line 18, in &lt;module&gt;
+    from app5_2 import lastName
+  File "D:\hochun\example\python_absolute_import\app5_2.py", line 5, in &lt;module&gt;
+    import app5_1
+  File "D:\hochun\example\python_absolute_import\app5_1.py", line 18, in &lt;module&gt;
+    from app5_2 import lastName
+ImportError: cannot import name 'lastName' from partially initialized module 'app5_2' (most likely due to a circular import) (D:\hochun\example\python_absolute_import\app5_2.py)
+</code></pre>
+<p>觀察</p>
+<ol>
+<li><code>app5_1.py</code> / <code>app5_2.py</code> 互相依賴</li>
+<li>依據 <code>app5_1.py</code> 不同的寫法 (A) / (B) / (C)，輸出結果也不同</li>
+<li>(A) 不會報錯</li>
+<li>(B) 報錯 <code>AttributeError</code>，因為在 <code>app5_2.py</code> 中， <code>lastName = 'kang'</code> 寫在 <code>import app5_1</code> 之後</li>
+<li>(C) 報錯 <code>ImportError</code>，同理 (B)</li>
+<li>那如果將 <code>app5_2.py</code> 中的 <code>lastName = 'kang'</code> 寫在 <code>import app5_1</code> 之前，是不是就不會報錯了呢 ? (留給大家 try 看看)</li>
+</ol>
+<h1 id="相對路徑"><a class="header" href="#相對路徑">相對路徑</a></h1>
+<p>複習下，在<a href="https://blog.hochun836.com/2020/10/03/python/import-concept.html#import-%E6%B5%81%E7%A8%8B">import 流程</a>中有提到，雖然 import 的<strong>方式</strong>有兩種，但是 import 的<strong>流程</strong>是相同的
+前面學習完了 import 的流程與 import 方式之一的<strong>絕對路徑</strong>
+接下來，讓我們把<strong>相對路徑</strong>也一併搞定吧 ! (<a href="https://github.com/hochun836/python_relative_import">範例下載</a>)</p>
+<ul>
+<li><a href="https://blog.hochun836.com/2020/10/03/python/import-concept.html#%E9%80%B2%E9%9A%8E%E7%B7%B4%E7%BF%92-1">進階練習 1</a></li>
+<li><a href="https://blog.hochun836.com/2020/10/03/python/import-concept.html#%E9%80%B2%E9%9A%8E%E7%B7%B4%E7%BF%92-2-1">進階練習 2-1</a></li>
+<li><a href="https://blog.hochun836.com/2020/10/03/python/import-concept.html#%E9%80%B2%E9%9A%8E%E7%B7%B4%E7%BF%92-2-2">進階練習 2-2</a></li>
+<li><a href="https://blog.hochun836.com/2020/10/03/python/import-concept.html#%E9%80%B2%E9%9A%8E%E7%B7%B4%E7%BF%92-3">進階練習 3</a></li>
+</ul>
+<pre><code class="language-python"># 檔案結構
+python_relative_import
+│
+├─level1
+│  │  __init__.py
+│  │
+│  ├─level2
+│  │  │  app1.py
+│  │  │  app2.py
+│  │  │  __init__.py
+│  │  │
+│  │  ├─level3
+│  │  │      app3.py
+│  │  │      __init__.py
+│  │  │
+│  │  └─utils
+│  │          tool.py
+│  │          __init__.py
+│  │
+│  └─utils
+│          tool.py
+│          __init__.py
+│
+└─utils
+        tool.py
+        __init__.py
+</code></pre>
+<pre><code class="language-python"># utils/__init__.py
+print('&amp; [utils] __init__.py')
+
+# utils/tool.py
+print('&amp; [utils] tool.py')
+name = 'chen'
+
+# level1/__init__.py
+print('&amp; [level1] __init__.py')
+
+# level1/utils/__init__.py
+print('&amp; [level1/utils] __init__.py')
+
+# level1/utils/tool.py
+print('&amp; [level1/utils] tool.py')
+name = 'bob'
+
+# level1/level2/__init__.py
+print('&amp; [level1/level2] __init__.py')
+
+# level1/level2/utils/__init__.py
+print('&amp; [level1/level2/utils] __init__.py')
+
+# level1/level2/utils/tool.py
+print('&amp; [level1/level2/utils] tool.py')
+name = 'peter'
+
+# level1/level2/level3/__init__.py
+print('&amp; [level1/level2/level3] __init__.py')
+</code></pre>
+<h2 id="進階練習-1"><a class="header" href="#進階練習-1">進階練習 1</a></h2>
+<p>執行 <code>D:\hochun\example\python_relative_import\level1\level2&gt;python app1.py</code></p>
+<pre><code class="language-python"># app1.py
+print('&amp; [level1/level2] app1.py')
+
+print('__name__:', __name__)
+print('__package__:', __package__)
+
+import sys
+sys.path.append('../..') # 增加新的 path
+sys.path = sys.path[1:] # 刪除 sys.path[0]
+
+from utils.tool import name
+print(name)
+</code></pre>
+<p>輸出</p>
+<pre><code class="language-python">&amp; [level1/level2] app1.py
+__name__: __main__
+__package__: None
+&amp; [utils] __init__.py
+&amp; [utils] tool.py
+chen # in utils/tool.py
+</code></pre>
+<p>觀察</p>
+<ol>
+<li>當下路徑為 <code>D:\hochun\example\python_relative_import\level1\level2</code></li>
+<li><code>sys.path.append('../..')</code>，增加<strong>上上層路徑</strong>到 <code>sys.path</code></li>
+<li><code>sys.path = sys.path[1:]</code>，刪除 <code>sys.path[0]</code> <strong>(當層路徑)</strong></li>
+</ol>
+<p>坑</p>
+<ol>
+<li>這個範例其實還是<strong>絕對路徑</strong>，所以尋找 module 會利用 <code>sys.path</code></li>
+<li>若改為執行 <code>D:\hochun\example\python_relative_import&gt;python level1/level2/app1.py</code>，則會報錯 <code>ModuleNotFoundError: No module named 'utils'</code>，因為我們修改了 <code>sys.path</code>，進而造成在 <code>sys.path</code> 中找不到 module <code>utils</code>，所以才會報錯</li>
+</ol>
+<h2 id="進階練習-2-1"><a class="header" href="#進階練習-2-1">進階練習 2-1</a></h2>
+<p>執行 <code>D:\hochun\example\python_relative_import\level1\level2&gt;python app2.py</code></p>
+<pre><code class="language-python"># app2.py
+print('&amp; [level1/level2] app2.py')
+
+import sys
+
+print('__name__:', __name__)
+print('__package__:', __package__)
+
+from ..utils import tool # 相對路徑
+</code></pre>
+<p>輸出</p>
+<pre><code class="language-python">&amp; [level1/level2] app2.py
+__name__: __main__ # 關鍵
+__package__: None # 關鍵
+Traceback (most recent call last):
+  File "app2.py", line 8, in &lt;module&gt;
+    from ..utils import tool
+ImportError: attempted relative import with no known parent package
+</code></pre>
+<p>觀察</p>
+<ol>
+<li>當下路徑為 <code>D:\hochun\example\python_relative_import\level1\level2</code></li>
+<li><code>__name__</code> 為 <code>__main__</code></li>
+<li><code>__package__</code> 為 <code>None</code></li>
+<li><code>from ..utils import tool</code> 為 import 方式的<strong>相對路徑</strong></li>
+</ol>
+<p>坑</p>
+<ol>
+<li>若 import 方式為<strong>相對路徑</strong>，則利用的不是 <code>sys.path</code>，而是 <code>__name__</code> / <code>__package__</code></li>
+<li>因為 <code>__package__</code> 為 <code>None</code>，這被視為<strong>最上層路徑</strong>，所以無法再用 <code>from ..utils import tool</code>，即便改成 <code>from .utils import tool</code> 也一樣會報錯</li>
+<li>換句話說，若 module 中有寫到相對路徑，則不能直接下 <code>python</code> 指令去 run 該程式，除非使用 <code>python -m</code> (如下)</li>
+</ol>
+<h2 id="進階練習-2-2"><a class="header" href="#進階練習-2-2">進階練習 2-2</a></h2>
+<p>執行 <code>D:\hochun\example\python_relative_import&gt;python -m level1.level2.app2</code></p>
+<p>輸出</p>
+<pre><code class="language-python">&amp; [level1] __init__.py
+&amp; [level1/level2] __init__.py
+&amp; [level1/level2] app2.py
+__name__: __main__
+__package__: level1.level2 # 關鍵，不是 None 了
+&amp; [level1/utils] __init__.py
+&amp; [level1/utils] tool.py
+</code></pre>
+<p>觀察</p>
+<ol>
+<li>當下路徑為 <code>D:\hochun\example\python_relative_import</code></li>
+<li><code>python -m</code> 後面跟的是 <code>level1.level2.app2</code> 而非 <code>level1/level2/app2.py</code></li>
+<li><code>__package__</code> 為 <code>level1.level2</code>，因為如此 import 方式的<strong>相對路徑</strong>才能做到<strong>相對</strong>的作用</li>
+</ol>
+<p>經由上述解釋後，現在的你應該能說出以下兩者的差異吧 !</p>
+<ol>
+<li><code>D:\hochun\example\python_relative_import&gt;python -m level1.level2.app2</code></li>
+<li><code>D:\hochun\example\python_relative_import&gt;python level1/level2/app2.py</code></li>
+</ol>
+<h2 id="進階練習-3"><a class="header" href="#進階練習-3">進階練習 3</a></h2>
+<pre><code class="language-python"># app3.py
+print('&amp; [level1/level2/level3] app3.py')
+
+import sys
+
+print('__name__:', __name__)
+print('__package__:', __package__)
+
+from ...utils.tool import name
+
+print(name)
+</code></pre>
+<p>最後這個練習就讓大家動手玩玩看囉</p>
+<h1 id="參考文章"><a class="header" href="#參考文章">參考文章</a></h1>
+<ol>
+<li><a href="https://medium.com/pyladies-taiwan/python-%E7%9A%84-import-%E9%99%B7%E9%98%B1-3538e74f57e3">Python 的 Import 陷阱</a></li>
+<li><a href="https://carsonwah.github.io/15213187969322.html">理解Python的 relative 和 absolute import</a></li>
+</ol>
+<h1 id="python-import導入上級目錄文件"><a class="header" href="#python-import導入上級目錄文件">Python-import導入上級目錄文件</a></h1>
+<p>假設有如下目錄結構：</p>
+<pre><code class="language-text">-- dir0
+　　| file1.py
+　　| file2.py
+　　| dir3
+　　　| file3.py
+　　| dir4
+　　　| file4.py
+</code></pre>
+<p>dir0文件夾下有file1.py、file2.py兩個文件和dir3、dir4兩個子文件夾，dir3中有file3.py文件，dir4中有file4.py文件。</p>
+<h2 id="1導入同級模塊"><a class="header" href="#1導入同級模塊">1.導入同級模塊</a></h2>
+<p>python導入同級模塊（在同一個文件夾中的py文件）直接導入即可。</p>
+<pre><code class="language-python">import xxx
+</code></pre>
+<p>如在file1.py中想導入file2.py，注意無需加後綴".py"：</p>
+<pre><code class="language-python">import file2
+# 使用file2中函數時需加上前綴"file2."，即：
+# file2.fuction_name()
+</code></pre>
+<h2 id="2導入下級模塊"><a class="header" href="#2導入下級模塊">2.導入下級模塊</a></h2>
+<p>導入下級目錄模塊也很容易，需在下級目錄中新建一個空白的__init__.py文件再導入：</p>
+<pre><code class="language-python">from dirname import xxx
+</code></pre>
+<p>如在file1.py中想導入dir3下的file3.py，首先要在dir3中新建一個空白的__init*__*.py文件。</p>
+<pre><code class="language-text">-- dir0
+　　| file1.py
+　　| file2.py
+　　| dir3
+　　　| __init__.py
+　　　| file3.py
+　　| dir4
+　　　| file4.py
+</code></pre>
+<p>再使用如下語句：</p>
+<pre><code class="language-python"># plan A
+from dir3 import file3
+</code></pre>
+<p>或是</p>
+<pre><code class="language-python"># plan B
+import dir3.file3
+# import dir3.file3 as df3
+</code></pre>
+<p>但使用第二種方式則下文需要一直帶著路徑dir3書寫，較為累贅，建議可以另起一個別名。</p>
+<h2 id="3導入上級模塊"><a class="header" href="#3導入上級模塊">3.導入上級模塊</a></h2>
+<p>要導入上級目錄下模塊，可以使用sys.path： 　</p>
+<pre><code class="language-python">import sys 
+sys.path.append("..") 
+import xxx
+</code></pre>
+<p>如在file4.py中想引入import上級目錄下的file1.py：</p>
+<pre><code class="language-python">import sys 
+sys.path.append("..") 
+import file1
+</code></pre>
+<p>**sys.path的作用：**當使用import語句導入模塊時，解釋器會搜索當前模塊所在目錄以及sys.path指定的路徑去找需要import的模塊，所以這裡是直接把上級目錄加到了sys.path裡。</p>
+<p>**“..”的含義：**等同於linux裡的‘..’，表示當前工作目錄的上級目錄。實際上python中的‘.’也和linux中一致，表示當前目錄。</p>
+<h2 id="4導入隔壁文件夾下的模塊"><a class="header" href="#4導入隔壁文件夾下的模塊">4.導入隔壁文件夾下的模塊</a></h2>
+<p>如在file4.py中想引入import在dir3目錄下的file3.py。</p>
+<p>這其實是前面兩個操作的組合，其思路本質上是將上級目錄加到sys.path裡，再按照對下級目錄模塊的方式導入。</p>
+<p>同樣需要被引文件夾也就是dir3下有空的__init__.py文件。</p>
+<pre><code class="language-text">-- dir
+　　| file1.py
+　　| file2.py
+　　| dir3
+　　　| __init__.py
+　　　| file3.py
+　　| dir4
+　　　| file4.py
+</code></pre>
+<p>同時也要將上級目錄加到sys.path裡：</p>
+<pre><code class="language-python">import sys
+sys.path.append("..")
+from dir3 import file3
+</code></pre>
+<h2 id="5常見錯誤及import原理"><a class="header" href="#5常見錯誤及import原理">5.常見錯誤及import原理：</a></h2>
+<p>在使用直接從上級目錄引入模塊的操作時：</p>
+<pre><code class="language-python">from .. import xxx
+</code></pre>
+<p>經常會報錯:</p>
+<pre><code class="language-python3">ValueError: attempted relative import beyond top-level package
+</code></pre>
+<p>這是由於相對導入時，文件夾實質上充當的是package，也就是包的角色（比如我們常用的numpy、pandas都是包）。如果python解釋器沒有認同該文件夾是package，那麼這就是一個普通的文件夾，無法實現相對導入。</p>
+<p>文件夾作為package需要滿足如下兩個條件：</p>
+<ol>
+<li>文件夾中必須存在有__init__.py文件，可以為空。</li>
+<li>不能作為頂層模塊來執行該文件夾中的py文件。</li>
+</ol>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../python/python-decorator.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../python/process_thread.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../python/python-decorator.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../python/process_thread.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

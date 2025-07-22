@@ -1,0 +1,2423 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rust 新手 - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="rust-安裝環境"><a class="header" href="#rust-安裝環境">Rust-安裝環境</a></h2>
+<h3 id="安裝rustup"><a class="header" href="#安裝rustup">安裝rustup</a></h3>
+<p>rustup是rust版本管理器</p>
+<p>安裝指令如下</p>
+<pre><code class="language-jsx">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre>
+<p>接著安裝rust總共有三個版可以選擇</p>
+<ul>
+<li>stable</li>
+<li>beta</li>
+<li>nightly</li>
+</ul>
+<pre><code class="language-bash">rustup install stable
+</code></pre>
+<p>輸入下面指令檢查版本，如果有顯示就是代表安裝成功</p>
+<pre><code class="language-bash">rustc --version
+rustc 1.54.0 (a178d0322 2021-07-26)
+</code></pre>
+<p>也可以透過這個 ~/.cargo/bin 目錄查看到安裝的rust工具</p>
+<pre><code class="language-bash">ls ~/.cargo/bin
+
+cargo cargo-clippy cargo-fmt cargo-miri clippy-driver rls rust-gdb rust-lldb rustc rustdoc rustfmt rustup
+</code></pre>
+<h3 id="升級rust"><a class="header" href="#升級rust">升級rust</a></h3>
+<pre><code class="language-bash">rustup update
+</code></pre>
+<h3 id="切換rust版本"><a class="header" href="#切換rust版本">切換rust版本</a></h3>
+<p>查看目前所以安裝的版本</p>
+<pre><code class="language-bash">ls ~/.rustup/toolchains/
+
+beta-x86_64-apple-darwin
+stable-x86_64-apple-darwin
+</code></pre>
+<p>切換預設版本</p>
+<pre><code class="language-bash">rustup default beta-x86_64-apple-darwin
+
+info: using existing install for 'beta-x86_64-apple-darwin'
+info: default toolchain set to 'beta-x86_64-apple-darwin'
+
+  beta-x86_64-apple-darwin unchanged - rustc 1.55.0-beta.9 (27e88d367 2021-08-28)
+</code></pre>
+<p>針對專案設定版本</p>
+<pre><code class="language-bash">rustup override set nightly
+
+info: using existing install for 'beta-x86_64-apple-darwin'
+info: override toolchain for '/Users/ken_jan/rust/hello' set to 'beta-x86_64-apple-darwin'
+
+  beta-x86_64-apple-darwin unchanged - rustc 1.55.0-beta.9 (27e88d367 2021-08-28)
+</code></pre>
+<h3 id="卸載rust"><a class="header" href="#卸載rust">卸載rust</a></h3>
+<pre><code class="language-bash">rustup self uninstall
+</code></pre>
+<p>如果你只是想嘗試看看，完成不想安裝，也可以使用瀏覽線上版本</p>
+<p><a href="https://play.rust-lang.org/">Rust Playground</a></p>
+<p>相對於golang的安裝，rust官方就內建版本控制方便許多</p>
+<p>這部分rust大勝</p>
+<h2 id="rust-編輯器設定"><a class="header" href="#rust-編輯器設定">Rust-編輯器設定</a></h2>
+<p>如何設定開發環境這邊使用VSCode來當開發工具</p>
+<h3 id="rustfmt-自動格式化"><a class="header" href="#rustfmt-自動格式化">rustfmt 自動格式化</a></h3>
+<p>rustfmt是Rust官方提供自動格式化代碼的工具，用來統一代碼風格，避免有人用Tab有人用空格來縮排或是在大括號之後該換行之類的</p>
+<p>透過rustup安裝</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>rustup component add rustfmt
+<span class="boring">}</span></code></pre></pre>
+<p>透過指令來格式化代碼</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>rustfmt main.rs
+<span class="boring">}</span></code></pre></pre>
+<p>也可以透過cargo格式化整個專案</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>cargo fmt
+<span class="boring">}</span></code></pre></pre>
+<p>也可以單純檢查並列出沒排好的地放</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>rustfmt --check main.rs
+
+cargo fmt -- --check 
+<span class="boring">}</span></code></pre></pre>
+<p>預設的rustfmt風格就很好用了，但如果你的團隊或是個人習慣想要不一樣排版風格也是可以的，透過rustfmt.toml設定檔來改變</p>
+<p>例如二元運算子多行時要放在頭還是放在尾的部分</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>binop_separator = "Front" (默認)
+
+let or = foofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoo
+        || barbarbarbarbarbarbarbarbarbarbarbarbarbarbarbar;
+
+---------------------------------------------------------------
+binop_separator = "Back"
+
+let or = foofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoo ||
+        barbarbarbarbarbarbarbarbarbarbarbarbarbarbarbar;
+<span class="boring">}</span></code></pre></pre>
+<p>還有其他很多設定，可以參考這文件</p>
+<p>https://github.com/rust-lang/rustfmt/blob/master/Configurations.md</p>
+<p>讓vscode支援rust代碼提示，需要安裝Rust套件模組</p>
+<p>https://marketplace.visualstudio.com/items?itemName=rust-lang.rust</p>
+<p>安裝時會順便安裝rls, rust-src, and rust-analysis</p>
+<p>如果要讓存檔時自動格式化代碼需要修改</p>
+<p>File &gt; Preferences &gt; Settings. 裡面的 editor.formatOnSave 打勾 就可以了</p>
+<h2 id="rust-hello-world"><a class="header" href="#rust-hello-world">Rust-Hello, World!</a></h2>
+<p>先建立一個hello的目錄，編輯main.rs</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    print!("Hello, World!");
+}</code></pre></pre>
+<p>儲存然後在Terminal用rustc編譯</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>rustc main.rs
+<span class="boring">}</span></code></pre></pre>
+<p>會產生出main檔案，執行main就會出現Hello, world!了</p>
+<pre><code class="language-bash">./main
+Hello, World!
+</code></pre>
+<h3 id="分析程式碼"><a class="header" href="#分析程式碼">分析程式碼</a></h3>
+<ul>
+<li><strong>fu</strong>是rust的關鍵字，function的簡寫</li>
+<li>main是函式名稱，執行rust程式時將執行，如果沒有main哪可能是一個library</li>
+<li>print! 是rust的巨集(macro) 如果沒有"!"表示是函示有的話則是巨集</li>
+<li>"Hello, world!" 表示字串內容</li>
+<li>最後用";"表示語法結束</li>
+</ul>
+<p>rust對大小寫是敏感的</p>
+<h3 id="print-用法"><a class="header" href="#print-用法">Print! 用法</a></h3>
+<p>利用"{}"站位符輸出字串，類似golang的fmt.Printf("%s, %s!", "Hello", "World")</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>print!("{}, {}!", "Hello", "World")
+
+輸出
+Hello, World!
+<span class="boring">}</span></code></pre></pre>
+<p>利用"{}"站位符輸出數字，類似golang的fmt.Printf("%s: %d", "Num", 9527)</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>print!("{}: {}", "Num", 9527)
+
+輸出
+Num: 9527
+<span class="boring">}</span></code></pre></pre>
+<p>用"\n"輸出多行字串</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>print!("Hello, World!\nHello, World!\nHello, World!")
+
+輸出
+Hello, World!
+Hello, World!
+Hello, World!
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-變數"><a class="header" href="#rust-變數">Rust-變數</a></h2>
+<h3 id="變數宣告"><a class="header" href="#變數宣告">變數宣告</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 宣告區域變數
+let local_var = 123;
+<span class="boring">}</span></code></pre></pre>
+<h3 id="不可變變數"><a class="header" href="#不可變變數">不可變變數</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let immutable_var = 123;
+
+print!("{}", immutable_var);
+
+immutable_var = 456;
+
+print!("{}", immutable_var);
+<span class="boring">}</span></code></pre></pre>
+<p>上面這段程式碼在編譯時會出現"cannot assign twice to immutable variable"錯誤，表示不可變變數無法重新賦予值</p>
+<p>有點類似golang中的const(常數)但又不太一樣，rust本身也有const關鍵字</p>
+<h3 id="可變變數"><a class="header" href="#可變變數">可變變數</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut mutable_var = 123;
+
+print!("{}", mutable_var);
+
+mutable_var = 456;
+
+print!("{}", mutable_var);
+<span class="boring">}</span></code></pre></pre>
+<p>透過在宣告變時增加mut(mutable)來讓這個變數可以重新賦予值</p>
+<h3 id="未變化的可變變數"><a class="header" href="#未變化的可變變數">未變化的可變變數</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut mutable_var = 123;
+
+print!("{}", mutable_var);
+<span class="boring">}</span></code></pre></pre>
+<p>如果宣告了可變變數，但是後面又沒重新賦予值時編譯會出現"help: remove this <code>mut</code>"警告來建議移除mut</p>
+<h3 id="未初始化的變數"><a class="header" href="#未初始化的變數">未初始化的變數</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let immutable_var :i32;
+
+print!("{}", immutable_var);
+<span class="boring">}</span></code></pre></pre>
+<p>編譯時會出現"use of possibly-uninitialized <code>immutable_var</code>"錯誤</p>
+<p>初始化變數也可以在宣告變數之後，只要在變數使用之前初始化就可以，例如下面例子</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let immutable_var :i32;
+
+immutable_var = 123;
+
+print!("{}", immutable_var);
+<span class="boring">}</span></code></pre></pre>
+<h3 id="型別和可變化的改變"><a class="header" href="#型別和可變化的改變">型別和可變化的改變</a></h3>
+<p>rust允許在變數宣告後又重新宣告相同名稱的變數，下面這些行為在rust是合法</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut var = 123;
+
+print!("{}", var);
+
+var = 456;
+
+print!("{}", var);
+
+// 重新宣告為不可變變數
+let var = 789;
+
+print!("{}", var);
+
+// 重新宣告為字串類型
+let var = "hello word";
+
+print!("{}", var);
+<span class="boring">}</span></code></pre></pre>
+<h3 id="未使用的變數"><a class="header" href="#未使用的變數">未使用的變數</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let immutable_var = 123;
+<span class="boring">}</span></code></pre></pre>
+<p>未使用變數時會出現"help: if this is intentional, prefix it with an underscore: <code>_immutable_var</code>"警告，如果不想出現警告可以在變數前面加個下底線"_"</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let _immutable_var = 123;
+<span class="boring">}</span></code></pre></pre>
+<p>或是單純只是要一個站位符也可以這樣</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let _ = 123;
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-值變數物件"><a class="header" href="#rust-值變數物件">Rust-值，變數，物件</a></h2>
+<p>不應將值，變數，物件混淆為一體</p>
+<p>單詞"值"表示抽象的數學概念，</p>
+<p>例如值："9527"是指數學9527的數學概念，在數學上"9527"只會有一個"9527"的數字</p>
+<p>例如值："hello, word!"從概念上也只會有一個</p>
+<p>值可以存在電腦裡的記憶體裡，可以在記憶體的多個位置儲存數字"9527"，可以有兩個不同位置都儲放"9257"</p>
+<p>在記憶體中包含值的部分稱為物件，兩個位於記憶體中不同位置的不同物件如果包含相同的內容則可以稱為它們"相等"</p>
+<p>在編譯Rust時，生成可以執行的程式會包含具有存儲位置和值的物件，這些物件沒有名稱
+但是在程式碼中會希望將名稱與物件相關聯，以便以後可以引用它們這個東西可以稱為變數</p>
+<p>例如</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let num = 9527;
+print!("{}", num);
+
+輸出9257
+<span class="boring">}</span></code></pre></pre>
+<p>第一行表示：</p>
+<ul>
+<li>它在記憶中劃出一個足夠大的物件，以包含一個整數</li>
+<li>它以二進制格式將值"9527"儲存在該物件中</li>
+<li>它將名稱num與該物件做關聯，以便之後在程式碼中使用該名稱num來指示這個物件</li>
+</ul>
+<h3 id="建立識別字-identifier-的規則"><a class="header" href="#建立識別字-identifier-的規則">建立識別字 (Identifier) 的規則</a></h3>
+<p>變數名稱又稱為識別字。識別字原本在 Rust 程式中是沒有意義的，透過宣告變數這項動作對特定識別字賦予關聯。</p>
+<p>Rust 的識別字採用以下規則：</p>
+<ul>
+<li>第一個字元為英文或底線 _</li>
+<li>第二個之後的字元為英文、數字或底線</li>
+<li>只有單一的底線 _ 不是變數</li>
+</ul>
+<p>以下是合 Rust 規範的變數名稱：</p>
+<ul>
+<li>a</li>
+<li>a1</li>
+<li>a_var</li>
+<li>aVar</li>
+<li>_var</li>
+</ul>
+<p>Rust建議使用蛇行(snake case)命名(例:a_var_snake_name)</p>
+<p>而非駝峰(camel case)命名(例:aVarCamelName)</p>
+<p>跟golang顛倒，沒有好壞只要統一風格就好</p>
+<p>Rust會對不符合其撰碼風格的變數或函式名稱發出警告訊息，但不會引發錯誤</p>
+<h2 id="rust-資料型別-整數浮點數"><a class="header" href="#rust-資料型別-整數浮點數">Rust-資料型別-整數、浮點數</a></h2>
+<p>Rust是靜態型別語言，所以在編譯時需要知道變數的型別是什麼</p>
+<p>前面的程式範例很多是沒有宣吿型別但是卻可以編譯，這邊用到的是透過</p>
+<p>通常編譯器能通過數值來推導型別是什麼</p>
+<p>Rust 有四種主要純量型別：整數、浮點數、布林以及字元</p>
+<h3 id="整數型別"><a class="header" href="#整數型別">整數型別</a></h3>
+<p>整數是沒有小數點的數字，分有帶號(signed)跟非帶號(unsigned)，差別就是一個有負值一個沒有負值</p>
+<p>帶號範圍-(2^n - 1) 到 (2^n - 1) - 1</p>
+<p>非帶號範圍0到2^n - 1</p>
+<p>isize跟usize則是依據運行環境的電腦是32位元還是還64位元決定大小</p>
+<p>Rust預設整數型別是i32
+<img src="images/20129675QRiTSVLrMG.png" alt="" /></p>
+<h3 id="溢位問題"><a class="header" href="#溢位問題">溢位問題</a></h3>
+<p>Rust在執行時會檢查是否有溢位</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut n: i32 = i32::max_value();
+ 
+// Overflow
+n = n + 1;
+
+出現panic錯誤
+thread 'main' panicked at 'attempt to add with overflow'
+<span class="boring">}</span></code></pre></pre>
+<p>如果你想要讓溢位也視為正常的可以在編譯時增加參數</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// rustc用法
+rustc -O main.rs
+
+// cargo用法
+cargo build --release
+<span class="boring">}</span></code></pre></pre>
+<h3 id="浮點數型別"><a class="header" href="#浮點數型別">浮點數型別</a></h3>
+<p>浮點數只有兩種型別</p>
+<ul>
+<li>f32 32位元大小</li>
+<li>f64 64位元大小</li>
+</ul>
+<p>浮點數是依照 IEEE-754</p>
+<p>Rust預設浮點數型別是f64</p>
+<h2 id="rust-資料型別-布林值"><a class="header" href="#rust-資料型別-布林值">Rust-資料型別-布林值</a></h2>
+<p>Rust 為了表示真假值，使用關鍵字true和false</p>
+<p>這樣的關鍵字具有非數字類型的表達式稱為布林</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let true_var = true;
+let false_var = false;
+print!("{} {}", true_var, false_var);
+
+輸出
+true false
+<span class="boring">}</span></code></pre></pre>
+<p>除了關鍵字true和false賦予值也可以透過比較運算表達式來賦予值</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let true_var = 456 &gt; 123 ;
+let false_var = -456 &gt;= 123;
+print!("{} {} {}", true_var, false_var, -123 &lt; 123);
+
+輸出
+true false true
+<span class="boring">}</span></code></pre></pre>
+<p>比較運算子如下：</p>
+<ul>
+<li>
+<p>==：等於</p>
+</li>
+<li>
+<p>!=：不等於</p>
+</li>
+<li>
+<p>&lt;：小於</p>
+</li>
+<li>
+<blockquote>
+<p>：大於</p>
+</blockquote>
+</li>
+<li>
+<p>&lt;=：小於或是等於</p>
+</li>
+<li>
+<blockquote>
+<p>=：大於或是等於</p>
+</blockquote>
+</li>
+</ul>
+<p>跟常見語言都一樣</p>
+<p>除了比較數字之外也能比較字串</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>print!("{} {} {}", "efg" &lt; "efgh", "efg" &lt; "efh", "D" &lt; "d");
+
+輸出 true true true
+<span class="boring">}</span></code></pre></pre>
+<p>字串的比較規則就是比較兩個字串的第一個字母，然後繼續比較兩個字串相同位置的字母直到發生下列情況之一：</p>
+<ul>
+<li>如果兩個字母都沒有其他字母了，則相等</li>
+<li>如果一個字串沒有其他字母，而另一個還有其他字母，則較少字母的字串較小</li>
+<li>如果兩個字串相同位置的字母比較，字母表在前的比較小，字母大寫比字母小寫小</li>
+</ul>
+<p>邏輯運算子如下：</p>
+<ul>
+<li>!：not</li>
+<li>&amp;&amp;：且</li>
+<li>||：或</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let true_var = true;
+let false_var = false;
+
+print!("{} {}", !true_var, !false_var);
+輸出
+false true
+
+print!("{} {} {} {}", true_var &amp;&amp; true_var, false_var &amp;&amp; false_var, true_var &amp;&amp; false_var, false_var &amp;&amp; true_var);
+輸出
+true false false false
+
+print!("{} {} {} {}", true_var || true_var, false_var || false_var, true_var || false_var, false_var || true_var);
+輸出
+true false true true
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-資料型別-字元字串"><a class="header" href="#rust-資料型別-字元字串">Rust-資料型別-字元.字串</a></h2>
+<p>Rust的char型別是最基本的字母型別，用單引號包起來</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a = 'b';
+<span class="boring">}</span></code></pre></pre>
+<p>Rust的字串分兩種</p>
+<ul>
+<li>str</li>
+<li>String</li>
+</ul>
+<p>嚴格來講Rust在核心語言中只有一個字串型別，哪就是切片字串(&amp;str)是不可變的(stack)</p>
+<p>String則是Rust標準函式庫提供的型別，String是可變(Heap)</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// &amp;str型別
+let str_var = "字串";
+
+// String型別
+let string_var = str_var.to_string();
+// String型別
+let string_var = String::from("字串");
+<span class="boring">}</span></code></pre></pre>
+<p>索引字串切片</p>
+<p>因為字串是使用 UTF-8 編碼，每個字符可能有多個位元組所以用字串索引會容易出現錯誤</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let str_var = "安安";
+
+println!("{}", &amp;str_var[0..1]);
+
+會出現錯誤
+thread 'main' panicked at 'byte index 1 is not a char boundary; it is inside '安' (bytes 0..3) of `安安`'
+<span class="boring">}</span></code></pre></pre>
+<p>比較好得做法透過as_bytes或是chars方法來取直</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let str_var = "安安你好啊";
+
+for b in str_var.as_bytes() {
+    print!("{}, ", b);
+}
+
+for c in str_var.chars() {
+    print!("{}, ", c);
+}
+
+輸出
+229, 174, 137, 229, 174, 137, 228, 189, 160, 229, 165, 189, 229, 149, 138,
+安, 安, 你, 好, 啊,
+<span class="boring">}</span></code></pre></pre>
+<p>字串相加，這邊會使用到&amp;借用，後面會講解</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let string1_var = String::from("安安");
+let string2_var = String::from("你好啊");
+
+println!("{}", string1_var + &amp;string2_var);
+
+輸出
+安安你好啊
+<span class="boring">}</span></code></pre></pre>
+<p>Rust沒有提供型別判斷的方法，如果想要知道變數是什麼型別可以利用編譯時的錯來查看</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// char型別
+let char_var = 'c';
+char_var.not_found;
+
+出現錯誤
+`char` is a primitive type and therefore doesn't have fields
+
+// &amp;str型別
+let str_var = "str";
+str_var.not_found;
+
+出現錯誤
+no field `not_found` on type `&amp;str`
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-資料型別-複合型別"><a class="header" href="#rust-資料型別-複合型別">Rust-資料型別-複合型別</a></h2>
+<p>複合型別是指多個數值組為一個型別</p>
+<p>Rust 有兩個基本複合型別</p>
+<h3 id="元組型別tupl"><a class="header" href="#元組型別tupl">元組型別(tupl)</a></h3>
+<p>元組型別是指將多個不同型別組成一個複合型別</p>
+<p>固定長度，宣告好就無法增減長度</p>
+<p>每一格都是一個獨立型別</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 宣告時就指定型別
+let tup: (i32, f64, u8, &amp;str) = (1, 3.1417, 1, "hello");
+
+// 自動判斷型別的宣告方式
+let tup = (1, 3.1417, 1, "hello");
+
+println!("{:?}", tup);
+
+輸出
+(1, 3.1417, 1, "hello")
+
+// 多維元組
+let tup = ("1", ("2", ("3")));
+<span class="boring">}</span></code></pre></pre>
+<p>元組也可以透過解構(destructuring)拆分各個型別</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let tup: (i32, f64, u8, &amp;str) = (1, 3.1417, 1, "hello");
+
+// 解構成各個變數
+let (a, b, c, d) = tup;
+
+println!("{} {} {} {}", a, b, c, d);
+
+輸出
+1 3.1417 1 hello
+<span class="boring">}</span></code></pre></pre>
+<p>也可以透過"."再加上索引位置來取得元組內的值</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let tup: (i32, f64, u8, &amp;str) = (1, 3.1417, 1, "hello");
+
+// 索引從0開始
+println!("{} {} {} {}", tup.0, tup.1, tup.2, tup.3);
+
+輸出
+1 3.1417 1 hello
+<span class="boring">}</span></code></pre></pre>
+<h3 id="陣列型別array"><a class="header" href="#陣列型別array">陣列型別(array)</a></h3>
+<p>和元組一樣固定長度，差別是陣列中的型別必須要一樣的</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 宣告時指定型別和長度i32是型別;之後的5是陣列的長度
+let array: [i32; 5] = [1, 2, 3, 4, 5];
+
+// 自動判斷型別的宣告方式
+let array = [1, 2, 3, 4, 5];
+
+// 簡化的宣告方式，陣列裡全是hello長度為5
+let array = ["hello"; 5];
+<span class="boring">}</span></code></pre></pre>
+<p>透果索引位址取值的方式</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a = [1, 2, 3, 4, 5];
+
+println!("{} {} {} {} {}", a[0], a[1], a[2], a[3], a[4]);
+
+輸出
+1 2 3 4 5
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-流程控制-if"><a class="header" href="#rust-流程控制-if">Rust-流程控制-if</a></h2>
+<p>利用布林值來決定如何繼續執行程式進行決策</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let n = 3;
+
+if n &gt; 2 {
+    println!("執行")
+}
+<span class="boring">}</span></code></pre></pre>
+<p>if 跟其他語言差不多，if關鍵字後面布林求值稱為條件只有當true才會執行大括號裡面的語法</p>
+<p>大括號裡面可以包含零個多個語法，用大括號包起來的稱為塊(block)</p>
+<p>條件必須是布林類型，因此不允許下面的語法</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 不允許
+if 1 {
+   print!("執行");
+}
+<span class="boring">}</span></code></pre></pre>
+<p>條件不需要用小括號包起來，會出現警告</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 出現警告
+if (3 &gt; 2) {
+   println!("執行")
+}
+<span class="boring">}</span></code></pre></pre>
+<p>條件之後需要一個塊(block)包起來</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 不允許
+i 3 &gt; 2 println!("執行")
+<span class="boring">}</span></code></pre></pre>
+<p>如果要在條件為false情況執行流程可以使用else關鍵字</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let n = 3;
+
+if n &gt; 5 {
+    println!("執行")
+} else 
+    println!("false執行")
+}
+
+輸出
+false執行
+<span class="boring">}</span></code></pre></pre>
+<p>Rust也有類似PHP的三元運算</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let n = 3;
+
+let str = if n &gt; 2 { "true_str" } else { "false_str" };
+
+println!("{}", str);
+
+輸出
+true_str
+<span class="boring">}</span></code></pre></pre>
+<p>以下範例是不允許的</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 不允許，因為無法定義str的型別
+let str = if true { "true_str" }
+
+// 不允許，因為型別不一樣，一個是字串一個是數字
+let str = if true { "true_str" } else { 9527 }
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-流程控制-while"><a class="header" href="#rust-流程控制-while">Rust-流程控制-while</a></h2>
+<p>類似PHP的while迴圈，計算其後的布林條件如果是值為true則執行大括號下面的語法，會重複條件的檢查執行直到條件值為false為止或是其他原因退出</p>
+<p>假設要打印1到100的整數可以使用下面的語法來達到</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut i = 1;
+
+while i &lt;= 100 {
+    print!("{} ", i);
+    i += 1;
+}
+
+輸出
+1 2 3 4 5 ... 100
+<span class="boring">}</span></code></pre></pre>
+<p>雖然Rust沒有do while的語法但也有break contiune語法</p>
+<p>例如只想印出雙數</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut i = 1;
+
+ while i &lt;= 100 {
+     i += 1;
+     if i % 2 != 0 {
+        continue;
+     }
+     print!("{} ", i);
+}
+
+輸出
+2 4 6 8 10 ... 100
+<span class="boring">}</span></code></pre></pre>
+<p>或是碰到50的值就中斷退出</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut i = 1;
+
+while i &lt;= 100 {
+    if i == 50 {
+        break;
+    }
+    print!("{} ", i);
+		i += 1;
+}
+
+輸出
+1 2 3 4 5 ... 49
+<span class="boring">}</span></code></pre></pre>
+<h3 id="無限循環loop"><a class="header" href="#無限循環loop">無限循環(loop)</a></h3>
+<p>如果要執行無限循環的迴圈直到程式被強制中斷或是通過退出循環語法break，可以透過loop語法</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 透過whilce 會出現警告
+let mut i = 1;
+
+while true {
+    if i == 50 {
+        break;
+    }
+    i += 1;
+}
+
+// 透過loop
+let mut i = 1;
+
+loop {
+    if i == 50 {
+         break;
+    }
+    i += 1;
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-流程控制-for"><a class="header" href="#rust-流程控制-for">Rust-流程控制-for</a></h2>
+<p>如果想印出1到100的數字，更常的做法是使用for迴圈而不是while</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for i in 1..101 {
+    println!("{}", i);
+}
+
+輸出
+1 2 3 4 5 ... 100
+<span class="boring">}</span></code></pre></pre>
+<p>for和in是關鍵字在用兩個數字加".."符號分隔</p>
+<p>i變數一開始由第一個數字(1)賦予該值，然後i值依序的加1直到值達到第二數字(101)，當值到達第二數是"不"執行的並結束for迴圈，所以要1到100需要寫1..101</p>
+<p>i是for迴圈的區域變數所以前面如果有宣告都會被忽略，而且在迴圈結束就銷毀</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let i = 99; // 被屏蔽的
+for i in 0..11 {
+		// 這裡的i是區域變數
+    print!("{} ", i);
+}
+// 這裡的i是一開始宣告的99
+print!("{}", i);
+
+輸出
+0 1 2 3 4 5 6 7 8 9 10 99
+<span class="boring">}</span></code></pre></pre>
+<p>for迴圈也可以用來遍歷集合的每個元素</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let set = [1, 2, 3, 4, 5];
+
+for var in set {
+    print!("{} ", var);
+}
+
+輸出
+1 2 3 4 5
+<span class="boring">}</span></code></pre></pre>
+<p>或是反轉範圍從100印到1</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for var in (1..101).rev() {
+    print!("{} ", var);
+}
+
+輸出
+100 99 98 97 96 ... 1
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-枚舉enumeration"><a class="header" href="#rust-枚舉enumeration">Rust-枚舉(enumeration)</a></h2>
+<p>枚舉就是列出有窮序列的型別</p>
+<p>透過enum關鍵字新增了新的Browser型別在範例中列出了一個組項分別為</p>
+<p>Firefox，Chrome，IE，Safari內部值分別為0u8，1u8，2u8，3u8表示</p>
+<p>通常都是以整數為內部關聯值</p>
+<p>透過枚舉寫以下的代碼</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Browser {
+    Firefox,
+    Chrome,
+    Ie,
+    Safari,
+}
+
+let browser = Browser::Ie;
+
+match browser {
+    Browser::Firefox =&gt; println!("F"),
+    Browser::Chrome =&gt; println!("C"),
+    Browser::Ie =&gt; println!("I"),
+    Browser::Safari =&gt; println!("S"),
+}
+<span class="boring">}</span></code></pre></pre>
+<p>不要編寫這樣的代碼</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>const FIREFOX: u8 = 0;
+const CHROME: u8 = 1;
+const IE: u8 = 2;
+const SAFARI: u8 = 3;
+
+let browser = IE;
+
+if browser == FIREFOX {
+    println!("F");
+} else if browser == CHROME {
+    println!("C");
+} else if browser == IE {
+    println!("I");
+} else if browser == SAFARI {
+    println!("S");
+}
+<span class="boring">}</span></code></pre></pre>
+<h3 id="再怎樣也不要寫magic-number"><a class="header" href="#再怎樣也不要寫magic-number">再怎樣也不要寫<a href="https://zh.wikipedia.org/wiki/%E9%AD%94%E8%A1%93%E6%95%B8%E5%AD%97_(%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88)">magic number</a></a></h3>
+<h3 id="如何使用枚舉"><a class="header" href="#如何使用枚舉">如何使用枚舉</a></h3>
+<p>使用Use的方式</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 顯式的指定要使用的枚舉
+use Browser::{Chrome, Firefox, Ie, Safari};
+
+let browser = Ie;
+
+match browser {
+    Firefox =&gt; println!("F"),
+    Chrome =&gt; println!("C"),
+    Ie =&gt; println!("I"),
+    Safari =&gt; println!("S"),
+}
+
+// 自動的使用Browser內部所有的枚舉
+use Browser::*;
+
+let browser = Ie;
+
+match browser {
+    Firefox =&gt; println!("F"),
+    Chrome =&gt; println!("C"),
+    Ie =&gt; println!("I"),
+    Safari =&gt; println!("S"),
+}
+<span class="boring">}</span></code></pre></pre>
+<p>使用帶有C風格的用法</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Browser {
+    Firefox,
+    Chrome,
+    Ie,
+    Safari,
+}
+
+println!("{}", Browser::Firefox as i32)
+<span class="boring">}</span></code></pre></pre>
+<p>枚舉不能使用"=="運算子做比較</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let browser = Browser::Ie;
+
+if browser == Browser::Ie {
+    println!("{}", "hello word")
+}
+
+// 編譯時會出錯
+// binary operation `==` cannot be applied to type `Browser`
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-match控制流運算子"><a class="header" href="#rust-match控制流運算子">Rust-Match控制流運算子</a></h2>
+<p>Match是使用枚舉的基本工具，類似Golang的Switch語法</p>
+<p>Match取值後對每個條件進行比較依照順序比較，一但匹配成功就對右側求值，並結算Match語法</p>
+<p>每個條件分支右側都必須是單個表達式</p>
+<p>例</p>
+<p>前面三個都是無效的表達式</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>match browser {
+    Firefox =&gt; let var = 777;, // 無效的表達式
+    Chrome =&gt; let var = 777, // 無效的表達式
+    Ie =&gt;  fu funct() {}, // 無效的表達式
+    Safari =&gt; println!("S"),
+}
+<span class="boring">}</span></code></pre></pre>
+<p>如果需要在右側好幾個表達式或是非表達式可以用塊來包起來</p>
+<p>例</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Browser {
+    Firefox,
+    Chrome,
+    Ie,
+    Safari,
+}
+
+let browser = Browser::Ie;
+
+match browser {
+    Browser::Firefox =&gt; {
+        browser = Browser::Ie;
+        println!("F");
+    },
+    Browser::Chrome =&gt; {
+        let var = 777;
+        println!("C")
+    },
+    Browser::Ie =&gt; println!("I"),
+    Browser::Safari =&gt; println!("S"),
+}
+<span class="boring">}</span></code></pre></pre>
+<p>處理所有可能</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Browser {
+    Firefox,
+    Chrome,
+    Ie,
+    Safari,
+}
+
+let browser = Browser::Ie;
+
+match browser {
+    Browser::Ie =&gt; println!("I"),
+    Browser::Safari =&gt; println!("S"),
+}
+
+// 編譯時會出
+patterns `Firefox` and `Chrome` not covered
+<span class="boring">}</span></code></pre></pre>
+<p>因為少了Firefox和Chrome條件分支，Rust要求mtch需要顯式的處理所有可能的情況</p>
+<p>可以使用空處理</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let browser = Browser::Ie;
+
+match browser {
+    Browser::Firefox =&gt; {}, // 使用空處理
+    Browser::Chrome =&gt; {}, // 使用空處理
+    Browser::Ie =&gt; println!("I"),
+    Browser::Safari =&gt; println!("S"),
+}
+<span class="boring">}</span></code></pre></pre>
+<p>或是使用"_"下底線，類似Golang的Default</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let browser = Browser::Ie;
+
+match browser {
+    Browser::Ie =&gt; println!("I"),
+    Browser::Safari =&gt; println!("S"),
+    _ =&gt; {},
+}
+<span class="boring">}</span></code></pre></pre>
+<p>如果Default放在條件最上面會因為順序關係什麼都不處理</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let browser = Browser::Ie;
+
+match browser {
+    _ =&gt; {}, // 永遠都跑到這裡
+    Browser::Ie =&gt; println!("I"),
+    Browser::Safari =&gt; println!("S"),
+}
+<span class="boring">}</span></code></pre></pre>
+<h3 id="對型別使用match"><a class="header" href="#對型別使用match">對型別使用Match</a></h3>
+<p>match除了對枚舉之外也可以對一般型別</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>match "value" {
+    "value" =&gt; println!("value"),
+    _ =&gt; println!("other"),
+}
+
+match 1 {
+    1 =&gt; println!("one"),
+    2 =&gt; println!("two"),
+    3 =&gt; println!("three"),
+    _ =&gt; println!("other"),
+}
+<span class="boring">}</span></code></pre></pre>
+<p>因為型別不像枚舉有可窮舉出所有，所以一定需要"_"(Default) 條件，不然編譯會出現錯誤</p>
+<h2 id="rust-結構體struct"><a class="header" href="#rust-結構體struct">Rust-結構體(Struct)</a></h2>
+<p>struct 是命名並封裝數個欄位數值所組合的自訂型別</p>
+<p>struct 有 3 種類型</p>
+<ul>
+<li>元組結構體(tuple struct)，就是具名元組而已</li>
+<li>經典的C語言風格結構體(C struct)</li>
+<li>單元結構體(unit struct)，不帶字段，在泛型中很有用</li>
+</ul>
+<p>前幾篇所講的元組型別(tupl)，只要元組包含少量的字段就很好用但是當字段一多就容易將它們搞混
+並且代碼也很容易理解</p>
+<p>例如下面的代碼，不能很輕易的知道哪個字段相加，而且元組型別是有序的如果在開頭增加字段哪變成後面的字段都需要往後遞延非常不直覺</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let data = (1, 'a', 'b', 199.199, true, -100);
+println!("{}", data.0 + data.5);
+<span class="boring">}</span></code></pre></pre>
+<p>這時候使用結構體(Struct)就非常有用，可以為字段命名並標示型別</p>
+<p>它以struct關鍵字開頭後面接著要聲明的類型再以大括號包起來</p>
+<p>例如</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 經典的C語言風格結構體(C struct)
+struct User {
+    username: String,
+    email: String,
+    active: bool,
+}
+
+let user = User {
+    email: String::from("user@usermail.com"),
+    username: String::from("user123"),
+    active: true,
+};
+
+println!("{} {} {}", user.email, user.username, user.active)
+<span class="boring">}</span></code></pre></pre>
+<p>元組結構，擁有元組型別和結構兩個特性又不完全一樣</p>
+<ul>
+<li>需要事先聲明</li>
+<li>字段沒有名稱</li>
+</ul>
+<p>實際上這種結構不常使用</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct User(String, String, bool);
+
+let user = User(
+    String::from("user@usermail.com"),
+    String::from("user123"),
+    true,
+);
+
+println!("{} {} {}", user.0, user.1, user.2)
+<span class="boring">}</span></code></pre></pre>
+<p>單元結構體</p>
+<p>單元結構體適合用在當要實作一個特徵(trait)或某種型別，但沒有任何需要儲存在型別中的資料</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct AlwaysEqual;
+
+let subject = AlwaysEqual;
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-定義函式function一"><a class="header" href="#rust-定義函式function一">Rust-定義函式Function(一)</a></h2>
+<p>如果編寫多次相同的代碼，則可以把代碼封裝在一個塊中，然後為該代碼命名</p>
+<p>通過這種方式就定義了函式，然後可以通過命名的名稱來調用該函式</p>
+<p>要訂一個函式需要使用"fn"關鍵字後面接著函式的名稱跟圓括號然後是一個大括號塊</p>
+<p>大括號的塊稱為函式體，函式體之前都稱為簽名</p>
+<p>下面例子簡單使用函式</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn hello_word() {
+    println!("hello word!")
+}
+
+hello_word();
+hello_word();
+hello_word();
+
+輸出
+hello word!
+hello word!
+hello word!
+<span class="boring">}</span></code></pre></pre>
+<p>後定義函式</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>a;
+let a = 5; // 非法使用變數
+
+hello_word(); // 合法使用後定義的函式
+fn hello_word() {
+    println!("hello word!")
+}
+<span class="boring">}</span></code></pre></pre>
+<p>函式屏蔽其他函式</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn hello_word() {}
+fn hello_word() {} // 多次定義函式
+
+編譯時會出錯
+the name `hello_word` is defined multiple times
+<span class="boring">}</span></code></pre></pre>
+<p>但是可以包在塊裡多次定義fn</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>{
+    fn hello_word() {
+        println!("hello word 1")
+    }
+
+    hello_word();
+}
+{
+    fn hello_word() {
+        println!("hello word 2")
+    }
+
+    hello_word();
+}
+
+輸出
+hello word 1
+hello word 2
+<span class="boring">}</span></code></pre></pre>
+<p>每個定義函式只能在塊裡面有效，下面是不合法的</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>{
+    fn hello_word() {
+        println!("hello word 2")
+    }
+}
+
+hello_word();
+
+編譯時會出錯
+cannot find function `hello_word` in this scope
+<span class="boring">}</span></code></pre></pre>
+<p>也可以在屏蔽外的塊級定義另一個函式</p>
+<p>在main外部定義函式hello_word()，因其內部也定義了hello_word，所以永遠用不到外部的定義函式</p>
+<p>通常編譯器會警告</p>
+<pre><pre class="playground"><code class="language-rust">fn hello_word() {
+    println!("hello word 1")
+}
+
+fn main() {
+    hello_word();
+
+    {
+        hello_word();
+        fn hello_word() {
+            println!("hello word 2")
+        }
+    }
+
+    hello_word();
+    fn hello_word() {
+        println!("hello word 3")
+    }
+}
+</code></pre></pre>
+<p>這邊輸出</p>
+<pre><code>hello word 3
+hello word 2
+hello word 3
+</code></pre>
+<h2 id="rust-定義函式function二"><a class="header" href="#rust-定義函式function二">Rust-定義函式Function(二)</a></h2>
+<h3 id="函式傳遞參數"><a class="header" href="#函式傳遞參數">函式傳遞參數</a></h3>
+<p>每次調用函式時都打印相同的hello word的函式不是很有用處</p>
+<p>這時候可以傳遞參數給函式會顯得更有意義</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn hello_word(name: String) {
+    println!("{} hello", name)
+}
+
+hello_word(String::from("Mike"));
+
+輸出
+Mike hello
+<span class="boring">}</span></code></pre></pre>
+<p>函式參數的定義與變數定義非常相似</p>
+<p>因此可以將面的函式解釋為</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>{
+    let name: String = String::from("Mike");
+    println!("{} hello", name)
+}
+<span class="boring">}</span></code></pre></pre>
+<p>變數的定義與函式參數的定義主要的差別在於函式定義需要明確的指定類型</p>
+<p>變數的定義可以依賴類型推斷</p>
+<p>編譯器會使用類型推斷來檢查參數值是否合法</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn f(c: i16) {}
+
+f(5.); // 非法因為是浮點數
+f(5u16); // 非法因為是u16型別
+f(5i16); // 合法
+f(5); // 合法因為傳遞是無約束得整數類型參數會變函式限制為i16類型
+<span class="boring">}</span></code></pre></pre>
+<h3 id="函式按值傳遞參數"><a class="header" href="#函式按值傳遞參數">函式按"值"傳遞參數</a></h3>
+<p>參數不僅僅是傳遞物件的新名稱是傳遞物件的副本，此副本在調用函式時創建並在函式結束且控制返回到調用者時銷毀它</p>
+<p>例如下面</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn test(mut f: f64) {
+    f *= 10.;
+    println!("{}", f)
+}
+
+let f = 5.;
+test(f);
+println!("{}", f);
+
+輸出
+50
+5
+<span class="boring">}</span></code></pre></pre>
+<p>在一開始就宣告的f變數在傳遞給test函式的，並在函式中保留使用f變數並更改變數得值並打印，函式結束反給調用者，然侯在印出f變數，這個變數與調用時一樣</p>
+<p>實際上傳遞給函式的不是這個變數而是變數的"值"並在函式結尾時銷毀</p>
+<h3 id="函式返回值"><a class="header" href="#函式返回值">函式返回值</a></h3>
+<p>函式除了能接收參數之外還可以計算結果並返回給調用者</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn test(f: f64) -&gt; f64 {
+    return f * 10.;
+}
+
+println!("{}", test(5.));
+<span class="boring">}</span></code></pre></pre>
+<p>返回值需要再函式簽名之後用"→"並指定型別</p>
+<h2 id="rust-定義函式function三"><a class="header" href="#rust-定義函式function三">Rust-定義函式Function(三)</a></h2>
+<h3 id="提前退出"><a class="header" href="#提前退出">提前退出</a></h3>
+<p>正常情況是必須達到函示的末尾，但是如果編寫包含許多語法的函式通常會在意識到沒有更多計算要做時因此需要提前退出該函式</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn f(x: i32) -&gt; i32 {
+    if x &lt;= 0 {
+        return 0;
+    }
+
+    return x * 5;
+}
+
+println!("{} {}", f(10), f(0))
+
+輸出
+50 0
+<span class="boring">}</span></code></pre></pre>
+<h3 id="返回多個值"><a class="header" href="#返回多個值">返回多個值</a></h3>
+<p>如果要從函式返回多個值，可以使用元組型別</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn f(x: i32) -&gt; (i32, i32) {
+    return (x * 5, 10);
+}
+
+println!("{:?}", f(10))
+
+輸出
+(50, 10)
+<span class="boring">}</span></code></pre></pre>
+<p>或是也可以用返回結構，元組結構，數組或是向量來返回多個</p>
+<h3 id="更改調用者的變數"><a class="header" href="#更改調用者的變數">更改調用者的變數</a></h3>
+<p>假設有個包含數字的數組，要更改其中的數字</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn f(mut a: [i32; 5]) {
+    for i in 0..5 {
+        if a[i] &gt; 0 {
+            a[i] *= 2;
+        }
+    }
+}
+
+let mut arr = [5, -1, 2, -2, 8];
+f(arr);
+println!("{:?}", arr);
+
+輸出
+[5, -1, 2, -2, 8]
+<span class="boring">}</span></code></pre></pre>
+<p>可以看到並沒有改變數組，並且在編譯時出現警告variable does not need to be mutable</p>
+<p>告訴我們mut聲明arr之後卻沒有改變可以移除</p>
+<p>比較麻煩的作法，可以透過回傳值回傳一個新的數組，缺點就是數組會複製兩次</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn f(mut a: [i32; 5]) -&gt; [i32; 5] {
+    for i in 0..5 {
+        if a[i] &gt; 0 {
+            a[i] *= 2;
+        }
+    }
+
+    return a;
+}
+
+let mut arr = [5, -1, 2, -2, 8];
+arr = f(arr);
+println!("{:?}", arr);
+
+輸出
+[10, -1, 4, -2, 16]
+<span class="boring">}</span></code></pre></pre>
+<p>可以透過引用傳遞參數的方式來改變數組</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn f(a: &amp;mut [i32; 5]) {
+    for i in 0..5 {
+        if (*a)[i] &gt; 0 {
+            (*a)[i] *= 2;
+        }
+    }
+}
+
+let mut arr = [5, -1, 2, -2, 8];
+f(&amp;mut arr);
+println!("{:?}", arr);
+
+輸出
+[10, -1, 4, -2, 16]
+<span class="boring">}</span></code></pre></pre>
+<p>透過&amp;符號來表示物件記憶體位址，而使用*符號表示記憶體位址的物件</p>
+<p>通過型別宣告&amp;mut [i32; 5]指定它是物件的地址(可以稱為指針Pointer或是引用reference)</p>
+<p>這邊的使用跟C++使用很像，區別是Rust還允許顯式的取消引用可以省略*符號</p>
+<p>這個函式等同於上面</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn f(a: &amp;mut [i32; 5]) {
+    for i in 0..5 {
+        if a[i] &gt; 0 { // 省略了*
+            a[i] *= 2; // 省略了*
+        }
+    }
+}
+
+let mut arr = [5, -1, 2, -2, 8];
+f(&amp;mut arr);
+println!("{:?}", arr);
+
+輸出
+[10, -1, 4, -2, 16]
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-定義泛型函式"><a class="header" href="#rust-定義泛型函式">Rust-定義泛型函式</a></h2>
+<p>Rust是強型別語言，執行嚴格的資料型別檢查，因此當定義使用某種型別參數的函式時比如說</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>square(x: f32) -&gt; f32
+<span class="boring">}</span></code></pre></pre>
+<p>調用函式的程式碼必須傳遞一個嚴格屬於這種型別的表達式例如</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>square(1.3414f32)
+<span class="boring">}</span></code></pre></pre>
+<p>或者是每次使用該函式時都執行顯式的型別轉換例如</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>square(1.3414f64 as f32)
+<span class="boring">}</span></code></pre></pre>
+<p>對於使用的人非常不方便，對於編寫該函式的人也不方便</p>
+<p>由於Rust有很多數字類的型別，如果決定了參數型別是i32型別但每次調用幾乎都是用i64哪最好是更改參數型別為i64，而且如果函式有多個模塊或是多個程式在使用則很難滿足每個調用者的需求</p>
+<p>例如</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn f(s: char, n1: i16, n2: i16) -&gt; i16 {
+    if s == '1' {
+        return n1;
+    }
+
+    return n2;
+}
+
+println!("{}", f('1', 10, 20));
+
+輸出
+10
+<span class="boring">}</span></code></pre></pre>
+<p>這時候想用f32當參數肯定是無法使用這函式，但總不能為了這個需求又寫了邏輯一樣的函式只差在參數不同，這時候就可以使用泛型函式了</p>
+<h3 id="定義泛型函式"><a class="header" href="#定義泛型函式">定義泛型函式</a></h3>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+		println!("{}", f::&lt;i16&gt;('1', 10, 20));
+    println!("{}", f::&lt;f32&gt;('1', 10.1, 20.1));
+}
+
+fn f&lt;T&gt;(s: char, n1: T, n2: T) -&gt; T {
+    if s == '1' {
+        return n1;
+    }
+
+    return n2;
+}
+
+輸出
+10
+10.1</code></pre></pre>
+<p>這個函式既可以輸入i16也可以輸入f32當參數了</p>
+<p>在定義函式中，函式名之後用&lt;&gt;包起來字母T，該字母為函式宣告的型別參數</p>
+<p>這個表示宣告的不是具體函式而是由T型別參數來參數化的泛型函式，只有在編譯時為該T參數指定具體型別時該函式才成為具體函式</p>
+<p>在使用泛型函式需要將T參數替換成實際使用f::的型別來護得具體函式</p>
+<p>上面例子有三個地方宣告成T型別，在使用時需要三個都是相同型別不然在編譯時會出現錯誤</p>
+<h3 id="推斷參數型別"><a class="header" href="#推斷參數型別">推斷參數型別</a></h3>
+<p>可以透過Rust的型別推斷簡化成下面使用範例</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    println!("{}", f('1', 10, 20)); // 透別推斷型別簡化
+    println!("{}", f('1', 10.1, 20.1)); // 透別推斷型別簡化
+}
+
+fn f&lt;T&gt;(s: char, n1: T, n2: T) -&gt; T {
+    if s == '1' {
+        return n1;
+    }
+
+    return n2;
+}
+</code></pre></pre>
+<h2 id="rust-定義泛型結構"><a class="header" href="#rust-定義泛型結構">Rust-定義泛型結構</a></h2>
+<p>既然有泛型函數當然少不瞭泛型結構</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct S1&lt;T1, T2&gt; {
+   n1: T1,
+   n2: T2,
+}
+
+let s = S {n1:957, n2:996.1}
+<span class="boring">}</span></code></pre></pre>
+<p>第一句語法宣告了兩個型別T1和T2參數化的泛型結構S1，第一個字段n1為T1第二字段n2為T2</p>
+<p>第二句語法n1字段的參數隱式的替換成i32，n2字段的參數隱式替換成f64</p>
+<p>也可以使用泛型元組結構</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct SE&lt;T1, T2&gt; (T1, T2)
+
+let se = SE (957, 996.1)
+<span class="boring">}</span></code></pre></pre>
+<h3 id="泛型機制"><a class="header" href="#泛型機制">泛型機制</a></h3>
+<p>通過下面程式碼來理解編譯泛型機制概念</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn swap&lt;T1, T2&gt;(p1: T1, p2: T2) -&gt; (T2, T1) {
+    return (p2, p1);
+}
+
+let x = swap(5i16, 9u16);
+let y = swap(6f32, true);
+
+println!("{:?} {:?}", x, y);
+
+輸出
+(9, 5) (true, 6.0)
+<span class="boring">}</span></code></pre></pre>
+<p>第一階段編譯器會掃描程式碼並且每次找到泛型函式宣告(swap)時，它在資料結構中加載該函式內部表示形式檢查泛型程式碼是否有語法錯誤</p>
+<p>第二階段編譯器再次掃描程式碼在每次遇到泛型函式調用時，編譯器都會檢查此類用法與泛型宣告的相應內部表示關聯，在確認後再其資料結構中加載這種對應關係</p>
+<p>第三階段再將掃描所有泛型函式調用，對於每個泛型函式調用者都定義每個泛型參數的具體型別，這種具體型別可以是在用法中顯式的或者如上面範例一樣用推斷出來的</p>
+<p>在確定替換泛型參數的具體型別之後都會產生泛型函式的具體版本對應程式碼如下</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn swap_i16_u16(p1: i16, p2: u16) -&gt; (u16, i16) {
+    return (p2, p1);
+}
+
+fn swap_f32_bool(p1: f32, p2: bool) -&gt; (f32, bool) {
+    return (p2, p1);
+}
+
+let x = swap_i16_u16(5i16, 9u16);
+let y = swap_f32_bool(6f32, true);
+
+println!("{:?} {:?}", x, y);
+<span class="boring">}</span></code></pre></pre>
+<p>泛型編譯有幾個特點</p>
+<ul>
+<li>與非泛型程式碼相比多階段編譯相對較慢一些</li>
+<li>生成的程式碼針對每個特定的調用進行高度優化，它完成使用調用者使用的型別無須進行轉換因此優化了運行時性能</li>
+<li>泛型函式如果執行很多具有不同型別參數的調用，則產生大量的機器代碼，最好不要再單個函式調用太多型別會給CPU緩存造成負擔</li>
+</ul>
+<p>幾種流行的泛型語言的代價
+Slow Compiler: c++/rust
+Slow Performance: java/scala
+Slow Programmer: go1</p>
+<h2 id="rust-所有權一"><a class="header" href="#rust-所有權一">Rust-所有權(一)</a></h2>
+<p>所有權可以說是Rust核心概念，這讓Rust不需要垃圾回收(garbage collector)就可以保障記憶體安全。Rust的安全性和所有權的概念息息相，因此理解Rust中的所有權如何運作是非常重要的</p>
+<h3 id="所有權的規則"><a class="header" href="#所有權的規則">所有權的規則</a></h3>
+<ul>
+<li>Rust 中每個數值都會有一個變數作為它的<strong>擁有者（owner）</strong>。</li>
+<li>同時間只能有一個擁有者。</li>
+<li>當擁有者離開作用域時，數值就會被丟棄。</li>
+</ul>
+<h3 id="變數作用域"><a class="header" href="#變數作用域"><strong>變數作用域</strong></a></h3>
+<p>用下面這段程序描述變數範圍的概念</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>{
+    // 在宣告以前，變數s無效
+    let s = "hello";
+    // 這裡是變數s的可用範圍
+}
+// 變數範圍已經結束，變數s無效
+<span class="boring">}</span></code></pre></pre>
+<p>變數作用域是變數的一個屬性，其代表變數的可使用範圍，默認從宣告變數開始有效直到變數所在作用域結束。</p>
+<h3 id="記憶體與分配"><a class="header" href="#記憶體與分配">記憶體與分配</a></h3>
+<p>定義一個變數並賦予值，這個變數的值存在記憶體中，例如需要用戶輸入的一串字串由於長度的不確定只能存放在堆(heap)上，這需要記憶體分配器在執行時請求記憶體並在不需要時還給分配器</p>
+<p>在擁有垃圾回收機制(garbage collector, GC)的語言中，GC會追蹤並清除不再使用的記憶體，如果沒有GC的話則需要在不使用時顯式的呼叫釋放記憶體</p>
+<p>例如C語言</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>{    
+    char *s = strdup("hello");    
+    free(s); *// 釋放s資源*
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Rust選擇了一個不同的道路，當變數在離開作用域時會自動釋放例如下面</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>{
+    let s = String::from("hello"); // s 在此開始視為有效
+    // 使用 s
+} // 此作用域結束，釋放s變數     
+<span class="boring">}</span></code></pre></pre>
+<p>當變數離開作用域(大括號結束)時會自動呼叫特殊函示drop來釋放記憶體</p>
+<h3 id="變數與資料互動的方式"><a class="header" href="#變數與資料互動的方式">變數與資料互動的方式</a></h3>
+<p><strong>移動(Move)</strong></p>
+<p>變數可以在Rust中以不同的方式與相同的資料進行互動</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 100;
+let y = x;
+<span class="boring">}</span></code></pre></pre>
+<p>這個代碼將值100綁定到變數x，然後將x的值復制並賦值給變數y現在棧(stack)中將有兩個值100。此情況中的數據是"純量型別"的資料，不需要存儲到堆中，僅在棧(stack)中的資料的"移動"方式是直接複製，這不會花費更長的時間或更多的存儲空間。"純量型別"有這些：</p>
+<ul>
+<li>所有整數類型，例如 i32 、 u32 、 i64 等</li>
+<li>布爾類型 bool，值為true或false</li>
+<li>所有浮點類型，f32和f64</li>
+<li>字符類型 char</li>
+<li>僅包含以上類型數據的元組(Tuples)</li>
+</ul>
+<p>現在來看一下非純量型別的移動</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s1 = String::from("hello");
+let s2 = s1;
+<span class="boring">}</span></code></pre></pre>
+<p>String物件的值"hello"為不固定長度長度型別所以被分配到堆(heap)</p>
+<p>當s1賦值給s2，String的資料會被拷貝，不過我們拷貝是指標、長度和容量。我們不會拷貝指標指向的資料</p>
+<p>前面説當變數超出作用域時，Rust自動調用釋放資源函數並清理該變數的記憶體。但是s1和s2都被釋放的話堆(heap)區中的"hello"被釋放兩次，這是不被系統允許的。為了確保安全，在給s2賦值時 s1已經無效了</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s1 = String::from("hello");
+let s2 = s1; 
+println!("{}, world!", s1); // 會發生錯誤 s1已經失效了
+<span class="boring">}</span></code></pre></pre>
+<p><strong>克隆(clone)</strong></p>
+<p>正常情況下Rust在較大資料上都會以淺拷貝的方式，當然也有提供深拷貝的method</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s1 = String::from("hello");
+let s2 = s1.clone();
+println!("{} {}", s1, s2);
+
+輸出
+hello hello
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-所有權二"><a class="header" href="#rust-所有權二">Rust-所有權(二)</a></h2>
+<h3 id="所有權與函式"><a class="header" href="#所有權與函式">所有權與函式</a></h3>
+<p>將一個變數當作函式的參數傳給其他函式，怎樣安全的處理所有權</p>
+<p>傳遞數值給函式這樣的語義和賦值給變數是類似的。傳遞變數給函式會是移動或拷貝就像賦值一樣</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    // s被宣告
+    let s = String::from("hello"); // s進入作用域
+
+    takes_ownership(s); // s的值被當作參數傳入函式 所以可以當作s已經被移動，從這開始已經無效
+
+    // x被宣告
+    let x = 5; // x進入作用域
+
+    makes_copy(x); // x的值被當作參數傳入函式，但x是純量型別 i32被copy，依然有效
+} // 函式結束，x無效，接著是s的值已經被移動了它不會有任何動作
+
+fn takes_ownership(some_string: String) {
+    // 一個String參數some_string傳入，有效
+    println!("{}", some_string);
+} // 函式結束，參數some_string佔用的記憶體被釋放
+
+fn makes_copy(some_integer: i32) {
+    // 一個i32參數some_integer傳入，有效
+    println!("{}", some_integer);
+} // 函式結束，參數some_integer是純量型別，沒有任何動作發生</code></pre></pre>
+<p>如果在呼叫takes_ownership之後在使用s變數在編譯時會出錯</p>
+<h3 id="回傳值與作用域"><a class="header" href="#回傳值與作用域">回傳值與作用域</a></h3>
+<p>回傳值轉移所有權</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let s1 = gives_ownership(); // gives_ownership移動它的回傳值給s1
+    let s2 = String::from("哈囉"); // s2進入作用域
+    let s3 = takes_and_gives_back(s2); // s2移入takes_and_gives_back，該函式又將其回傳值移到s3
+} // s3 在此離開作用域並釋放
+  // s2 已被移走，所以沒有任何動作發生
+  // s1 離開作用域並釋放
+
+// 此函式回傳一個String
+fn gives_ownership() -&gt; String {
+    let some_string = String::from("hello"); // some_string進入作用域
+
+    return some_string; // 回傳some_string並移動給呼叫它的函式
+}
+
+// 此函式會取得一個String然後回傳它
+fn takes_and_gives_back(a_string: String) -&gt; String {
+    // a_string進入作用域
+    return a_string; // 回傳a_string並移動給呼叫的函式
+}</code></pre></pre>
+<p>引用與借用在前面介紹<a href="https://ithelp.ithome.com.tw/articles/10269251">定義函式</a>時有介紹過了，這邊就不多講了</p>
+<p>講一下迷途指標(dangling pointer)，這個在很多指標語言常發生的錯誤</p>
+<p>簡單講就是用到空指標，Rust會在編譯時檢查這類型的錯誤</p>
+<p>例如</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn dangle() -&gt; &amp;String { // 回傳String的迷途引用
+    let s = String::from("hello"); // 宣告一個新的String
+    return &amp;s // 回傳String的引用
+} // s在此會離開作用域並釋放
+<span class="boring">}</span></code></pre></pre>
+<p>編譯時會產生錯誤 missing lifetime specifier</p>
+<p>這個有關於生命週期的會在下一篇講</p>
+<h2 id="rust-定義closure閉包"><a class="header" href="#rust-定義closure閉包">Rust-定義Closure(閉包)</a></h2>
+<p>一般來說Rust如果要排序數組會這樣寫</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [10, 5, 9, 7, 6]
+
+arr.sort();
+
+println!("{:?}", arr);
+
+輸出
+[5, 6, 7, 9, 10]
+<span class="boring">}</span></code></pre></pre>
+<p>剛剛升序如果要降序就必須使用sort_by 需要自己寫函式來傳給sort_by排序決定用</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [10, 5, 9, 7, 6]
+
+use std::cmp::Ordering;
+
+fn descFn(a: &amp;i32, b: &amp;i32) -&gt; Ordering {
+    if  a &lt; b {
+        return Ordering::Greater;
+    } else if a &gt; b  {
+        return Ordering::Less
+    } else {
+        return Ordering::Equal
+    }
+}
+
+arr.sort_by(descFn);
+
+println!("{:?}", arr);
+
+輸出
+[10, 9, 7, 6, 5]
+<span class="boring">}</span></code></pre></pre>
+<p>造上面這樣使用有個缺點就是必須在宣告一個函式，如果只用一次的話就可用更簡短的使用匿名函式</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [10, 5, 9, 7, 6]
+
+use std::cmp::Ordering;
+
+arr.sort_by(|a: &amp;i32, b: &amp;i32|
+    if  a &lt; b {
+        return Ordering::Greater;
+    } else if a &gt; b  {
+        return Ordering::Less
+    } else {
+        return Ordering::Equal
+    }
+);
+
+println!("{:?}", arr);
+輸出
+[10, 9, 7, 6, 5]
+<span class="boring">}</span></code></pre></pre>
+<p>使用一個匿名函式就可以簡短許多不用再宣告新的函式</p>
+<p>Rust跟一般語言的匿名函式有個特別的限制就是無法使用外部宣告的變數</p>
+<p>例如這樣是不合法的</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let outVal = 10;
+
+fn printOutVal() {
+    println!("{}", outVal); // 無法訪問outVal變數
+}
+
+printOutVal();
+
+// 編譯時會出現錯誤
+<span class="boring">}</span></code></pre></pre>
+<p>但是使用靜態變數或是常量例如</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>const CONSTVAL: i32 = 10;
+
+fn printOutVal() {
+    println!("{}", CONSTVAL); // 合法使用
+}
+
+printOutVal();
+
+-----------------------------
+
+static STATICVAL: i32 = 0;
+
+fn printOutVal() {
+    println!("{}", CONSTVAL); // 合法使用
+}
+
+printOutVal();
+<span class="boring">}</span></code></pre></pre>
+<p>Rust這樣限制應該基於所有權的設計關係，這樣有個好處就是避免亂引用變數造成BUG也比較好閱讀</p>
+<p>當然Closure有更多複雜的使用這邊只簡單介紹最基本的使用方法</p>
+<h2 id="rust-命令行的輸入輸出"><a class="header" href="#rust-命令行的輸入輸出">Rust-命令行的輸入輸出</a></h2>
+<h3 id="命令行參數"><a class="header" href="#命令行參數">命令行參數</a></h3>
+<p>一般來說編譯好的執行檔都是透過命令行來制執有些時候需要讀取一些命令行參數或是環境參數</p>
+<p>程式輸入的最基本形式事示通命令行</p>
+<p>例如下面</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for arg in  std::env::args() {
+    println!("{}", arg)
+}
+<span class="boring">}</span></code></pre></pre>
+<p>這時候編譯好的執行檔名稱如果是main在命令行執行</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>./main arg1 arg2 arg3
+
+輸出
+./main
+arg1
+arg2
+arg3
+<span class="boring">}</span></code></pre></pre>
+<p>args標準庫函式會返回命令行參數上的跌代器類別是Args並生成String值</p>
+<p>第一個是程式名稱包含路徑其餘都是參數指令</p>
+<h3 id="環境變數"><a class="header" href="#環境變數">環境變數</a></h3>
+<p>輸入輸出的另一種形式通過環境變數</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for env in std::env::vars() {
+    println!("{:?}", env)
+}
+
+輸出
+("CARGO_HOME", "/playground/.cargo")
+**("CARGO_MANIFEST_DIR", "/playground")
+("CARGO_PKG_AUTHORS", "The Rust Playground")
+("CARGO_PKG_DESCRIPTION", "")
+("CARGO_PKG_HOMEPAGE", "")
+("CARGO_PKG_LICENSE", "")
+...**
+<span class="boring">}</span></code></pre></pre>
+<p>剛剛是把每個環境變數都印出來假如要讀取特定環境變數可以透過var函示指定key</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>println!("{:?}", std::env::var("envkey"));
+<span class="boring">}</span></code></pre></pre>
+<p>既然能讀取當然也能寫入，下面就透過set_var函式來寫入環境變數</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>std::env::set_var("setenvkey", "env_value");
+
+println!("{:?}", std::env::var("setenvkey"));
+
+輸出
+Ok("env_value")
+<span class="boring">}</span></code></pre></pre>
+<h3 id="命令行的輸入"><a class="header" href="#命令行的輸入">命令行的輸入</a></h3>
+<p>可以在程式啟動後獲取從鍵盤輸入的一行字直到用戶按下Enter鍵在輸出</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut line = String::new();
+
+std::io::stdin().read_line(&amp;mnt line);
+
+println!("{}", line);
+<span class="boring">}</span></code></pre></pre>
+<h2 id="rust-特徵trait一"><a class="header" href="#rust-特徵trait一">Rust-特徵(Trait)(一)</a></h2>
+<h3 id="什麼是特徵"><a class="header" href="#什麼是特徵">什麼是特徵</a></h3>
+<p>根據官網的解釋就是</p>
+<p>特徵會告訴編譯器特定型別與其他型別共享的功能。可以使用特徵定義來抽象出共同行為。可以使用特徵界限(trait bounds)來指定泛型型別為擁有特定行為的任意型別。</p>
+<p>簡單講就是其他語言中的介面(interface)，只是有少許不同而已</p>
+<h3 id="特徵的需求"><a class="header" href="#特徵的需求">特徵的需求</a></h3>
+<p>假設我們需要一個函式需計算四次平方根，可以用標準庫sqrtx來寫</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    fn quartic(x: f64) -&gt; f64 {
+        return x.sqrt().sqrt();
+    }
+
+    let qr = quartic(100.);
+
+    println!("{} {}", qr * qr * qr * qr, qr);
+}
+
+輸出
+100.00000000000003 3.1622776601683795</code></pre></pre>
+<p>但假如要還需要一個計算32位元浮點數的四次平方根又要再寫一個quarticf32函式</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn quarticf64(x: f64) -&gt; f64 {
+    return x.sqrt().sqrt();
+}
+
+fn quarticf32(x: f32) -&gt; f32 {
+    return x.sqrt().sqrt();
+}
+<span class="boring">}</span></code></pre></pre>
+<p>這時候可能會寫一個泛型函式來取代前面兩個函式</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    fn quartic&lt;T&gt;(x: T) -&gt; T {
+        return x.sqrt().sqrt();
+    }
+
+    let qrf32 = quartic(100f32);
+	let qrf64 = quartic(100f64);
+
+    println!("{} {}", qrf32, qrf64);
+}
+
+會出現編譯錯誤
+no method named `sqrt` found for type parameter `T` in the current scope</code></pre></pre>
+<p>會出現這樣的錯誤是因為x變數是屬於泛型型別T，是剛剛在建立出來的並沒有sqrt的mehtod</p>
+<p>這時候就可以特徵派上用場的時候了，可以這樣使用解決剛剛的問題</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    trait HasSqrt {
+        fn sq(self) -&gt; Self;
+    }
+
+    impl HasSqrt for f32 {
+        fn sq(self) -&gt; Self {
+            return f32::sqrt(self);
+        }
+    }
+
+    impl HasSqrt for f64 {
+        fn sq(self) -&gt; Self {
+            return f64::sqrt(self);
+        }
+    }
+
+    fn quartic&lt;T&gt;(x: T) -&gt; T
+    where
+        T: HasSqrt,
+    {
+        return x.sq().sq();
+    }
+
+    let qr32 = quartic(100f32);
+    let qr64 = quartic(100f64);
+
+    println!("{} {}", qr32, qr64);
+}
+
+輸出
+3.1622777 3.1622776601683795</code></pre></pre>
+<p>一開先宣告HasSqrt trait然後使用impl關鍵字替f32和f64實現sq函式</p>
+<h2 id="rust-特徵trait二"><a class="header" href="#rust-特徵trait二">Rust-特徵(Trait)(二)</a></h2>
+<h3 id="沒有trait界限的泛型函式"><a class="header" href="#沒有trait界限的泛型函式">沒有Trait界限的泛型函式</a></h3>
+<p>上一篇範例中在宣告泛型函式中使用了where</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>where
+    T: HasSqrt,
+{
+<span class="boring">}</span></code></pre></pre>
+<p>在泛型函式的宣告中如果沒有where的子句引用類型參數，則該型別就沒有與任何trait關聯</p>
+<p>因此只能對該泛型型別的物件做很少的事情</p>
+<p>例如</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn f&lt;T&gt;(x: T) -&gt; T {
+    let c: T = x;
+    let mut d = c;
+    f = f2(d)
+    return f
+}
+<span class="boring">}</span></code></pre></pre>
+<p>使用無界限的類型參數"T"只能</p>
+<ul>
+<li>通過值或引用將其作函式參數傳遞</li>
+<li>通過值或引用得從函式返回</li>
+<li>局部變數宣告或是初始化</li>
+</ul>
+<h3 id="多函式trait"><a class="header" href="#多函式trait">多函式Trait</a></h3>
+<p>Trait也可以包含多個函式例如上一篇的範例如果要再增加絕對值abs的函式可以這樣寫</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    trait HasSqrt {
+        fn sq(self) -&gt; Self;
+        fn abs(self) -&gt; Self;
+    }
+
+    impl HasSqrt for f32 {
+        fn sq(self) -&gt; Self {
+            return f32::sqrt(self);
+        }
+
+        fn abs(self) -&gt; Self {
+            return f32::abs(self);
+        }
+    }
+
+    impl HasSqrt for f64 {
+        fn sq(self) -&gt; Self {
+            return f64::sqrt(self);
+        }
+
+        fn abs(self) -&gt; Self {
+            return f64::abs(self);
+        }
+    }
+
+    fn quartic&lt;T&gt;(x: T) -&gt; T
+    where
+        T: HasSqrt,
+    {
+        return x.abs.sq().sq();
+    }
+
+    let qr32 = quartic(100f32);
+    let qr64 = quartic(100f64);
+
+    println!("{} {}", qr32, qr64);
+}</code></pre></pre>
+<p>有時候可能只會需要平方根函式不需要絕對值函式這時候就可以抽兩個Trait會更靈活</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    trait HasSqrt {
+        fn sq(self) -&gt; Self;
+    }
+
+    trait HasAbs {
+        fn abs(self) -&gt; Self;
+    }
+
+    impl HasSqrt for f32 {
+        fn sq(self) -&gt; Self {
+            return f32::sqrt(self);
+        }
+    }
+
+    impl HasAbs for f32 {
+        fn abs(self) -&gt; Self {
+            return f32::abs(self);
+        }
+    } 
+
+    impl HasSqrt for f64 {
+        fn sq(self) -&gt; Self {
+            return f64::sqrt(self);
+        }
+    }
+
+    impl HasAbs for f64 {
+        fn abs(self) -&gt; Self {
+            return f64::abs(self);
+        }
+    }
+
+    fn quartic&lt;T&gt;(x: T) -&gt; T
+    where
+        T: HasSqrt + HasAbs , // 這裡界限宣告兩個trait
+    {
+        return x.abs.sq().sq();
+    }
+
+    let qr32 = quartic(100f32);
+    let qr64 = quartic(100f64);
+
+    println!("{} {}", qr32, qr64);
+}</code></pre></pre>
+<h3 id="self和self傻傻分不清楚"><a class="header" href="#self和self傻傻分不清楚">"self"和"Self"傻傻分不清楚</a></h3>
+<p>Rust式區分大小寫得</p>
+<p>在前面的範例都使用到self和Self其中</p>
+<ul>
+<li>小寫開頭的self表示函式的值</li>
+<li>大寫開頭的Self標示self的型別</li>
+</ul>
+<p>"self"和"Self"只能在trait或impl範圍裡面使用並且如果self必須是是方法的第一個參數</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 這幾個範例是等效的
+fn f(self) -&gt; Self
+fn f(self: Self) -&gt; Self
+fn f(self: i32) -&gt; Self
+fn f(self) -&gt; i32
+fn f(self: Self) -&gt; i32
+fn f(self: i32) -&gt; i32
+<span class="boring">}</span></code></pre></pre>
+<h3 id="預設實作"><a class="header" href="#預設實作">預設實作</a></h3>
+<p>可以針對Trait預設行為，不必要求每個型別都要實作方法，當然也可以覆蓋這個預設的方法</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    trait HasSqrt {
+        fn sq(self) -&gt; Self;
+        fn helloWord(&amp;self) -&gt; String { // 預設實作
+            return String::from("hello word");
+        }
+    }
+
+    impl HasSqrt for f32 {
+        fn sq(self) -&gt; Self {
+            return f32::sqrt(self);
+        }
+    }
+
+    fn quartic&lt;T&gt;(x: T) -&gt; T
+    where
+        T: HasSqrt,
+    {
+        println!("{}", x.helloWord());
+        return x.sq().sq();
+    }
+
+    let qr32 = quartic(100f32);
+}</code></pre></pre>
+<h2 id="rust-並行並發一"><a class="header" href="#rust-並行並發一">Rust-並行&amp;並發(一)</a></h2>
+<p>有關於並行和並發的定義每個人可能有不一樣的解釋</p>
+<ul>
+<li>並行指的是在同一時刻，多條指令在 CPU 上同時執行</li>
+<li>並發指的是在同一時間區間內，多條指令在 CPU 上同時執行</li>
+</ul>
+<p><img src="images/201296758kIF7WxTG3.jpg" alt="img" /></p>
+<p>Rust以安全高效處理並行程式設計著稱</p>
+<h3 id="透過spawn建立新的執行緒"><a class="header" href="#透過spawn建立新的執行緒">透過spawn建立新的執行緒</a></h3>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+use std::time::Duration;
+
+fn main() {
+    thread::spawn(|| {
+        for i in 1..10 {
+            println!("{}", i);
+            thread::sleep(Duration::from_millis(1)); // 讓執行短暫sleep一下
+        }
+    });
+
+    thread::sleep(Duration::from_millis(5)); // 讓執行短暫sleep一下
+}</code></pre></pre>
+<p>透過範例可以看到印出來並不是如預期的都會把1-10印出來，主要是因為main已經執行完退出造成新建的執行緒還沒跑完就被中斷了，雖然可以透過更久的sleep讓main晚點退出但是有更好的作法</p>
+<h3 id="使用join等待所有執行緒完成"><a class="header" href="#使用join等待所有執行緒完成">使用join等待所有執行緒完成</a></h3>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let handle = thread::spawn(|| {
+        for i in 1..10 {
+            println!("{}", i);
+            thread::sleep(Duration::from_millis(1)); // 讓執行短暫sleep一下
+        }
+    });
+
+    handle.join().unwrap(); // (Blocking)讓全部執行完才繼續往下
+}</code></pre></pre>
+<p>透過儲存thread::spawn回傳的數值為變數，可以修正產生的執行緒完全沒有執行或沒有執行完成的問題。handle呼叫join方法來確保產生的執行緒會在main離開之前完成</p>
+<h3 id="透過執行緒使用move閉包"><a class="header" href="#透過執行緒使用move閉包">透過執行緒使用move閉包</a></h3>
+<p>閉包透過move讓thread::spawn執行緒可以使用其他執行緒的資料。</p>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(move || { // 透過move讓執行緒可以擁有v變數的所有權
+        println!("{:?}", v);
+    }); // 在這個執行緒執行完之前v所有權都不會釋放
+
+    handle.join().unwrap();
+}</code></pre></pre>
+<h2 id="rust-並行並發二"><a class="header" href="#rust-並行並發二">Rust-並行&amp;並發(二)</a></h2>
+<h3 id="channel"><a class="header" href="#channel">channel</a></h3>
+<p>通常channel都是搭配並行使用，沒有使用並行就沒有使用channel的意義
+「別透過共享記憶體來溝通，而是透過溝通來共享記憶體」。沒錯Golang的口號在Rust也是通用
+Rust標準函式庫也有提供類似Golang的Channel函式
+Channel函式會回傳兩個變數分別為發送者(transmitter)與接收者(receiver)
+Channel可以多個發送者(transmitter)，單一接收者(receiver)
+藉由這兩變數來傳遞訊息</p>
+<pre><pre class="playground"><code class="language-rust">use std::sync::mpsc;
+use std::thread;
+
+fn main() {
+    let (tx, rx) = mpsc::channel(); // 建立新的channel，回傳一個元組，拆成兩個變數
+
+    thread::spawn(move || {
+        let val = String::from("hello word");
+        tx.send(val).unwrap();
+    });
+
+    let received = rx.recv().unwrap(); // (Blocking)等到有資料才會繼續往下 
+    println!("{}", received);
+}</code></pre></pre>
+<p>channel如果要在同一個通道多個執行緒使用發送者(transmitter)時，會因為所有權的關係造成錯誤，所以可以用clone來製造多個發送者(transmitter)</p>
+<pre><pre class="playground"><code class="language-rust">use std::sync::mpsc;
+use std::thread;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+    let tx1 = tx.clone(); // 複製發送者
+    let tx2 = tx.clone(); // 複製發送者
+    thread::spawn(move || {
+        let val = String::from("hello word tx");
+        tx.send(val).unwrap();
+    });
+
+    thread::spawn(move || {
+        let val = String::from("hello word tx1");
+        tx1.send(val).unwrap();
+    });
+
+    thread::spawn(move || {
+        let val = String::from("hello word tx2");
+        tx2.send(val).unwrap();
+    });
+
+    for received in rx {
+        println!("{}", received);
+    }
+}
+
+輸出
+hello word tx
+hello word tx2
+hello word tx1</code></pre></pre>
+<p>雖然channel本身不支援多個接收者(receiver)，但是可以利用上鎖讓多個執行序同時使用接收者</p>
+<h2 id="錯誤處理"><a class="header" href="#錯誤處理">錯誤處理</a></h2>
+<p>Rust將錯誤分成兩大類</p>
+<ul>
+<li>不可復原的(unrecoverable)</li>
+<li>可復原的(recoverable)</li>
+</ul>
+<p>至於什麼時候該用什麼樣的錯誤就要看使用情境了</p>
+<p>例如程式啟動時讀不到設定檔這個就可以使用不可復原的錯誤</p>
+<h3 id="不可復原的錯誤使用panic"><a class="header" href="#不可復原的錯誤使用panic">不可復原的錯誤使用panic!</a></h3>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    panic!("恐慌性錯誤");
+}
+
+輸出
+thread 'main' panicked at '恐慌性錯誤', main.rs:2:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace</code></pre></pre>
+<p>panic會印出錯誤訊息以及第幾行的訊息，還有提示可以設定RUST_BACKTRACE環境變數顯示錯誤回朔資訊</p>
+<p>下面執行時增加環境變數RUST_BACKTRACE=1</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>RUST_BACKTRACE=1 ./main
+
+輸出
+thread 'main' panicked at '恐慌性錯誤', main.rs:2:5
+stack backtrace:
+   0: std::panicking::begin_panic
+   1: main::main
+   2: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+<span class="boring">}</span></code></pre></pre>
+<p>這時候可以看到簡略的錯誤，也可以設定RUST_BACKTRACE=full會列出整個過程</p>
+<p>Rust的panic不像Golang可以recover回來</p>
+<h3 id="可復原的的錯誤使用result"><a class="header" href="#可復原的的錯誤使用result">可復原的的錯誤使用Result</a></h3>
+<p>Resut是個枚舉型別</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Result&lt;T, E&gt; {
+    Ok(T),
+    Err(E),
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Reust是枚舉型別就可以透過match來判斷是回傳OK還是回傳Err，再依裡面的泛型參數取值</p>
+<pre><pre class="playground"><code class="language-rust">use std::fs::File;
+
+fn main() {
+    let f = File::open("hello.txt");
+
+    let _ = match f {
+        Ok(file) =&gt; {
+            println!("{:?}", file)
+        }
+        Err(error) =&gt; {
+            println!("{:?}", error)
+        }
+    };
+}
+
+輸出
+Os { code: 2, kind: NotFound, message: "No such file or directory" }</code></pre></pre>
+<p>如果覺得match判斷錯誤太麻煩，也可以透過unwrap或expect來直接產生panic錯誤</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let f = File::open("hello.txt").unwrap(); // 無法指定錯誤訊息
+let f = File::open("hello.txt").expect("開啟hello.txt錯誤"); // 可以指定錯誤訊息
+<span class="boring">}</span></code></pre></pre>
+<p>也可以在寫函式時回傳Result型別，這邊簡單定義Result泛型型別</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let ok = return_result_ok();
+    println!("{:?}", ok);
+    let error = return_result_error();
+    println!("{:?}", error);
+}
+
+fn return_result_ok() -&gt; Result&lt;String, String&gt; {
+    let s = String::from("成功");
+    return Ok(s);
+}
+
+fn return_result_error() -&gt; Result&lt;String, String&gt; {
+    let s = String::from("失敗");
+    return Ok(s);
+}</code></pre></pre>
+<h2 id="rust-30天的心得"><a class="header" href="#rust-30天的心得">Rust-30天的心得</a></h2>
+<p>分享一下這30天從無到有的學習下來的一點點心得
+先說一下為什麼要學習Rust是因為最近比較紅之外還有就是它滿常被拿來跟Golnag比較
+身為一個Gopher當然要抱著他山之石可以攻玉心去了解一下Rust跟Golang的差別</p>
+<p>Go和Rust有很多共同點。兩者都是比較近代的語言，兩者都是為了應對創建者在行業內現有語言中遇到的缺點而創建的，尤其是開發者生產力、可擴展性、安全性和並發性方面的缺點。</p>
+<p>網路上搜尋"Rust vs. Go"滿滿的比較文這邊就不再講了
+對我來說Rust優點有哪裡</p>
+<ul>
+<li>沒有GC</li>
+<li>零成本抽象</li>
+<li>記憶體控管</li>
+<li>安全性</li>
+<li>強大的編譯器錯誤提示</li>
+</ul>
+<p>要說缺點就只有學習曲線比較陡，並不是很好上手
+Rust用了複雜的方式解決複雜的問題，有時候解決的方式比問題更複雜</p>
+<p>至於它有沒有比Golang好就不多做評論了，
+但是隻聽說從Golang跳到Rust沒聽過從Rust跳到Golang
+語言沒有好壞(<del>不是南北拳的問題，是你的問題</del>)</p>
+<p>出處： https://ithelp.ithome.com.tw/users/20129675/ironman/4260</p>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../rust/easy_rust.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../rust/module.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../rust/easy_rust.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../rust/module.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

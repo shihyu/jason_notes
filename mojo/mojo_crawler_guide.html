@@ -1,0 +1,774 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Mojo 爬蟲完整指南 - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="mojo-爬蟲完整指南"><a class="header" href="#mojo-爬蟲完整指南">Mojo 爬蟲完整指南</a></h1>
+<h2 id="-目錄"><a class="header" href="#-目錄">📚 目錄</a></h2>
+<ul>
+<li><a href="#mojo-%E5%AE%89%E8%A3%9D">Mojo 安裝</a></li>
+<li><a href="#%E7%92%B0%E5%A2%83%E6%BA%96%E5%82%99">環境準備</a></li>
+<li><a href="#%E5%9F%BA%E7%A4%8E%E7%88%AC%E8%9F%B2%E7%AF%84%E4%BE%8B">基礎爬蟲範例</a></li>
+<li><a href="#%E9%80%B2%E9%9A%8E%E7%88%AC%E8%9F%B2%E7%AF%84%E4%BE%8B">進階爬蟲範例</a></li>
+<li><a href="#%E5%AF%A6%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B8">實用工具函數</a></li>
+<li><a href="#%E6%9C%80%E4%BD%B3%E5%AF%A6%E8%B8%90">最佳實踐</a></li>
+<li><a href="#%E5%B8%B8%E8%A6%8B%E5%95%8F%E9%A1%8C">常見問題</a></li>
+</ul>
+<h2 id="-mojo-安裝"><a class="header" href="#-mojo-安裝">🚀 Mojo 安裝</a></h2>
+<h3 id="系統需求"><a class="header" href="#系統需求">系統需求</a></h3>
+<ul>
+<li><strong>作業系統</strong>: Ubuntu 20.04+ 或 macOS 12+</li>
+<li><strong>硬體</strong>: x86-64 或 ARM64 架構</li>
+<li><strong>記憶體</strong>: 至少 4GB RAM</li>
+</ul>
+<h3 id="安裝步驟"><a class="header" href="#安裝步驟">安裝步驟</a></h3>
+<h4 id="方法-1-官方安裝器推薦"><a class="header" href="#方法-1-官方安裝器推薦">方法 1: 官方安裝器（推薦）</a></h4>
+<pre><code class="language-bash"># 1. 訪問 Modular 官網
+curl -s https://get.modular.com | sh -
+
+# 2. 安裝 Mojo
+modular install mojo
+
+# 3. 設定環境變數
+echo 'export MODULAR_HOME="$HOME/.modular"' &gt;&gt; ~/.bashrc
+echo 'export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+
+# 4. 驗證安裝
+mojo --version
+</code></pre>
+<h4 id="方法-2-max-platform"><a class="header" href="#方法-2-max-platform">方法 2: MAX Platform</a></h4>
+<pre><code class="language-bash"># 1. 註冊並下載 MAX Platform
+# 2. 安裝 MAX
+sudo dpkg -i max-*.deb
+
+# 3. 啟動 MAX
+max auth login
+
+# 4. 安裝 Mojo
+max install mojo
+
+# 5. 驗證
+mojo --version
+</code></pre>
+<h3 id="開發環境設定"><a class="header" href="#開發環境設定">開發環境設定</a></h3>
+<h4 id="vs-code-擴展"><a class="header" href="#vs-code-擴展">VS Code 擴展</a></h4>
+<pre><code class="language-bash"># 安裝 Mojo 語言支援
+code --install-extension modular-mojotools.mojo
+</code></pre>
+<h4 id="jupyter-notebook-支援"><a class="header" href="#jupyter-notebook-支援">Jupyter Notebook 支援</a></h4>
+<pre><code class="language-bash"># 安裝 Jupyter
+pip install jupyter
+
+# 註冊 Mojo 核心
+max install jupyter
+
+# 啟動 Jupyter
+jupyter notebook
+</code></pre>
+<h2 id="-環境準備"><a class="header" href="#-環境準備">🛠️ 環境準備</a></h2>
+<h3 id="python-依賴安裝"><a class="header" href="#python-依賴安裝">Python 依賴安裝</a></h3>
+<pre><code class="language-bash"># 安裝爬蟲必要套件
+pip install requests beautifulsoup4 lxml html5lib aiohttp
+
+# 可選套件
+pip install selenium pandas numpy
+</code></pre>
+<h3 id="項目結構"><a class="header" href="#項目結構">項目結構</a></h3>
+<pre><code>mojo-crawler/
+├── crawler.mojo          # 主爬蟲檔案
+├── utils.mojo           # 工具函數
+├── config.mojo          # 配置檔案
+├── requirements.txt     # Python 依賴
+└── README.md           # 說明文件
+</code></pre>
+<h2 id="-基礎爬蟲範例"><a class="header" href="#-基礎爬蟲範例">🕷️ 基礎爬蟲範例</a></h2>
+<h3 id="1-簡單的網頁爬蟲"><a class="header" href="#1-簡單的網頁爬蟲">1. 簡單的網頁爬蟲</a></h3>
+<pre><code class="language-mojo"># crawler.mojo
+from python import Python
+
+def main():
+    """基礎爬蟲範例"""
+    
+    # 導入 Python 模組
+    let requests = Python.import_module("requests")
+    let bs4 = Python.import_module("bs4")
+    
+    # 設定請求標頭
+    let headers = Python.dict()
+    headers["User-Agent"] = "Mozilla/5.0 (compatible; MojoCrawler/1.0)"
+    
+    try:
+        # 發送 HTTP 請求
+        let url = "https://example.com"
+        let response = requests.get(url, headers=headers, timeout=10)
+        
+        if response.status_code == 200:
+            print("✅ 請求成功")
+            
+            # 解析 HTML
+            let soup = bs4.BeautifulSoup(response.content, "html.parser")
+            
+            # 提取標題
+            let title = soup.find("title")
+            if title:
+                print("標題:", title.get_text())
+            
+            # 提取所有連結
+            let links = soup.find_all("a", href=True)
+            print(f"找到 {len(links)} 個連結")
+            
+            for i in range(min(5, len(links))):  # 只顯示前5個
+                let link = links[i]
+                print(f"  {i+1}. {link.get_text()}: {link['href']}")
+                
+        else:
+            print("❌ 請求失敗, 狀態碼:", response.status_code)
+            
+    except Exception as e:
+        print("錯誤:", e)
+</code></pre>
+<h3 id="2-json-api-爬蟲"><a class="header" href="#2-json-api-爬蟲">2. JSON API 爬蟲</a></h3>
+<pre><code class="language-mojo">def crawl_json_api():
+    """爬取 JSON API 數據"""
+    
+    let requests = Python.import_module("requests")
+    let json = Python.import_module("json")
+    
+    let headers = Python.dict()
+    headers["Accept"] = "application/json"
+    headers["User-Agent"] = "MojoCrawler/1.0"
+    
+    try:
+        # 爬取 API 數據
+        let api_url = "https://jsonplaceholder.typicode.com/posts"
+        let response = requests.get(api_url, headers=headers)
+        
+        if response.status_code == 200:
+            let data = response.json()
+            print(f"📊 獲取到 {len(data)} 筆數據")
+            
+            # 處理前3筆數據
+            for i in range(min(3, len(data))):
+                let post = data[i]
+                print(f"\n📝 貼文 {i+1}:")
+                print(f"  標題: {post['title']}")
+                print(f"  用戶ID: {post['userId']}")
+                print(f"  內容: {post['body'][:50]}...")
+                
+        else:
+            print("❌ API 請求失敗")
+            
+    except Exception as e:
+        print("錯誤:", e)
+</code></pre>
+<h2 id="-進階爬蟲範例"><a class="header" href="#-進階爬蟲範例">🚀 進階爬蟲範例</a></h2>
+<h3 id="1-面向對象的爬蟲類"><a class="header" href="#1-面向對象的爬蟲類">1. 面向對象的爬蟲類</a></h3>
+<pre><code class="language-mojo">from python import Python
+from memory import Reference
+
+struct WebCrawler:
+    """高性能網頁爬蟲"""
+    var session: PythonObject
+    var headers: PythonObject
+    var delay: Float64
+    var max_retries: Int
+    
+    fn __init__(inout self):
+        """初始化爬蟲"""
+        let requests = Python.import_module("requests")
+        self.session = requests.Session()
+        
+        # 設定標頭
+        self.headers = Python.dict()
+        self.headers["User-Agent"] = "Mozilla/5.0 (compatible; MojoCrawler/2.0)"
+        self.headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+        self.headers["Accept-Language"] = "zh-TW,zh;q=0.9,en;q=0.8"
+        self.headers["Accept-Encoding"] = "gzip, deflate, br"
+        self.headers["Connection"] = "keep-alive"
+        
+        self.delay = 1.0
+        self.max_retries = 3
+    
+    fn fetch_url(self, url: String) raises -&gt; PythonObject:
+        """獲取 URL 內容（帶重試機制）"""
+        let time = Python.import_module("time")
+        
+        for retry in range(self.max_retries):
+            try:
+                let response = self.session.get(
+                    url, 
+                    headers=self.headers, 
+                    timeout=10,
+                    allow_redirects=True
+                )
+                
+                if response.status_code == 200:
+                    return response
+                elif response.status_code == 429:  # Too Many Requests
+                    print(f"⚠️ 請求過於頻繁，等待 {(retry + 1) * 2} 秒...")
+                    time.sleep((retry + 1) * 2)
+                else:
+                    print(f"❌ HTTP {response.status_code}")
+                    
+            except Exception as e:
+                print(f"🔄 重試 {retry + 1}/{self.max_retries}: {e}")
+                if retry &lt; self.max_retries - 1:
+                    time.sleep(self.delay * (retry + 1))
+        
+        raise Error("所有重試都失敗了")
+    
+    fn parse_html(self, html_content: PythonObject) -&gt; PythonObject:
+        """解析 HTML 內容"""
+        let bs4 = Python.import_module("bs4")
+        return bs4.BeautifulSoup(html_content, "html.parser")
+    
+    fn extract_data(self, soup: PythonObject) -&gt; PythonObject:
+        """提取結構化數據"""
+        let data = Python.dict()
+        
+        # 提取標題
+        let title = soup.find("title")
+        data["title"] = title.get_text().strip() if title else "無標題"
+        
+        # 提取 meta 描述
+        let meta_desc = soup.find("meta", attrs={"name": "description"})
+        data["description"] = meta_desc.get("content", "") if meta_desc else ""
+        
+        # 提取所有標題
+        let headings = Python.list()
+        for level in range(1, 7):  # h1-h6
+            let tags = soup.find_all(f"h{level}")
+            for i in range(len(tags)):
+                let heading = tags[i]
+                headings.append({
+                    "level": level,
+                    "text": heading.get_text().strip()
+                })
+        data["headings"] = headings
+        
+        # 提取連結
+        let links = Python.list()
+        let link_tags = soup.find_all("a", href=True)
+        for i in range(len(link_tags)):
+            let link = link_tags[i]
+            links.append({
+                "text": link.get_text().strip(),
+                "url": link["href"]
+            })
+        data["links"] = links
+        
+        # 提取圖片
+        let images = Python.list()
+        let img_tags = soup.find_all("img", src=True)
+        for i in range(len(img_tags)):
+            let img = img_tags[i]
+            images.append({
+                "src": img["src"],
+                "alt": img.get("alt", "")
+            })
+        data["images"] = images
+        
+        return data
+</code></pre>
+<h3 id="2-批量爬蟲範例"><a class="header" href="#2-批量爬蟲範例">2. 批量爬蟲範例</a></h3>
+<pre><code class="language-mojo">def batch_crawl_demo():
+    """批量爬蟲示例"""
+    
+    let time = Python.import_module("time")
+    let json = Python.import_module("json")
+    
+    var crawler = WebCrawler()
+    
+    # 要爬取的 URL 列表
+    let urls = [
+        "https://example.com",
+        "https://httpbin.org/html",
+        "https://httpbin.org/json"
+    ]
+    
+    let results = Python.list()
+    
+    print("🚀 開始批量爬取...")
+    
+    for i in range(len(urls)):
+        let url = urls[i]
+        print(f"\n📄 正在處理第 {i+1}/{len(urls)} 個: {url}")
+        
+        try:
+            # 獲取頁面
+            let response = crawler.fetch_url(url)
+            
+            # 解析內容
+            if "application/json" in str(response.headers.get("content-type", "")):
+                # JSON 數據
+                let data = response.json()
+                results.append({
+                    "url": url,
+                    "type": "json",
+                    "data": data
+                })
+            else:
+                # HTML 數據
+                let soup = crawler.parse_html(response.content)
+                let extracted_data = crawler.extract_data(soup)
+                results.append({
+                    "url": url,
+                    "type": "html",
+                    "data": extracted_data
+                })
+            
+            print("✅ 處理完成")
+            
+        except Exception as e:
+            print(f"❌ 處理失敗: {e}")
+            results.append({
+                "url": url,
+                "type": "error",
+                "error": str(e)
+            })
+        
+        # 請求間隔
+        if i &lt; len(urls) - 1:
+            time.sleep(crawler.delay)
+    
+    # 保存結果
+    try:
+        with open("crawl_results.json", "w", encoding="utf-8") as f:
+            json.dump(results, f, ensure_ascii=False, indent=2)
+        print("\n💾 結果已保存到 crawl_results.json")
+    except Exception as e:
+        print(f"💥 保存失敗: {e}")
+    
+    print(f"\n🎉 批量爬取完成! 共處理 {len(urls)} 個 URL")
+</code></pre>
+<h2 id="-實用工具函數"><a class="header" href="#-實用工具函數">🛠️ 實用工具函數</a></h2>
+<h3 id="1-url-工具"><a class="header" href="#1-url-工具">1. URL 工具</a></h3>
+<pre><code class="language-mojo">def normalize_url(base_url: String, relative_url: String) -&gt; String:
+    """規範化 URL"""
+    let urllib = Python.import_module("urllib.parse")
+    return str(urllib.urljoin(base_url, relative_url))
+
+def is_valid_url(url: String) -&gt; Bool:
+    """檢查 URL 是否有效"""
+    let urllib = Python.import_module("urllib.parse")
+    let parsed = urllib.urlparse(url)
+    return bool(parsed.netloc and parsed.scheme)
+</code></pre>
+<h3 id="2-數據處理工具"><a class="header" href="#2-數據處理工具">2. 數據處理工具</a></h3>
+<pre><code class="language-mojo">def clean_text(text: PythonObject) -&gt; String:
+    """清理文本數據"""
+    let re = Python.import_module("re")
+    
+    # 移除多餘空白
+    cleaned = re.sub(r'\s+', ' ', str(text))
+    
+    # 移除特殊字符
+    cleaned = re.sub(r'[^\w\s\u4e00-\u9fff]', '', cleaned)
+    
+    return str(cleaned).strip()
+
+def extract_emails(text: String) -&gt; PythonObject:
+    """提取電子郵件地址"""
+    let re = Python.import_module("re")
+    let pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    return re.findall(pattern, text)
+
+def extract_phone_numbers(text: String) -&gt; PythonObject:
+    """提取電話號碼（台灣格式）"""
+    let re = Python.import_module("re")
+    let patterns = [
+        r'09\d{8}',           # 手機號碼
+        r'0\d{1,2}-\d{7,8}',  # 市話
+        r'\(\d{2,3}\)\d{7,8}' # 括號格式
+    ]
+    
+    let results = Python.list()
+    for pattern in patterns:
+        let matches = re.findall(pattern, text)
+        results.extend(matches)
+    
+    return results
+</code></pre>
+<h3 id="3-數據存儲工具"><a class="header" href="#3-數據存儲工具">3. 數據存儲工具</a></h3>
+<pre><code class="language-mojo">def save_to_csv(data: PythonObject, filename: String):
+    """保存數據到 CSV"""
+    let pandas = Python.import_module("pandas")
+    
+    try:
+        let df = pandas.DataFrame(data)
+        df.to_csv(filename, index=False, encoding='utf-8-sig')
+        print(f"💾 數據已保存到 {filename}")
+    except Exception as e:
+        print(f"💥 CSV 保存失敗: {e}")
+
+def save_to_json(data: PythonObject, filename: String):
+    """保存數據到 JSON"""
+    let json = Python.import_module("json")
+    
+    try:
+        with open(filename, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"💾 數據已保存到 {filename}")
+    except Exception as e:
+        print(f"💥 JSON 保存失敗: {e}")
+</code></pre>
+<h2 id="-最佳實踐"><a class="header" href="#-最佳實踐">📋 最佳實踐</a></h2>
+<h3 id="1-尊重-robotstxt"><a class="header" href="#1-尊重-robotstxt">1. 尊重 robots.txt</a></h3>
+<pre><code class="language-mojo">def check_robots_txt(base_url: String) -&gt; Bool:
+    """檢查 robots.txt"""
+    let urllib = Python.import_module("urllib.robotparser")
+    
+    let robots_url = base_url.rstrip('/') + '/robots.txt'
+    let rp = urllib.RobotFileParser()
+    rp.set_url(robots_url)
+    
+    try:
+        rp.read()
+        return rp.can_fetch('*', base_url)
+    except:
+        return True  # 如果無法讀取，假設允許
+</code></pre>
+<h3 id="2-請求限制"><a class="header" href="#2-請求限制">2. 請求限制</a></h3>
+<pre><code class="language-mojo">struct RateLimiter:
+    """請求速率限制器"""
+    var last_request_time: Float64
+    var min_interval: Float64
+    
+    fn __init__(inout self, requests_per_second: Float64):
+        self.last_request_time = 0.0
+        self.min_interval = 1.0 / requests_per_second
+    
+    fn wait_if_needed(inout self):
+        """如有需要則等待"""
+        let time = Python.import_module("time")
+        let current_time = float(time.time())
+        
+        let time_since_last = current_time - self.last_request_time
+        if time_since_last &lt; self.min_interval:
+            let wait_time = self.min_interval - time_since_last
+            time.sleep(wait_time)
+        
+        self.last_request_time = float(time.time())
+</code></pre>
+<h3 id="3-錯誤處理"><a class="header" href="#3-錯誤處理">3. 錯誤處理</a></h3>
+<pre><code class="language-mojo">def robust_crawl(url: String) -&gt; PythonObject:
+    """具有強健錯誤處理的爬蟲函數"""
+    let requests = Python.import_module("requests")
+    let time = Python.import_module("time")
+    
+    let max_retries = 3
+    let backoff_factor = 2
+    
+    for attempt in range(max_retries):
+        try:
+            let response = requests.get(
+                url,
+                timeout=10,
+                headers={"User-Agent": "MojoCrawler/1.0"}
+            )
+            
+            if response.status_code == 200:
+                return response
+            elif response.status_code == 429:
+                let wait_time = backoff_factor ** attempt
+                print(f"⏳ 請求限制，等待 {wait_time} 秒...")
+                time.sleep(wait_time)
+            else:
+                print(f"❌ HTTP {response.status_code}")
+                
+        except Exception as e:
+            print(f"🔄 嘗試 {attempt + 1}: {e}")
+            if attempt &lt; max_retries - 1:
+                time.sleep(backoff_factor ** attempt)
+    
+    raise Error("所有嘗試都失敗了")
+</code></pre>
+<h2 id="-常見問題"><a class="header" href="#-常見問題">💡 常見問題</a></h2>
+<h3 id="q-mojo-相比-python-有什麼優勢"><a class="header" href="#q-mojo-相比-python-有什麼優勢">Q: Mojo 相比 Python 有什麼優勢？</a></h3>
+<p><strong>A:</strong> Mojo 在爬蟲方面的優勢：</p>
+<ul>
+<li><strong>性能</strong>: 比 Python 快 10-100 倍</li>
+<li><strong>記憶體效率</strong>: 更好的記憶體管理</li>
+<li><strong>並行處理</strong>: 原生支援並行計算</li>
+<li><strong>兼容性</strong>: 可以直接使用 Python 套件</li>
+</ul>
+<h3 id="q-如何處理反爬蟲機制"><a class="header" href="#q-如何處理反爬蟲機制">Q: 如何處理反爬蟲機制？</a></h3>
+<p><strong>A:</strong> 常見策略：</p>
+<pre><code class="language-mojo"># 1. 隨機 User-Agent
+let user_agents = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+]
+
+# 2. 使用代理
+let proxies = {
+    "http": "http://proxy:port",
+    "https": "https://proxy:port"
+}
+
+# 3. 模擬真實行為
+time.sleep(random.uniform(1, 3))
+</code></pre>
+<h3 id="q-如何處理-javascript-渲染的頁面"><a class="header" href="#q-如何處理-javascript-渲染的頁面">Q: 如何處理 JavaScript 渲染的頁面？</a></h3>
+<p><strong>A:</strong> 使用 Selenium：</p>
+<pre><code class="language-mojo">def crawl_js_page(url: String) -&gt; PythonObject:
+    let selenium = Python.import_module("selenium")
+    let webdriver = selenium.webdriver
+    
+    let driver = webdriver.Chrome()
+    driver.get(url)
+    
+    # 等待頁面載入
+    let time = Python.import_module("time")
+    time.sleep(3)
+    
+    let content = driver.page_source
+    driver.quit()
+    
+    return content
+</code></pre>
+<h3 id="q-如何進行分散式爬蟲"><a class="header" href="#q-如何進行分散式爬蟲">Q: 如何進行分散式爬蟲？</a></h3>
+<p><strong>A:</strong> 可以結合 Celery 或 RQ：</p>
+<pre><code class="language-mojo"># 任務分發
+def distribute_urls(urls: PythonObject, num_workers: Int) -&gt; PythonObject:
+    let chunks = Python.list()
+    let chunk_size = len(urls) // num_workers
+    
+    for i in range(num_workers):
+        let start = i * chunk_size
+        let end = start + chunk_size if i &lt; num_workers - 1 else len(urls)
+        chunks.append(urls[start:end])
+    
+    return chunks
+</code></pre>
+<h2 id="-完整範例運行"><a class="header" href="#-完整範例運行">🎯 完整範例運行</a></h2>
+<pre><code class="language-bash"># 1. 創建項目目錄
+mkdir mojo-crawler &amp;&amp; cd mojo-crawler
+
+# 2. 創建並運行爬蟲
+echo '# 上面的完整代碼' &gt; crawler.mojo
+mojo crawler.mojo
+
+# 3. 查看結果
+cat crawl_results.json
+</code></pre>
+<h2 id="-進階學習資源"><a class="header" href="#-進階學習資源">📚 進階學習資源</a></h2>
+<ul>
+<li><a href="https://docs.modular.com/mojo/">Mojo 官方文檔</a></li>
+<li><a href="https://discord.gg/modular">Modular 開發者社群</a></li>
+<li><a href="https://github.com/modularml/mojo">Mojo GitHub 範例</a></li>
+</ul>
+<hr />
+<p><strong>注意</strong>: 請務必遵守目標網站的使用條款和 robots.txt 規則，進行合理合法的數據收集。</p>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../mojo/mojo.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../riscv/riscv.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../mojo/mojo.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../riscv/riscv.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

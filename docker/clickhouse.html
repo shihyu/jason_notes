@@ -1,0 +1,838 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ClickHouse - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="clickhouse-簡單部署使用測試"><a class="header" href="#clickhouse-簡單部署使用測試">ClickHouse 簡單部署&amp;使用測試</a></h1>
+<p>出處:https://zhuanlan.zhihu.com/p/383817560</p>
+<h3 id="介紹"><a class="header" href="#介紹">介紹</a></h3>
+<p>ClickHouse 是一個真正的列式資料庫管理系統（DBMS)。在 ClickHouse 中，資料始終是按列儲存的，包括向量（向量或列塊）執行的過程。只要有可能，操作都是基於向量進行分派的，而不是單個的值，這被稱為«向量化查詢執行»，它有利於降低實際的資料處理開銷。</p>
+<p>這個想法並不新鮮，其可以追溯到 APL 程式語言及其後代：A +、J、K 和 Q。向量程式設計被大量用於科學資料處理中。即使在關係型資料庫中，這個想法也不是什麼新的東西：比如，向量程式設計也被大量用於 Vectorwise 系統中。</p>
+<p>通常有兩種不同的加速查詢處理的方法：向量化查詢執行和執行階段程式碼生成。在後者中，動態地為每一類查詢生成程式碼，消除了間接分派和動態分派。這兩種方法中，並沒有哪一種嚴格地比另一種好。執行階段程式碼生成可以更好地將多個操作融合在一起，從而充分利用 CPU 執行單元和流水線。向量化查詢執行不是特別實用，因為它涉及必須寫到快取並讀回的臨時向量。如果 L2 快取容納不下臨時資料，那麼這將成為一個問題。但向量化查詢執行更容易利用 CPU 的 SIMD 功能。朋友寫的一篇研究論文表明，將兩種方法結合起來是更好的選擇。ClickHouse 使用了向量化查詢執行，同時初步提供了有限的執行階段動態程式碼生成。</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//clickhouse.tech/docs/zh/development/architecture/">瞭解更多詳情...</a></p>
+<h2 id="1部署-clickhouse-服務"><a class="header" href="#1部署-clickhouse-服務">1.部署 Clickhouse 服務</a></h2>
+<p>建立clickhouse 工作目錄</p>
+<h3 id="11-pull-鏡像"><a class="header" href="#11-pull-鏡像">1.1, pull 鏡像</a></h3>
+<pre><code class="language-text">按照官方推薦的鏡像拉取
+
+docker pull yandex/clickhouse-server
+</code></pre>
+<h3 id="12docker-compose-啟動鏡像"><a class="header" href="#12docker-compose-啟動鏡像">1.2，docker-compose 啟動鏡像</a></h3>
+<pre><code class="language-yaml">version: "3"
+
+services:
+  clickhouse-server:
+    image: yandex/clickhouse-server:latest
+    container_name: clickhouse-server
+    hostname: clickhouse-server
+    networks:
+      - my-network
+    ports:
+      - 1111:8123
+    restart: always
+
+
+  python-client:
+    image: python:3.11
+    container_name: python-client
+    hostname: python-client
+    command: sh -c 'apt-get update &amp;&amp; apt-get install -y vim iputils-ping net-tools &amp;&amp; pip install lxml loguru line-notify clickhouse_driver rel numpy pandahouse websocket-client &amp;&amp; tail -f /dev/null'
+    networks:
+      - my-network
+    restart: always
+    volumes:
+      - ./python-client:/app
+
+networks:
+  my-network:
+    driver: bridge
+</code></pre>
+<p>查看運行狀態</p>
+<p>http://127.0.0.1:1111/  會出現OK字樣代表成功</p>
+<p>思考：如何修改clickhouse默認組態？資料如何持久化？如何查看日誌？</p>
+<h3 id="13-更改默認組態資料持久化查看日誌"><a class="header" href="#13-更改默認組態資料持久化查看日誌">1.3 更改默認組態，資料持久化，查看日誌</a></h3>
+<p>進入容器查看組態</p>
+<pre><code class="language-sh">docker exec -it clickhouse-server /bin/bash
+</code></pre>
+<p>clickhouse 默認組態路徑是: /etc/clickhouse-server/</p>
+<p>退出容器，複製組態檔案當前工作目錄</p>
+<pre><code class="language-sh">docker cp 容器名:/etc/clickhouse-server/config.xml .
+docker cp 容器名:/etc/clickhouse-server/uses.xml .
+</code></pre>
+<p>修改docker-compose 組態檔案</p>
+<pre><code class="language-yaml">volumes: 
+  # 默認組態 寫入config.d/users.d 目錄防止更新後檔案丟失
+  - ./config.xml:/etc/clickhouse-server/config.d/config.xml:rw
+  - ./users.xml:/etc/clickhouse-server/users.xml:rw
+  # 運行日誌
+  - ./logs:/var/log/clickhouse-server
+  # 資料持久
+  - ./data:/var/lib/clickhouse:rw
+</code></pre>
+<p>修改後的完整組態如下</p>
+<pre><code class="language-sh">docker network ls  // 如果沒 my-network 要create
+docker network create my-network
+</code></pre>
+<pre><code class="language-yaml">version: "3"
+
+services:
+  clickhouse-server:
+    image: yandex/clickhouse-server:latest
+    container_name: clickhouse-server
+    hostname: clickhouse-server
+    networks:
+      - my-network
+    ports:
+      - 1111:8123
+      - 8888:9000
+    restart: always
+    volumes: 
+      # 默認組態 寫入config.d/users.d 目錄防止更新後檔案丟失
+      - ./config.xml:/etc/clickhouse-server/config.d/config.xml:rw
+      - ./users.xml:/etc/clickhouse-server/users.xml:rw
+      # 運行日誌
+      - ./logs:/var/log/clickhouse-server
+      # 資料持久
+      - ./data:/var/lib/clickhouse:rw
+
+
+  python-client:
+    image: python:3.11
+    container_name: python-client
+    hostname: python-client
+    command: sh -c 'apt-get update &amp;&amp; apt-get install -y vim iputils-ping net-tools &amp;&amp; pip install lxml loguru line-notify clickhouse_driver rel numpy pandahouse websocket-client &amp;&amp; tail -f /dev/null'
+    networks:
+      - my-network
+    volumes:
+      - ./python-client:/app
+
+networks:
+  my-network:
+    driver: bridge
+</code></pre>
+<p>重新啟動服務</p>
+<pre><code class="language-text">docker-compose down &amp;&amp; docker-compose up -d
+</code></pre>
+<p>啟動後目錄結構</p>
+<pre><code>├── config.xml
+├── data
+├── docker-compose-final.yml
+├── docker-compose.yml
+├── log
+├── logs
+└── users.xml
+</code></pre>
+<p>瀏覽器再次訪問  http://127.0.0.1:1111/  會出現OK字樣代表成功</p>
+<p>查看容器日誌</p>
+<pre><code class="language-sh">docker-compose logs -f
+</code></pre>
+<p>進入容器查看服務資料庫</p>
+<pre><code class="language-sh">docker exec -it clickhouse-server /bin/bash
+
+root@clickhouse-server:/# clickhouse-client 
+ClickHouse client version 22.1.3.7 (official build).
+Connecting to localhost:9000 as user default.
+Connected to ClickHouse server version 22.1.3 revision 54455.
+
+
+clickhouse-server :) show databases;
+
+SHOW DATABASES
+
+Query id: aef1df36-bc09-4c33-8821-c669c8a93c2c
+
+┌─name───────────────┐
+│ INFORMATION_SCHEMA │
+│ default            │
+│ information_schema │
+│ system             │
+└────────────────────┘
+
+4 rows in set. Elapsed: 0.001 sec. 
+</code></pre>
+<p>服務運行正常！</p>
+<h3 id="14建立使用者登錄-後期使用"><a class="header" href="#14建立使用者登錄-後期使用">1.4，建立使用者登錄 （後期使用）</a></h3>
+<p>查看users.xml檔案</p>
+<p>自訂使用者</p>
+<pre><code class="language-xml">&lt;halobug&gt;
+    &lt;password_sha256_hex&gt;4754fc7e290a9c280d9497b2d76dd854e77f7e1c92476577fdb52ed22afc13e7&lt;/password_sha256_hex&gt;
+    &lt;networks incl="networks" replace="replace"&gt;
+        &lt;ip&gt;::/0&lt;/ip&gt;
+    &lt;/networks&gt;
+    &lt;profile&gt;default&lt;/profile&gt;
+    &lt;quota&gt;default&lt;/quota&gt;
+    &lt;allow_databases&gt;
+       &lt;database&gt;tutorial&lt;/database&gt;
+       &lt;database&gt;CRYPTO&lt;/database&gt;
+    &lt;/allow_databases&gt;
+&lt;/halobug&gt;
+</code></pre>
+<p>生成密碼（進入容器運行）</p>
+<pre><code class="language-sh">PASSWORD=$(base64 &lt; /dev/urandom | head -c8); echo "$PASSWORD"; echo -n "$PASSWORD" | sha256sum | tr -d '-'
+
+FcP5O5HY
+8aaa72053341d6fa19bdd150c8e1ff328e2d56444df1c977ac22f88710bac5ae 
+</code></pre>
+<p>黃色標註為自訂使用者，紅色為生成密碼</p>
+<p><img src="images/v2-44e731cf22b055dab4b64d81c58f82c6_r.jpg" alt="" /></p>
+<p>驗證使用者密碼，重新啟動服務</p>
+<pre><code class="language-text"># 重啟
+docker-compose down &amp;&amp; docker-compose up -d
+# 進入容器
+docker exec -it clickhouse-server /bin/bash
+# 驗證使用者名稱密碼
+clickhouse-client -u halobug -h 127.0.0.1 --password FcP5O5HY  # FcP5O5HY 是出生成來的
+
+
+# 建立資料庫 tutorial , tutorial 是 users.xml 建立
+CREATE DATABASE tutorial;
+CREATE DATABASE CRYPTO;
+</code></pre>
+<p>查看驗證結果</p>
+<p><img src="images/v2-c107aa8ec20553a1c4b4065863ca698f_r.jpg" alt="" /></p>
+<p>成功！到此服務就搭建完成！</p>
+<h2 id="登入-python-clinet-測試讀寫-clickhost"><a class="header" href="#登入-python-clinet-測試讀寫-clickhost">登入 python-clinet 測試讀寫 clickhost</a></h2>
+<pre><code class="language-sh">docker exec -it python-client /bin/bash
+
+# 測試是否連通
+ping clickhouse-server 
+</code></pre>
+<pre><code class="language-python">import clickhouse_driver
+import pandas as pd
+
+
+connection_settings = {
+    'host': 'clickhouse-server',
+    'port': '9000',
+    'user': 'halobug',
+    'password': 'FcP5O5HY'
+}
+
+client = clickhouse_driver.Client(**connection_settings)
+
+# 建立新資料庫
+client.execute('CREATE DATABASE IF NOT EXISTS CRYPTO')
+
+print(client.execute("SHOW DATABASES"))
+client.execute('USE CRYPTO')
+
+# 創建一個簡單的表格
+df = pd.DataFrame({'name': ['Alice', 'Bob', 'Charlie'], 'age': [25, 30, 35]})
+client.execute('CREATE TABLE IF NOT EXISTS test_table (name String, age Int32) ENGINE = Memory')
+
+# 將資料框寫入表格
+client.execute('INSERT INTO test_table VALUES', df.to_dict('records'))
+
+# 讀取表格中的資料
+result = client.execute('SELECT * FROM test_table')
+print(result)
+</code></pre>
+<pre><code class="language-python">from line_notify import LineNotify
+from loguru import logger
+from clickhouse_driver import Client
+from multiprocessing import Process, Queue, Pipe
+import signal
+import multiprocessing
+import rel
+import numpy as np
+import pandahouse as ph
+import pandas as pd
+import json
+import websocket
+import datetime as dt
+import os
+import sys
+import traceback
+import time
+
+
+def monitor(monitor_queue, thread_name, ws_client_p, record_p):
+    while True:
+        try:
+            data = monitor_queue.get(timeout=30)
+            logger.info(f"{thread_name}, {os.getpid()}, {data[0]}")
+        except Exception as e:
+            logger.warning(f"{thread_name} monitor queue is empty, {e}")
+            LineNotify("KXwzqEGtIp1JEkS5GjqXqRAT0D4BdQQvCNcqOa7ySfz").send(
+                f"{thread_name} monitor queue is empty"
+            )
+            os.kill(ws_client_p.pid, signal.SIGUSR1)
+
+
+def getErrMsg(e):
+    error_class = e.__class__.__name__  # 取得錯誤類型
+    detail = e.args[0]  # 取得詳細內容
+    cl, exc, tb = sys.exc_info()  # 取得Call Stack
+    lastCallStack = traceback.extract_tb(tb)[-1]  # 取得Call Stack的最後一筆資料
+    fileName = lastCallStack[0]  # 取得發生的檔案名稱
+    lineNum = lastCallStack[1]  # 取得發生的行號
+    funcName = lastCallStack[2]  # 取得發生的函數名稱
+    errMsg = 'File "{}", line {}, in {}: [{}] {}'.format(
+        fileName, lineNum, funcName, error_class, detail
+    )
+    return errMsg
+
+
+logger.add(
+    f"{__file__}.log", encoding="utf-8", enqueue=True, retention="10 days",
+)
+
+
+class Watcher:
+    def __init__(self):
+        self.child = os.fork()
+        if self.child == 0:
+            return
+        else:
+            self.watch()
+
+    def watch(self):
+        try:
+            os.wait()
+        except KeyboardInterrupt:
+            self.kill()
+        sys.exit()
+
+    def kill(self):
+        try:
+            print("kill")
+            os.kill(self.child, signal.SIGKILL)
+        except OSError:
+            pass
+
+
+class WebSocketClient(multiprocessing.Process):
+    def __init__(
+        self, thread_name, ws_url, symbol, params, queue, monitor_queue, line_notify
+    ):
+        multiprocessing.Process.__init__(self)
+        self.__thread_name = thread_name
+        self.__ws_url = ws_url
+        self.__symbol = symbol
+        self.__params = params
+        self.__queue = queue
+        self.__monitor_queue = monitor_queue
+        self.__line_notify = line_notify
+        self.__ws = websocket.WebSocketApp(
+            self.__ws_url,
+            on_open=self.on_open,
+            on_message=self.on_message,
+            on_close=self.on_close,
+            on_error=self.on_error,
+            # on_cont_message=self.on_cont_message,
+            on_ping=self.on_ping,
+            on_pong=self.on_pong,
+        )
+        self.msg_count = 0
+        self.reconnecting_flag = False
+        signal.signal(signal.SIGUSR1, self.receive_signal)
+
+    def receive_signal(self, signum, stack):
+        logger.warning(
+            f"Received:, {signum}, {os.getpid()}, reconnecting_flag:{self.reconnecting_flag}"
+        )
+        # if not self.reconnecting_flag:
+        #    self.reconnecting_flag = True
+        #    self.reconnecting()
+        # thread = threading.Thread(target=self.reconnecting, args=())
+        # thread.start()
+
+    def run(self):
+        # self.__ws.run_forever()
+        try:
+            self.__ws.run_forever(ping_interval=0, dispatcher=rel, reconnect=3)
+            rel.signal(2, rel.abort)  # Keyboard Interrupt
+            rel.dispatch()
+        except Exception as e:
+            logger.exception(e)
+            # os.kill(os.getpid(), signal.SIGUSR1)
+            self.reconnecting()
+
+    def on_open(self, ws):
+        logger.info(f"on_pong : {self.reconnecting_flag}")
+        self.reconnecting_flag = False
+        subscribe_message = {
+            "method": "SUBSCRIBE",
+            "params": [self.__params],
+            "id": 1,
+        }
+        ws.send(json.dumps(subscribe_message))
+
+    def on_message(self, ws, message):
+        if self.__queue.full():
+            logger.error("queue is full")
+            self.__line_notify.send("queue is full")
+        else:
+            msg = json.loads(message)
+            self.__queue.put(msg)
+            self.msg_count = self.msg_count + 1
+
+        if self.msg_count % 20 == 0:
+            self.__monitor_queue.put([dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")])
+            logger.info(
+                f"{self.__thread_name} msg_count:{self.msg_count} qsize:{self.__queue.qsize()}"
+            )
+            self.msg_count = 0
+
+        # print(json.dumps(msg, indent=4, ensure_ascii=False))
+
+    def on_close(self, ws, status_code, message):
+        logger.warning(f"on_close {status_code} {message}")
+        self.__line_notify.send("on_close " + str(message))
+        self.reconnecting()
+
+    def on_error(self, ws, error):
+        logger.error(str(error))
+        self.__line_notify.send("on_error " + str(error))
+        # self.reconnecting()
+
+    def on_cont_message(self, ws, message, flag):
+        logger.warning(f"on_cont_message: {message} {flag}")
+
+    def on_ping(self, ws, message):
+        logger.info(f"{self.__thread_name} on_ping")
+        ws.send(message, websocket.ABNF.OPCODE_PONG)
+
+    def on_pong(self, ws, message):
+        logger.info(f"{self.__thread_name} on_pong")
+        ws.send(message, websocket.ABNF.OPCODE_PONG)
+
+    def reconnecting(self):
+        logger.info(f"{self.__thread_name} {os.uname()[1]} reconnecting")
+        # self.__ws.close()
+        # thread = threading.Thread(target=self.__ws.close, args=())
+        # thread.start()
+        # thread.join()
+
+        # self.__ws.my_close()
+        # rel.abort()
+        # logger.info(f"{self.__thread_name} websocket closed")
+
+        rel.abort()
+        self.__ws.run_forever(ping_interval=0, dispatcher=rel, reconnect=3)
+        rel.signal(2, rel.abort)
+        rel.dispatch()
+
+
+class Record(multiprocessing.Process):
+    def __init__(self, thread_name, ws_client_p, queue, line_notify):
+        multiprocessing.Process.__init__(self)
+        self.__thread_name = thread_name
+        self.__ws_client_p = ws_client_p
+        self.__queue = queue
+        self.__line_notify = line_notify
+        self.__data = []
+
+    def clear_data(self):
+        self.__data.clear()
+
+    def create_db_table(self, df, str_database, str_table):
+        dtypes_dict = dict(df.dtypes)
+        ch_type_convert_dict = {
+            np.dtype("datetime64[ns]"): "Datetime64",
+            np.dtype("int64"): "Int64",
+            np.dtype("float64"): "Float64",
+            np.dtype("object"): "String",
+            np.dtype("bool"): "Bool",
+        }
+        create_table_cmd_str = ""
+        for x in dtypes_dict:
+            type_str = ch_type_convert_dict.get(dtypes_dict[x], None)
+            if type_str is None:
+                print(f"Undefined type {dtypes_dict[x]}")
+            create_table_cmd_str = (
+                create_table_cmd_str + f"`{x}` {type_str} DEFAULT 0, "
+            )
+        # create_table_cmd_str = f"CREATE TABLE IF NOT EXISTS {str_database}.{str_table} ( {create_table_cmd_str[:-2]}) ENGINE = Log"
+        create_table_cmd_str = f"CREATE TABLE IF NOT EXISTS {str_database}.{str_table} ({create_table_cmd_str[:-2]}) ENGINE = MergeTree PARTITION BY year_month_day ORDER BY year_month_day SETTINGS index_granularity = 16384"
+        client = Client(host="clickhouse-server", port="9000", user="halobug", password="FcP5O5HY")
+        client.execute(f"CREATE DATABASE IF NOT EXISTS {str_database};")
+        client.execute(create_table_cmd_str)
+
+    def write_orderbook_to_db(self):
+        df = None
+        try:
+            if "e" in self.__data[0].keys() and self.__data[0]["e"] == "depthUpdate":
+                df = pd.DataFrame(self.__data)
+                if not df.isnull().values.any():
+                    df.rename(
+                        columns={"E": "timestamp", "a": "asks", "b": "bids"},
+                        inplace=True,
+                    )
+                    df["date"] = [
+                        dt.datetime.fromtimestamp(x / 1000.0) for x in df["timestamp"]
+                    ]
+                    df["year_month_day"] = [
+                        dt.datetime.fromtimestamp(x / 1000.0).strftime("%Y-%m-%d")
+                        for x in df["timestamp"]
+                    ]
+                    df.rename(columns={"s": "pair"}, inplace=True)
+                    # 僅保留需要的列
+                    df = df[["pair", "asks", "bids", "date", "year_month_day"]]
+
+                    db_name = "CRYPTO"
+                    table_name = "BinanceOrderbookPartition_simplifiedFields"
+                    connection_info = dict(
+                        database=db_name,
+                        host="http://clickhouse-server:8123/",
+                        user="halobug",
+                        password="FcP5O5HY",
+                    )
+
+                    self.create_db_table(df, db_name, table_name)
+                    ph.to_clickhouse(
+                        df,
+                        table_name,
+                        index=False,
+                        chunksize=100000,
+                        connection=connection_info,
+                    )
+                print(df)
+
+            if (
+                "event" in self.__data[0].keys()
+                and self.__data[0]["event"] == "ORDER_BOOK"
+            ):
+                df = pd.DataFrame(self.__data)
+                if not df.isnull().values.any():
+                    df["date"] = [
+                        dt.datetime.fromtimestamp(x / 1000.0).strftime(
+                            "%Y-%m-%d %H:%M:%S.%f"
+                        )
+                        for x in df["timestamp"]
+                    ]
+                    df["year_month_day"] = [
+                        dt.datetime.fromtimestamp(x / 1000.0).strftime("%Y-%m-%d")
+                        for x in df["timestamp"]
+                    ]
+
+                    df = df[["pair", "asks", "bids", "date", "year_month_day"]]
+                    db_name = "CRYPTO"
+                    table_name = "BitoProOrderbookPartition_simplifiedFields"
+                    connection_info = dict(
+                        database=db_name,
+                        host="http://clickhouse-server:8123/",
+                        user="halobug",
+                        password="FcP5O5HY",
+                    )
+
+                    self.create_db_table(df, db_name, table_name)
+                    ph.to_clickhouse(
+                        df,
+                        table_name,
+                        index=False,
+                        chunksize=100000,
+                        connection=connection_info,
+                    )
+                print(df)
+            self.__data.clear()
+        except Exception as e:
+            logger.error(df)
+            self.__data.clear()
+            self.__line_notify.send(getErrMsg(e))
+            logger.exception(e)
+            os.kill(self.__ws_client_p.pid, signal.SIGUSR1)
+
+    def run(self):
+        while True:
+            try:
+                msg = self.__queue.get(block=True)
+                self.__data.append(msg)
+                if len(self.__data) &gt; 100:
+                    self.write_orderbook_to_db()
+            except Exception as e:
+                self.__line_notify.send(getErrMsg(e))
+                logger.exception(e)
+
+
+class Manager(multiprocessing.Process):
+    def __init__(self, thread_name, ws_url, symbol, params, queue, line_token):
+        # threading.Thread.__init__(self)
+        multiprocessing.Process.__init__(self)
+        self.__thread_name = thread_name
+        self.__ws_url = ws_url
+        self.__symbol = symbol
+        self.__params = params
+        self.__queue = queue
+        self.__line_notify = LineNotify(line_token)
+
+    def run(self):
+        self.__line_notify.send(f"thread_name:{self.__thread_name}")
+        monitor_queue = Queue(100)
+        ws_client_p = WebSocketClient(
+            thread_name=self.__thread_name,
+            ws_url=self.__ws_url,
+            symbol=self.__symbol,
+            params=self.__params,
+            queue=self.__queue,
+            monitor_queue=monitor_queue,
+            line_notify=self.__line_notify,
+        )
+        record_p = Record(
+            thread_name=self.__thread_name,
+            ws_client_p=ws_client_p,
+            queue=self.__queue,
+            line_notify=self.__line_notify,
+        )
+        tasks = [
+            ws_client_p,
+            record_p,
+        ]
+        for t in tasks:
+            t.start()
+
+        monitor_task = Process(
+            target=monitor,
+            args=(monitor_queue, self.__thread_name, ws_client_p, record_p),
+        )
+        monitor_task.start()
+
+        for task in tasks:
+            task.join()
+
+
+if __name__ == "__main__":
+    Watcher()
+    bitopro_orderbook_queue = Queue(1000)
+    binance_orderbook_queue = Queue(1000)
+    tasks = [
+        Manager(
+            thread_name="BitoPro Thread",
+            ws_url="wss://stream.bitopro.com:9443/ws/v1/pub/order-books/BTC_USDT:20",
+            symbol="",
+            params="",
+            queue=bitopro_orderbook_queue,
+            line_token="KXwzqEGtIp1JEkS5GjqXqRAT0D4BdQQvCNcqOa7ySfz",
+        ),
+        Manager(
+            thread_name="Binance Thread",
+            ws_url="wss://stream.binance.com:9443/ws",
+            symbol="",
+            params="btcusdt@depth@100ms",
+            queue=binance_orderbook_queue,
+            line_token="KXwzqEGtIp1JEkS5GjqXqRAT0D4BdQQvCNcqOa7ySfz",
+        ),
+    ]
+    for t in tasks:
+        t.start()
+
+    for task in tasks:
+        task.join()
+
+</code></pre>
+<h2 id="dbeaver-登入-docker-clickhouse"><a class="header" href="#dbeaver-登入-docker-clickhouse">dbeaver 登入 docker clickhouse</a></h2>
+<pre><code class="language-sh">port 1111
+halobug
+FcP5O5HY
+</code></pre>
+<p><img src="images/dbeaver_clickhouse.png" alt="" /></p>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../docker/redash.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../docker/clickhouse-setup.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../docker/redash.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../docker/clickhouse-setup.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

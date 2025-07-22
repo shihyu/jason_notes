@@ -1,0 +1,537 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Plot - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="how-to-draw-stock-chart-with-python"><a class="header" href="#how-to-draw-stock-chart-with-python">How To Draw Stock Chart With Python</a></h2>
+<p>出處: https://pythoninoffice.com/draw-stock-chart-with-python/</p>
+<p>In this tutorial, we’ll learn how to draw a stock chart with Python. Static charts are so 1990s, we don’t do it here. Instead, we’ll draw fully interactive charts using plotly.</p>
+<p>UPDATED April 8, 2022 – Include a correction to hide non-trading days.</p>
+<h2 id="tools-required"><a class="header" href="#tools-required">Tools Required</a></h2>
+<p><strong><code>plotly</code></strong> – AWESOME charting library</p>
+<p><strong><code>yfinance</code></strong> – download historical market data from Yahoo Finance</p>
+<pre><code class="language-bash">pip install plotly
+pip install yfinance
+</code></pre>
+<h2 id="download-historical-price-data-from-yahoo-finance"><a class="header" href="#download-historical-price-data-from-yahoo-finance">Download Historical Price Data From Yahoo Finance</a></h2>
+<p>We are going to use the <strong><code>yfinance</code></strong> library to download Tesla stock historical (1 year) price data. <strong><code>yfinance</code></strong> makes it really simple to download stock price data from Yahoo Finance.</p>
+<pre><code class="language-python">import yfinance
+tsla = yfinance.Ticker('TSLA')
+hist = tsla.history(period='1y')
+</code></pre>
+<p><img src="../images/ngcb20" alt="img" /></p>
+<p>Tesla Stock Historical Price Data</p>
+<h2 id="start-with-a-simple-stock-chart-using-python"><a class="header" href="#start-with-a-simple-stock-chart-using-python">Start With A Simple Stock Chart Using Python</a></h2>
+<p>In a previous tutorial, we talked about how to use <a href="https://pythoninoffice.com/python-data-visualization-exploration-plotly">Plotly Express</a>. However, due to the complexity of our stock chart, we’ll need to use the regular <strong><code>plotly</code></strong> to unlock its true power.</p>
+<p>It’s kinda funny that we can use the <strong><code>.Scatter()</code></strong> to draw a line chart. The following code draws a stock price chart using the daily Close price, also note the <strong><code>mode='lines'</code></strong>. It’s also important to remember to <strong><code>.show()</code></strong> the chart after plotting otherwise we can’t see them.</p>
+<p>By the way, these charts are interactive, you can hover the mouse over the chart and see the price details.</p>
+<pre><code class="language-python">import plotly.graph_objects as go
+
+fig = go.Figure(data=go.Scatter(x=hist.index,y=hist['Close'], mode='lines'))
+fig.show()
+</code></pre>
+<p><img src="../images/ngcb19" alt="img" /></p>
+<p>Tesla Stock Historical Price Data</p>
+<p>If we set the <strong><code>mode='markers'</code></strong>, then we’ll have a regular scatter (dots) plot. There’s also another <strong><code>mode='lines+markers'</code></strong> that shows both dots and lines like the below.</p>
+<pre><code class="language-python">fig = go.Figure(data=go.Scatter(x=hist.index,y=hist['Close'], mode='lines+markers'))
+fig.show()
+</code></pre>
+<p><img src="../images/ngcb18" alt="img" /></p>
+<h2 id="add-trading-volume-to-the-stock-chart"><a class="header" href="#add-trading-volume-to-the-stock-chart">Add Trading Volume To The Stock Chart</a></h2>
+<p>Let’s add the trading volume to the chart. To do this, we’ll need a <strong><code>subplot</code></strong> and <strong><code>secondary_y</code></strong> axis for the volume data.</p>
+<p>In general, we can use the <strong><code>figure.add_trace()</code></strong> method to add a new data series into the graph. This is something the Plotly Express has difficulty with but is very easy to achieve in <strong><code>plotly_objects</code></strong>.</p>
+<p>Note that for the <strong>primary y-axis</strong> i.e. the first <strong><code>figure.add_trace()</code></strong> below, we need to include <strong><code>secondary_y=False</code></strong>, or leave it blank (so that it will default to <strong><code>False</code></strong>). For the secondary y-axis, we need to specify that <strong><code>secondary_y=True</code></strong> in the <strong><code>add_trace</code></strong> method.</p>
+<pre><code class="language-python">from plotly.subplots import make_subplots
+
+fig2 = make_subplots(specs=[[{"secondary_y": True}]])
+fig2.add_trace(go.Scatter(x=hist.index,y=hist['Close'],name='Price'),secondary_y=False)
+fig2.add_trace(go.Bar(x=hist.index,y=hist['Volume'],name='Volume'),secondary_y=True)
+fig2.show()
+</code></pre>
+<p><img src="../images/ngcb17" alt="img" /></p>
+<p>Although the volume data is on the secondary y-axis (see the label on the right-hand side), some of the bars are way too long and are covering the stock price graph. Let’s scale the volume bars down a little bit by setting a range for the y-axis. We can use the <strong><code>figure.update_yaxes()</code></strong> method to do that. Also, I’m going to hide the number labeling for the volume data. Again, note that we need to specify that we are operating on the secondary y-axis by setting <strong><code>secondary_y=True</code></strong> in the below code.</p>
+<pre><code class="language-python">fig2.update_yaxes(range=[0,7000000000],secondary_y=True)
+fig2.update_yaxes(visible=False, secondary_y=True)
+</code></pre>
+<p><img src="../images/ngcb16" alt="img" /></p>
+<h2 id="candlestick-chart"><a class="header" href="#candlestick-chart">Candlestick Chart</a></h2>
+<p>So really, who looks at a line chart for stocks? Pros look at only the candlestick chart!</p>
+<p>No problem, we can do it in the candlestick style. Instead of using the <strong><code>Scatter()</code></strong> plot and passing the ‘Close’ price to the y-axis, now we need to specify each of ‘open’, ‘high’, ‘low’ and ‘close’, also known as the “ohlc”.</p>
+<pre><code class="language-python">fig3 = make_subplots(specs=[[{"secondary_y": True}]])
+fig3.add_trace(go.Candlestick(x=hist.index,
+                              open=hist['Open'],
+                              high=hist['High'],
+                              low=hist['Low'],
+                              close=hist['Close'],
+                             ))
+</code></pre>
+<p><img src="../images/ngcb15" alt="img" /></p>
+<p>It’s interesting because, with the Candlestick chart, we now have another smaller chart at the bottom, this is actually called a “range slider”, and we can drag either side to zoom in/out on a certain area of the chart.</p>
+<p>Let’s also add back the volume information to the chart. I don’t think the range slider is particularly useful in this case, so I’m going to hide it by using the <strong><code>figure.update_layout()</code></strong> method.</p>
+<pre><code class="language-python">fig3.add_trace(go.Bar(x=hist.index, y=hist['Volume'], name='Volume'),secondary_y=True)
+fig3.update_layout(xaxis_rangeslider_visible=False)
+</code></pre>
+<h2 id="indicators"><a class="header" href="#indicators">Indicators</a></h2>
+<p>We’ll draw a simple indicator 20 Day Moving Average here to show the concept, theoretically, we can plot any indicator on the chart.</p>
+<p><strong><code>pandas</code></strong> provides convenient ways to calculate time series-related metrics such as the moving average. The <strong><code>df.rolling()</code></strong> method provides “moving windows” that we can operate on. To get the average of the moving window, we just need to add the <strong><code>.mean()</code></strong> at the end of the <strong><code>rolling()</code></strong> method.</p>
+<pre><code class="language-python">fig3.add_trace(go.Scatter(x=hist.index,y=hist['Close'].rolling(window=20).mean(),marker_color='blue',name='20 Day MA'))
+fig3.add_trace(go.Bar(x=hist.index, y=hist['Volume'], name='Volume'),secondary_y=True)
+fig3.update_layout(title={'text':'TSLA', 'x':0.5})
+fig3.update_yaxes(range=[0,1000000000],secondary_y=True)
+fig3.update_yaxes(visible=False, secondary_y=True)
+fig3.update_layout(xaxis_rangeslider_visible=False)  #hide range slider
+fig3.show()
+</code></pre>
+<p>We are also going to modify the volume a little bit. Right now the volume bars all have the same color. We can use different colors to distinguish between an up or down day – green for up days, and red for down days.</p>
+<p>To do that, we just need to calculate the daily change (positive or negative) then insert a color column into our dataframe. Then we can pass the color information into the volume data series. The <strong><code>marker</code></strong> argument dictates how our scatter plot should look like – color, shape, size, etc.</p>
+<pre><code class="language-python">hist['diff'] = hist['Close'] - hist['Open']
+hist.loc[hist['diff']&gt;=0, 'color'] = 'green'
+hist.loc[hist['diff']&lt;0, 'color'] = 'red'
+</code></pre>
+<p><img src="../images/ngcb14" alt="img" />Add a column to indicate color</p>
+<p>To put everything together:</p>
+<pre><code class="language-python">fig3 = make_subplots(specs=[[{"secondary_y": True}]])
+fig3.add_trace(go.Candlestick(x=hist.index,
+                              open=hist['Open'],
+                              high=hist['High'],
+                              low=hist['Low'],
+                              close=hist['Close'],
+                              name='Price'))
+fig3.add_trace(go.Scatter(x=hist.index,y=hist['Close'].rolling(window=20).mean(),marker_color='blue',name='20 Day MA'))
+fig3.add_trace(go.Bar(x=hist.index, y=hist['Volume'], name='Volume', marker={'color':hist['color']}),secondary_y=True)
+fig3.update_yaxes(range=[0,700000000],secondary_y=True)
+fig3.update_yaxes(visible=False, secondary_y=True)
+fig3.update_layout(xaxis_rangeslider_visible=False)  #hide range slider
+fig3.update_layout(title={'text':'TSLA', 'x':0.5})
+fig3.show()
+</code></pre>
+<p><img src="../images/ngcb13" alt="img" /></p>
+<p>You might notice that in the above graph, 20 D MA didn’t start from the beginning. That’s because we need 20 days to calculate the first moving average, therefore the first 19 days are essentially blank.</p>
+<h2 id="hide-non-trading-days"><a class="header" href="#hide-non-trading-days">Hide Non-trading Days</a></h2>
+<p>Stock markets close on weekends and holidays, so there’s no data for those periods. The above chart looks all fine but you kind of see small gaps on the bars at the bottom. If we zoom in more, you’ll see them more clearly.</p>
+<p><img src="../images/ngcb12" alt="Zoomed in chart with gaps" />Zoomed in chart with gaps</p>
+<p>Thanks Dan for suggesting this correction! Let’s now fix this.</p>
+<p>Plotly charts have a <strong>rangebreaks</strong> attribute that we can use to hide certain time periods. This works on both x-axis and y-axis. Also note this attribute is not unique to the candlestick chart, so you can use it to block off time periods for any type of chart with <strong>datetime</strong> data.</p>
+<p>All we need is to add another <strong>update_axes(rangebreaks=[…])</strong> to the above code, just before the <strong>fig.show()</strong>.</p>
+<ul>
+<li><strong>bounds = [‘sat’, ‘mon’]</strong> will hide Saturdays and Sundays</li>
+<li><strong>bounds = [16, 9.5]</strong> will hide between 4pm to 9:30am, which are market closed hours</li>
+<li><strong>values = [“2021-12-25″,”2022-01-01”]</strong> can hide individual days</li>
+</ul>
+<pre><code class="language-python">fig3.update_xaxes(rangebreaks = [
+                       dict(bounds=['sat','mon']), # hide weekends
+                       #dict(bounds=[16, 9.5], pattern='hour'), # for hourly chart, hide non-trading hours (24hr format)
+                       dict(values=["2021-12-25","2022-01-01"]) #hide Xmas and New Year
+                                ])
+</code></pre>
+<p>The result is a much smoother graph without gaps.</p>
+<p><img src="../images/ngcb1" alt="Zoomed in chart - gaps fixed!" />Zoomed in chart – gaps fixed!</p>
+<h2 id="save-plotly-chart"><a class="header" href="#save-plotly-chart">Save Plotly Chart</a></h2>
+<p>We can save our stock chart in HTML form, which means all the interactive features will be retained in the graph.</p>
+<pre><code class="language-python">fig3.write_html(r'C:\Users\jay\Desktop\PythonInOffice\plotly_stock_chart\graph.html')
+</code></pre>
+<h2 id="dash"><a class="header" href="#dash">Dash</a></h2>
+<p>Although our graph is interactive, it’s still lacking something. For example, if we want to draw a chart for another stock, we have to change the stock ticker inside the code and re-run it. In other words, our graph is not fully interactive yet. With Dash, we can create a graph that takes stock tickers as input and draw the chart accordingly.</p>
+<hr />
+<pre><code class="language-python">import yfinance as yf
+import pandas as pd
+import plotly as plotly
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+def show_plot(fig, filename):
+    plotly.offline.plot(fig, filename=filename)
+
+
+tsla = yf.Ticker('TSLA')
+hist = tsla.history(period='1y')
+fig = go.Figure(data=go.Scatter(x=hist.index,y=hist['Close'], mode='lines'))
+# 只有線圖
+show_plot(fig, 'test.html')
+
+# 線圖+點
+fig = go.Figure(data=go.Scatter(x=hist.index,y=hist['Close'], mode='lines+markers'))
+show_plot(fig, 'test.html')
+
+
+# 線圖+點+成交量柱狀圖
+fig2 = make_subplots(specs=[[{"secondary_y": True}]])
+fig2.add_trace(go.Scatter(x=hist.index,y=hist['Close'],name='Price'),secondary_y=False)
+fig2.add_trace(go.Bar(x=hist.index,y=hist['Volume'],name='Volume'),secondary_y=True)
+show_plot(fig2, 'test.html')
+
+
+# 線圖+點+成交量柱狀圖+nornalize
+fig2.update_yaxes(range=[0,7000000000],secondary_y=True)
+fig2.update_yaxes(visible=False, secondary_y=True)
+show_plot(fig2, 'test.html')
+
+
+# 線圖+點+成交量柱狀圖+蠟燭圖
+fig3 = make_subplots(specs=[[{"secondary_y": True}]])
+fig3.add_trace(go.Candlestick(x=hist.index,
+                              open=hist['Open'],
+                              high=hist['High'],
+                              low=hist['Low'],
+                              close=hist['Close'],
+                             ))
+show_plot(fig3, 'test.html')
+
+
+# 成交量柱狀圖+蠟燭圖
+fig3.add_trace(go.Bar(x=hist.index, y=hist['Volume'], name='Volume'),secondary_y=True)
+fig3.update_layout(xaxis_rangeslider_visible=False)
+show_plot(fig3, 'test.html')
+
+
+fig3.add_trace(go.Scatter(x=hist.index,y=hist['Close'].rolling(window=20).mean(),marker_color='blue',name='20 Day MA'))
+fig3.add_trace(go.Bar(x=hist.index, y=hist['Volume'], name='Volume'),secondary_y=True)
+fig3.update_layout(title={'text':'TSLA', 'x':0.5})
+fig3.update_yaxes(range=[0,1000000000],secondary_y=True)
+fig3.update_yaxes(visible=False, secondary_y=True)
+fig3.update_layout(xaxis_rangeslider_visible=False)  #hide range slider
+show_plot(fig3, 'test.html')
+
+</code></pre>
+<h2 id="easy-and-interactive-candlestick-charts-in-python"><a class="header" href="#easy-and-interactive-candlestick-charts-in-python">Easy and Interactive Candlestick Charts in Python</a></h2>
+<p>https://medium.com/@dannygrovesn7/using-streamlit-and-plotly-to-create-interactive-candlestick-charts-a2a764ad0d8e</p>
+<pre><code class="language-python">import pandas as pd
+import yfinance as yf
+import plotly.io as pio
+import plotly.graph_objects as go
+import plotly as plotly
+from plotly.subplots import make_subplots
+
+pio.renderers.default = "browser"
+
+
+def get_candlestick_plot(df: pd.DataFrame, ma1: int, ma2: int, ticker: str):
+    """
+    Create the candlestick chart with two moving avgs + a plot of the volume
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The price dataframe
+    ma1 : int
+        The length of the first moving average (days)
+    ma2 : int
+        The length of the second moving average (days)
+    ticker : str
+        The ticker we are plotting (for the title).
+    """
+
+    fig = make_subplots(
+        rows=2,
+        cols=1,
+        shared_xaxes=True,
+        vertical_spacing=0.1,
+        subplot_titles=(f"{ticker} Stock Price", "Volume Chart"),
+        row_width=[0.3, 0.7],
+    )
+
+    fig.add_trace(
+        go.Candlestick(
+            # x=df["Date"],
+            x=df.index,
+            open=df["Open"],
+            high=df["High"],
+            low=df["Low"],
+            close=df["Close"],
+            name="Candlestick chart",
+        ),
+        row=1,
+        col=1,
+    )
+
+    fig.add_trace(
+        go.Line(x=df.index, y=df[f"{ma1}_ma"], name=f"{ma1} SMA"),
+        row=1,
+        col=1,
+    )
+
+    fig.add_trace(
+        go.Line(x=df.index, y=df[f"{ma2}_ma"], name=f"{ma2} SMA"),
+        row=1,
+        col=1,
+    )
+
+    fig.add_trace(
+        go.Bar(x=df.index, y=df["Volume"], name="Volume"),
+        row=2,
+        col=1,
+    )
+
+    fig["layout"]["xaxis2"]["title"] = "Date"
+    fig["layout"]["yaxis"]["title"] = "Price"
+    fig["layout"]["yaxis2"]["title"] = "Volume"
+
+    fig.update_xaxes(
+        rangebreaks=[{"bounds": ["sat", "mon"]}],
+        rangeslider_visible=False,
+    )
+
+    return fig
+
+
+def show_plot(fig, filename):
+    plotly.offline.plot(fig, filename=filename)
+
+
+if __name__ == "__main__":
+    stock = "2630.TW"
+    tsla = yf.Ticker(stock)
+    df = tsla.history(period="10y")
+
+    df["10_ma"] = df["Close"].rolling(10).mean()
+    df["20_ma"] = df["Close"].rolling(20).mean()
+    fig = get_candlestick_plot(df[-120:], 10, 20, stock)
+    # fig.show()
+    show_plot(fig, "tsla.html")
+</code></pre>
+<h2 id="子圖"><a class="header" href="#子圖">子圖</a></h2>
+<pre><code class="language-python">from plotly.subplots import make_subplots
+import plotly
+import plotly.graph_objects as go
+
+fig = make_subplots(
+    rows=2, cols=2,
+    specs=[[{"type": "xy", 'secondary_y': True}, {"type": "polar"}],
+           [{"type": "domain"}, {"type": "scene"}]],
+    y_title='title'
+)
+'''
+也可以為：specs=[[{'type': 'bar'}, {'type': 'barpolar'}],
+                [{'type': 'pie'}, {'type': 'scatter3d'}]]
+'''
+
+# 使用 secondary_y 參數選擇該圖相對的 y軸座標
+fig.add_trace(go.Bar(y=[2, 3, 1]),
+              row=1, col=1, secondary_y=False)
+fig.add_trace(go.Scatter(x=[0, 1, 2], y=[4, 10, 7]),
+              row=1, col=1, secondary_y=True)
+
+fig.add_trace(go.Barpolar(theta=[0, 45, 90], r=[2, 3, 1]),
+              row=1, col=2)
+
+fig.add_trace(go.Pie(values=[2, 3, 1]),
+              row=2, col=1)
+
+fig.add_trace(go.Scatter3d(x=[2, 3, 1], y=[0, 0, 0],
+                           z=[0.5, 1, 2], mode="lines"),
+              row=2, col=2)
+
+fig.update_layout(height=700, showlegend=False)
+
+plotly.offline.plot(fig, filename='test.html')
+</code></pre>
+<p><img src="../images/newplot.png" alt="" /></p>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../python/schedule.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../python/plot/dash.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../python/schedule.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../python/plot/dash.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

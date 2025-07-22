@@ -1,0 +1,618 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Perf - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="linux-效能分析工具-perf"><a class="header" href="#linux-效能分析工具-perf">Linux 效能分析工具: Perf</a></h1>
+<h2 id="簡介"><a class="header" href="#簡介">簡介</a></h2>
+<p><a href="https://perf.wiki.kernel.org/index.php/Main_Page">Perf</a> 全名是 Performance Event，是在 Linux 2.6.31 以後內建的系統效能分析工具，它隨著核心一併釋出。藉由 perf，應用程式可以利用 PMU (Performance Monitoring Unit), tracepoint 和核心內部的特殊計數器 (counter) 來進行統計，另外還能同時分析運行中的核心程式碼，從而更全面瞭解應用程式中的效能瓶頸。</p>
+<p>相較於 <a href="https://en.wikipedia.org/wiki/OProfile">OProfile</a> 和 <a href="https://sourceware.org/binutils/docs/gprof/">GProf</a> ，perf 的優勢在於與 Linux Kernel 緊密結合，並可受益於最先納入核心的新特徵。perf 基本原理是對目標進行取樣，紀錄特定的條件下所偵測的事件是否發生以及發生的次數。例如根據 tick 中斷進行取樣，即在 tick 中斷內觸發取樣點，在取樣點裡判斷行程 (process) 當時的 context。假如一個行程 90% 的時間都花費在函式 foo() 上，那麼 90% 的取樣點都應該落在函式 foo() 的上下文中。</p>
+<p>Perf 可取樣的事件非常多，可以分析 Hardware event，如 cpu-cycles、instructions 、cache-misses、branch-misses …等等。可以分析 Software event，如 page-faults、context-switches …等等，另外一種就是 Tracepoint event。知道了 cpu-cycles、instructions 我們可以瞭解 Instruction per cycle 是多少，進而判斷程式碼有沒有好好利用 CPU，cache-misses 可以曉得是否有善用 Locality of reference ，branch-misses 多了是否導致嚴重的 pipeline hazard？另外 Perf 還可以對函式進行採樣，瞭解效能卡在哪邊。</p>
+<h2 id="安裝"><a class="header" href="#安裝">安裝</a></h2>
+<p>首先利用以下指令查看目前的 Kernel config 有沒有啟用 Perf。如果 PC 上是裝一般 Linux distro，預設值應該都有開啟。</p>
+<pre><code class="language-sh">＄ cat "/boot/config-`uname -r`" | grep "PERF_EVENT"
+</code></pre>
+<p>如果自己編譯核心可以參照<a href="http://www.carbondesignsystems.com/virtual-prototype-blog/using-the-arm-performance-monitor-unit-pmu-linux-driver">這篇文章</a>來啟用 perf。</p>
+<p>參考的環境是 Ubuntu 14.04，kernel 版本 3.16.0。有兩種方法可以安裝</p>
+<ol>
+<li>前面講到，perf 是 Linux 內建支持的效能優化工具，在 2.6.31 版本之後，我們可以直接到 <a href="https://www.kernel.org/">Linux Kernel Archives</a> 下載對應版本的程式碼，解壓縮後到 <code>tools/perf</code> 裡面去編譯，通常過程中會有相依的套件需要安裝，依指示完成安裝後，編譯即可成功，最後再把編譯完成的 perf 移至 <code>/usr/bin</code> 中就可以使用了。 這種方法通常適用於更新過 kernel 的使用者，因為更新過 kernel 後會造成 distribution package 與 kernel version 不相符。一般使用者採用第二種方法即可。</li>
+<li>使用 apt-get 進行安裝。</li>
+</ol>
+<pre><code class="language-sh">$ sudo apt-get install linux-tools-common
+</code></pre>
+<p>接著輸入 perf list 或 perf top 檢查一下 perf 可不可以使用。</p>
+<p>如果出現以下的訊息，表示還漏了些東西。</p>
+<pre><code>WARNING: perf not found for kernel 3.16.0-50
+You may need to install the following packages for this specific kernel:
+    linux-tools-3.16.0-50-generic
+    linux-cloud-tools-3.16.0-50-generic
+</code></pre>
+<p>上面的 Kernel 版本可能和你不一樣，根據指示安裝起來即可。不放心的話可以使用<code>＄ uname -r</code>確認。</p>
+<pre><code class="language-sh">$ sudo apt-get install linux-tools-3.16.0-50-generic linux-cloud-tools-3.16.0-50-generic
+</code></pre>
+<ol>
+<li>到這裡 perf 的安裝就完成了。不過這裡我再稍微補充一下，如果你不是切換到 root 的情況下輸入</li>
+</ol>
+<pre><code class="language-sh">$ perf top
+</code></pre>
+<p>其實會出現以下錯誤畫面。</p>
+<p><img src="images/perf_top_error.png" alt="img" /></p>
+<p>kernel.perf_event_paranoid 是用來決定你在沒有 root 權限下 (Normal User) 使用 perf 時，你可以取得哪些 event data。預設值是 1 ，你可以輸入</p>
+<pre><code class="language-sh">$ cat /proc/sys/kernel/perf_event_paranoid
+</code></pre>
+<p>來查看權限值。一共有四種權限值:</p>
+<p><code>2</code> : 不允許任何量測。但部份用來查看或分析已存在的紀錄的指令仍可使用，如 perf ls、perf report、perf timechart、 perf trace。</p>
+<p><code>1</code> : 不允許 CPU events data。但可以使用 perf stat、perf record 並取得 Kernel profiling data。</p>
+<p><code>0</code> : 不允許 raw tracepoint access。但可以使用 perf stat、perf record 並取得 CPU events data。</p>
+<p><code>-1</code>: 權限全開。</p>
+<p>最後如果要檢測 cache miss event ，需要先取消 kernel pointer 的禁用。</p>
+<pre><code class="language-sh">$ sudo sh -c " echo 0 &gt; /proc/sys/kernel/kptr_restrict"
+</code></pre>
+<h2 id="先來個範例暖身吧"><a class="header" href="#先來個範例暖身吧">先來個範例暖身吧！</a></h2>
+<p>一開始，我們先使用第一次作業 「計算圓周率」 的程式來體會一下 perf 使用。 [perf_top_example.c]</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+
+double compute_pi_baseline(size_t N) {
+    double pi = 0.0;
+    double dt = 1.0 / N;
+    for (size_t i = 0; i &lt; N; i++) {
+        double x = (double) i / N;
+        pi += dt / (1.0 + x * x);
+    }
+    return pi * 4.0;
+}
+int main() {
+    printf("pid: %d\n", getpid());
+    sleep(10);
+    compute_pi_baseline(50000000);
+    return 0;
+}
+</code></pre>
+<p>將上述程式存檔為 perf_top_example.c，並執行：</p>
+<pre><code class="language-sh">g++ -c perf_top_example.c
+g++ perf_top_example.o -o example
+./example
+</code></pre>
+<p>執行上述程式後，可以取得一個 pid 值，再根據 pid 輸入</p>
+<pre><code class="language-sh">perf top -p $pid
+</code></pre>
+<p>應該會得到類似下面的結果：</p>
+<p><img src="images/perf_computepi_example.png" alt="img" /></p>
+<p>預設的 performance event 是 「cycles」，所以這條指令可以分析出消耗 CPU 週期最多的部份，結果顯示函式 compute_pi_baseline() 佔了近 99.9％，跟預期一樣，此函式是程式中的「熱點」！有了一些感覺後，後面會詳細一點介紹 perf 用法。</p>
+<h2 id="背景知識"><a class="header" href="#背景知識">背景知識</a></h2>
+<p>以下節錄上海交大通信與電子工程系的劉明寫的文章：</p>
+<p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-perf1/">Perf – Linux下的系統性能調優工具</a></p>
+<p><a href="https://zh.wikipedia.org/zh-tw/Wikipedia:%E7%B9%81%E7%B0%A1%E5%88%86%E6%AD%A7%E8%A9%9E%E8%A1%A8#.E7.A7.91.E6.8A.80">簡繁體中文詞彙對照：科技纇</a> (本課程斟酌修改詞彙，<code>==&gt;</code> 開頭表示補充)</p>
+<ul>
+<li><strong>背景知識</strong></li>
+</ul>
+<p>有些背景知識是分析性能問題時需要瞭解的。比如硬件 cache；再比如作業系統核心。應用程式的行為細節往往是和這些東西互相牽扯的，這些底層的東西會以意想不到的方式影響應用程式的性能，比如某些程式無法充分利用 cache，從而導致性能下降。比如不必要地呼叫過多的系統呼叫，造成頻繁的核心 / 使用者層級的切換 …等等。這裡只是為本文的後續內容做些概述，關於效能調校還有很多東西。</p>
+<ul>
+<li><strong>效能相關的處理器硬體特性，PMU 簡介</strong></li>
+</ul>
+<p>當演算法已趨於最佳化，程式碼不斷精簡，人們調到最後，便需要斤斤計較了。cache、pipeline 等平時不大注意的東西也必須精打細算了。</p>
+<ul>
+<li><strong>硬體特性之 cache</strong></li>
+</ul>
+<p>記憶體存取很快，但仍無法和處理器的指令執行速度相提並論。為了從記憶體中讀取指令 (instruction) 和資料 (data)，處理器需要等待，用處理器的時間來衡量，這種等待非常漫長。cache 是一種 SRAM，它的存取速率非常快，與處理器處理速度較為接近。因此將常用的資料保存在 cache 中，處理器便無須等待，從而提高效能。cache 的尺寸一般都很小，充分利用 cache 是軟體效能改善過程中，非常重要的部分。</p>
+<ul>
+<li><strong>硬體特性之 pipeline, superscalar, out-ot-order execution</strong></li>
+</ul>
+<p>提昇效能最有效的方式之一就是平行 (parallelism)。處理器在設計時也儘可能地平行，比如 pipeline, superscalar, out-of-execution。</p>
+<p>處理器處理一條指令需要分多個步驟完成，比如 fetch 指令，然後完成運算，最後將計算結果輸出到匯流排 (bus) 上。在處理器內部，這可以看作一個三級 pipeline，如下圖處理器 pipeline 所示：</p>
+<p><img src="images/3stage_pipeline.gif" alt="img" /></p>
+<p>指令從左邊進入處理器，上圖中的 pipeline 有三級，一個時鐘週期內可以同時處理三條指令，分別被 pipeline 的不同部分處理。</p>
+<p>Superscalar 指一個時鐘週期觸發 (issue) 多條指令的 pipeline機器架構，比如 Intel 的 Pentium 處理器，內部有兩個執行單元，在一個時鐘週期內允許執行兩條指令。</p>
+<p>==&gt; 這樣稱為 dual-issue，可想像為一個 packet 裡同時有兩組 pipelined 的 instruction</p>
+<p>==&gt; 比方說，<a href="http://www.arm.com/products/processors/cortex-a/cortex-a5.php">Cortex-A5</a> 和 Cortex-A8 一樣採用 ARMv7-A 指令集，但是 Cortex-A5 是 Cortext-A8/A9 的精簡版，有以下差異：</p>
+<p>1.pipeline 自 13 stages 減為 8 stages 2.instruction 自 dual-issue 減為 single-issue 3.NEON/FPU 為選配 4.不具有 L2 Cache</p>
+<p>此外，在處理器內部，不同指令所需要的執行時間和時鐘週期是不同的，如果嚴格按照程序的執行順序執行，那麼就無法充分利用處理器的 pipeline。因此指令有可能被亂序執行 (out-of-order execution)。</p>
+<p>上述三種平行技術對所執行的指令有一個基本要求，即相鄰的指令相互沒有依賴關係。假如某條指令需要依賴前面一條指令的執行結果數據，那麼 pipeline 便失去作用，因為第二條指令必須等待第一條指令完成。因此好的軟體必須儘量避免產生這種程式碼。</p>
+<ul>
+<li><strong>硬體特性之 branch prediction</strong></li>
+</ul>
+<p>branch prediction 指令對軟體效能影響較大。尤其是當處理器採用流水線設計之後，假設 pipeline 有三級，且目前進入 pipeline 的第一道指令為分支 (branch) 指令。假設處理器順序讀取指令，那麼如果分支的結果是跳躍到其他指令，那麼被處理器 pipeline 所 fetch 的後續兩條指令勢必被棄置 (來不及執行)，從而影響性能。為此，很多處理器都提供了 branch prediction，根據同一條指令的歷史執行記錄進行預測，讀取最可能的下一條指令，而並非順序讀取指令。</p>
+<p>==&gt; 搭配簡報: <a href="http://www.cs.ucr.edu/~gupta/teaching/203A-09/My6.pdf">Branch Prediction</a></p>
+<p>branch prediction 對軟體架構有些要求，對於重複性的分支指令序列，branch prediction 硬體才能得到較好的預測結果，而對於類似 switch-case 一類的程式結構，則往往不易得到理想的預測結果。</p>
+<p>==&gt; 對照閱讀: <a href="http://igoro.com/archive/fast-and-slow-if-statements-branch-prediction-in-modern-processors/">Fast and slow if-statements: branch prediction in modern processors</a></p>
+<p>==&gt; 編譯器提供的輔助機制: <a href="http://cellperformance.beyond3d.com/articles/2006/04/branch-patterns-using-gcc.html">Branch Patterns, Using GCC</a></p>
+<p>上面介紹的幾種處理器特性對軟體效能影響很大，然而依賴時鐘進行定期採樣的 profiler 模式無法闡述程式對這些處理器硬體特性的使用情況。處理器廠商針對這種情況，在硬體中加入了 PMU (performance monitor unit)。PMU 允許硬體針對某種事件設置 counter，此後處理器便開始統計該事件的發生次數，當發生的次數超過 counter 內設定的數值後，便產生中斷。比如 cache miss 達到某個值後，PMU 便能產生相應的中斷。一旦捕獲這些中斷，便可分析程式對這些硬體特性的使用率了。</p>
+<ul>
+<li><strong>Tracepoints</strong></li>
+</ul>
+<p>Tracepoint 是散落在核心原始程式碼的一些 hook，一旦使能，在指定的程式碼被運行時，tracepoint 就會被觸發，這樣的特性可被各種 trace/debug 工具所使用，perf 就是這樣的案例。若你想知道在應用程式執行時期，核心記憶體管理模組的行為，即可透過潛伏在 slab 分配器中的 tracepoint。當核心運行到這些 tracepoint 時，便會通知 perf。</p>
+<p>Perf 將 tracepoint 產生的事件記錄下來，生成報告，通過分析這些報告，效能分析調校的工程人員便可瞭解程式執行時期的核心種種細節，也能做出針對效能更準確的診斷。</p>
+<h2 id="perf-基本使用"><a class="header" href="#perf-基本使用">Perf 基本使用</a></h2>
+<p>前面有提到，Perf 能觸發的事件分為三類：</p>
+<ul>
+<li><strong>hardware</strong> : 由 PMU 產生的事件，比如 cache-misses、cpu-cycles、instructions、branch-misses …等等，通常是當需要瞭解程序對硬體特性的使用情況時會使用。</li>
+<li><strong>software</strong> : 是核心程式產生的事件，比如 context-switches、page-faults、cpu-clock、cpu-migrations …等等。</li>
+<li><strong>tracepoint</strong> : 是核心中的靜態 tracepoint 所觸發的事件，這些 tracepoint 用來判斷在程式執行時期，核心的行為細節，比如 slab 記憶體配置器的配置次數等。</li>
+</ul>
+<p>Perf 包含 20 幾種子工具集，不過我還沒碰過很多，我根據目前理解先介紹以下。 如果想看第一手資料</p>
+<pre><code class="language-sh">$ perf help &lt;command&gt;
+</code></pre>
+<p>###perf list 這應該是大部分的人第一次安裝 perf 後所下的第一個指令，它能印出 perf 可以觸發哪些 event，不同 CPU 可能支援不同 hardware event，不同 kernel 版本支援的 software、tracepoint event 也不同。我的 perf 版本是<code>3.19.8</code>，所支援的 event 已經超過 1400 項（另外要列出 Tracepoint event 必須開啟 root 權限）。</p>
+<pre><code class="language-sh">$ perf list
+</code></pre>
+<p><img src="images/perf_list.png" alt="img" /></p>
+<h3 id="perf-top"><a class="header" href="#perf-top">perf top</a></h3>
+<p>perf top 其實跟平常 Linux 內建的 top 指令很相似。它能夠「即時」的分析各個函式在某個 event 上的熱點，找出拖慢系統的凶手，就如同上面那個範例一樣。甚至，即使沒有特定的程序要觀察，你也可以直接下達 <code>$ perf top</code> 指令來觀察是什麼程序吃掉系統效能，導致系統異常變慢。譬如我執行一個無窮迴圈：</p>
+<pre><code class="language-c">int main() {
+    long int i = 0;
+    while(1) {
+        i++;
+        add(i);
+        div(i);
+    }
+    return 0;
+}
+</code></pre>
+<p>可以發現紅色熱點就出現了。右邊第一列為各函式的符號，左邊第一行是該符號引發的 event 在整個「監視域」中佔的比例，我們稱作該符號的熱度，監視域指的是 perf 監控的所有符號，預設值包括系統所有程序、核心以及核心 module 的函式，左邊第二行則為該符號所在的 Shared Object 。若符號旁顯示<code>[.]</code>表示其位於 User mode，<code>[k]</code>則為 kernel mode。</p>
+<p><img src="images/perf_top_while.png" alt="img" /></p>
+<p>（當你關掉該程序之後，這個監視畫面 (tui 界面) 裡的該程序不會「馬上」消失，而是其 overhead 的比例一直減少然後慢慢離開列表）。</p>
+<p>按下 <code>h</code>可以呼叫 help ，它會列出 perf top 的所有功能和對應按鍵。 我們來試看看 Annotate（註解），這功能可以進一步深入分析某個符號。使用方向鍵移到你有興趣的符號按下<code>a</code>。 它會顯示各條指令的 event 取樣率（耗時較多的部份就容易被 perf 取樣到）。</p>
+<p><img src="images/perf_top_annotate.png" alt="img" /></p>
+<p>最後若你想要觀察其他 event ( 預設 cycles ) 和指定取樣頻率 ( 預設每秒4000次 ) :</p>
+<pre><code>$ perf top -e cache-misses -c 5000
+</code></pre>
+<h3 id="perf-stat"><a class="header" href="#perf-stat">perf stat</a></h3>
+<p>相較於 top，使用 perf stat 往往是你已經有個要優化的目標，對這個目標進行特定或一系列的 event 檢查，進而瞭解該程序的效能概況。（event 沒有指定的話，預設會有十種常用 event。） 我們來對以下程式使用 perf stat 工具 分析 cache miss 情形</p>
+<pre><code class="language-c">static char array[10000][10000];
+int main (void){
+  int i, j;
+  for (i = 0; i &lt; 10000; i++)
+    for (j = 0; j &lt; 10000; j++)
+       array[j][i]++;
+  return 0;
+}
+</code></pre>
+<pre><code class="language-sh">$ perf stat --repeat 5 -e cache-misses,cache-references,instructions,cycles ./perf_stat_cache_miss
+    Performance counter stats for './perf_stat_cache_miss' (5 runs):
+    4,416,226        cache-misses        #    3.437 % of all cache refs    ( +-  0.27% )
+    128,483,262      cache-references                                      ( +-  0.02% )
+    2,123,281,496    instructions        #    0.65  insns per cycle        ( +-  0.02% )
+    3,281,498,034    cycles                                                ( +-  0.21% )
+        1.299352302 seconds time elapsed                                   ( +-  0.19% )
+</code></pre>
+<p><code>--repeat &lt;n&gt;</code>或是<code>-r &lt;n&gt;</code> 可以重複執行 n 次該程序，並顯示每個 event 的變化區間。 <code>cache-misses,cache-references</code>和 <code>instructions,cycles</code>類似這種成對的 event，若同時出現 perf 會很貼心幫你計算比例。</p>
+<p>根據這次 perf stat 結果可以明顯發現程序有很高的 cache miss，連帶影響 IPC 只有<code>0.65</code>。</p>
+<p>如果我們善用一下存取的局部性，將 <code>i，j</code>對調改成<code>array[i][j]++</code>。</p>
+<pre><code>    Performance counter stats for './perf_stat_cache_miss' (5 runs):
+    2,263,131        cache-misses        #   93.742 % of all cache refs    ( +-  0.53% )
+    2,414,202        cache-references                                      ( +-  1.82% )
+    2,123,275,176    instructions        #    1.98  insns per cycle        ( +-  0.03% )
+    1,074,868,730    cycles                                                ( +-  1.96% )
+        0.432727146 seconds time elapsed                                   ( +-  1.99% )
+</code></pre>
+<p>cache-references 從 <code>128,483,262</code>下降到 <code>2,414,202</code>，差了五十幾倍，執行時間也縮短為原來的三分之一！</p>
+<p>###perf record &amp; perf report 有別於 stat，record 可以針對函式級別進行 event 統計，方便我們對程序「熱點」作更精細的分析和優化。 我們來對以下程式，使用 perf record 進行 branch 情況分析</p>
+<pre><code class="language-c">#define N 5000000
+static int array[N] = { 0 };
+void normal_loop(int a) {
+    int i;
+    for (i = 0; i &lt; N; i++)
+        array[i] = array[i]+a;
+}
+void unroll_loop(int a) {
+    int i;
+    for (i = 0; i &lt; N; i+=5){
+        array[i] = array[i]+1;
+        array[i+1] = array[i+1]+a;
+        array[i+2] = array[i+2]+a;
+        array[i+3] = array[i+3]+a;
+        array[i+4] = array[i+4]+a;
+    }
+}
+int main() {
+    normal_loop(1);
+    unroll_loop(1);
+    return 0;
+}
+</code></pre>
+<pre><code class="language-sh">$ perf record -e branch-misses:u,branch-instructions:u ./perf_record_example
+$ perf report
+</code></pre>
+<p><code>:u</code>是讓 perf 只統計發生在 user space 的 event。最後可以觀察到迴圈展開前後 branch-instructions 的差距。</p>
+<p>另外，使用 record 有可能會碰到的問題是取樣頻率太低，有些函式的訊息沒有沒顯示出來（沒取樣到），這時可以使用 <code>-F &lt;frequcncy&gt;</code>來調高取樣頻率，可以輸入以下查看最大值，要更改也沒問題，但能調到多大可能還要查一下。</p>
+<pre><code class="language-sh">$ cat /proc/sys/kernel/perf_event_max_sample_rate
+</code></pre>
+<h2 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h2>
+<ul>
+<li><a href="http://www.brendangregg.com/linuxperf.html">Linux Performance</a></li>
+<li><a href="https://perf.wiki.kernel.org/index.php/Tutorial#Sample_analysis_with_perf_report">Tutorial - Linux kernel profiling with perf</a> [Perf wiki]</li>
+<li>Perf - Linux下的系統性能調優工具 / 劉明 [IBM developerWorks]
+<ul>
+<li><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-perf1/">第一部分 - 簡介、背景知識、基本使用</a></li>
+<li><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-perf2/index.html">第二部分 - tracepoint、probe、sched、bench、lock、Kmem、timechart、使用 Script 增強 perf 的功能</a></li>
+</ul>
+</li>
+<li><a href="http://rts.lab.asu.edu/web_438/project_final/CSE_598_Performance_Monitoring_Unit.pdf">A Study of Performance Monitoring Unit, perf and perf_events subsystem</a> [PDF]</li>
+<li><a href="http://kernel.taobao.org/index.php?title=Documents/Perf_FAQ">Perf FAQ</a> [kernel.taobao.org]</li>
+<li><a href="http://unix.stackexchange.com/questions/14227/do-i-need-root-admin-permissions-to-run-userspace-perf-tool-perf-events-ar">Do I need root (admin) permissions to run userspace ‘perf’ tool?</a></li>
+<li><a href="http://www.carbondesignsystems.com/virtual-prototype-blog/using-the-arm-performance-monitor-unit-pmu-linux-driver">Using the ARM Performance Monitor Unit (PMU) Linux Driver</a></li>
+<li><a href="http://blog.csdn.net/trochiluses/article/details/17346803">perf 性能分析實例——使用perf優化cache利用率</a> [CSDN]</li>
+</ul>
+<h2 id="context-switches"><a class="header" href="#context-switches">Context Switches</a></h2>
+<p>Context Switches  上下文切換，有時也被稱為處理程序切換(process switch)或任務切換。是一個重要的性能指標。</p>
+<p>CPU從一個執行緒切換到另外一個執行緒，需要保存當前任務的運行環境，恢復將要運行任務的運行環境，必然帶來性能消耗。</p>
+<p>Context Switches 上下文切換簡介</p>
+<p>作業系統可以同時運行多個處理程序， 然而一顆CPU同時只能執行一項任務，作業系統利用時間片輪轉的方式，讓使用者感覺這些任務正在同時進行。 CPU給每個任務都服務一定的時間, 然後把當前任務的狀態保存下來, 在載入下一任務的狀態後, 繼續服務下一任務。任務的狀態保存及再載入, 這段過程就叫做上下文切換。</p>
+<p>時間片輪轉的方式使多個任務在同一顆CPU上執行變成了可能, 但同時也帶來了保存現場和載入現場的直接消耗。</p>
+<p>上下文切換的性能消耗</p>
+<p>Context Switchs過高，導致CPU就像個搬運工一樣，頻繁在暫存器(CPU Register)和運行佇列(run queue)之間奔波，系統更多的時間都花費線上程切換上，而不是花在真正做有用工作的執行緒上。</p>
+<p>直接消耗包括: CPU暫存器需要保存和載入, 系統調度器的程式碼需要執行, TLB實例需要重新載入, CPU 的pipeline需要刷掉。</p>
+<p>間接消耗：多核的cache之間得共享資料。間接消耗對於程序的影響要看執行緒工作區運算元據的大小。</p>
+<p>性能分析查看Context Switches的方法</p>
+<p>Linux中可以通過工具vmstat, dstat, pidstat來觀察CS的切換情況。vmstat, dstat只能觀察整個系統的切換情況，而pidstat可以更精確地觀察某個處理程序的上下文切換情況。</p>
+<p>最常見的，在一些<a href="https://zh.wikipedia.org/wiki/%E6%8E%92%E7%A8%8B">排程</a>（scheduling）<a href="https://zh.wikipedia.org/wiki/%E7%AE%97%E6%B3%95">演算法</a>內，其中行程有時候需要暫時離開CPU，讓另一個行程進來CPU運作。在先佔式多工系統中，每一個行程都將輪流執行不定長度的時間，這些時間段落稱為<a href="https://zh.wikipedia.org/wiki/%E6%99%82%E9%96%93%E7%89%87">時間片</a>。如果行程並非自願讓出CPU(例如執行<a href="https://zh.wikipedia.org/wiki/I/O">I/O</a>操作時，行程就需放棄CPU使用權)，當時限到時，系統將產生一個定時中斷，<a href="https://zh.wikipedia.org/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%B5%B1">作業系統</a>將排定由其它的行程來執行。此機制用以確保CPU不致被較依賴處理器<a href="https://zh.wikipedia.org/wiki/%E9%81%8B%E7%AE%97">運算</a>的行程壟斷。若無定時中斷，除非行程自願讓出CPU，否則該行程將持續執行。對於擁有較多I/O<a href="https://zh.wikipedia.org/wiki/%E6%8C%87%E4%BB%A4">指令</a>的行程，往往執行不了多久，便需要讓出CPU；而較依賴處理器的行程相對而言I/O操作較少，反而能一直持續使用CPU，便形成了<a href="https://zh.wikipedia.org/wiki/%E7%8D%A8%E4%BD%94">壟斷</a>現象。</p>
+<hr />
+<h2 id="在-linux-上使用-perf-做效能分析入門篇"><a class="header" href="#在-linux-上使用-perf-做效能分析入門篇">在 Linux 上使用 Perf 做效能分析(入門篇)</a></h2>
+<h2 id="簡介-1"><a class="header" href="#簡介-1">簡介</a></h2>
+<p>透過效能分析工具 (Profiler)，我們可以得知更多關於軟體的運行資訊，像是花了多少記憶體、多少 CPU Cycles、多少 Cache Misses、I/O 處理時間等等，這些資訊對我們去找到程式效能瓶頸很有幫助。想辦法找到那裡讓程式變慢，進而最大化效能，便是我們做效能分析的最大目的。</p>
+<p>本文將介紹 Linux 上的 <a href="http://www.brendangregg.com/perf.html">perf</a> 效能分析工具，藉由一個簡單的程式範例，示範如何使用 perf 去分析一隻程式，我們將會發現使用分析工具時能更輕易的發現問題根源。本文參考 Gabriel Krisman Bertaz 寫的 <a href="https://www.collabora.com/news-and-blog/blog/2017/03/21/performance-analysis-in-linux/">Performance analysis in Linux</a>。</p>
+<p>本文可以搭配我的教學影片：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Mba2ONCA0kI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="color: rgb(119, 119, 119); font-family: &quot;Times New Roman&quot;; font-size: 19.2px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"></iframe>
+<h2 id="一個-branch-prediction-的範例"><a class="header" href="#一個-branch-prediction-的範例">一個 Branch Prediction 的範例</a></h2>
+<p>Stack Overflow 上有一個很火的問題「<a href="https://stackoverflow.com/questions/11227809/">Why is processing a sorted array faster than processing an unsorted array?</a>」。</p>
+<p>問題的 Code 如下：</p>
+<p><code>test.cc</code>：</p>
+<pre><code class="language-c++">#include &lt;algorithm&gt;
+#include &lt;ctime&gt;
+#include &lt;iostream&gt;
+
+int main()
+{
+    // 測試用陣列
+    const int arr_len = 32768;
+    int data[arr_len];
+
+    for (int c = 0; c &lt; arr_len; ++c)
+        data[c] = std::rand() % 256;
+
+    // std::sort(data, data + arr_len); // 是否排序
+    
+    long long sum = 0;
+
+    for (int i = 0; i &lt; 30000; ++i)
+    {
+        for (int c = 0; c &lt; arr_len; ++c)
+        {
+            if (data[c] &gt;= 128) { // 故意選 256 一半  
+                sum += data[c];
+            }
+        }
+    }
+
+    std::cout &lt;&lt; "sum = " &lt;&lt; sum &lt;&lt; std::endl;
+}
+</code></pre>
+<p>首先我們先編譯未排序版本：</p>
+<pre><code class="language-shell">$ g++ test.cc -o unsort
+</code></pre>
+<p>接著我們把 <code>sort</code> 那行取消註解，再編譯一次：</p>
+<pre><code class="language-shell">$ g++ test.cc -o sort
+</code></pre>
+<p>先來看看執行時間：</p>
+<pre><code class="language-shell">$ time ./unsort
+real    0m5.671s
+
+$ time ./sort
+real    0m1.932s
+</code></pre>
+<p>問題大意是說 <code>data</code> 如果排列過後，上面這段程式碼反而更快，如同我們實驗結果。我們知道排序的複雜度是 O(NlogN)�(�����)，所以應該會比沒排直接跑的 O(N)�(�) 還慢，但結果是排序後反而更快。</p>
+<p>就結論來說，我們知道這個結果是因為 CPU 會做 <strong>Branch Prediction</strong>。白話來說就是上次如果 <code>if</code> 是 <code>true</code>，下次就先猜也是 <code>true</code>，CPU 可以藉由先猜來偷跑，猜對了的話就可以跑更快；但相對的猜錯的話偷跑的東西通通要丟掉，反而更浪費時間，稱為 Branch Miss(詳細原理可以參考「計算機組織」)。所以 Branch Prediction 算是一種雙面刃，如果可以一直讓條件判斷有相同結果就可以進而加速程式，反之判斷一直反覆不定就會導致一直「猜測」錯誤而變慢，因此在上面程式碼中排列過的版本反而比較快，因為猜測錯誤只會發生一次，就是在 <code>data</code> 剛好在 <code>128</code> 附近的位置，在那之前全部會是 <code>false</code>，而後都會是 <code>true</code>。</p>
+<h2 id="perf-效能分析工具"><a class="header" href="#perf-效能分析工具">Perf 效能分析工具</a></h2>
+<p>想要找到一段程式碼的問題通常不容易，就以上面的程式範例來說，假設我們朝演算法去分析就會走錯路，實際問題其實在計算機組織的原理。光是一段簡單的程式碼就讓我們可能找不到原因，更甭說碰到一個大的程式，裡面有各種問題存在，可能是演算法、記憶體快取、CPU 指令、網路連線、I/O 等等，這時我們需要一個分析程式來幫助我們。</p>
+<p>Linux 上其實有很多工具可以使用：</p>
+<p><img src="images/91632981-533ee680-ea17-11ea-90f8-06676583ea52.png" alt="Linux 分析工具" /></p>
+<p>不過本文將針對 perf 做介紹，並用上面程式來示範假設我們還不知道問題是因為 Branch Miss，如何用 perf 找到問題。</p>
+<p>你可以用下面指令在 Ubuntu 上裝 perf：</p>
+<pre><code class="language-shell">$ sudo apt install linux-tools-$(uname -r) linux-tools-generic
+</code></pre>
+<p>或是你也可以考慮自己從 Linux Kernel 編譯 perf 來用：</p>
+<pre><code class="language-shell">$ sudo apt install flex bison libelf-dev libunwind-dev libaudit-dev libslang2-dev libdw-dev
+$ git clone https://github.com/torvalds/linux --depth=1
+$ cd linux/tools/perf/
+$ make
+$ make install
+$ sudo cp perf /usr/bin
+$ perf
+</code></pre>
+<p>安裝完 perf 後，你可能會需要設定系統權限，預設應該會使 perf 權限不足：</p>
+<pre><code class="language-shell">$ sudo su # As Root
+$ sysctl -w kernel.perf_event_paranoid=-1
+$ echo 0 &gt; /proc/sys/kernel/kptr_restrict
+$ exit
+</code></pre>
+<h2 id="使用-perf"><a class="header" href="#使用-perf">使用 perf</a></h2>
+<p>接著我們要測試的程式，為了讓 perf 能用，我們要加上 <code>-g3</code> 參數開啟除錯模式。</p>
+<p>一樣是編譯 <code>test.cc</code>，首先是沒排序：</p>
+<pre><code class="language-shell">$ g++ test.cc -g3 -o unsort
+</code></pre>
+<p>接著是編譯有排序版本：</p>
+<pre><code class="language-shell">$ g++ test.cc -g3 -o sort
+</code></pre>
+<h3 id="perf-record"><a class="header" href="#perf-record">Perf Record</a></h3>
+<p>我們現在想要知道為甚麼 <code>./unsort</code> 跑得比較慢，我們可以透過 <code>perf record</code> 來記錄程式執行的資訊。</p>
+<pre><code class="language-shell">$ perf record ./unsort
+</code></pre>
+<p>這樣 perf 會將 <code>./unsort</code> 跑的資料記錄在 <code>perf.data</code> 中，perf 其他指令可以用來讀取這個紀錄檔。</p>
+<h3 id="perf-annotate"><a class="header" href="#perf-annotate">Perf Annotate</a></h3>
+<p>我們可以用 <code>perf annotate</code> 來看結果：</p>
+<pre><code class="language-shell">$ perf annotate
+</code></pre>
+<p><img src="images/91634468-44f6c780-ea23-11ea-9bf5-cd14907e22e8.png" alt="perf annotate" /></p>
+<p>perf 會自動跳到花費比較多的區塊，如上圖所示，左邊是執行時間比例，右邊是程式碼對照的 Assembly Code。你可以用上下方向鍵移動，或用 <code>h</code> 來看操作說明。</p>
+<p>其實從這個 Assembly 時間比例就可以看出端倪，通常我們會去看哪邊花最多時間，然後去研究背後原因。這邊的關鍵是 <code>d8</code> 和 <code>cf</code> 這兩行，<code>addl</code> 其實就是在做 <code>sum += data[c]</code>，所以這兩行分別代表 Branch Prediction 猜對和猜錯的路徑。</p>
+<p>這張圖「箭頭」標註的是 Branch Prediction <strong>猜對</strong>的路徑，可以看到 <code>d8</code> 行佔比幾乎是 0.0%。
+<img src="images/91635364-93f42b00-ea2a-11ea-89b8-19075dbc67fc.png" alt="branch prediction 猜對" /></p>
+<p>這張圖「箭頭」標註的是 Branch Prediction <strong>猜錯</strong>的路徑，可以看到 <code>cf</code> 行佔比幾乎是 27.7%。
+<img src="images/91635373-9eaec000-ea2a-11ea-8347-1f2386373a57.png" alt="branch prediction 猜錯" /></p>
+<p>所以其實就可以發現整隻程式因為 Branch Misses 浪費很多時間。</p>
+<p>這邊我們可以偷偷看一下 <code>./sort</code> 的結果：</p>
+<pre><code class="language-shell">$ perf record ./sort &amp;&amp; perf annotate
+</code></pre>
+<p><img src="images/91636294-01578a00-ea32-11ea-888d-d46b2b65163c.png" alt="sort version&#39;s branch prediction" /></p>
+<p>因為不會有 Branch Miss，可以觀察到 <code>ee</code> 和 <code>f7</code> 的 <code>addl</code> 基本上沒佔多少時間。</p>
+<h3 id="perf-stat-1"><a class="header" href="#perf-stat-1">Perf Stat</a></h3>
+<p>直接看 Assembly 其實滿花時間的，如果想要直接「掌握大局」，可以考慮用 <code>perf stat</code>。</p>
+<pre><code class="language-shell"># 未排序版本
+$ perf stat ./unsort
+sum = 94479480000
+
+ Performance counter stats for './unsort':
+
+          5,671.51 msec task-clock                #    1.000 CPUs utilized
+                24      context-switches          #    0.004 K/sec
+                 0      cpu-migrations            #    0.000 K/sec
+               147      page-faults               #    0.026 K/sec
+    20,366,870,320      cycles                    #    3.591 GHz
+    11,328,534,095      instructions              #    0.56  insn per cycle
+     2,951,455,487      branches                  #  520.401 M/sec
+       467,676,925      branch-misses             #   15.85% of all branches
+
+       5.671777216 seconds time elapsed
+
+       5.671781000 seconds user
+       0.000000000 seconds sys
+
+# 排序版本
+$ perf stat ./sort
+sum = 94479480000
+
+ Performance counter stats for './sort':
+
+          1,927.09 msec task-clock                #    1.000 CPUs utilized
+                 6      context-switches          #    0.003 K/sec
+                 0      cpu-migrations            #    0.000 K/sec
+               146      page-faults               #    0.076 K/sec
+     6,917,745,957      cycles                    #    3.590 GHz
+    11,345,543,927      instructions              #    1.64  insn per cycle
+     2,954,388,946      branches                  # 1533.084 M/sec
+           268,192      branch-misses             #    0.01% of all branches
+
+       1.927654198 seconds time elapsed
+
+       1.927349000 seconds user
+       0.000000000 seconds sys
+</code></pre>
+<p><code>perf stat</code> 可以直接看到統計資料，如果有很高的 Context Switch、Page Fault、Branch Miss 都代表程式本身效能有待優化。</p>
+<p>以 <code>unsort</code> 為例可以看到 Branch Miss 特別高 (排序版本會幾乎是 0)，這時我們就可以去看原本的程式哪邊有條件判斷，然後根據 Annotate 的時間比例，就可以快速找到問題點。另外從 Cycle 上我們也可以發現兩個版本差了三倍之多。</p>
+<blockquote>
+<p>更多 perf 的用法可以參考 Brendan Gregg 的「<a href="http://www.brendangregg.com/perf.html">perf Examples</a>」。另外這個 HackMD 的<a href="https://hackmd.io/@1IzBzEXXRsmj6-nLXZ9opw/HkBl5kCSU">筆記</a>也挺不錯的。</p>
+</blockquote>
+<h2 id="結論"><a class="header" href="#結論">結論</a></h2>
+<p>本文介紹 perf 的簡單用法，用簡單的範例程式示範如何去觀察效能並找出可能的問題原因。</p>
+<p>我們常常因為程式效能不佳而需要分析效能，但找到問題的過程往往不容易，一段程式碼效能不佳可能是演算法與資料結構的問題，可能是作業系統 System Call 導致，也可能是因為處理器架構的關係。如同本文的程式範例，說明瞭演算法的複雜度不代表真實跑出來的速度，往往還需要去考慮作業系統或是硬體架構。善用效能分析工具才能讓我們更快找到問題點。</p>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../linux_system/cgroup.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../linux_system/自製Lib.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../linux_system/cgroup.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../linux_system/自製Lib.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

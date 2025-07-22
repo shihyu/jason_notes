@@ -1,0 +1,717 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Docker 基本教學 - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="docker--docker-compose--安裝"><a class="header" href="#docker--docker-compose--安裝">Docker &amp; Docker-compose  安裝</a></h2>
+<pre><code class="language-sh">sudo apt install docker.io
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+sudo chmod 666 /var/run/docker.sock
+sudo service docker restart
+需要退出重新登錄後才會生效
+
+
+
+## docker-compose 
+https://github.com/docker/compose/releases/
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod 755 docker-compose
+</code></pre>
+<hr />
+<h1 id="docker-教學"><a class="header" href="#docker-教學">Docker 教學</a></h1>
+<p><strong><em>docker</em>實際上,就是一個系統聯合幾個元件一直在欺騙一個處理程序,主要依靠了三個幫凶namespace,<em>chroot,cgroup</em></strong></p>
+<p>Containers as a Service ( CaaS ) - 容器如同服務
+Docker 是一個開源專案，出現於 2013 年初，最初是 Dotcloud 公司內部的 Side-Project。
+它基於 Google 公司推出的 Go 語言實作。（ Dotcloud 公司後來改名為 Docker ）</p>
+<h2 id="agenda"><a class="header" href="#agenda">Agenda</a></h2>
+<ul>
+<li>基本介紹 - 映像檔、容器、倉庫</li>
+<li>指令說明 - 安裝、指令</li>
+<li>Dockerfile 說明</li>
+<li>進階應用 - docker compose</li>
+<li>進階應用 - docker machine</li>
+<li>實際案例</li>
+</ul>
+<h3 id="基本介紹"><a class="header" href="#基本介紹">基本介紹</a></h3>
+<h4 id="什麼是容器技術container-應用程式為中心的虛擬化"><a class="header" href="#什麼是容器技術container-應用程式為中心的虛擬化">什麼是容器技術Container： <strong>應用程式為中心的虛擬化</strong></a></h4>
+<h4 id="docker-歷史"><a class="header" href="#docker-歷史">Docker 歷史</a></h4>
+<p>1982年Unix系統內建的chroot機制
+LXC 利用controler groups 與namespaces的功能， 提供應用軟體一個獨立的作業系統環境
+2013 Linux之父Linus Torvalds 發布Linux核心3.8版 支援Container技術
+2013 dotCloud公司將內部專案Docker開源釋出程式碼</p>
+<h4 id="containers容器-vs-virtual-machines虛擬主機"><a class="header" href="#containers容器-vs-virtual-machines虛擬主機">Containers(容器) vs Virtual Machines(虛擬主機)</a></h4>
+<p><img src="images/7db7ad1b-7830-4713-b96e-d3a103a4f7dc" alt="螢幕快照 2019-02-19 上午11.07.39.png" /></p>
+<h4 id="docker-三個基本概念"><a class="header" href="#docker-三個基本概念">Docker 三個基本概念</a></h4>
+<h5 id="映像檔image"><a class="header" href="#映像檔image">映像檔（Image）</a></h5>
+<ul>
+<li>Docker 映像檔就是一個唯讀的模板。</li>
+<li>映像檔可以用來建立 Docker 容器。</li>
+</ul>
+<h5 id="容器container"><a class="header" href="#容器container">容器（Container）</a></h5>
+<ul>
+<li>容器是從映像檔建立的執行實例。</li>
+<li>Docker 利用容器來執行應用。</li>
+<li>可以被啟動、開始、停止、刪除。</li>
+<li>每個容器都是相互隔離的、保證安全的平臺。</li>
+</ul>
+<h5 id="倉庫repository"><a class="header" href="#倉庫repository">倉庫（Repository）</a></h5>
+<ul>
+<li>倉庫是集中存放映像檔檔案的場所。</li>
+<li>每個倉庫中又包含了多個映像檔。</li>
+<li>每個映像檔有不同的標籤（tag）。</li>
+<li>倉庫分為公開倉庫（Public）和私有倉庫（Private）兩種形式。</li>
+</ul>
+<p><img src="images/95ae632e-9016-416b-9c66-07b8c8e22ff9" alt="螢幕快照 2019-02-19 上午11.10.38.png" /></p>
+<h3 id="指令說明---安裝指令"><a class="header" href="#指令說明---安裝指令">指令說明 - 安裝、指令</a></h3>
+<pre><code>docker --help
+</code></pre>
+<h4 id="containers容器-vs-virtual-machines虛擬主機-1"><a class="header" href="#containers容器-vs-virtual-machines虛擬主機-1">Containers(容器) vs Virtual Machines(虛擬主機)</a></h4>
+<p><img src="https://wt-box.worktile.com/public/7db7ad1b-7830-4713-b96e-d3a103a4f7dc" alt="螢幕快照 2019-02-19 上午11.07.39.png" /></p>
+<h4 id="docker-三個基本概念-1"><a class="header" href="#docker-三個基本概念-1">Docker 三個基本概念</a></h4>
+<h5 id="映像檔image-1"><a class="header" href="#映像檔image-1">映像檔（Image）</a></h5>
+<ul>
+<li>Docker 映像檔就是一個唯讀的模板。</li>
+<li>映像檔可以用來建立 Docker 容器。</li>
+</ul>
+<h5 id="容器container-1"><a class="header" href="#容器container-1">容器（Container）</a></h5>
+<ul>
+<li>容器是從映像檔建立的執行實例。</li>
+<li>Docker 利用容器來執行應用。</li>
+<li>可以被啟動、開始、停止、刪除。</li>
+<li>每個容器都是相互隔離的、保證安全的平臺。</li>
+</ul>
+<h5 id="倉庫repository-1"><a class="header" href="#倉庫repository-1">倉庫（Repository）</a></h5>
+<ul>
+<li>倉庫是集中存放映像檔檔案的場所。</li>
+<li>每個倉庫中又包含了多個映像檔。</li>
+<li>每個映像檔有不同的標籤（tag）。</li>
+<li>倉庫分為公開倉庫（Public）和私有倉庫（Private）兩種形式。</li>
+</ul>
+<p><img src="https://wt-box.worktile.com/public/95ae632e-9016-416b-9c66-07b8c8e22ff9" alt="螢幕快照 2019-02-19 上午11.10.38.png" /></p>
+<h3 id="指令說明---安裝指令-1"><a class="header" href="#指令說明---安裝指令-1">指令說明 - 安裝、指令</a></h3>
+<pre><code>docker --help
+</code></pre>
+<h4 id="安裝docker"><a class="header" href="#安裝docker">安裝Docker</a></h4>
+<p><a href="https://docs.docker.com/docker-for-mac/">官方文件 Get started with Docker for Mac</a>
+<a href="https://docs.docker.com/docker-for-windows/">官方官方 Get started with Docker for Windows</a>
+<a href="https://docs.docker.com/toolbox/overview/">Docker Toolbox overview</a></p>
+<h4 id="image-映像檔-常用指令"><a class="header" href="#image-映像檔-常用指令">Image 映像檔 常用指令</a></h4>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">指令</th><th style="text-align: center">說明</th><th style="text-align: center">範例</th></tr></thead><tbody>
+<tr><td style="text-align: center">search</td><td style="text-align: center">搜尋</td><td style="text-align: center">docker search centos</td></tr>
+<tr><td style="text-align: center">pull</td><td style="text-align: center">下載</td><td style="text-align: center">docker pull centos</td></tr>
+<tr><td style="text-align: center">images</td><td style="text-align: center">列表</td><td style="text-align: center">docker images</td></tr>
+<tr><td style="text-align: center">run</td><td style="text-align: center">執行</td><td style="text-align: center">docker run -ti centos /bin/bash</td></tr>
+<tr><td style="text-align: center">rmi [Image ID]</td><td style="text-align: center">刪除</td><td style="text-align: center">docker rmi 615cb40d5d19</td></tr>
+<tr><td style="text-align: center">build</td><td style="text-align: center">建立</td><td style="text-align: center">docker build -t member:1 .</td></tr>
+<tr><td style="text-align: center">login</td><td style="text-align: center">登入</td><td style="text-align: center">docker login docker.okborn.com</td></tr>
+<tr><td style="text-align: center">push</td><td style="text-align: center">上傳</td><td style="text-align: center">docker push</td></tr>
+</tbody></table>
+</div>
+<h5 id="search-搜尋-centos-映像檔"><a class="header" href="#search-搜尋-centos-映像檔">Search 搜尋 Centos 映像檔</a></h5>
+<pre><code>docker search contos
+</code></pre>
+<p><img src="images/440a5d54-fbbe-495d-a6b9-e756aae5d6ec" alt="螢幕快照 2019-02-19 下午1.45.28.png" /></p>
+<p>NAME：映像檔名稱
+DESCRIPTION：映像檔描述
+STARS：越多代表越多人使用
+OFFICIAL：官方Image
+AUTOMATED：自動化</p>
+<h5 id="顯示目前本機的-images-列表"><a class="header" href="#顯示目前本機的-images-列表">顯示目前本機的 Images 列表</a></h5>
+<pre><code>docker iamges
+</code></pre>
+<p>REPOSITORY：倉庫位置和映像檔名稱
+TAG：映像檔標籤(通常是定義版本號)
+IMAGE ID：映像檔ID(唯一碼)
+CREATED：創建日期
+SIZE：映像檔大小</p>
+<h5 id="啟動容器"><a class="header" href="#啟動容器">啟動容器</a></h5>
+<pre><code>docker run -ti centos /bin/bash
+</code></pre>
+<p>run : 參數說明 or docker run --help 常用：
+-i ：則讓容器的標準輸入保持打開
+-t：讓Docker分配一個虛擬終端（pseudo-tty）並綁定到容器的標準輸入上
+-d：背景執行
+-e：設定環境變數(AAA=BBB)
+-p：Port 對應(host port:container port)
+-v：資料對應(host folder:container folder)
+--name：設定容器名稱</p>
+<p>** 在執行RUN 映像檔時，如果沒有下載會先下載在執行 **
+<img src="images/9f869550-a1ed-4831-b150-c3e3ee2ccdb9" alt="螢幕快照 2019-02-19 下午2.00.23.png" /></p>
+<p>rmi : 刪除映像檔前要先移除所有Container
+build : 使用build 指令時要先切換到Dockerfile 目錄下面</p>
+<h4 id="container-容器-常用指令"><a class="header" href="#container-容器-常用指令">Container 容器 常用指令</a></h4>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">指令</th><th style="text-align: center">說明</th><th style="text-align: center">範例</th></tr></thead><tbody>
+<tr><td style="text-align: center">run</td><td style="text-align: center">新建或啟動</td><td style="text-align: center">docker run -d centos</td></tr>
+<tr><td style="text-align: center">start [Contain ID]</td><td style="text-align: center">啟動</td><td style="text-align: center">docker start a469b9226fc8</td></tr>
+<tr><td style="text-align: center">stop [Contain ID]</td><td style="text-align: center">停止</td><td style="text-align: center">docker stop a469b9226fc8</td></tr>
+<tr><td style="text-align: center">rm [Contain ID]</td><td style="text-align: center">刪除</td><td style="text-align: center">docker rm a4</td></tr>
+<tr><td style="text-align: center">ps -a</td><td style="text-align: center">列表</td><td style="text-align: center">docker ps -a</td></tr>
+<tr><td style="text-align: center">logs [Contain ID]</td><td style="text-align: center">查看容器內的資訊</td><td style="text-align: center">docker logs -f a4</td></tr>
+<tr><td style="text-align: center">exec [Contain ID]</td><td style="text-align: center">進入容器(開新console)</td><td style="text-align: center">docker exec -ti a4 /bin/bash</td></tr>
+<tr><td style="text-align: center">attach</td><td style="text-align: center">進入容器(退出停止容器)</td><td style="text-align: center">dockr attach a4</td></tr>
+<tr><td style="text-align: center">inspect</td><td style="text-align: center">查看</td><td style="text-align: center">docker inspect a4</td></tr>
+</tbody></table>
+</div>
+<h5 id="啟動一個-container-並且執行-ping-googlecom"><a class="header" href="#啟動一個-container-並且執行-ping-googlecom">啟動一個 Container 並且執行 ping google.com</a></h5>
+<pre><code>docker run centos ping google.com
+</code></pre>
+<h5 id="請動一個-container-執行上面的動作並背景執行"><a class="header" href="#請動一個-container-執行上面的動作並背景執行">請動一個 Container 執行上面的動作，並背景執行</a></h5>
+<p><img src="images/aef96620-2681-441c-bb12-1ac5a046b9d4" alt="螢幕快照 2019-02-19 下午2.38.01.png" /></p>
+<h5 id="使用-查看-container-指令"><a class="header" href="#使用-查看-container-指令">使用 查看 Container 指令</a></h5>
+<pre><code>docker ps 
+docker ps -a
+</code></pre>
+<p>ps : 參數說明 or docker ps --help 常用：
+-a：顯示全部的容器</p>
+<p>CONTAINER ID：容器ID
+IMAGE：映像檔名稱
+COMMAND：執行指令
+CREATED：創建時間
+STATUS：容器狀態
+POSTS：開啟的Port號
+NAMES：容器名稱</p>
+<h5 id="顯示容器的-log"><a class="header" href="#顯示容器的-log">顯示容器的 log</a></h5>
+<pre><code>docker logs -f 8a
+</code></pre>
+<p>logs : 參數說明 or docker logs --help 常用：
+-f：不會跳出，會一直列印最新的log資訊
+<img src="images/a499b6d3-592d-4000-852a-ea2622d25e52" alt="螢幕快照 2019-02-19 下午2.48.58.png" /></p>
+<h5 id="進入容器"><a class="header" href="#進入容器">進入容器</a></h5>
+<pre><code>docker exec -ti 8a /bin/bash
+</code></pre>
+<p>exec : 參數說明 or docker exec --help 常用：
+-i ：則讓容器的標準輸入保持打開
+-t：讓Docker分配一個虛擬終端（pseudo-tty）並綁定到容器的標準輸入上
+-e：設定環境變數(AAA=BBB)
+<img src="images/8b4736fe-aafa-4030-ad5e-dc3184d01d43" alt="螢幕快照 2019-02-19 下午2.51.57.png" /></p>
+<h5 id="查看容器資訊"><a class="header" href="#查看容器資訊">查看容器資訊</a></h5>
+<pre><code>docker inspect 8a
+</code></pre>
+<p><img src="images/8ac45ac3-8cb3-4c97-9dcc-dd28d880250e" alt="螢幕快照 2019-02-19 下午2.56.52.png" /></p>
+<h5 id="開啟容器到關閉容器"><a class="header" href="#開啟容器到關閉容器">開啟容器到關閉容器</a></h5>
+<pre><code>docker run -d ubuntu:14.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+db0e9dbb150596a3a89db056d0ecb765c54c3c2fb5d428e3b35fc20b55813862
+docker logs -f db
+docker ps -a
+docker stop db
+docker ps -a
+</code></pre>
+<h4 id="registry-倉庫-常用指令"><a class="header" href="#registry-倉庫-常用指令">Registry 倉庫 常用指令</a></h4>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">指令</th><th style="text-align: center">說明</th><th style="text-align: center">範例</th></tr></thead><tbody>
+<tr><td style="text-align: center">commit</td><td style="text-align: center">容器存檔</td><td style="text-align: center">docker commit db aaa:v1</td></tr>
+<tr><td style="text-align: center">pull</td><td style="text-align: center">下載</td><td style="text-align: center">docker pull docker.okborn.com/okborn:base</td></tr>
+<tr><td style="text-align: center">tag</td><td style="text-align: center">標籤</td><td style="text-align: center">docker tag aaa docker.okborn.com/aaa</td></tr>
+<tr><td style="text-align: center">push</td><td style="text-align: center">上傳</td><td style="text-align: center">docker push docker.okborn.com/member:1</td></tr>
+<tr><td style="text-align: center">login</td><td style="text-align: center">登入</td><td style="text-align: center">docker login docker.okborn.com</td></tr>
+<tr><td style="text-align: center">export</td><td style="text-align: center">匯出</td><td style="text-align: center">docker export 7691a814370e &gt; ubuntu.tar</td></tr>
+<tr><td style="text-align: center">import</td><td style="text-align: center">匯入</td><td style="text-align: center">cat ubuntu.tar sudo docker import - test/ubuntu:v1.0</td></tr>
+</tbody></table>
+</div>
+<h5 id="對容器存檔"><a class="header" href="#對容器存檔">對容器存檔</a></h5>
+<pre><code>docker run -d ubuntu:14.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+96ea2a3f99e92ddd5fa0ec29f21d035703b6512f59c4f54fbaee551ee8fc044a
+docker commit 96 aaa:v1
+</code></pre>
+<p><img src="images/30bea8c2-2519-4b81-8fc1-682edd878bfe" alt="螢幕快照 2019-02-19 下午3.31.21.png" /></p>
+<h5 id="對映像檔打標籤"><a class="header" href="#對映像檔打標籤">對映像檔打標籤</a></h5>
+<pre><code>docker tag centos aaa asia.gcr.io/joyi-205504/aaa:v1
+</code></pre>
+<h5 id="上傳到-gcp-registry"><a class="header" href="#上傳到-gcp-registry">上傳到 GCP Registry</a></h5>
+<pre><code>gcloud docker -- push  asia.gcr.io/joyi-205504/aaa:v1
+</code></pre>
+<h4 id="其他常用指令"><a class="header" href="#其他常用指令">其他常用指令</a></h4>
+<p>刪除</p>
+<pre><code>docker rmi `docker images|grep sele |awk '{print $3}'`
+</code></pre>
+<h4 id="dcoker-資料管理"><a class="header" href="#dcoker-資料管理">Dcoker 資料管理</a></h4>
+<h5 id="資料卷data-volumes"><a class="header" href="#資料卷data-volumes">資料卷（Data volumes）</a></h5>
+<ul>
+<li>資料卷可以在容器之間共享和重用</li>
+<li>對資料卷的修改會立馬生效</li>
+<li>對資料卷的更新，不會影響映像檔</li>
+<li>卷會一直存在，直到沒有容器使用</li>
+</ul>
+<h5 id="範例建立一個-web-容器並載入一個資料捲到容器的-webapp-目錄"><a class="header" href="#範例建立一個-web-容器並載入一個資料捲到容器的-webapp-目錄">範例：建立一個 web 容器，並載入一個資料捲到容器的 /webapp 目錄</a></h5>
+<pre><code>docker run -d -P --name web -v /webapp training/webapp python app.py
+</code></pre>
+<h5 id="範例本機的-srcwebapp-目錄到容器的-optwebapp-目錄"><a class="header" href="#範例本機的-srcwebapp-目錄到容器的-optwebapp-目錄">範例：本機的 /src/webapp 目錄到容器的 /opt/webapp 目錄</a></h5>
+<pre><code>docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py
+</code></pre>
+<h5 id="範例docker-掛載資料卷的預設權限是讀寫使用者也可以透過-ro-指定為唯讀"><a class="header" href="#範例docker-掛載資料卷的預設權限是讀寫使用者也可以透過-ro-指定為唯讀">範例：Docker 掛載資料卷的預設權限是讀寫，使用者也可以透過 :ro 指定為唯讀</a></h5>
+<pre><code>docker run -d -P --name web -v /src/webapp:/opt/webapp:ro training/webapp python app.py
+</code></pre>
+<h5 id="資料卷容器data-volume-containers"><a class="header" href="#資料卷容器data-volume-containers">資料卷容器（Data volume containers）</a></h5>
+<p>持續更新的資料需要在容器之間共享，最好建立資料卷容器。
+一個正常的容器，專門用來提供資料卷供其它容器掛載的。</p>
+<h5 id="範例建立一個命名的資料卷容器-dbdata"><a class="header" href="#範例建立一個命名的資料卷容器-dbdata">範例：建立一個命名的資料卷容器 dbdata</a></h5>
+<pre><code>docker run -d -v /dbdata --name dbdata postgres echo Data-only container for postgres
+</code></pre>
+<h5 id="範例他容器中使用---volumes-from-來掛載-dbdata-容器中的資料卷"><a class="header" href="#範例他容器中使用---volumes-from-來掛載-dbdata-容器中的資料卷">範例：他容器中使用 --volumes-from 來掛載 dbdata 容器中的資料卷</a></h5>
+<pre><code>docker run -d -P --volumes-from dbdata --name db1 postgres
+docker run -d -P --volumes-from dbdata --name db2 postgres
+</code></pre>
+<h5 id="範例也可以從其他已經掛載了容器卷的容器來掛載資料卷"><a class="header" href="#範例也可以從其他已經掛載了容器卷的容器來掛載資料卷">範例：也可以從其他已經掛載了容器卷的容器來掛載資料卷。</a></h5>
+<pre><code>docker run -d --name db3 --volumes-from db1 postgres
+</code></pre>
+<h5 id="範例備份"><a class="header" href="#範例備份">範例：備份</a></h5>
+<p>首先使用 --volumes-from 標記來建立一個載入 dbdata 容器卷的容器，並從本地主機掛載當前到容器的 /backup 目錄。</p>
+<pre><code>docker run --volumes-from dbdata -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /dbdata
+</code></pre>
+<h5 id="範例恢復"><a class="header" href="#範例恢復">範例：恢復</a></h5>
+<p>恢復資料到一個容器，首先建立一個帶有資料卷的容器 dbdata2</p>
+<pre><code>docker run -v /dbdata --name dbdata2 ubuntu /bin/bash
+</code></pre>
+<p>然後建立另一個容器，掛載 dbdata2 的容器，並使用 untar 解壓備份檔案到掛載的容器卷中。</p>
+<pre><code>docker run --volumes-from dbdata2 -v $(pwd):/backup busybox tar xvf /backup/backup.tar
+</code></pre>
+<h5 id="docker-中的網路功能介紹"><a class="header" href="#docker-中的網路功能介紹">Docker 中的網路功能介紹</a></h5>
+<ul>
+<li>要讓外部也可以存取這些應用</li>
+<li>可以通過 -P 或 -p 參數來指定連接埠映射。</li>
+</ul>
+<h5 id="範例隨機本機port"><a class="header" href="#範例隨機本機port">範例：隨機本機Port</a></h5>
+<pre><code>docker run -d -P training/webapp python app.py
+</code></pre>
+<h5 id="範例指定本機port"><a class="header" href="#範例指定本機port">範例：指定本機Port</a></h5>
+<pre><code>docker run -d -p 5000:5000 training/webapp python app.py
+</code></pre>
+<h5 id="範例綁定-localhost-的任意連接埠到容器的-5000-連接埠本地主機會自動分配一個連接埠"><a class="header" href="#範例綁定-localhost-的任意連接埠到容器的-5000-連接埠本地主機會自動分配一個連接埠">範例：綁定 localhost 的任意連接埠到容器的 5000 連接埠，本地主機會自動分配一個連接埠</a></h5>
+<pre><code>docker run -d -p 127.0.0.1::5000 training/webapp python app.py
+</code></pre>
+<h5 id="範例還可以使用-udp-標記來指定-udp-連接埠"><a class="header" href="#範例還可以使用-udp-標記來指定-udp-連接埠">範例：還可以使用 udp 標記來指定 udp 連接埠</a></h5>
+<pre><code>docker run -d -p 127.0.0.1:5000:5000/udp training/webapp python app.py
+</code></pre>
+<h5 id="範例--p-標記可以多次使用來綁定多個連接埠"><a class="header" href="#範例--p-標記可以多次使用來綁定多個連接埠">範例： -p 標記可以多次使用來綁定多個連接埠</a></h5>
+<pre><code>docker run -d -p 5000:5000  -p 3000:80 training/webapp python app.py
+</code></pre>
+<h3 id="dockerfile-說明"><a class="header" href="#dockerfile-說明">Dockerfile 說明</a></h3>
+<ul>
+<li>Dockerfile 由一行行命令語句組成，並且支援以 # 開頭的註解行。</li>
+<li>Dockerfile 分為四部分：
+<ul>
+<li>基底映像檔資訊</li>
+<li>維護者資訊</li>
+<li>映像檔操作指令</li>
+<li>容器啟動時執行指令。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-shell"># This dockerfile uses the ubuntu image
+# VERSION 2 - EDITION 1
+# Author: docker_user
+# Command format: Instruction [arguments / command] ..
+
+# 基本映像檔，必須是第一個指令
+FROM ubuntu
+
+# 維護者： docker_user &lt;docker_user at email.com&gt; (@docker_user)
+MAINTAINER docker_user docker_user@email.com
+
+# 更新映像檔的指令
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ raring main universe" &gt;&gt; /etc/apt/sources.list
+RUN apt-get update &amp;&amp; apt-get install -y nginx
+RUN echo "\ndaemon off;" &gt;&gt; /etc/nginx/nginx.conf
+
+# 建立新容器時要執行的指令
+CMD /usr/sbin/nginx
+</code></pre>
+<p>####Dockerfile 基本語法</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">指令</th><th style="text-align: center">說明</th><th style="text-align: center">範例</th></tr></thead><tbody>
+<tr><td style="text-align: center">FROM :</td><td style="text-align: center">映像檔來源</td><td style="text-align: center">FROM python:3.5</td></tr>
+<tr><td style="text-align: center">MAINTAINER</td><td style="text-align: center">維護者訊息</td><td style="text-align: center">MAINTAINER docker_user docker_user@email.com</td></tr>
+<tr><td style="text-align: center">RUN</td><td style="text-align: center">創建映像檔時執行動作</td><td style="text-align: center">RUN apt-get -y update &amp;&amp; apt-get install -y supervisor</td></tr>
+<tr><td style="text-align: center">RUN ["executable", "param1", "param2"]</td><td style="text-align: center">創建映像檔時執行動作</td><td style="text-align: center">RUN ["/bin/bash", "-c", "echo hello"]</td></tr>
+<tr><td style="text-align: center">CMD command param1 param2</td><td style="text-align: center">啟動容器時執行的命令</td><td style="text-align: center">CMD pserve development.ini</td></tr>
+<tr><td style="text-align: center">CMD ["executable","param1","param2"]</td><td style="text-align: center">啟動容器時執行的命令</td><td style="text-align: center"></td></tr>
+<tr><td style="text-align: center">CMD ["param1","param2"]</td><td style="text-align: center">啟動容器時執行的命令</td><td style="text-align: center"></td></tr>
+<tr><td style="text-align: center">EXPOSE</td><td style="text-align: center">容器對外的埠號</td><td style="text-align: center">EXPOSE 8082</td></tr>
+<tr><td style="text-align: center">ADD</td><td style="text-align: center">複製檔案(單檔)</td><td style="text-align: center">ADD requirements.txt /usr/src/app/</td></tr>
+<tr><td style="text-align: center">COPY</td><td style="text-align: center">複製檔案(資料夾)</td><td style="text-align: center">COPY . /usr/src/app</td></tr>
+<tr><td style="text-align: center">ENV</td><td style="text-align: center">環境變數</td><td style="text-align: center">ENV PG_VERSION 9.3.4</td></tr>
+<tr><td style="text-align: center">ENTRYPOINT command param1 param2</td><td style="text-align: center">指定容器啟動後執行的命令</td><td style="text-align: center"></td></tr>
+<tr><td style="text-align: center">ENTRYPOINT ["executable", "param1", "param2"]</td><td style="text-align: center">指定容器啟動後執行的命令</td><td style="text-align: center">ENTRYPOINT ["/docker-entrypoint.sh"]</td></tr>
+<tr><td style="text-align: center">VOLUME ["/data"]</td><td style="text-align: center">掛載資料卷</td><td style="text-align: center">VOLUME /var/lib/postgresql/data</td></tr>
+<tr><td style="text-align: center">USER daemon</td><td style="text-align: center">指定運行使用者</td><td style="text-align: center">RUN groupadd -r postgres &amp;&amp; useradd -r -g postgres postgres</td></tr>
+<tr><td style="text-align: center">WORKDIR /path/to/workdir</td><td style="text-align: center">指定工作目錄</td><td style="text-align: center">WORKDIR /usr/src/app</td></tr>
+<tr><td style="text-align: center">ONBUILD [INSTRUCTION]</td><td style="text-align: center">基底映像檔建立時執行</td><td style="text-align: center">ONBUILD COPY . /usr/src/app</td></tr>
+</tbody></table>
+</div>
+<p>RUN 當命令較長時可以使用 \ 來換行。
+RUN : 在 shell 終端中運行命令，即 /bin/sh -c；
+RUN ["executable", "param1", "param2"] : 使用 exec 執行。</p>
+<p>CMD 指定啟動容器時執行的命令， <strong>每個 Dockerfile 只能有一條 CMD 命令</strong> 。
+如果指定了多條命令，只有最後一條會被執行。
+CMD ["executable","param1","param2"] 使用 exec 執行，推薦使用；
+CMD command param1 param2 在 /bin/sh 中執行，使用在給需要互動的指令；
+CMD ["param1","param2"] 提供給 ENTRYPOINT 的預設參數；</p>
+<p>ENTRYPOINT：每個 Dockerfile 中只能有一個 ENTRYPOINT，當指定多個時，只有最後一個會生效。
+USER：要臨時取得管理員權限可以使用 gosu，而不推薦 sudo。
+WORKDIR：可以使用多個 WORKDIR 指令，後續命令如果參數是相對路徑，則會基於之前命令指定的路徑</p>
+<h4 id="docker-file-base"><a class="header" href="#docker-file-base">Docker File Base</a></h4>
+<pre><code class="language-dockerfile"># 映像檔Image
+FROM python:3.5
+# 維護者
+MAINTAINER Pellok "pellok@double-cash.com"
+# 更新
+RUN apt-get -y update &amp;&amp; apt-get install -y supervisor
+# 創建專案資料夾
+RUN mkdir -p /usr/src/app
+# 指定工作目錄在專案資料夾
+WORKDIR /usr/src/app
+# 預先要安裝的requirements複製到Docker裡面
+ADD requirements.txt /usr/src/app/
+# 安裝需要用的插件
+RUN pip install --upgrade pip setuptools
+RUN pip install --no-cache-dir -r requirements.txt
+# 下次Build 的時候複製專案目錄到Docker 裡面
+ONBUILD COPY . /usr/src/app
+</code></pre>
+<p>建置</p>
+<pre><code>docker build -t sample:base .
+</code></pre>
+<h5 id="docker-file-for-project"><a class="header" href="#docker-file-for-project">Docker File for Project</a></h5>
+<pre><code class="language-dockerfile">#  挑選Image
+FROM sample:base
+# 安裝cryptography
+RUN pip install cryptography 
+# 設定工作目錄
+WORKDIR /usr/src/app/
+# 執行Python Setup
+RUN python setup.py develop
+# 開啟Port號
+EXPOSE 8082
+# 執行專案
+CMD pserve development.ini
+</code></pre>
+<p>建置</p>
+<pre><code>docker build -t project:v1 .
+</code></pre>
+<h4 id="pyramid-專案-docker-化"><a class="header" href="#pyramid-專案-docker-化">Pyramid 專案 Docker 化</a></h4>
+<pre><code class="language-shell">#創建一個新專案
+pcreate -s alchemy pyramid_dockerlize
+cd pyramid_dockerlize
+# 創建dockerfile
+touch Dockerfile
+# 編輯 Dockerfile
+# 建置映像檔
+docker build -t pyramid_dockerlize .
+# 執行容器
+docker run -d -P pyramid_dockerlize
+</code></pre>
+<p>Dockerfile</p>
+<pre><code class="language-dockerfile"># This dockerfile uses the python pyramid
+# VERSION 1 - EDITION 1
+# Author: pellok
+# Command describe
+
+# 使用的python映像檔版本
+FROM python:3.5
+
+MAINTAINER pellok pellok@okborn.com
+
+# 創建存放專案的資料夾
+RUN mkdir -p /usr/src/app
+
+# 複製當前目錄的所有檔案到容器內的，資料放在/usr/src/app
+COPY . /usr/src/app
+
+# 指定工作目錄
+WORKDIR /usr/src/app/
+
+# 安裝環境變數和相依性套件
+RUN python setup.py develop
+
+# 初始化DB
+RUN initialize_pyramid_dockerlize_db development.ini
+
+# 專案監聽的Port號
+EXPOSE 6543
+
+# 啟動專案
+CMD pserve production.ini
+</code></pre>
+<hr />
+<p>要在 Docker 中安裝 Ubuntu 24.04 並登入 Bash，然後安裝 <code>pip</code>、<code>python</code>、<code>vim</code>、<code>unzip</code> 和 <code>wget</code>，你可以按照以下步驟操作：</p>
+<h3 id="1-建立並啟動-docker-容器"><a class="header" href="#1-建立並啟動-docker-容器">1. 建立並啟動 Docker 容器</a></h3>
+<p>首先，在終端機中執行以下命令來從 Docker Hub 拉取 Ubuntu 24.04 的映像檔，並建立一個容器：</p>
+<pre><code class="language-bash">docker pull ubuntu:24.04
+docker run -it --name ubuntu-container ubuntu:24.04 bash
+</code></pre>
+<p>這會將你帶入 Ubuntu 容器的 Bash 環境中。</p>
+<h3 id="2-更新軟體包"><a class="header" href="#2-更新軟體包">2. 更新軟體包</a></h3>
+<p>在容器內，首先更新軟體包列表：</p>
+<pre><code class="language-bash">apt update
+</code></pre>
+<h3 id="3-安裝-python-pip-vim-unzip-wget"><a class="header" href="#3-安裝-python-pip-vim-unzip-wget">3. 安裝 Python, pip, vim, unzip, wget</a></h3>
+<p>接下來，安裝所需的軟體包：</p>
+<pre><code class="language-bash">apt install -y python3 python3-pip vim unzip wget
+</code></pre>
+<h3 id="4-驗證安裝"><a class="header" href="#4-驗證安裝">4. 驗證安裝</a></h3>
+<p>確認安裝是否成功：</p>
+<pre><code class="language-bash">python3 --version
+pip3 --version
+vim --version
+unzip -v
+wget --version
+</code></pre>
+<p>這些指令應該顯示安裝的版本資訊。</p>
+<h3 id="5-保存和退出-docker-容器"><a class="header" href="#5-保存和退出-docker-容器">5. 保存和退出 Docker 容器</a></h3>
+<p>完成後，可以保存和退出容器：</p>
+<pre><code class="language-bash">exit
+</code></pre>
+<h3 id="6-再次進入容器"><a class="header" href="#6-再次進入容器">6. 再次進入容器</a></h3>
+<p>你可以隨時再次進入容器：</p>
+<pre><code class="language-bash">docker start ubuntu-container
+docker exec -it ubuntu-container bash
+</code></pre>
+<p>這樣你就能再次進入並使用已安裝的軟體。</p>
+<p>這個錯誤訊息是由於 Ubuntu 24.04 預設使用 "externally managed environment" 來管理 Python 軟體包，這意味著你不能直接使用 <code>pip</code> 在系統範圍內安裝 Python 軟體包（例如在全域範圍內）。這是因為使用 <code>pip</code> 安裝軟體包可能會和系統管理的 Python 軟體包產生衝突。</p>
+<h3 id="解決方案"><a class="header" href="#解決方案">解決方案</a></h3>
+<p>你可以有以下幾個選項來解決這個問題：</p>
+<h4 id="1-使用-apt-安裝-python-軟體包"><a class="header" href="#1-使用-apt-安裝-python-軟體包">1. 使用 <code>apt</code> 安裝 Python 軟體包</a></h4>
+<p>如果你需要安裝 Python 軟體包，建議使用 Ubuntu 的套件管理工具 <code>apt</code>：</p>
+<pre><code class="language-bash">apt install python3-pip
+</code></pre>
+<p>這樣可以避免和系統衝突，因為 <code>apt</code> 會使用預先打包好的軟體包版本。</p>
+<h4 id="2-創建一個虛擬環境"><a class="header" href="#2-創建一個虛擬環境">2. 創建一個虛擬環境</a></h4>
+<p>如果你需要使用 <code>pip</code> 安裝一些系統沒有的 Python 軟體包，建議創建一個虛擬環境：</p>
+<pre><code class="language-bash">apt install python3-venv  # 首先安裝虛擬環境模組
+python3 -m venv myenv     # 創建虛擬環境
+source myenv/bin/activate # 啟用虛擬環境
+</code></pre>
+<p>在啟用虛擬環境後，使用 <code>pip</code> 安裝軟體包：</p>
+<pre><code class="language-bash">pip install &lt;package_name&gt;
+</code></pre>
+<p>當你不再需要虛擬環境時，可以執行 <code>deactivate</code> 來退出。</p>
+<h4 id="3-使用-pipx-來安裝應用程式"><a class="header" href="#3-使用-pipx-來安裝應用程式">3. 使用 <code>pipx</code> 來安裝應用程式</a></h4>
+<p>如果你想安裝一個獨立的 Python 應用程式，可以使用 <code>pipx</code> 來安裝。首先安裝 <code>pipx</code>：</p>
+<pre><code class="language-bash">apt install pipx
+pipx ensurepath
+</code></pre>
+<p>然後使用 <code>pipx</code> 安裝應用程式：</p>
+<pre><code class="language-bash">pipx install &lt;application_name&gt;
+</code></pre>
+<h4 id="4-使用---break-system-packages-強制安裝不推薦"><a class="header" href="#4-使用---break-system-packages-強制安裝不推薦">4. 使用 <code>--break-system-packages</code> 強制安裝（不推薦）</a></h4>
+<p>你也可以強制繞過這個限制，但這可能會導致系統不穩定或產生衝突，不推薦這樣做：</p>
+<pre><code class="language-bash">pip install &lt;package_name&gt; --break-system-packages
+</code></pre>
+<p>這種方式應謹慎使用，只適合那些了解其風險的用戶。</p>
+<h4 id="建議"><a class="header" href="#建議">建議</a></h4>
+<p>建議使用虛擬環境 (<code>venv</code>) 或 <code>pipx</code>，這樣可以避免破壞系統環境，同時也能滿足你對 Python 軟體包的安裝需求。</p>
+<h3 id="參考"><a class="header" href="#參考">參考</a></h3>
+<p><a href="http://school.soft-arch.net/courses/enrolled/vm-for-devops">VM-for-Devops</a>
+<a href="https://www.virtualbox.org/wiki/Downloads">Virtual Box</a> [<a href="http://download.virtualbox.org/virtualbox/5.1.8/VirtualBox-5.1.8-111374-OSX.dmg">VirtualBox5.1.8</a>][<a href="http://download.virtualbox.org/virtualbox/5.1.8/Oracle_VM_VirtualBox_Extension_Pack-5.1.8-111374.vbox-extpack">Extension Pack</a>]
+<a href="https://www.vagrantup.com/downloads.html">Vagrant</a>[<a href="https://releases.hashicorp.com/vagrant/1.8.7/vagrant_1.8.7.dmg">Vagrant1.8.7</a>]
+<a href="http://kubernetes.io/docs/getting-started-guides/">kubernetes</a>
+<a href="http://kubernetes.io/docs/getting-started-guides/minikube/#install-minikube">minikube</a></p>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../docker/docker_helloworld.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../docker/example.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../docker/docker_helloworld.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../docker/example.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

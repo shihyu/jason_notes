@@ -1,0 +1,680 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>大局觀 - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="學-rust-要有大局觀"><a class="header" href="#學-rust-要有大局觀">學 Rust 要有大局觀</a></h1>
+<h1 id="crash-rust"><a class="header" href="#crash-rust">Crash Rust</a></h1>
+<p>學習一種新的語言，首先需要了解的就是該語言的基本設計思路，工程架構特點，本文希望可以幫住大多數對 Rust 感興趣的同學快速進入具體工程開發，並掃清大部分除基本語法之外的障礙; 具體涉及到的主題包括安裝，運行，發佈，三方包引入等等;</p>
+<h2 id="rust-安裝"><a class="header" href="#rust-安裝">Rust 安裝</a></h2>
+<h3 id="install"><a class="header" href="#install">install</a></h3>
+<p>安裝 Rust 非常簡單，只需要一條命令，但是注意部分機器 curl 版本可能導致命令執行失敗，比如樑小孩自己的開發機 ubuntu20.04 自帶的 curl 提示 ssl 443 錯誤，如果遇到的話，嘗試重新安裝 curl</p>
+<pre><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre>
+<h3 id="check"><a class="header" href="#check">check</a></h3>
+<p>執行 Rustup 命令, 注意如果是第一次全新安裝, 先執行 <code>source $HOME/.cargo/env</code></p>
+<pre><code>root@ecs-x86 :~/docs/Rust/CrashRustIn2Hours# source $HOME/.cargo/env
+root@ecs-x86 :~/docs/Rust/CrashRustIn2Hours# rustup
+Rustup 1.24.2 (755e2b07e 2021-05-12)
+...
+</code></pre>
+<h2 id="hello-rust"><a class="header" href="#hello-rust">Hello Rust!</a></h2>
+<p>接下來我們完成第一個 Rust 項目，功能只有一句打印輸出，但是大家在此章節應該學到的是如何編譯並運行 Rust 代碼程序;</p>
+<h3 id="編碼"><a class="header" href="#編碼">編碼</a></h3>
+<p>創建第一個<code>rs</code>文件 (<code>hello.rs</code>)，文件內容如下:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    println!("hello Rust!");
+}</code></pre></pre>
+<p>文件目錄結構簡單，代碼目錄下只有一個單獨的<code>hello.rs</code>文件如下:</p>
+<pre><code>root@ecs-x86 CrashRustIn2Hours# tree code/
+code/
+└── hello.rs
+0 directories, 1 file
+</code></pre>
+<h3 id="編譯--執行"><a class="header" href="#編譯--執行">編譯 &amp; 執行</a></h3>
+<p>Rust 的編譯器叫做<code>rustc</code>，編譯時直接後跟待編譯的<code>rs</code>文件即可, 不執行輸出文件名則生成同名的可執行文件, 可以直接執行輸出文件得到程序結果</p>
+<pre><code>root@ecs-x86 code# rustc hello.rs 
+root@ecs-x86 code# tree 
+.
+├── hello
+└── hello.rs
+0 directories, 2 files
+root@ecs-x86 code# ls -lhF
+total 3.3M
+-rwxr-xr-x 1 root root 3.3M Jun  2 13:32 hello*
+-rw-rw-rw- 1 root root   42 Jun  2 13:29 hello.rs
+root@ecs-x86 code# ./hello 
+hello Rust!
+</code></pre>
+<p>到此你看到的是純手工開發流程，包括編譯，文件創建，目錄組織等等都需要自行維護，為了方便工程化，並且快速創建工程，Rust 提供了自己的自動化工具鏈<code>cargo</code>;</p>
+<h4 id="hello-cargo"><a class="header" href="#hello-cargo">Hello Cargo!</a></h4>
+<p><code>cargo之於Rust</code>猶如<code>npm之於node</code>, <code>cargo</code>可以幫助你維護包依賴關係，安裝三方包，自動編譯代碼，執行結果，完善<code>debug</code>和<code>release</code>的各種部署需求;</p>
+<p><code>cargo</code>三板斧:</p>
+<p>•<code>cargo init</code> 自動創建工程，包括基本的配置文件，<code>main.rs</code>生成等等</p>
+<pre><code>root@ecs-x86 code# cargo init
+     Created binary (application) package
+root@ecs-x86 code# tree
+.
+├── Cargo.toml
+└── src
+    └── main.rs
+1 directory, 2 filese
+</code></pre>
+<p>•<code>cargo run</code> 自動編譯並執行; 注意，此時編譯選項均為 debug 模式，所以 target 目錄下只有一個 debug 目錄自動生成 (可執行文件亦在其中)</p>
+<pre><code>root@ecs-x86 code# cargo run
+   Compiling code v0.1.0 (/root/docs/Rust/CrashRustIn2Hours/code)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.34s
+     Running `target/debug/code`
+Hello, world!
+root@ecs-x86 code# tree -L 2
+.
+├── Cargo.lock
+├── Cargo.toml
+├── src
+│   └── main.rs
+└── target
+    ├── CACHEDIR.TAG
+    └── debug
+</code></pre>
+<p>•<code>cargo build</code> 單獨編譯，如果需要單獨 build 可能是最終發佈二進製程序，此時一般附帶參數<code>--release</code></p>
+<pre><code>root@ecs-x86 code# cargo build --release
+   Compiling code v0.1.0 (/root/docs/Rust/CrashRustIn2Hours/code)
+    Finished release [optimized] target(s) in 0.35s
+root@ecs-x86 code# tree -L 2
+.
+├── Cargo.lock
+├── Cargo.toml
+├── src
+│   └── main.rs
+└── target
+    ├── CACHEDIR.TAG
+    ├── debug
+    └── release
+4 directories, 4 files
+</code></pre>
+<h2 id="crate-和-module"><a class="header" href="#crate-和-module">crate 和 module</a></h2>
+<p>•<code>crate</code>是 rust 對外分發和代碼共享的單位，類似 jar 包，類似 so 庫，是三方庫的概念 •<code>crate</code>是編譯打包的概念 •<code>crate</code>的核心標誌就是一個單獨的<code>Cargo.toml</code>文件，是一個邏輯可編譯的功能庫 •<code>cargo package</code>可以在<code>target/package/</code>目錄下生成對應的<code>*.crate</code>打包文件 •<code>module</code>是模塊的概念，是代碼組織方式，類似於 c++ 的<code>namespace</code>, 類似於 golang 的<code>package</code>的概念 •<code>module</code>的核心標誌是語法層面的<code>use &lt;module_name&gt;</code>的導入和聲明 •<code>module</code>有三種文件組織方式 (假設建立一個叫做<code>string_util</code>的 module)1. 內嵌文件中使用<code>mod string_util { ... }</code>的方式進行定義, 內部可以包含任意多函數，結構體等等 2. 建立一個獨立文件名<code>string_util.rs</code>，內部無上面的顯式<code>mod &lt;module_name&gt;</code>聲明 3. 建立一個文件夾<code>string_util</code>內部包含一個<code>mod.rs</code>文件，還有其他<code>submodule</code>的話文件夾中一般使用第二種創建新文件 • 三者取其一，如果發現都沒有或者有多重情況定義同一個<code>mod</code>的時候 rustc 便會報錯.</p>
+<p>關於<code>crate</code>的其他理解可以參考官方 doc 的部分描述:</p>
+<blockquote>
+<p>A crate is a compilation unit in Rust. Whenever <code>rustc some_file.rs</code> is called, <code>some_file.rs is treated as the crate file.</code> If some_file.rs has mod declarations in it, then the contents of the module files would be inserted in places where mod declarations in the crate file are found, before running the compiler over it. In other words, modules do not get compiled individually, <code>only crates get compiled.</code></p>
+</blockquote>
+<blockquote>
+<p>Rust thinks in modules, not files. There is no such thing as file imports, Important concepts in the Rust Module System are <code>packages</code>, <code>crates</code>, <code>modules</code>, and <code>paths</code></p>
+</blockquote>
+<p>學習<code>module</code>和<code>crate</code>的時候需要了解的基本前提知識如下:</p>
+<blockquote>
+<p>rust 的<code>pubilc</code>和<code>private</code>的作用域控制結構體層面提升到了<code>mod</code>範圍，結構體本身沒有類似的概念，這一點相比 c++,java，golang 均不同，此處的修改省去了<code>friend 友元</code>, <code>gettter</code>, <code>setter</code>等等一些列不必要的麻煩, 同一個<code>module</code>內部的所有結構體函數等等可以緊密合作，簡單直接，對外暴露的函數和類型單獨增加<code>pub</code>關鍵字導出, 優雅而且編碼友好</p>
+</blockquote>
+<h3 id="crate-的直觀理解"><a class="header" href="#crate-的直觀理解">crate 的直觀理解</a></h3>
+<p>rust 共享代碼模塊的公網地址為<code>crates.io</code>, 如果使用過<code>maven</code>，<code>rpm</code>等類似工具應該對此類地址並不陌生；</p>
+<p>現在我們拆解一個<code>crates.io</code>上下載最多的<code>rand</code>模塊看一下其中的目錄結構，瞭解一下一個 rust crate 大致有什麼樣的目錄和文件結構</p>
+<pre><code>➜  rand git:(master) tree -L 1
+.
+├── CHANGELOG.md
+├── COPYRIGHT
+├── Cargo.toml       # 核心的Cargo.toml文件
+├── LICENSE-APACHE
+├── LICENSE-MIT
+├── README.md
+├── SECURITY.md
+├── benches
+├── examples
+├── rand_chacha
+├── rand_core       # 一個單獨的子crate
+├── rand_distr
+├── rand_hc
+├── rand_pcg
+├── rustfmt.toml
+├── src              # `rand`的src目錄 
+└── utils
+9 directories, 8 files
+
+
+## lib.rs 是比較特殊的一個文件名，一個crate一般只有一個，是默認的crate的導出點和入口文件.
+➜  rand git:(master) tree -L 1 src
+src
+├── distributions
+├── lib.rs
+├── prelude.rs
+├── rng.rs
+├── rngs
+└── seq
+3 directories, 3 files
+## 仔細研究`rand_core`你會發現它和外部的`rand`是同構的
+➜  rand git:(master) tree -L 2 rand_core
+rand_core
+├── CHANGELOG.md
+├── COPYRIGHT
+├── Cargo.toml        # `rand_core`的`Cargo.toml` crate描述文件
+├── LICENSE-APACHE
+├── LICENSE-MIT
+├── README.md
+└── src
+    ├── block.rs
+    ├── error.rs
+    ├── impls.rs
+    ├── le.rs
+    ├── lib.rs      # `rand_core`的`src/lib.rs`文件
+    └── os.rs
+1 directory, 12 files
+</code></pre>
+<p>可以看到，<code>rand crate</code>本身是以<code>外部依賴</code>其他<code>crate</code>(比如<code>rand_core</code>), 我們自己寫代碼的時候也可以按照這種方式組織代碼，雖然工程上看代碼屬於同一個目錄結構和工程內，但是實際上其中的代碼編譯關係是有明確的分割關係的. 因為<code>crate</code>本質上是類庫的同等地位，所以一個<code>crate</code>只允許一個<code>lib</code> (lib.rs) 編譯入口文件，但是可以允許有多個<code>main</code>函數（依賴核心的 lib.rs）單獨編譯可執行文件 (<code>binary crate</code>);</p>
+<h2 id="註釋和文檔"><a class="header" href="#註釋和文檔">註釋和文檔</a></h2>
+<p>相比於 C++ 等古老的語言生態，rust 的生態支持解決了太多痛點，比如<code>crates.io</code>的存在保證了代碼的編寫，發佈，文檔的一體化，一切都是簡單的 cargo 命令即可完成；既然說到了文檔，就要知道 cargo 還有<code>cargo doc</code>命令，只要使用<code>markdown編寫的註釋便可直接生成對應的html文檔</code>，其開發友好程度讓人大呼過癮.</p>
+<p>rust 的註釋寫法簡單說有如下幾種:</p>
+<p>•<code>// 普通註釋</code>，此類註釋<code>cargo doc</code>會忽略 •<code>/// 文檔註釋</code> ，一般函數結構提元素的註釋寫法，內容可以是 markdown 語法，如果包含代碼段，代碼會被自動生成測試代碼 •<code>//! 高層的文檔註釋</code>，此類註釋生成的是高層模塊描述和簡介</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>cargo new --lib myutil
+<span class="boring">修改src/lib.rs為如下內容
+</span>//! # The first line
+//! The second line
+/// Adds one to the number given.
+///
+/// # Examples
+///
+/// ```
+/// let five = 5;
+///
+/// assert_eq!(6, add_one(5));
+/// # fn add_one(x: i32) -&gt; i32 {
+/// #     x + 1
+/// # }
+/// ```
+pub fn add_one(x: i32) -&gt; i32 {
+    x + 1
+}
+<span class="boring">}</span></code></pre></pre>
+<p>以上面代碼為例，生成文檔的過程如下:</p>
+<pre><code>cargo doc --no-deps
+cargo doc --open
+</code></pre>
+<p>得到的自動化文檔如下:</p>
+<p><img src="images/de23b998195be9dd171682a027da.png" alt="img" /></p>
+<h1 id="學-rust-要有大局觀--二--rust-的精髓"><a class="header" href="#學-rust-要有大局觀--二--rust-的精髓">學 Rust 要有大局觀 -二- Rust 的精髓</a></h1>
+<p>上一篇 (<a href="https://mp.weixin.qq.com/s?__biz=Mzg4MTYyNDU4Nw==&amp;mid=2247483663&amp;idx=1&amp;sn=a3bbd0c90e01328529ac673b43e35254&amp;scene=21#wechat_redirect">學 Rust 要有大局觀</a>) 我們從 rust 的安裝部署，到 cargo 的基本使用，給大家做了科普，為了保證可以降低 Rust 的學習難度，一開始我們必須掃除掉除了基本語法之外的核心難點，這一篇我們關注於<code>所有權</code>（+ 生命週期) 這個 Rust 最難學的部分, 但是樑小孩今天十分鐘之內爭取讓你有學習 Rust 的戰略思維，知道 rust 應該怎麼學～</p>
+<h2 id="rust-精髓"><a class="header" href="#rust-精髓">Rust 精髓</a></h2>
+<p>我嘗試用幾個簡單的詞彙說明 Rust 的設計精髓和底層原理，方便對比其他語言和 Rust 的不同之處</p>
+<p>•Rust 變量具有<code>閱後即焚</code>的特性, 相比之下其他語言的變量都是<code>耐用品</code>, 而 Rust 的變量屬於<code>一次性用品</code>•Rust 語言中<code>變量使用</code>和<code>值擁有</code>是明確區分的，而且其他語言的變量等號基本都是賦值，但是 Rust 是<code>所有權讓渡</code></p>
+<h3 id="三種常見的內存模式"><a class="header" href="#三種常見的內存模式">三種常見的內存模式</a></h3>
+<p>從下面三行簡單的賦值語句, 我們直觀感受一下 c++，python, 還有 Rust 的不同處理方式</p>
+<pre><code class="language-cpp"># c++代碼，僅僅用來說明簡單邏輯
+auto s = std::vector&lt;std::string&gt;{ "udon", "ramen", "soba" }; 
+auto t = s;    // 第一次使用s
+auto u = s;    // 第二次使用s
+</code></pre>
+<h4 id="c-will-copy"><a class="header" href="#c-will-copy">c++ will copy</a></h4>
+<p><img src="images/3b21efe1f4060755c36e7301edc8.png" alt="img" /></p>
+<p>c++-copy</p>
+<p>棧內的變量一直增長 (從左往右)，變量也一直可以被訪問使用. 而且<code>棧到堆的指向關係互相交織</code>(網狀); 由於 C++ 默認採用 copy 的方式進行<code>operator=</code>的操作，即使是<code>std::vector</code>複雜的 STL 結構，都是直接複製, 鑑於這種默認動作開銷比較大，一般程序員會手工引入<code>引用</code>或者<code>指針</code>來優化 (問題隨之而來，棧到堆的指針遲早變成網)</p>
+<h4 id="python-will-count"><a class="header" href="#python-will-count">Python will count</a></h4>
+<p><img src="images/f0086ccdce0ba6810f77546911d4.png" alt="img" /></p>
+<p>python3-count</p>
+<p>對於 python 而言，由於有 gc 的存在，gc 採用了<code>reference count</code>技術，所以邏輯層次上多了一個 PyObject 的中間層，保存了計數信息, 由於採用的是計數機制，而 python 棧上的變量都是對同一個值的多個引用，修改其中一個總是會讓其他變量的值也都一起變化</p>
+<h4 id="rust-will-move-and-crush"><a class="header" href="#rust-will-move-and-crush">Rust will move (and crush!!)</a></h4>
+<p><img src="images/1cc4ecda0adda9c2ea29d6511593.png" alt="img" /></p>
+<p>rust-will-move-and-crush</p>
+<p>對於 Rust 而言，變量的賦值操作等同於<code>值擁有權的讓渡</code>, 它的意義就是<code>auto t = s;</code>這種語句一旦執行，相當於<code>棧變量t取代了棧變量s,擁有了底層的值</code>, 隨之而來的就是<code>s在編譯階段就被編譯器標識為不再可用</code>; 這是 rust 編譯器處理代碼的邏輯，所以<code>auto u = s;</code>這樣的語句根本不會通過編譯，更無需再考慮代碼執行; x 這一切都發生在代碼分析階段，編譯過程中, 不管是簡單的賦值，還是被函數形參，還是一個值被從函數返回: 都是直接的<code>管理權讓渡</code></p>
+<h4 id="思考題"><a class="header" href="#思考題">思考題</a></h4>
+<blockquote>
+<p>一個 for 循環，內部一個 print 函數打印了上面列表，這樣一個簡單的邏輯不同的語言會出現什麼樣的內存結果?</p>
+</blockquote>
+<p>•c++ OK, s 可以再次被賦值使用，打印，進行各種操作 •Python OK, s 也可以正常使用 •Rust OK, 可以正常打印，但是 for 訓話結束之後，所有字符串<code>堆中的資源</code>都被釋放了, s 變成了不可再用的變量</p>
+<p>好了，是不是感覺<code>太神奇了～～</code>, Rust 對變量的使用就是直接拿來，如果沒有新的上下文接受讓渡, 變量就被直接銷燬了, 這個神奇的設定就是 Rust 有別於其他各種語言，並且會有<code>move sematic</code>，<code>borrow</code>, <code>lifetime</code>的最底層設定, 這就是 rust 的遊戲規則.</p>
+<p>簡單發散思考, 這個<code>神奇的move sematic</code>設定會導致什麼樣的直觀現象呢，類似與 c++,java,python 各種語言其實隨著程序一點一點執行，可能會有成百上千的 object 產生，其中的變量指針，引用，copy 互相交織在一起，看起來就會亂糟糟的，這常被稱之為<code>對象之海</code>（如下圖)</p>
+<p><img src="images/919a360eb35dfb0aa82d7a3ada97.png" alt="img" /></p>
+<p>a sea of objects</p>
+<p>由於 rust 特立獨行的底層遊戲規則，不管程序運行了多久，邏輯上看來，不管對象內部有多少子元素，列表還是字典，永遠只有一個 root（擁有它), 再加上我們將要說到的<code>使用權</code>的限制，Rust 的堆棧變量總是非常乾淨清楚 (<code>給你了，你就是owner</code>), 你不會有類似 c++ 中<code>三方庫函數返回了一個指針, 我應該free?</code>的疑問.（如下圖)</p>
+<p><img src="images/d1ca7f01ba514f63c9490fe8f5a2.png" alt="img" /></p>
+<p>rust object tree</p>
+<p>本文簡答說明瞭 Rust 最核心的底層設計，關於所有權的相關內容，我們可以詳細展開了, 敬請期待</p>
+<h1 id="學-rust-要有大局觀--三--最痛就這麼痛了"><a class="header" href="#學-rust-要有大局觀--三--最痛就這麼痛了">學 Rust 要有大局觀 -三- 最痛就這麼痛了</a></h1>
+<h1 id="導語"><a class="header" href="#導語">導語</a></h1>
+<p>讀過上一篇 (<a href="https://mp.weixin.qq.com/s?__biz=Mzg4MTYyNDU4Nw==&amp;mid=2247483686&amp;idx=1&amp;sn=4e078a7e273d62fdbda099b908036603&amp;scene=21#wechat_redirect">學 Rust 要有大局觀 (二) Rust 的精髓</a>) 的同學直接給我反饋的問題主要是: 為什麼 Rust 要有<code>move sematic</code>這個神奇設定，你說的都懂，但是好處在哪裡呢？(歡迎大家有問題直接在公眾號 "Rust 工程實踐" 留言提問, 讀者的反饋真的是寫作的原始反饋和動力). 所以在開始今天的<code>reference &amp; lifetime</code>主題之前，我們簡單回顧一下轉移語義到底的好壞之處有哪些:</p>
+<h2 id="move-sematic-的好壞"><a class="header" href="#move-sematic-的好壞">move sematic 的好壞</a></h2>
+<h3 id="好處rust-的承諾"><a class="header" href="#好處rust-的承諾"><code>好處</code>（rust 的承諾)</a></h3>
+<ol>
+<li>方便編譯器編譯階段跟蹤內存值的使用情況，可以讓編譯器無比強大地分析堆棧狀態.2. 編譯階段排除了非常多內存不安全的內存 (代碼寫法), 不會存在懸空指針 (<code>dangling pointer</code>)</li>
+</ol>
+<h3 id="壞處"><a class="header" href="#壞處"><code>壞處</code></a></h3>
+<p>• 學習曲線陡峭的重要原因之一，會進一步引出引用，生命週期等概念，容易讓初學者遭遇挫敗感 • 連一個<code>賦值</code>都 TM 編譯不過!?• 為什麼一個 print 打印之後，變量就沒了!?</p>
+<h2 id="rust-痛點排行"><a class="header" href="#rust-痛點排行">rust 痛點排行</a></h2>
+<p>根據<code>Rust Survey 2020 Results</code>[1] 調查結果顯示，rust 最難學的部分以<code>lifetime</code>排第一位. 全局觀很重要，今天我們就開始帶大家看一看最難的部分到底有多難，<code>最痛也就這麼痛了.</code> 可以看到生存週期，所有權，還有 trait，是大家掌握起來比較棘手主題.</p>
+<p><img src="images/03d152a010ed398c27ca4c122b5a.png" alt="img" /></p>
+<p>rating-of-topics-difficulties</p>
+<h2 id="rust-reference"><a class="header" href="#rust-reference">rust reference</a></h2>
+<p>上一篇的末尾我們提到過一個簡單的思考，基於<code>move sematic</code>編寫代碼的時候，一個簡單的 for 循環 print 語句就會導致一個數組變量被使用後釋放掉，這其中的核心原因就是 for 循環語句理論上應該是<code>租借使用權</code>, 而不應該取得<code>所有權</code>; 為瞭解決這個問題，rust 提供了<code>reference類型的可copy變量</code>;</p>
+<p>作為一個 c/c++ 程序員的你, 請思考，把上面 for 循環和打印語句作為函數體的情況下 (僅有外部變量的讀取需求)，如果在其他語言中，如此簡單的函數有可能造成程序崩潰嗎？或者會有什麼陷阱?</p>
+<p>你的答案可能是這樣的; 函數的參數應該是<code>const &amp;</code>, 常量引用，這樣我即避免了外部變量的拷貝，節省了內存和調用開銷，同時通過 const 保證了不改變使用的變量內容.</p>
+<p>我想說的是，這都是沒問題的，但是這樣並不能保證你的<code>完美print</code>函數 core 掉，原因是，你通過<code>const &amp;</code>對編譯器承諾了自己不改變變量，僅僅是使用，也不做 copy，然而<code>gcc</code>編譯器並不給你任何承諾，所以：</p>
+<ol>
+<li>變量其他地方被改掉了. 你讀取到了奇怪的內容.2. 變量被銷燬了，你讀取到了不應該操作的內存，程序崩掉了.</li>
+</ol>
+<p>為什麼可以這樣？因為<code>程序員承諾我不修改我使用的內容</code>，但 c++ 語言本身，編譯器並<code>不承諾這個變量它自己不會變</code>(這種承諾不是相互的);</p>
+<p>在 Rust 中, 程序員通過<code>borrow</code>得到一個<code>reference</code>來承諾僅讀取，或者肯定會修改一個變量</p>
+<p><code>borrow</code>的承諾寫法是在變量前增加一個<code>&amp;</code>, 比如</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Point {
+    x: i32,
+    y: i32 
+}
+let point = Point { x: 1000, y: 729 };
+let r: &amp;Point = &amp;point;     // r現在是point的`只讀使用權`
+let rr: &amp;&amp;Point = &amp;r;        // rr現在是`只讀使用權`的`只讀使用權`
+let rrr: &amp;&amp;&amp;Point = &amp;rr;    // rr現在是`只讀使用權`的`只讀使用權`的`只讀使用權`
+<span class="boring">}</span></code></pre></pre>
+<p>上面的代碼的內存模型是這樣的:</p>
+<p><img src="images/0b9b32941a863ab18fd21b06e16e.png" alt="" /></p>
+<p>A-chain-of-references-to-references</p>
+<p>so~ 很明顯，如果使用<code>r</code>來訪問<code>point</code>的話，並不會影響 point 的所有權關係，即使<code>r被閱後即焚了也不影響point</code>, 內存上它倆使用的<code>棧資源</code>沒關係.</p>
+<p>於此同時，編譯器同時許諾你在你使用這個 reference 期間, 任何對原有變量所有權的變動的代碼，及修改，我都拒絕編譯! 編譯器通過如下圖所示的規則來判斷是否拒絕代碼的編譯, 詳細來說，rustc 通過兩條規則來兌現它的承諾 (下圖的中間和最右則情況):</p>
+<p><img src="images/c9d886c8d843fa706bfaf2e5543d.png" alt="" /></p>
+<p>reference-and-ownership</p>
+<p>詳細來說就是，編譯器做代碼靜態分析的時候，僅通過<code>閱讀文本符號</code>就知道是否要編譯此代碼還是直接拒絕繼續編譯代碼，因為<code>borrow</code>語意的語法是精確的，就是程序員給出的承諾. 以一個簡單的結構體來說，內部還有一個其他結構體，那麼它的內存模型大致就是上圖最左邊的樣子 (棧上是變量本身的空間，內容是指向堆內的資源的樹形結構). 下面以程序員要操作<code>結構體內部的結構體子元素</code>為例:</p>
+<ol>
+<li>當程序員承諾對一個子成員變量僅讀取的時候 (中圖)，編譯器承諾的兌現動作就是 • 對象樹 root 所有權變動的代碼編譯不可以通過 • 修改子成員內容的代碼編譯不可以通過 • 值 owner 也最多做讀取不能再多了 <code>2. 當程序員承諾對一個子成員變量要修改的時候 (右圖)，編譯器承諾的兌現動作就是 •</code>非承諾的引用`之外的所有試圖接觸這個值的代碼都不可以通過 • 即使是通過值的 owner 也不行讀取</li>
+</ol>
+<p>基於以上兩條規則，請自己編寫 rust 的編譯器，給出下面代碼是否違反給程序員的承諾?(注意同樣的代碼寫法，若是 c++ 肯定是可以通過編譯的)</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let mut v = 10;    // v是一個可以改變的變量
+    let r = &amp;v;    // `&amp;v` 就是程序員的承諾: 用r(reference)來借用變量v的使用權(讀取)
+    let rr = &amp;r;    // 程序員二次承諾還要用rr也讀取v, 並且
+    v += 10        // 要改變v了，編譯過還是不過? 
+    myprint(r);    // 打印函數, 使用r來訪問 
+    myprint(rr);    // 打印函數, 使用rr來訪問
+}</code></pre></pre>
+<p>你是否疑惑上面的文字裡，樑小孩反覆地寫程序員得到一個引用是<code>承諾</code>對一個變量做只讀操作? 我就是讀取一下，有什麼要承諾的?</p>
+<p>現在我要告訴你，rust 的語法規則之精確，讓你寫任何一句話都是在給編譯器訴說自己的承諾. 比如當你寫一個任意函數的時候，函數的聲明形式就是你給編譯器的承諾, 承諾對變量是如何使用的, 當你承諾只讀，但是函數體內部出現了寫操作，編譯器有權根據你先前的承諾拒絕編譯你的代碼.</p>
+<p>再思考另外一種情況，多個變量的函數，一個只讀承諾，一個寫引用的承諾，還有一個是直接 move 語意的所有權取得；這就是你給編譯器的承諾，變量會被函數形參拿去值的所有權，如果使用不當被銷燬，是程序員自己一開始就不應該做出的<code>此函數對所有權負責</code>的承諾. 所以程序員一定要編碼之前想好頂層架構，因為一旦有變動，可能很多函數需要重寫.</p>
+<h2 id="生命週期"><a class="header" href="#生命週期">生命週期</a></h2>
+<p>為了適應<code>move sematic</code>而引入的<code>borrow &amp; reference</code>會帶來的新的問題是, 讓所有權和使用權發生了切割分離之後，引用和原始值的內存空間獨立，但是二者的邏輯關係要求: 原始值必須存在的前提下，引用才有存在的意義. 如果遇到<code>返回值引用了的函數</code>這樣的代碼是否要停止編譯? 很明顯函數返回了<code>使用權</code>, 如果此時不發生<code>move</code>需要有其他維度幫忙判斷代碼的邏輯合理性. 答案就是需要考慮<code>lifetime</code>生命週期.</p>
+<p>從最原始的疑問開始: 你編寫了一個函數，並且返回了一個<code>reference</code>, 假如被引用的值是函數內部 local 變量，那麼基於安全考慮我們要拒絕它，如果引用的傳入參數的某個子元素，那麼我們要知道傳入參數的存活時間能否支撐這個引用是有效的. 所以編譯器一定跟蹤引用和對應變量是否存在衝突的讀寫情況，還要跟蹤每個變量的有效範圍，發現程序員讀寫違反承諾, 或者引用的生命週期不是被引用值生命週期的子集的時候，<code>合情合理</code>地拒絕編譯.</p>
+<p><img src="images/15e5dbfd399bfb2b891c616c61bb.png" alt="img" /></p>
+<p>reference-with-a-lifetime</p>
+<p>說了這麼多，其實只有圖中表示的一個核心原理，那就是 rust 編譯代碼要檢查是否存在像這樣的合理的嵌套 (cover) 關係.</p>
+<p>如果事情到此為止的話一切完美，不過有很多中情況作用域的嵌套比上面的例子要更加隱晦, 比如一個結構體的成員<code>borrow</code>的外部資源, 比如一個函數調用其實就是變量進入新的作用域, 這種情況可能還會產生組合: 你得到一個內部包含了<code>reference</code>的結構體作為函數參數， 這時候資源跟蹤情況就很複雜了。此時，rust 編譯器要求你給出<code>明確的關於資源存活時間的承諾</code>. 這種承諾的表現方式就是讓很多同學看不懂的<code>生命週期語法</code>. 我們不關心語法，僅僅是回到原始問題上來，不管什麼樣的語法，我們應該通過這個語法給編譯器傳遞什麼信息呢? 程序員做的任何承諾，rust 編譯器都會仔細檢查，針對這種情況，程序要要做出的承諾無非就是類似<code>我絕對不會胡亂引用</code>這樣的信息，比如<code>我不會引用比結構體本身存活時間還短的變量</code>.</p>
+<h3 id="宣稱使用範圍"><a class="header" href="#宣稱使用範圍">宣稱使用範圍</a></h3>
+<p>生命週期不是作用域, 是變量被使用的那段時間, 一個結構體有兩個引用類型的成員, 其中一個引用失效時，只要可以保證它也永遠不再被用到，那也是 OK 的. 所以我建議大家將生命週期理解成為程序員宣稱的<code>引用的合理使用範圍</code>;</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct S {
+    r32: &amp;i32;
+    r64: &amp;i64;
+}
+let s;
+<span class="boring">}</span></code></pre></pre>
+<h4 id="給sr32承諾範圍1"><a class="header" href="#給sr32承諾範圍1"><code>給s.r32承諾範圍1</code></a></h4>
+<p>1.<code>s.r32</code>存活時間 (reference) 一定要小於等於被引用值的存活時間(所有人都是必死的)2.<code>s.r32</code>存活時間和<code>s</code>一樣 (蘇格拉底是人)3. 所以<code>s</code>的存活時間必須小於等於<code>s.r32</code>引用的值的存活時間 (蘇格拉底是必死的)</p>
+<h4 id="給sr64承諾範圍2"><a class="header" href="#給sr64承諾範圍2"><code>給s.r64承諾範圍2</code></a></h4>
+<p>1.<code>s.r64</code>存活時間 (reference) 一定要小於等於被引用值的存活時間(所有人都是必死的)2.<code>s.r64</code>存活時間和<code>s</code>一樣 (蘇格拉底是人)3. 所以<code>s</code>的存活時間必須小於等於<code>s.r64</code>引用的值的存活時間 (蘇格拉底是必死的)</p>
+<p>三段論裡<code>蘇格拉底是人</code>這個特殊陳述應該是問題的核心，因為當有多個成員變量的時候，被引用的具體值的生命週期可能一樣, r32 和 r64 原始值作用域會不同，但是無論如何<code>s</code>都是兩者之中<code>更小的那一個</code>.</p>
+<p>編譯器處理上面的代碼的時候需要程序員承諾: 到底<code>s.r32</code>和<code>s.64</code>的範圍一樣還是不一樣，你若是宣稱一樣，那麼我檢查<code>s</code>的存在多久就可以了，你若是宣稱不一樣, 那麼我就得按照相對小的那個來判斷<code>s</code>的使用範圍是否合理.</p>
+<p>OK, 是時候看一下實際代碼了~</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct A&lt;'a&gt; {
+    r32: &amp;'a i32;
+    r64: &amp;'a i64;
+}
+struct S&lt;'a, 'b&gt; {
+    r32: &amp;'a i32;
+    r64: &amp;'b i64;
+}
+<span class="boring">}</span></code></pre></pre>
+<p>這就是添加了<code>lifetime</code>聲明的結構體，其中<code>A</code>宣稱<code>A.r32</code>和<code>A.r64</code>的<code>預期使用範圍一樣</code>, 此時 rustc 編譯器按照 A 的實例存活時間判斷就可以了跟蹤實際引用的值是否滿足要求, 但是<code>S</code>現在宣稱<code>S.r32</code>和<code>S.r64</code>是兩個不同的使用範圍，此時 rustc 將分別跟蹤被引用的兩個值的存活時間是否都比<code>S</code>要大.</p>
+<p>重新回到<code>返回引用的函數</code>這個原始問題上, 怎麼寫才合適?</p>
+<pre><code>// 程序員宣稱函數使用的時候, 返回值使用範圍和入參肯定一樣(或更小), rust會檢查確認是否真的這樣
+fn smallest&lt;'a&gt;(v1: &amp;'a [i32], v2:&amp;'a [i32]) -&gt; &amp;'a i32 { ... }
+</code></pre>
+<p>到這裡你應該明白了，<code>lifetime</code>真的是一個編譯期概念，是程序員做出的承諾，rustc 會根據你的承諾檢查代碼是否是你宣稱的那樣，被引用的值是不是一直比引用時間更久.</p>
+<p>到此為止，我們應該可以更清楚地理解一下<code>move sematic</code>到<code>borrow &amp; reference</code>再到<code>liftime</code>的整個邏輯鏈條。他們到底都在解決什麼問題, 這正學習的時候需要大量的例子加深細節把握. 我們僅關心概念和概念提出的場景，解決的問題.</p>
+<p>以上是我自己對這些概念的理解和思考，難免會有重大錯誤，但是應該能幫到大家. 下一篇咱們看<code>trait</code>是個什麼東西, 再會～～</p>
+<h4 id="引用鏈接"><a class="header" href="#引用鏈接">引用鏈接</a></h4>
+<p><code>[1]</code> <code>Rust Survey 2020 Results</code>: <em>https://blog.rust-lang.org/2020/12/16/rust-survey-2020.html</em></p>
+<h1 id="學-rust-要有大局觀--四--rust-trait-的概念認知"><a class="header" href="#學-rust-要有大局觀--四--rust-trait-的概念認知">學 Rust 要有大局觀 -四- rust trait 的概念認知</a></h1>
+<h1 id="導語-1"><a class="header" href="#導語-1">導語</a></h1>
+<p>通過前三篇 (<a href="https://mp.weixin.qq.com/s?__biz=Mzg4MTYyNDU4Nw==&amp;mid=2247483686&amp;idx=1&amp;sn=4e078a7e273d62fdbda099b908036603&amp;scene=21#wechat_redirect">學 Rust 要有大局觀 (三)</a>) 我們分別看了<code>move sematic</code>, <code>borrow &amp; reference</code>以及<code>liftime</code>三個核心概念; 之前其實並沒有深入到任何 rust 的語法細節上，或者說盡量規避語法的講解，來到第四篇, 樑小孩仍然希望主要講解核心概念為主，代碼儘量用偽碼, 避免大家進入語法的細枝末節. 今天我們關注<code>traits</code></p>
+<h2 id="traits-是什麼"><a class="header" href="#traits-是什麼">traits 是什麼</a></h2>
+<p>如果你沒有其他語言中 traits 的認知，那麼你將無法瞬間明白<code>特性</code>這個中文翻譯背後的實際意義，通常大家會說 traits 是 interface，而實際上 interface 和 traits 的關係更像是 “錘子必須可以砸釘子” 和“給錘子添加砸核桃功能”，理解這兩二者的區別之處在於，是否允許 “錘子” 製造的時候就知道它將來可以被用來砸核桃，這個時間差就是理解 traits 和 interface 微妙差異的精髓所在，錘子製造商和錘子使用者通常不是同一個人；換言之：traits 可以作用在一個預定義的類型上，給它添加某些<code>特性</code>, 並且無需修改該類型本身的所有聲明和原始定義的代碼，這樣不接觸原始類型定義和聲明代碼就可以給一個類型添加功能 (function) 的特性 (traits) 使得你無須將 “錘子” 重新封裝成為 “砸核桃工具” 這樣的新類型，沒有了這層封裝，代碼上寫法將靈活許多，第一次體會到這一點的程序員肯定會感覺非常震撼，</p>
+<p>本篇的整體精髓大局觀，其實就是上面一段話而已，下面所有內容都是細節，下面讓我們一起看一下 traits 的實際實現細節.</p>
+<h2 id="traits-的內存表示"><a class="header" href="#traits-的內存表示">traits 的內存表示</a></h2>
+<p>通過如下代碼我們可以得到一個<strong>特型目標</strong>，它在內存中實際上就是一個胖指針.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::io::Write;
+
+let mut buf: Vec&lt;u8&gt; = vec![];
+let writer: &amp;mut Write = &amp;mut buf;
+<span class="boring">}</span></code></pre></pre>
+<p><img src="images/e9fca92c1519f728a717e461ec4a.png" alt="img" /></p>
+<p>vtable</p>
+<p>看明白上面圖的內存表示的話，如果你是 C++ 程序員應該就可以說基本上接近掌握了 traits 的精髓了。相比於 c++ 將 vptr 和對象成員保存在一起，rust 中類型數據就是數據本身，單獨實現的 traits 方法則是單獨聚合為一個胖指針這其中的好處非常微妙；明白了這個機制你也就可以知道為什麼對於標準類型 int 和 string 你還可以給它們擴展自己的方法; 而這是 c++ 做不到的。</p>
+<p>同時，上面的內存模型是編譯期確定的，這也是 traits 為什麼是一種<code>static dispatch</code>;</p>
+<h2 id="語言內置-traits"><a class="header" href="#語言內置-traits">語言內置 traits</a></h2>
+<p>rust 語言默認提供了 traits 的常見實現，編譯器可以自動處理已有類型擴展這些 traits；它們分別是：</p>
+<p>•Eq, PartialEq, Ord, PartialOrd•Clone, 用來從 &amp;T 創建副本 T。•Copy，使類型具有 “複製語義”（copy semantics）而非 “移動語義”（move semantics）。•Hash，從 &amp;T 計算哈希值（hash）。•Default, 創建數據類型的一個空實例。•Debug，使用 {:?} formatter 來格式化一個值。</p>
+<h4 id="內置-traits-用起來就像特定的註解"><a class="header" href="#內置-traits-用起來就像特定的註解">內置 traits 用起來就像特定的註解</a></h4>
+<p>閱讀代碼吧，並且體會它與 java 註解的使用體驗，或許你會馬上理解其精髓。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>//  CppStruct變量綁定、函數參數傳遞、函數返回值傳遞時將被複制, 而不是borrow
+
+// 1. 編譯器支持的Copy traits
+ #[derive(Copy, Debug)]
+ pub struct CppStruct {
+     pub x: i32,
+     pub y: i32,
+ }
+
+impl Clone for CppStruct {
+    fn clone(&amp;self) -&gt; Self {
+        Self {
+            x: self.x + 1,
+            y: self.y + 1,
+        }
+    }
+}
+
+// 2. 用法及生效情況, 注意x1和x2的區別
+let x0 = CppStruct { x: 0, y: 1 };
+let x1 = x0;
+let x2 = x0.clone();
+println!("x1.value={:?}, x1.address={:p}", x1, &amp;x1);
+println!("x2.value={:?}, x2.address={:p}", x2, &amp;x2);
+println!("reuse variable x0={:?}, x0.address={:p}", x0, &amp;x0);
+
+// 輸出結果
+x1.value=CppStruct { x: 0, y: 1 }, x1.address=0x16d24f0e8
+x2.value=CppStruct { x: 1, y: 2 }, x2.address=0x16d24f0f0
+reuse variable x0=CppStruct { x: 0, y: 1 }, x0.address=0x16d24f0e0
+<span class="boring">}</span></code></pre></pre>
+<h2 id="編碼自己的-traits"><a class="header" href="#編碼自己的-traits">編碼自己的 traits</a></h2>
+<h4 id="自定義-traits-時它更像是一種接口聲明"><a class="header" href="#自定義-traits-時它更像是一種接口聲明">自定義 traits 時，它更像是一種接口聲明</a></h4>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// STEP1:   抽象一個機器學習Optimizer應該具有的核心功能，定義為一個trait
+pub trait Optimizer&lt;'a&gt; {
+    // 有默認實現的函數build_params
+    fn build_params&lt;U, T: From&lt;U&gt;&gt;(params: Vec&lt;U&gt;) -&gt; Vec&lt;T&gt; {
+        let mut vec = Vec::with_capacity(params.len());
+        for param in params {
+            vec.push(T::from(param));
+        }
+        vec
+    }
+    // 無默認實現的函數，get_lr
+    fn get_lr(&amp;self) -&gt; f32;
+
+    // 無默認實現的函數，set_lr
+    fn set_lr(&amp;self, lr: f32);
+}
+
+/// STEP2: 實現一個SGD優化邏輯，並重載核心函數
+pub struct SGD&lt;'a, T&gt; {
+    params: RefCell&lt;Vec&lt;SGDParam&lt;'a&gt;&gt;&gt;,
+    lr: Cell&lt;f32&gt;,
+    penalty: T,
+}
+
+impl&lt;'a, T: Penalty&gt; Optimizer&lt;'a&gt; for SGD&lt;'a, T&gt; {
+
+    fn get_lr(&amp;self) -&gt; f32 {
+        self.lr.get()
+    }
+
+    fn set_lr(&amp;self, lr: f32) {
+        self.lr.set(lr)
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>將 trait 理解為接口是一種很符合直覺的簡化，但是你只要知道它不等同於接口，只是可以<code>用起來很像接口</code></p>
+<h2 id="結語20220213-0334-成文"><a class="header" href="#結語20220213-0334-成文">結語（2022/02/13 03:34 成文）</a></h2>
+<p>這次關於 trait 最核心的內容就總結到此，實際使用時能明白其中的精髓就好了，關於 trait 的實際功能其實比本次介紹的要更多，但是筆者認為<code>有大局觀，知道它是什麼，對它有清晰的概念認知</code>的話，上面的內容已經足夠。收集更多問題後，後續找更多的例子來詳細展開用法也不遲。</p>
+<h1 id="學-rust-要有大局觀--五--屬性的功能"><a class="header" href="#學-rust-要有大局觀--五--屬性的功能">學 Rust 要有大局觀 -五- 屬性的功能</a></h1>
+<h2 id="什麼是-attribute"><a class="header" href="#什麼是-attribute">什麼是 attribute？</a></h2>
+<p>attribute 是 rust 編譯器留給程序員的交互接口，一段代碼可以編譯產出為二進制機器碼的過程通常來說，用戶的代碼是編譯器的輸入，當編譯器認為代碼有問題，而程序員認為沒問題的時候，必須允許程序員和編譯器有交互，允許程序員指導個別代碼的處理方式。</p>
+<p>下面列舉幾個比較有代表性的場景：</p>
+<h2 id="讓編譯器閉嘴"><a class="header" href="#讓編譯器閉嘴">讓編譯器閉嘴</a></h2>
+<p>rustc 要求結構體的命名需為駱駝體，否則就會給出警告，假如程序員‘故意’要給出一個結構體，但是用了 python 的下劃線命名，為了讓編譯器忽略對命名格式的‘異議’，可以通過</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[allow(non_camlel_case_types)]
+<span class="boring">}</span></code></pre></pre>
+<p>這個標記，把它放在結構體聲明之前，編譯器就可以按照程序員的意願主動放過。而不是輸出一堆警告。</p>
+<h2 id="讓編譯器臨場應變"><a class="header" href="#讓編譯器臨場應變">讓編譯器臨場應變</a></h2>
+<p>所謂的臨場應變經典場景主要是硬件和操作系統環境區別，比如當前這個程序員的操作系統是<code>windows</code>, CPU 架構是<code>x86_64</code>又或者是<code>arm64</code>, 代碼編譯的時候有些別人的代碼確實不可能編譯通過，程序員需要主動處理條件編譯規則，指導編譯器不同架構下同一個代碼應該編譯哪一個具體實現。對應的 attribute 類似<code>#[cfg(windows)]</code>的標記說明具體信息。</p>
+<h2 id="讓編譯器改變默認行為"><a class="header" href="#讓編譯器改變默認行為">讓編譯器改變默認行為</a></h2>
+<p>rust 瞭解之後你會知道有很多特有的術語，比如‘氧化’表示用 rust 去重寫一些現有的庫，或者用 rust 去實現一個特定的功能，但是畢竟很多東西編譯之後會有一些歷史命名習慣或者接口規則，不能按照 rust 本身的約定輸出，我們可以通過</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span>#![crate_type = "cdylib"]
+#![create_name=''crypto3]
+<span class="boring">fn main() {
+</span><span class="boring">}</span></code></pre></pre>
+<p>這樣我們得到的名字是<code>libcrypto3.so</code>，我們還特意多加了一個<code>3</code>在<code>o</code>後面，表示這個庫是我們自己用 rust 氧化之後的版本; 否則我們得到的是一個原版命名的<code>libcrate.rlib</code>這樣的 rust 二進制庫名字.</p>
+<h2 id="讓編譯器區別對待一些函數和代碼"><a class="header" href="#讓編譯器區別對待一些函數和代碼">讓編譯器區別對待一些函數和代碼</a></h2>
+<p>單測就是這樣一個典型場景，相比於其他語言用文件名後綴，前綴，或者是引入某些包單獨編碼而言，rust 支持的更為簡單直接，只要有 <code>#[test]</code>修飾的函數都會標記為測試函數，會在<code>cargo test</code>命令下被拉出來單獨執行。</p>
+<h2 id="讓編譯自動添加一些行為"><a class="header" href="#讓編譯自動添加一些行為">讓編譯自動添加一些行為</a></h2>
+<p>這個用法就非常多樣了，典型場景是用<code>#[derive(Debug)]</code> 類似的標記好，以便編譯器自動給我們的類型添加特性.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Debug)]
+struct Point {
+    x:f32,
+    y:f32,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>編譯器現在會給 Point 類自動添加一個<code>fmt</code>函數，這個函數功能類似 java 的<code>toString</code>， 或者 python 的<code>__repr__</code>等，注意：derive 的意義為派生，但這裡並沒有一個<code>默認的父類實現</code>, 代碼都是編譯器根據當前的類程成員變量自動添加並編譯的。</p>
+<p><code>derive</code>和<code>trait</code>搭配使用共同左右，想要明白其中細節可以閱讀本系列上關於<code>trait</code>的單獨篇章.</p>
+<h2 id="結語"><a class="header" href="#結語">結語</a></h2>
+<p>看了一些快速簡單的例子，你應該知道 attribute 這個概念是什麼內涵了，知道了內涵也就明白了概念，遇到的時候就不會有疑惑了。下一篇我們講一下 rust 惱人的宏，用不用不重要，重要的時候通過瞭解 rust，大家一起思考一下手頭使用的語言到底哪裡不好，為什麼有新的設計。</p>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../rust/rust_note.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../rust/String.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../rust/rust_note.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../rust/String.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

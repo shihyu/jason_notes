@@ -1,0 +1,513 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Stock - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <ul>
+<li>
+<p>多方趨勢</p>
+<ul>
+<li>觀察大盤指數(道瓊指數/上市櫃指數)</li>
+<li>只做初升跟主升</li>
+<li>追趨勢盤整後第一天突破5% 做隔日沖 or 抱波段</li>
+</ul>
+</li>
+<li>
+<p>盤整</p>
+<ul>
+<li>做短線 (當沖/隔日沖)
+<ul>
+<li>均線糾結第一天發動&gt; 5% 尾盤進場</li>
+<li>篩選盤整股票隔天程式掛9.5% 進場</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>向上加碼 (槓桿商品) or 美股 (趨勢太長幾年連續上漲)</p>
+</li>
+<li>
+<p>ex: 臺指每賺200點加碼一次</p>
+<ul>
+<li>期貨拆10筆進場</li>
+<li>看對行情，等待回檔才向上加碼，並不是每格200點加碼這樣風險大，要等回檔再加碼通常都是技術分析上，一個很好的買點
+<ul>
+<li>應該要賺300點後，回檔到200點再加碼</li>
+<li>後期脫離總成本遠安全就可以加大點 (需要計算)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>向下攤平 (臺股勝率高)</p>
+<ul>
+<li>用在止跌反轉 (崩跌線型 ？)</li>
+<li>進場點
+<ul>
+<li>第二筆打進去需判斷
+<ul>
+<li>離止跌點很近</li>
+<li>近情要起漲</li>
+<li>波動率邊緣進場 ATR 低波動？</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如何設定停損？
+<ul>
+<li>需根據分析設定停損，所以停損要小 5~8%？</li>
+<li>分析的止跌點停損設很大是凹單</li>
+</ul>
+</li>
+<li>保留一筆資金在股價高於成本區後再進場 ex: 40萬 30萬  拉過成均成本再進去 30萬(最後一筆)
+<ul>
+<li>為什麼最後一筆要拉過成本再進怕遇到崩跌，全部錢會吐回去</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>爆賺</p>
+<ul>
+<li>下時代會是誰？ ex: 現在是特斯拉在火，誰讓特斯拉逼著起來</li>
+<li>找好商品(獨角獸)</li>
+<li>找好買點才可以持續加碼
+<ul>
+<li>崩跌後出現</li>
+</ul>
+</li>
+<li>轉機股、未來成長股</li>
+<li>成本低才好加碼</li>
+<li>張鬆允月K長紅發動後，等待拉回量縮持續買(能爆賺?)</li>
+</ul>
+</li>
+<li>
+<p>逆勢好處</p>
+<ul>
+<li>順勢交易進場點價位通常不好</li>
+<li>所以要順大逆小(逆KD)</li>
+</ul>
+</li>
+<li>
+<p>JG</p>
+<ul>
+<li>
+<p>逆KD /逆布林</p>
+<ul>
+<li>逆布林
+<ul>
+<li>多頭趨勢使用
+跌破下緣買進，並設好停損
+通過通道上緣不要停利，向上分批賣出</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>恐慌 定義</p>
+<ul>
+<li>多頭趨勢裡</li>
+<li>技術分析者恐慌</li>
+</ul>
+</li>
+<li>
+<p>賭博式停利法</p>
+<ul>
+<li>拿獲利一半來賭</li>
+</ul>
+</li>
+<li>
+<p>YT 網友: 多頭市場很適合向下攤平</p>
+<ul>
+<li>https://www.youtube.com/watch?v=5AQHkBoUybA</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>https://medium.com/blacksecurity/%E8%88%87%E7%9C%BE%E4%B8%8D%E5%90%8C%E7%9A%84%E6%80%9D%E8%80%83-%E5%8F%8D%E5%B8%82%E5%A0%B4-jg%E8%82%A1%E5%B8%82%E6%93%8D%E4%BD%9C%E5%8E%9F%E7%90%86-%E8%AE%80%E5%BE%8C%E5%BF%83%E5%BE%97-990c5cb13fc3</p>
+<ul>
+<li>
+<p>股市是一個推理遊戲，想贏就得先搞懂「反市場」</p>
+<ul>
+<li>十次跌破裡面有八次是假跌破，是不是跌破去買進才是真道理？</li>
+<li>停損停利人人會設，你是機械式地提早賣掉飆漲股，還是有策略放大你的好運？</li>
+<li>許多人推崇KD指標、布林通道，但是否可以改良、做出不同選擇？</li>
+<li>避開主流，別把自己交給機率，盡可能的放大運氣才能暴賺。</li>
+</ul>
+</li>
+<li>
+<p>不合人性，任何方法都會賠錢</p>
+<ul>
+<li>存股很健康正向，但你知道六成優質股曾股價腰斬，許多人「存不住」而虧損出場嗎？</li>
+<li>看財報、看線圖……有各種預測股價的技術，但你想過「高勝率」不如「暴賺致富」嗎？</li>
+<li>操盤賺錢的關鍵不在預測，不在求穩定，而是要用符合人性的方式來長期操作。</li>
+<li>弄懂「反市場」心理，你才能在別人害怕的時機買進，在別人過於樂觀的時機賣出！</li>
+</ul>
+</li>
+<li>
+<p>用買賣來攻擊，用情緒來防守</p>
+<ul>
+<li>股市裡沒有一個人是技術超強但心理脆弱，卻還能成為贏家。</li>
+</ul>
+</li>
+<li>
+<p>JG的八原則:</p>
+<ul>
+<li>股票市場就是賭</li>
+<li>務必和股市預言保持距離</li>
+<li>財報選股，離爆賺實在太遠</li>
+<li>爆賺，是最健康的股市態度</li>
+<li>當然要知道輸家的下一步</li>
+<li>優勢為輸贏之間的最大分水嶺</li>
+<li>贏家第一課:風險報酬比</li>
+<li>要賺一輩子，一定要有全面性的操盤力</li>
+</ul>
+</li>
+</ul>
+<h2 id="ch1-反市場股市致富之道"><a class="header" href="#ch1-反市場股市致富之道">CH1 反市場:股市致富之道</a></h2>
+<p>第一章部分提到<strong>運氣</strong>的重要性，JG強調運氣是股市重要的一個點，對於運氣的信仰決定你成為怎麼樣的投資者，運氣型玩家有個精神就是拿到好牌就要爆賺一筆。不過拿到好牌大多數人也不知道怎麼打這副好牌。</p>
+<h2 id="ch2-j派買賣原則"><a class="header" href="#ch2-j派買賣原則">CH2 J派買賣原則</a></h2>
+<h2 id="停損"><a class="header" href="#停損">停損</a></h2>
+<blockquote>
+<p>停損並非代表自己看錯，而是讓自己把握其他賺錢機會</p>
+</blockquote>
+<h3 id="風險報酬比"><a class="header" href="#風險報酬比">風險報酬比</a></h3>
+<p>JG有強調<strong>風險報酬比</strong>在投資前的心態很重要</p>
+<p>風險報酬比為:</p>
+<pre><code>虧損:獲利  --&gt; 建議為 1:3 
+</code></pre>
+<p>意思是<strong>賺一次可以抵賠錢三次</strong>，進場四次贏超過一次就可以</p>
+<h2 id="ch3-j派核心原理反市場"><a class="header" href="#ch3-j派核心原理反市場">CH3 J派核心原理:反市場</a></h2>
+<h3 id="技術指標"><a class="header" href="#技術指標">技術指標</a></h3>
+<p>KD人人皆知但充滿不確定性，指標是不精確的結果而且不是原因，打開五分線看盤會發現一下交叉一下沒交叉，會有無數次的<strong>假</strong>交叉。臺股和美股不同，絕對不能追高，因為波動有限。</p>
+<h3 id="kd指標"><a class="header" href="#kd指標">KD指標</a></h3>
+<p>JG推薦逆KD，像是<strong>KD向下交叉+下跌買進搭配書中寫得停利與停損和其他條件。</strong></p>
+<h3 id="股市預言"><a class="header" href="#股市預言">股市預言</a></h3>
+<p>股市預言請<strong>全部打叉</strong>，市場的短期波動是被<strong>消息與躁動散戶</strong>所影響。</p>
+<h3 id="summary"><a class="header" href="#summary">SUMMARY</a></h3>
+<p>用反市場避開主流才能爆賺，別把人生交給機率，拿到好牌就狠狠賭下去</p>
+<h2 id="ch4-不合人性任何方法都會賠錢存股與複利"><a class="header" href="#ch4-不合人性任何方法都會賠錢存股與複利">CH4 不合人性，任何方法都會賠錢(存股與複利)</a></h2>
+<p>我看了不少有關存股、複利、價值投資或中長期投資的影片或書籍，這段大概會有很多爭議或不同觀點，也會有人提出解法或觀點，但一百種人就有一百種投資方法(與觀點)，能賺錢就是好方法，而且我更好奇JG對於ETF看法就是。</p>
+<p>中長期投資入門可參考另一篇心得:<a href="https://medium.com/blacksecurity/%E8%82%A1%E5%B8%82%E7%B6%93%E5%85%B8%E6%95%99%E7%A7%91%E6%9B%B8-%E6%88%91%E7%9A%84%E8%81%B7%E6%A5%AD%E6%98%AF%E8%82%A1%E6%9D%B1-%E8%AE%80%E5%BE%8C%E5%BF%83%E5%BE%97%E7%AD%86%E8%A8%98-11fe370f5ec7">我的職業是股東</a>、<a href="https://medium.com/blacksecurity/%E9%87%91%E8%9E%8D%E4%B9%9D%E5%A4%A7%E6%8C%87%E6%A8%99%E8%A7%A3%E9%87%8B-%E6%AE%96%E5%88%A9%E7%8E%87-eps-roa%E8%88%87roe-%E6%9C%AC%E7%9B%8A%E6%AF%94per-pbr-%E8%82%A1%E5%83%B9%E6%B7%A8%E5%80%BC%E6%AF%94-6d97a9fab7ba">金融名詞解釋</a></p>
+<h3 id="複利"><a class="header" href="#複利">複利</a></h3>
+<p>市場流行一種觀念，<strong>低報酬=安全。</strong></p>
+<p>複利本身意義是用賺來的錢不斷在投入股市去利滾利，關鍵不是安全而是要<strong>持續不斷高報酬。</strong></p>
+<p>但<strong>心理</strong>上大多人想要快速致富，<strong>盲目地投入就導致失敗</strong>，JG建議先求爆賺後求穩定，最後求不敗</p>
+<h3 id="存股"><a class="header" href="#存股">存股</a></h3>
+<p>存股概念:隨時買+賭不會倒閉+高殖利率</p>
+<p>前提是你在<strong>低點買</strong>，加上人性很容易導致失敗，市面上老師大多數都是從金融海嘯後才出來出書，又遇到大多頭市場所以全部都是對的。</p>
+<p><strong>盲點:忽略買點</strong></p>
+<p>假設以2009存到2019<strong>績效最好</strong></p>
+<p>假設以2006存到2016 <strong>績效稍微差一點</strong></p>
+<p>假設以2004存到2014 <strong>績效會非常差</strong></p>
+<p>心理上還是最大的敵人，靠配股配息會失敗是因為賺得少、賠得多，大金額的帳面虧損下跌顯違反人性，無法抱住。</p>
+<p><strong>優化存股:</strong></p>
+<ol>
+<li>買在最有利的景氣區間</li>
+<li>買成長股，例如當時的玉山金，不是因為他很安全而是他會成長。</li>
+<li>成長股要挑資本額20億以下比較好的成長動能</li>
+<li>成長擺第一 ，股利股息擺第一</li>
+<li>找好機會一次出手，除了巴菲特，年輕的投機客大多數都是基本面與基數面雙主修。</li>
+</ol>
+<h3 id="預測"><a class="header" href="#預測">預測</a></h3>
+<p>這點倒是和經典書一樣的道理，股市不能預測。</p>
+<h2 id="ch5-脫離輸家的反市場思考"><a class="header" href="#ch5-脫離輸家的反市場思考">CH5 脫離輸家的反市場思考</a></h2>
+<h3 id="下單"><a class="header" href="#下單">下單</a></h3>
+<p>下單沒有邏輯，用感覺下單，而不是推論。</p>
+<p>在<strong>趨勢</strong>底下，所有技術分析都是一坨屎</p>
+<h3 id="明牌"><a class="header" href="#明牌">明牌</a></h3>
+<p>聽到的<strong>必死無疑</strong> ，沒有更多資訊，只有一句話，若有資訊也不知道轉了幾手的消息。</p>
+<p>好明牌一定要<strong>有未來性</strong>，還要追查<strong>來源</strong>與<strong>證實理由</strong></p>
+<h3 id="雜誌與市場"><a class="header" href="#雜誌與市場">雜誌與市場</a></h3>
+<p>當市場的氣氛是恐慌時候，一定要當個冷靜的人，因為股票市場大多是賠錢的，而賠錢的人說話不需要聽，股市多頭時候誰講的話都是對的。</p>
+<h2 id="ch6-建立贏家的心理正回饋"><a class="header" href="#ch6-建立贏家的心理正回饋">CH6 建立贏家的心理正回饋</a></h2>
+<p>贏家的心理與技術是兼具的。</p>
+<h3 id="股市癮"><a class="header" href="#股市癮">股市癮</a></h3>
+<p>每天都想進出股市，一定要下單穩+準確的目標。</p>
+<h2 id="ch8-反市場贏家的八個原則"><a class="header" href="#ch8-反市場贏家的八個原則">CH8 反市場贏家的八個原則</a></h2>
+<ol>
+<li>股票市場就是賭 — <strong>不要以為自己可以掌控市場</strong>，很多情況都是運氣。不把股市<strong>當賭</strong>且不停損停利。容易患得失。</li>
+<li>務必和股市預言保持距離 — 應思考是否為正確的真利多。</li>
+<li>財報選股，離爆賺實在太遠 — 唯一要注意的是<strong>資本支出</strong>，代表董監持股信心。</li>
+<li>爆賺，是最健康的股市態度 — <strong>不要有短進短出</strong>的壞毛病</li>
+<li>當然要知道輸家的下一步</li>
+<li>優勢為輸贏之間的最大分水嶺</li>
+<li>贏家第一課:風險報酬比</li>
+<li>要賺一輩子，一定要有全面性的操盤力 — 總體經濟學搭配技術面<strong>比對</strong></li>
+</ol>
+<p>總體經濟弱+技術強=市場超強-&gt;重壓</p>
+<p>總體經濟好+技術弱=市場超漲有短線疑慮-&gt;減碼</p>
+<p>總體經濟好+技術強=安心持有</p>
+<p>總體經濟差+技術弱=空手</p>
+<h1 id="崩潰線型"><a class="header" href="#崩潰線型">崩潰線型</a></h1>
+<h2 id=""><a class="header" href="#"><img src="images/%E5%B4%A9%E6%BD%B0%E7%B7%9A%E5%9E%8B-1.jpg" alt="img" /></a></h2>
+<h2 id="-1"><a class="header" href="#-1"><img src="images/%E5%B4%A9%E6%BD%B05.png" alt="img" /></a></h2>
+<h2 id="正方形黃色發動點第一根藍色圓圈是買點"><a class="header" href="#正方形黃色發動點第一根藍色圓圈是買點">**正方形黃色=發動點第一根；**<strong>藍色圓圈是買點。</strong></a></h2>
+<p>我建議要抓就抓兩根以上的大黑棒，每根超過1%(越多越好、越猛越好)
+基本上已經可以用這個推論出很多更進階甚至更漂亮的買點。</p>
+<p>這招在季線上揚(包括向上震盪)的時候非常關鍵好用
+而且這種買點通常都是投資人最恐慌的時候，但知識就是力量，賺錢就是靠這個。</p>
+<p>只是務必不要太求精準，太精準會錯過許多買點，瞭解其中的涵義更為重要
+例如你可以想想，那空頭怎麼用，反著用就好。</p>
+<p>而這些你如果願意再花點時間回測，我相信你還可以找到更多更好的潛在買點來提升報酬率，祝大家在股市順利！</p>
+<p><img src="images/Blogger.png" alt="img" /></p>
+<hr />
+<pre><code>1. 轉折
+2. 右側交易 轉折處往上往下點數進場 守轉折處
+3. 個股開盤試搓 漲跌停
+4. 外資買賣超 前100名 漲跌停
+5. 外資買超漲停 隔天拉高轉折往下做空 守轉折 反之亦然
+6. 5大 10大法人
+7. 一買一賣 往下買 不是攤平
+
+
+進場策略: 3倍數口數
+選股: 前天 外資買賣超 前100名 漲跌停
+外資買超漲停 隔天拉高轉折往下做空 守轉折 反之亦然
+例如: 高低點10點轉折進場
+作空: 開165 漲到 180高點 後轉折往下到170 進場 or 跌破平盤
+作多: 開165 跌到 150低點 後轉折往上到160 進場 or 漲破平盤
+
+出場策略：(6R )
+1R 2R(損益兩平) 3R(賣一口) 6R 再賣一口 剩餘一口去賭放到尾盤平倉 或是漲跌停第二次打開再平倉
+
+ex:
+現貨8:45 漲停, 但股票期貨沒有漲停那強代表有問題
+9:00 開盤169往下空在168
+RISK 設定 1
+167(1R)
+166(2R) 點到166後就反彈再點到168 就平倉損益兩平
+165(3R)賣一口
+162(6R)再賣一口
+剩餘一口去賭放到尾盤平倉 或是漲跌停第二次打開再平倉
+</code></pre>
+<hr />
+<h2 id="成交量該怎麼看掌握量價關係2大原則抓對進出場點"><a class="header" href="#成交量該怎麼看掌握量價關係2大原則抓對進出場點">成交量該怎麼看？掌握量價關係2大原則抓對進出場點</a></h2>
+<p>https://winsmart.tw/online_teaching/%E6%88%90%E4%BA%A4%E9%87%8F/</p>
+<ol>
+<li>
+<p>透過<code>成交量抓住進出場點位</code>；</p>
+</li>
+<li>
+<p>再來是「風險控管」，我會建議大家可以將單筆損失控制在<code>本金的2%以內</code>；</p>
+</li>
+<li>
+<p>第三個條件是「方法」，利用今天說的短線操作方法「<code>買在小量，出在大量。</code>」
+要如何買在小量其實有很多方法，像是你可以透過趨勢線做單，價格突破趨勢線進場做多，這種時候可能成交量還沒那麼大，漲一段以後行情拉出去爆大量，這個時候就會是你短線停利的地方，不要等到大量之後才去追價，應該是在行情還沒有大根K棒的時候就進場提早卡位。</p>
+</li>
+</ol>
+<pre><code>大量漲不動：多單停利、空單進場
+大量跌不動：空單停利、多單進場
+</code></pre>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../strategy/GA.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../strategy/note.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../strategy/GA.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../strategy/note.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

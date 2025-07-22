@@ -1,0 +1,785 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>常用指令 - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="gdb常用指令"><a class="header" href="#gdb常用指令">GDB常用指令</a></h1>
+<ul>
+<li>GDB dashboard</li>
+</ul>
+<pre><code class="language-sh">https://github.com/cyrus-and/gdb-dashboard
+</code></pre>
+<ul>
+<li>Gdbinit for OS X, iOS and others - x86, x86_64 and ARM</li>
+</ul>
+<pre><code class="language-sh">https://github.com/gdbinit/Gdbinit
+</code></pre>
+<ul>
+<li>dotgdb：關於底層調試和反向工程的gdb腳本集</li>
+</ul>
+<pre><code class="language-sh">https://github.com/dholm/dotgdb
+</code></pre>
+<h2 id="打印記憶體內容"><a class="header" href="#打印記憶體內容">打印記憶體內容</a></h2>
+<p>用gdb查看內存 格式: <code>x /nfu</code> 說明</p>
+<pre><code>x 是 examine 的縮寫
+n表示要顯示的內存單元的個數
+f表示顯示方式, 可取如下值
+x 按十六進制格式顯示變量。
+d 按十進制格式顯示變量。
+u 按十進制格式顯示無符號整型。
+o 按八進制格式顯示變量。
+t 按二進制格式顯示變量。
+a 按十六進制格式顯示變量。
+i 指令地址格式
+c 按字符格式顯示變量。
+f 按浮點數格式顯示變量。
+u表示一個地址單元的長度
+b表示單字節，
+h表示雙字節，
+w表示四字節，
+g表示八字節
+
+Format letters are 
+o(octal), 
+x(hex), 
+d(decimal), 
+u(unsigned decimal),
+t(binary), 
+f(float), 
+a(address), 
+i(instruction), 
+c(char) and 
+s(string).
+Size letters are 
+b(byte), 
+h(halfword), 
+w(word), 
+g(giant, 8 bytes)
+</code></pre>
+<h2 id="舉例"><a class="header" href="#舉例">舉例</a></h2>
+<pre><code class="language-sh">x/3uh buf 
+表示從內存地址buf讀取內容，
+h表示以雙字節為一個單位，
+3表示三個單位，
+u表示按十六進制顯示
+例子：
+n是個局部變量
+Breakpoint 1, main (argc=1, argv=0xbffff3a4) at calc.c:7
+7        int n = atoi(argv[1]);
+(gdb) print &amp;n
+$1 = (int *) 0xbffff2ec
+(gdb) x 0xbffff2ec
+0xbffff2ec:    0x00282ff4
+(gdb) print * (int *) 0xbffff2ec
+$2 = 2633716
+(gdb) x /4xw 0xbffff2ec
+0xbffff2ec:    0x00282ff4    0x080484e0    0x00000000    0xbffff378
+(gdb) x /4dw 0xbffff2ec
+0xbffff2ec:    2633716    134513888    0    -1073745032
+(gdb)
+</code></pre>
+<h2 id="跳轉執行"><a class="header" href="#跳轉執行">跳轉執行</a></h2>
+<p>一般來說，被調試程序會按照程序代碼的運行順序依次執行。 GDB提供了亂序執行的功能，也就是說，GDB可以修改程序的執行順序，可以讓程序執行隨意跳躍。 這個功能可以由GDB的jump命令來完：</p>
+<pre><code class="language-sh">jump &lt;linespec&gt;
+</code></pre>
+<p>指定下一條語句的運行點。可以是文件的行號，可以是file:line格式，可以是+num這種偏移量格式。 表式著下一條運行語句從哪裡開始。</p>
+<pre><code class="language-sh">jump &lt;address&gt;
+這裡的 &lt;address&gt; 是代碼行的內存地址。
+</code></pre>
+<p>注意，jump命令不會改變當前的程序棧中的內容，所以，當你從一個函數跳到另一個函數時，當函數運行完返回時進行彈棧操作時必然會發生錯誤，可能結果還是非常奇怪的，甚至於產生程序Core Dump。 所以最好是同一個函數中進行跳轉。</p>
+<p>熟悉彙編的人都知道，程序運行時，有一個寄存器用於保存當前<code>。 所以，jump命令也就是改變了這個寄存器中的值。 於是，你可以使用「set $pc」來更改跳轉執行的地址。如：</code>set $pc = 0x485`</p>
+<ul>
+<li>以便快速找出所有線程都在做。</li>
+</ul>
+<pre><code class="language-sh">thread apply all bt或 thread apply all print $pc
+</code></pre>
+<ul>
+<li>不斷測試，之後會出現segmentation fault(core dump)</li>
+</ul>
+<pre><code class="language-sh">while ./bug_program ; do echo OK; done
+</code></pre>
+<hr />
+<h2 id="高級技巧"><a class="header" href="#高級技巧">高級技巧</a></h2>
+<p>一些不太廣為人知的技巧...</p>
+<p>加載獨立的調試信息</p>
+<p>gdb調試的時候可以從單獨的符號文件中加載調試信息。</p>
+<pre><code class="language-sh">(gdb) exec-file test
+(gdb) symbol-file test.debug
+</code></pre>
+<p>test是移除了調試信息的可執行文件, test.debug是被移除後單獨存儲的調試信息。參考stackoverflow上的一個問題，可以如下分離調試信息:</p>
+<h3 id="編譯程序帶調試信息-g"><a class="header" href="#編譯程序帶調試信息-g">編譯程序，帶調試信息(-g)</a></h3>
+<pre><code class="language-sh">gcc -g -o test main.c
+```sh
+### 拷貝調試信息到test.debug
+</code></pre>
+<p>objcopy --only-keep-debug test test.debug</p>
+<pre><code>### 移除test中的調試信息
+```sh
+strip --strip-debug --strip-unneeded test
+</code></pre>
+<h3 id="然後啟動gdb"><a class="header" href="#然後啟動gdb">然後啟動gdb</a></h3>
+<pre><code class="language-sh">gdb -s test.debug -e test
+</code></pre>
+<h3 id="或這樣啟動gdb"><a class="header" href="#或這樣啟動gdb">或這樣啟動gdb</a></h3>
+<pre><code class="language-sh">gdb
+(gdb) exec-file test
+(gdb) symbol-file test.debug
+</code></pre>
+<p>分離出的調試信息test.debug還可以鏈接回可執行文件test中</p>
+<pre><code class="language-sh">objcopy --add-gnu-debuglink test.debug test
+</code></pre>
+<p>然後就可以正常用addr2line等需要讀取調試信息的程序了</p>
+<pre><code class="language-sh">addr2line -e test 0x401c23
+</code></pre>
+<p>更多內容可閱讀GDB: Debugging Information in Separate Files。</p>
+<p>在內存和文件系統之間拷貝數據</p>
+<ul>
+<li>
+<p>將內存數據拷貝到文件裡</p>
+<pre><code class="language-sh">dump binary value file_name variable_name
+dump binary memory file_name begin_addr end_addr
+</code></pre>
+</li>
+<li>
+<p>改變內存數據</p>
+<pre><code>使用set命令
+</code></pre>
+</li>
+</ul>
+<h3 id="1-啟動"><a class="header" href="#1-啟動">1. 啟動</a></h3>
+<pre><code class="language-sh">gdb 應用程序名
+gdb 應用程序名 core文件名
+gdb 應用程序名 pid
+gdb --args 應用程序名 應用程序的運行參數
+</code></pre>
+<h3 id="幫助"><a class="header" href="#幫助">幫助:</a></h3>
+<pre><code class="language-sh">help 顯示幫助
+info 顯示程序狀態
+set 修改
+show 顯示gdb狀態
+</code></pre>
+<h3 id="運行及運行環境設置"><a class="header" href="#運行及運行環境設置">運行及運行環境設置:</a></h3>
+<pre><code class="language-sh">set args # 設置運行參數
+show args # 顯示運行參數
+
+set env 變量名 = 值 # 設置環境變量
+unset env [變量名] # 取消環境變量
+show env [變量名] # 顯示環境變量
+
+path 目錄名 # 把目錄添加到查找路徑中
+show paths # 顯示當前查找路徑
+
+cd 目錄 # 切換工作目錄
+pwd # 顯示當前工作目錄
+
+tty /dev/pts/1 # 修改程序的輸入輸出到指定的tty
+set inferior-tty /dev/pts/1 # 修改程序的輸出到指定的tty
+show inferior-tty
+show tty
+
+run 參數 # 運行
+start 參數 # 開始運行，但是會在main函數停止
+attach pid
+detach
+
+kill # 退出
+Ctrl-C # 中斷(SIGINT)
+Ctrl-]
+</code></pre>
+<h3 id="線程操作"><a class="header" href="#線程操作">線程操作:</a></h3>
+<pre><code class="language-sh">info threads # 查看所有線程信息
+thread 線程id # 切換到指定線程
+thread apply [threadno | all ] 參數 # 對所有線程都應用某個命令
+</code></pre>
+<h3 id="子進程調試"><a class="header" href="#子進程調試">子進程調試:</a></h3>
+<pre><code class="language-sh">set follow-fork-mode child|parent # fork後，需要跟蹤誰
+show follow-fork-mode
+set detach-on-flow on|off # fork後，需要兩個都跟蹤嗎
+
+info forks # 顯示所有進程信息
+fork 進程id # 切換到某個進程
+detach-fork 進程id # 不再跟蹤某個進程
+delete fork 進程id # kill某個進程並停止對它的跟蹤
+</code></pre>
+<h3 id="檢查點"><a class="header" href="#檢查點">檢查點:</a></h3>
+<pre><code class="language-sh">checkpoint/restart
+</code></pre>
+<h3 id="查看停止原因"><a class="header" href="#查看停止原因">查看停止原因:</a></h3>
+<pre><code class="language-c">info program
+</code></pre>
+<h3 id="斷點breakpoint-程序運行到某處就會中斷"><a class="header" href="#斷點breakpoint-程序運行到某處就會中斷">斷點(breakpoint): 程序運行到某處就會中斷</a></h3>
+<pre><code class="language-sh">break(b) 行號|函數名|程序地址 | +/-offset | filenam:func [if 條件] # 在指定位置設置斷點
+tbreak ... # 與break相似，只是設置一次斷點
+hbreak ... # 與break相似，只是設置硬件斷點，需要硬件支持
+thbreak ... # 與break相似，只是設置一次性硬件斷點，需要硬件支持
+rbreak 正則表達式 # 給一批滿足條件的函數打上斷點
+info break [斷點號] # 查看某個斷點或所有斷點信息
+
+set breadpoint pending auto|on|off # 查看如果斷點位置沒有找到時行為
+show breakpoint pending
+</code></pre>
+<h3 id="觀察點watchpoint-表達式的值修改時會被中斷"><a class="header" href="#觀察點watchpoint-表達式的值修改時會被中斷">觀察點(watchpoint): 表達式的值修改時會被中斷</a></h3>
+<pre><code class="language-sh">watch 表達式 # 當表達式被寫入，並且值被改變時中斷
+rwatch 表達式 # 當表達式被讀時中斷
+awatch 表達式 # 當表達式被讀或寫時中斷
+info watchpoints
+
+set can-use-hw-watchpoints 值 # 設置使用的硬件觀察點的數
+show can-use-hw-watchpoints
+
+rwatch與awatch需要有硬件支持，另外如果是對局部變量使用watchpoint，那退出作用域時觀察點會自動被刪除
+另外在多線程情況下，gdb的watchpoint只對一個線程有效
+</code></pre>
+<h3 id="捕獲點catchpoint-程序發生某個事件時停止如產生異常時"><a class="header" href="#捕獲點catchpoint-程序發生某個事件時停止如產生異常時">捕獲點(catchpoint): 程序發生某個事件時停止，如產生異常時</a></h3>
+<pre><code class="language-sh">catch 事件名
+事件包括:
+throw # 產生c++異常
+catch # 捕獲到c++異常
+exec/fork/vfork # 一個exec/fork/vfork函數調用,只對HP-UX
+load/unload [庫名] # 加載/卸載共享庫事件，對只HP-UX
+tcatch 事件名 # 一次性catch
+info break
+</code></pre>
+<h3 id="斷點操作"><a class="header" href="#斷點操作">斷點操作:</a></h3>
+<pre><code class="language-sh">clear [函數名|行號] # 刪除斷點，無參數表示刪衛當前位置
+delete [斷點號] # 刪除斷點，無參數表示刪所有斷點
+disable [斷點號]
+enable [斷點號]
+
+
+condition 斷點號 條件 # 增加斷點條件
+condition 斷點號 # 刪除斷點條件
+
+ignore 斷點號 數目 # 忽略斷點n次
+
+commands 斷點號 # 當某個斷點中斷時打印條件
+條件
+end
+</code></pre>
+<ul>
+<li>下面是一個例子,可以一直打印當前的X值：</li>
+</ul>
+<pre><code class="language-sh">commands 3
+printf "X:%d\n",x
+cont
+end
+</code></pre>
+<h3 id="斷點後操作"><a class="header" href="#斷點後操作">斷點後操作:</a></h3>
+<pre><code class="language-sh">continue(c) [忽略次數] # 繼續執行，[忽略前面n次中斷]
+fg [忽略次數] # 繼續執行，[忽略前面n次中斷]
+
+step(s) [n步] # 步進,重複n次
+next(n) [n步] # 前進,重複n次
+
+finish # 完成當前函數調用，一直執行到返回處，並打印返回值
+
+until(u) [位置] # 一直執行到當前行或指定位置，或是當前函數返回
+advance 位置 # 前面到指定位置，如果當前函數返回則停止,與until類似
+
+stepi(si) [n步] # 精確的只執行一個彙編指令,重複n次
+nexti(ni) [n步] # 精確的只執行一個彙編指令,碰到函數跳過,重複n次
+
+set step-mode on|off # on時,如果函數沒有調試信息也跟進
+show step-mode
+</code></pre>
+<h3 id="信號"><a class="header" href="#信號">信號:</a></h3>
+<pre><code class="language-sh">info signals # 列出所有信號的處理方式
+info handle # 同上
+
+handle 信號 方式 # 改變當前處理某個信號的方式
+方式包括:
+nostop # 當信號發生時不停止，只打印信號曾經發生過
+stop # 停止並打印信號
+print # 信號發生時打印
+noprint # 信號發生時不打印
+pass/noignore # gdb充許應用程序看到這個信號
+nopass/ignore # gdb不充許應用程序看到這個信號
+</code></pre>
+<h3 id="線程斷點"><a class="header" href="#線程斷點">線程斷點:</a></h3>
+<pre><code class="language-sh">break 行號信息 thread 線程號 [if 條件] # 只在某個線程內加斷點
+</code></pre>
+<h3 id="線程調度鎖"><a class="header" href="#線程調度鎖">線程調度鎖:</a></h3>
+<pre><code class="language-sh">set scheduler-locking on|off # off時所有線程都可以得到調度,on時只有當前
+show scheduler-locking
+</code></pre>
+<h3 id="幀"><a class="header" href="#幀">幀:</a></h3>
+<pre><code class="language-sh">frame(f) [幀號] # 不帶參數時顯示所有幀信息，帶參數時切換到指定幀
+frame 地址 # 切換到指定地址的幀
+up [n] # 向上n幀
+down [n] # 向下n幀
+
+select-frame 幀號 # 切換到指定幀並且不打印被轉換到的幀的信息
+up-silently [n] # 向上n幀,不顯示幀信息
+down-silently [n] # 向下n幀,不顯示幀信息
+</code></pre>
+<h3 id="調用鏈"><a class="header" href="#調用鏈">調用鏈:</a></h3>
+<pre><code class="language-sh">backtrace(bt) [n|-n|full] # 顯示當前調用鏈,n限制顯示的數目,-n表示顯示後n個,n表示顯示前n個，full的話還會顯示變量信息
+使用 thread apply all bt 就可以顯示所有線程的調用信息
+
+set backtrace past-main on|off
+show backtrace past-main
+
+set backtrace past-entry on|off
+show backtrace past-entry
+
+set backtrace limit n # 限制調用信息的顯示層數
+show backtrace limit
+</code></pre>
+<h3 id="顯示幀信息"><a class="header" href="#顯示幀信息">顯示幀信息:</a></h3>
+<pre><code class="language-sh">info frame # 顯示當前幀信息
+info frame addr # 顯示指定地址的幀信息
+info args # 顯示幀的參數
+info locals # 顯示局部變量信息
+info catch # 顯示本幀異常信息
+</code></pre>
+<h3 id="顯示行號"><a class="header" href="#顯示行號">顯示行號:</a></h3>
+<pre><code class="language-sh">list(l) [行號|函數|文件:行號] # 顯示指定位置的信息,無參數為當前位置
+list - # 顯示當前行之前的信息
+
+list first,last # 從frist顯示到last行
+list ,last # 從當前行顯示到last行
+list frist, # 從指定行顯示
+list + # 顯示上次list後顯示的內容
+list - # 顯示上次list前面的內容
+
+在上面，first和last可以是下面類型:
+行號
++偏移
+-偏移
+文件名:行號
+函數名
+函數名:行號
+
+set listsize n # 修改每次顯示的行數
+show listsize
+</code></pre>
+<h3 id="編輯"><a class="header" href="#編輯">編輯:</a></h3>
+<pre><code class="language-sh">edit [行號|函數|函數名:行號|文件名:函數名] # 編輯指定位置
+</code></pre>
+<h3 id="查找"><a class="header" href="#查找">查找:</a></h3>
+<pre><code class="language-sh">search 表示式 # 向前查找表達式
+reverse-search 表示式 # 向後查找表達式
+</code></pre>
+<h3 id="指定源碼目錄"><a class="header" href="#指定源碼目錄">指定源碼目錄:</a></h3>
+<pre><code class="language-sh">directory(dir) [目錄名] # 指定源文件查找目錄
+show directories
+</code></pre>
+<h3 id="源碼與機器碼"><a class="header" href="#源碼與機器碼">源碼與機器碼：</a></h3>
+<pre><code class="language-sh">info line [函數名|行號] # 顯示指定位置對應的機器碼地址範圍
+disassemble [函數名 | 起始地址 結束地址] # 對指定範圍進行反彙編
+set disassembly-flavor att|intel # 指定彙編代碼形式
+show disassembly-flavor
+</code></pre>
+<h3 id="查看數據"><a class="header" href="#查看數據">查看數據:</a></h3>
+<pre><code class="language-sh">ptype 表達式 # 查看某個表達式的類型
+
+print [/f] [表達式] # 按格式查看錶達式內容,/f是格式化
+
+set print address on|off # 打印時是不是顯示地址信息
+show print address
+
+set print symbol-filename on|off # 是不是顯示符號所在文件等信息
+show print symbol-filename
+
+set print array on | off # 是不是打印數組
+show print array
+
+set print array index on | off # 是不是打印下標
+show print array index
+
+...
+
+表達式可以用下面的修飾符:
+var@n # 表示把var當成長度為n的數組
+filename::var # 表示打印某個函數內的變量,filename可以換成其它範圍符如文件名
+{type} var # 表示把var當成type類型
+</code></pre>
+<h3 id="輸出格式"><a class="header" href="#輸出格式">輸出格式:</a></h3>
+<pre><code class="language-sh">x # 16進制
+d # 10進制
+u # 無符號
+o # 8進制
+t # 2進制
+a # 地址
+c # 字符
+f # 浮點
+</code></pre>
+<h3 id="查看內存"><a class="header" href="#查看內存">查看內存:</a></h3>
+<pre><code class="language-sh">x /nfu 地址 # 查看內存
+n 重複n次
+f 顯示格式,為print使用的格式
+u 每個單元的大小,為
+b byte
+h 2 byte
+w 4 byte
+g 8 byte
+</code></pre>
+<h3 id="自動顯示"><a class="header" href="#自動顯示">自動顯示:</a></h3>
+<pre><code class="language-sh">display [/fmt] 表達式 # 每次停止時都會顯示錶達式,fmt與print的格式一樣,如果是內存地址，那fmt可像 x的參數一樣
+undisplay 顯示編號
+delete display 顯示編號 # 這兩個都是刪附某個顯示
+
+disable display 顯示編號 # 禁止某個顯示
+enable display 顯示編號 # 重顯示
+display # 顯示當前顯示內容
+info display # 查看所有display項
+</code></pre>
+<h3 id="查看變量歷史"><a class="header" href="#查看變量歷史">查看變量歷史：</a></h3>
+<pre><code class="language-sh">show values 變量名 [n] # 顯示變量的上次顯示歷史,顯示n條
+show values 變量名 + # 繼續上次顯示內容
+</code></pre>
+<h3 id="便利變量-聲明變量的別名以方便使用"><a class="header" href="#便利變量-聲明變量的別名以方便使用">便利變量: (聲明變量的別名以方便使用)</a></h3>
+<pre><code class="language-sh">set $foo = *object_ptr # 聲明foo為object_ptr的便利變量
+init-if-undefined $var = expression # 如果var還未定義則賦值
+show convenience
+</code></pre>
+<h3 id="內部便利變量"><a class="header" href="#內部便利變量">內部便利變量：</a></h3>
+<pre><code class="language-sh">$_ 上次x查看的地址
+$__
+$_exitcode 程序垢退出碼
+</code></pre>
+<h3 id="寄存器"><a class="header" href="#寄存器">寄存器:</a></h3>
+<pre><code class="language-sh">into registers # 除了浮點寄存器外所有寄存器
+info all-registers # 所有寄存器
+into registers 寄存器名 # 指定寄存器內容
+info float # 查看浮點寄存器狀態
+info vector # 查看向量寄存器狀態
+
+gdb為一些內部寄存器定義了名字，如$pc(指令),$sp(棧指針),$fp(棧幀),$ps(程序狀態)
+p /x $pc # 查看pc寄存器當前值
+x /i $pc # 查看要執行的下一條指令
+set $sp += 4 # 移動棧指針
+</code></pre>
+<h3 id="內核中信息"><a class="header" href="#內核中信息">內核中信息:</a></h3>
+<pre><code class="language-sh">info udot # 查看內核中user struct信息
+info auxv # 顯示auxv內容(auxv是協助程序啟動的環境變量的)
+</code></pre>
+<h3 id="內存區域限制"><a class="header" href="#內存區域限制">內存區域限制:</a></h3>
+<pre><code class="language-sh">mem 起始地址 結構地址 屬性 # 對[地始地址,結構地址)區域內存進行保護，如果結構地址為0表示地址最大值0xffffffff
+delete mem 編號 # 刪除一個內存保護
+disable mem 編號 # 禁止一個內存保護
+enable mem 編號 # 打開一個內存保護
+info mem # 顯示所有內存保護信息
+</code></pre>
+<h3 id="保護的屬性包括"><a class="header" href="#保護的屬性包括">保護的屬性包括：</a></h3>
+<pre><code class="language-sh">1. 內存訪問模式: ro | wo |rw
+2. 內存訪問大小: 8 | 16 | 32 | 64 如果不限制，表示可按任意大小訪問
+3. 數據緩存: cache | nocache cache表示充許gdb緩存目標內存
+</code></pre>
+<h3 id="內存複製到從文件"><a class="header" href="#內存複製到從文件">內存複製到/從文件:</a></h3>
+<pre><code class="language-sh">dump [格式] memory 文件名 起始地址 結構地址 # 把指定內存段寫到文件
+dump [格式] value 文件名 表達式 # 把指定值寫到文件
+格式包括:
+binary 原始二進制格式
+ihex intel 16進制格式
+srec S-recored格式
+tekhex tektronix 16進制格式
+
+append [binary] memory 文件名 起始地址 結構地址 # 按2進制追加到文件
+append [binary] value 文件名 表達式 # 按2進制追加到文件
+
+restore 文件名 [binary] bias 起始地址 結構地址 # 恢復文件中內容到內存.如果文件內容是原始二進制，需要指定binary參數，不然會gdb自動識別文件格式
+</code></pre>
+<h3 id="產生core-dump文件"><a class="header" href="#產生core-dump文件">產生core dump文件</a></h3>
+<pre><code class="language-sh">gcore [文件名] # 產生core dump文件
+</code></pre>
+<h3 id="字符集"><a class="header" href="#字符集">字符集:</a></h3>
+<pre><code class="language-sh">set target-charset 字符集 # 聲明目標機器的locale,如gdbserver所在機器
+set host-charset 字符集 # 聲明本機的locale
+set charset 字符集 # 聲明目標機和本機的locale
+show charset
+show host-charset
+show target-charset
+</code></pre>
+<h3 id="緩存遠程目標的數據為提高性能可以使用數據緩存不過gdb不知道volatile變量緩存可能會顯示不正確的結構"><a class="header" href="#緩存遠程目標的數據為提高性能可以使用數據緩存不過gdb不知道volatile變量緩存可能會顯示不正確的結構">緩存遠程目標的數據:為提高性能可以使用數據緩存，不過gdb不知道volatile變量，緩存可能會顯示不正確的結構</a></h3>
+<pre><code class="language-sh">set remotecache on | off
+show remotecache
+info dcache # 顯示數據緩存的性能
+</code></pre>
+<h3 id="c預處理宏"><a class="header" href="#c預處理宏">C預處理宏:</a></h3>
+<pre><code class="language-sh">macro expand(exp) 表達式 # 顯示宏展開結果
+macro expand-once(expl) 表達式 # 顯示宏一次展開結果
+macro info 宏名 # 查看宏定義
+</code></pre>
+<h3 id="追蹤tracepoint-就是在某個點設置採樣信息每次經過這個點時只執行已經定義的採樣動作但並不停止最後再根據採樣結果進行分析"><a class="header" href="#追蹤tracepoint-就是在某個點設置採樣信息每次經過這個點時只執行已經定義的採樣動作但並不停止最後再根據採樣結果進行分析">追蹤(tracepoint): 就是在某個點設置採樣信息，每次經過這個點時只執行已經定義的採樣動作但並不停止，最後再根據採樣結果進行分析。</a></h3>
+<h3 id="採樣點定義"><a class="header" href="#採樣點定義">採樣點定義:</a></h3>
+<pre><code class="language-sh">trace 位置 # 定義採樣點
+info tracepoints # 查看採樣點列表
+delete trace 採樣點編號 # 刪除採傑點
+disable trace 採樣點編號 # 禁止採傑點
+enable trace 採樣點編號 # 使用採傑點
+passcount 採樣點編號 [n] # 當通過採樣點 n次後停止,不指定n則在下一個斷點停止
+</code></pre>
+<h3 id="預定義動作預定義動作以actions開始後面是一系列的動作"><a class="header" href="#預定義動作預定義動作以actions開始後面是一系列的動作">預定義動作：預定義動作以actions開始,後面是一系列的動作</a></h3>
+<pre><code class="language-sh">actions [num] # 對採樣點num定義動作
+行為:
+collect 表達式 # 採樣表達式信息
+一些表達式有特殊意義，如$regs(所有寄存器),$args(所有函數參數),$locals(所有局部變量)
+while-steping n # 當執行第n次時的動作,下面跟自己的collect操作
+</code></pre>
+<h3 id="採樣控制"><a class="header" href="#採樣控制">採樣控制:</a></h3>
+<pre><code class="language-sh">tstart # 開始採樣
+tstop # 停止採樣
+tstatus # 顯示當前採樣的數據
+</code></pre>
+<h3 id="使用收集到的數據"><a class="header" href="#使用收集到的數據">使用收集到的數據:</a></h3>
+<pre><code class="language-sh">tfind start # 查找第一個記錄
+tfind end | none # 停止查找
+tfind # 查找下一個記錄
+tfind - # 查找上一個記錄
+tfind tracepoint N # 查找 追蹤編號為N 的下一個記錄
+tfind pc 地址 # 查找代碼在指定地址的下一個記錄
+tfind range 起始,結束
+tfind outside 起始，結構
+tfind line [文件名:]行號
+
+tdump # 顯示當前記錄中追蹤信息
+save-tracepoints 文件名 # 保存追蹤信息到指定文件,後面使用source命令讀
+</code></pre>
+<h3 id="追蹤中的便利變量"><a class="header" href="#追蹤中的便利變量">追蹤中的便利變量:</a></h3>
+<pre><code class="language-sh">$trace_frame # 當前幀編號, -1表示沒有, INT
+$tracepoint # 當前追蹤,INT
+$trace_line # 位置 INT
+$trace_file # 追蹤文件 string, 需要使用output輸出，不應用printf
+$trace_func # 函數名 string
+</code></pre>
+<h3 id="覆蓋技術overray-用於調試過大的文件"><a class="header" href="#覆蓋技術overray-用於調試過大的文件">覆蓋技術(overray): 用於調試過大的文件</a></h3>
+<h3 id="gdb文件"><a class="header" href="#gdb文件">gdb文件:</a></h3>
+<pre><code class="language-sh">file 文件名 # 加載文件,此文件為可執行文件，並且從這裡讀取符號
+core 文件名 # 加載core dump文件
+exec-file 文件名 # 加載可執行文件
+symbol-file 文件名 # 加載符號文件
+add-symbol-file 文件名 地址 # 加載其它符號文件到指定地址
+add-symbol-file-from-memory 地址 # 從指定地址中加載符號
+add-share-symbol-files 庫文件 # 只適用於cygwin
+session 段 地址 # 修改段信息
+info files | target # 打開當前目標信息
+maint info sections # 查看程序段信息
+set truct-readonly-sections on | off # 加快速度
+show truct-readonly-sections
+
+set auto-solib-add on | off # 修改自動加載動態庫的模式
+show auto-solib-add
+
+info share # 打印當前加載的共享庫的地址信息
+share [正則表達式] # 從符合的文件中加載共享庫的正則表達式
+
+set stop-on-solib-events on | off # 設置當加載共享庫時是不是要停止
+show stop-on-solib-events
+
+set solib-absolute-prefix 路徑 # 設置共享庫的絕對路矩，當加載共享庫時會以此路徑下查找(類似chroot)
+show solib-absolute-prefix
+
+set solib-search-path 路徑 # 如果solib-absolute-prefix查找失敗，那將使用這個目錄查找共享庫
+show solib-search-path
+</code></pre>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../gdb/gdb.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../gdb/jemalloc.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../gdb/gdb.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../gdb/jemalloc.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

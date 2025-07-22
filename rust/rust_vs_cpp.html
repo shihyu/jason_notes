@@ -1,0 +1,1065 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rust vs C++語法 - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="變量聲明和賦值"><a class="header" href="#變量聲明和賦值">變量聲明和賦值</a></h3>
+<p>在Rust中，使用let關鍵字聲明變量，使用等號進行賦值。類型可以自動推斷或顯式指定。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 10; // 自動推斷類型
+let y: f64 = 3.14; // 顯式指定類型
+<span class="boring">}</span></code></pre></pre>
+<p>在C ++中，使用類型名稱聲明變量，使用等號進行賦值。</p>
+<pre><code class="language-c++">int x = 10;
+double y = 3.14;
+
+</code></pre>
+<h2 id="整數運算"><a class="header" href="#整數運算">整數運算</a></h2>
+<p>在Rust中，整數運算符號使用和C ++相同。但是，除法操作符號使用/而不是C ++中的整數除法符號//。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 10;
+let y = 3;
+let z = x + y;
+let w = x * y;
+let q = x / y; // 此處使用/操作符號
+<span class="boring">}</span></code></pre></pre>
+<p>在C ++中，整數運算符號使用和Rust相同。</p>
+<pre><code class="language-c++">int x = 10;
+int y = 3;
+int z = x + y;
+int w = x * y;
+int q = x / y;
+</code></pre>
+<h3 id="浮點數運算"><a class="header" href="#浮點數運算">浮點數運算</a></h3>
+<p>在Rust中，浮點數運算符號使用和C ++相同。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 3.14;
+let y = 2.71;
+let z = x + y;
+let w = x * y;
+let q = x / y;
+<span class="boring">}</span></code></pre></pre>
+<p>在C ++中，浮點數運算符號使用和Rust相同。</p>
+<pre><code class="language-c++">double x = 3.14;
+double y = 2.71;
+double z = x + y;
+double w = x * y;
+double q = x / y;
+</code></pre>
+<h3 id="布爾運算"><a class="header" href="#布爾運算">布爾運算</a></h3>
+<p>在Rust中，布爾運算符號使用and（&amp;&amp;）和or（||）。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = true;
+let y = false;
+let z = x &amp;&amp; y;
+let w = x || y;
+<span class="boring">}</span></code></pre></pre>
+<p>在C ++中，布爾運算符號使用and（&amp;&amp;）和or（||）。</p>
+<pre><code class="language-c++">bool x = true;
+bool y = false;
+bool z = x &amp;&amp; y;
+bool w = x || y;
+</code></pre>
+<h3 id="條件語句"><a class="header" href="#條件語句">條件語句</a></h3>
+<p>在Rust中，if / else語句可以作為表達式使用，並且必須包含在大括號內。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 10;
+if x &lt; 5 {
+    println!("x is less than 5");
+} else {
+    println!("x is greater than or equal to 5");
+}
+<span class="boring">}</span></code></pre></pre>
+<p>在C ++中，if / else語句不能作為表達式使用，並且可以省略大括號。</p>
+<pre><code class="language-c++">int x = 10;
+if (x &lt; 5) {
+    cout &lt;&lt; "x is less than 5" &lt;&lt; endl;
+} else {
+    cout &lt;&lt; "x is greater than or equal to 5" &lt;&lt; endl;
+}
+</code></pre>
+<h3 id="迴圈"><a class="header" href="#迴圈">迴圈</a></h3>
+<p>迴圈 在Rust中，for循環可用於迭代集合，並且可以使用range運算符號創建集合。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for i in 0..5 {
+    println!("{}", i);
+}
+
+let arr = [1, 2, 3, 4, 5];
+for i in arr.iter() {
+    println!("{}", i);
+}
+<span class="boring">}</span></code></pre></pre>
+<p>在C ++中，for循環可用於迭代集合，並且可以使用range運算符號創建集合。</p>
+<pre><code class="language-cpp">for (int i = 0; i &lt; 5; i++) {
+    cout &lt;&lt; i &lt;&lt; endl;
+}
+
+int arr[] = {1, 2, 3, 4, 5};
+for (int i : arr) {
+    cout &lt;&lt; i &lt;&lt; endl;
+}
+</code></pre>
+<h3 id="函數定義和調用"><a class="header" href="#函數定義和調用">函數定義和調用</a></h3>
+<p>在Rust中，函數定義使用fn關鍵字，並且可以指定參數和返回類型。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn add(x: i32, y: i32) -&gt; i32 {
+    x + y
+}
+
+let result = add(2, 3);
+<span class="boring">}</span></code></pre></pre>
+<p>在C ++中，函數定義使用函數名稱，並且可以指定參數和返回類型。</p>
+<pre><code class="language-cpp">int add(int x, int y) {
+    return x + y;
+}
+
+int result = add(2, 3);
+</code></pre>
+<h3 id="字符串處理"><a class="header" href="#字符串處理">字符串處理</a></h3>
+<p>在Rust中，字符串是utf8編碼的unicode字符集，使用&amp;str類型表示。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s1 = "hello";
+let s2 = "world";
+let s3 = format!("{} {}", s1, s2);
+println!("{}", s3);
+<span class="boring">}</span></code></pre></pre>
+<p>在C ++中，字符串是char類型的數組，使用std :: string類型表示。</p>
+<pre><code class="language-cpp">#include &lt;string&gt;
+
+std::string s1 = "hello";
+std::string s2 = "world";
+std::string s3 = s1 + " " + s2;
+cout &lt;&lt; s3 &lt;&lt; endl;
+</code></pre>
+<h3 id="指標"><a class="header" href="#指標">指標</a></h3>
+<p>在Rust中，指針是具有所有權語義的智能指針，使用&amp;和*運算符號。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 10;
+let p = &amp;x;
+let y = *p;
+<span class="boring">}</span></code></pre></pre>
+<p>在C ++中，指針是一個可以存儲變量地址的變量，使用*和&amp;運算符號。</p>
+<pre><code class="language-cpp">int x = 10;
+int* p = &amp;x;
+int y = *p;
+</code></pre>
+<h3 id="類別"><a class="header" href="#類別">類別</a></h3>
+<p>在Rust中，類是結構體struct和實現trait的組合，使用impl關鍵字實現方法。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Person {
+    name: String,
+    age: i32,
+}
+
+impl Person {
+    fn new(name: &amp;str, age: i32) -&gt; Self {
+        Person { name: name.to_string(), age }
+}
+
+fn say_hello(&amp;self) {
+    println!("Hello, my name is {} and I am {} years old.", self.name, self.age);
+}
+    
+let person = Person::new("Alice", 30);
+person.say_hello();
+<span class="boring">}</span></code></pre></pre>
+<p>在C ++中，類是具有成員變量和成員函數的結構，使用class關鍵字定義。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+class Person {
+public:
+    Person(const std::string&amp; name, int age) : name(name), age(age) {}
+
+    void say_hello() {
+        std::cout &lt;&lt; "Hello, my name is " &lt;&lt; name &lt;&lt; " and I am " &lt;&lt; age &lt;&lt; " years old." &lt;&lt; std::endl;
+    }
+
+private:
+    std::string name;
+    int age;
+};
+
+Person person("Alice", 30);
+person.say_hello();
+</code></pre>
+<h3 id="命名空間"><a class="header" href="#命名空間">命名空間</a></h3>
+<p>在C ++中，命名空間是一種將名稱分類為一個範圍的方式，可以避免名稱衝突。</p>
+<pre><code class="language-cpp">namespace math {
+    const double PI = 3.14159265358979323846;
+
+    double sin(double x) {
+        // ...
+    }
+
+    double cos(double x) {
+        // ...
+    }
+}
+
+double x = math::PI;
+double y = math::sin(x);
+</code></pre>
+<p>在Rust中，沒有傳統意義上的命名空間，但可以使用模塊來組織代碼，並且可以使用pub關鍵字公開模塊內的項目。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>mod math {
+    pub const PI: f64 = 3.14159265358979323846;
+
+    pub fn sin(x: f64) -&gt; f64 {
+        // ...
+    }
+
+    pub fn cos(x: f64) -&gt; f64 {
+        // ...
+    }
+}
+
+let x = math::PI;
+let y = math::sin(x);
+<span class="boring">}</span></code></pre></pre>
+<h3 id="結構體"><a class="header" href="#結構體">結構體</a></h3>
+<p>在C ++中，結構體是一種自定義的數據類型，可以包含多個成員變量。</p>
+<pre><code class="language-cpp">struct Point {
+    double x;
+    double y;
+};
+
+Point p = { 1.0, 2.0 };
+double x = p.x;
+double y = p.y;
+</code></pre>
+<p>在Rust中，結構體struct也是一種自定義的數據類型，可以包含多個字段。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Point {
+    x: f64,
+    y: f64,
+}
+
+let p = Point { x: 1.0, y: 2.0 };
+let x = p.x;
+let y = p.y;
+<span class="boring">}</span></code></pre></pre>
+<h3 id="枚舉"><a class="header" href="#枚舉">枚舉</a></h3>
+<p>在C ++中，枚舉是一種自定義的數據類型，可以包含多個常量值。</p>
+<pre><code class="language-cpp">enum Color {
+    Red,
+    Green,
+    Blue,
+};
+
+Color c = Color::Green;
+</code></pre>
+<p>在Rust中，枚舉enum也是一種自定義的數據類型，可以包含多個變體variant。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Color {
+    Red,
+    Green,
+    Blue,
+}
+
+let c = Color::Green;
+<span class="boring">}</span></code></pre></pre>
+<h3 id="泛型"><a class="header" href="#泛型">泛型</a></h3>
+<p>在C ++中，泛型是一種將代碼寫成可以處理多種數據類型的方式。</p>
+<pre><code class="language-cpp">template &lt;typename T&gt;
+T max(T a, T b) {
+    return a &gt; b ? a : b;
+}
+
+int x = max(1, 2);
+double y = max(1.0, 2.0);
+</code></pre>
+<p>在Rust中，泛型是一種類型參數化的方式。</p>
+<pre><pre class="playground"><code class="language-rust">fn max&lt;T: std::cmp::PartialOrd&gt;(a: T, b: T) -&gt; T {
+    if a &gt; b {
+        a
+    } else {
+        b
+    }
+}
+
+fn main() {
+    let x = max(1.0f32, 2.0f32);
+    let y = max(1.0f64, 2.0f64);
+}</code></pre></pre>
+<h3 id="介面"><a class="header" href="#介面">介面</a></h3>
+<p>在Rust中，Trait是一種定義方法簽名的接口。</p>
+<pre><pre class="playground"><code class="language-rust">trait Animal {
+    fn name(&amp;self) -&gt; &amp;'static str;
+    fn make_sound(&amp;self) -&gt; &amp;'static str;
+}
+
+struct Dog;
+impl Animal for Dog {
+    fn name(&amp;self) -&gt; &amp;'static str {
+        "Dog"
+    }
+
+    fn make_sound(&amp;self) -&gt; &amp;'static str {
+        "Bark"
+    }
+}
+
+struct Cat;
+impl Animal for Cat {
+    fn name(&amp;self) -&gt; &amp;'static str {
+        "Cat"
+    }
+
+    fn make_sound(&amp;self) -&gt; &amp;'static str {
+        "Meow"
+    }
+}
+
+fn main() {
+    let animals: [&amp;dyn Animal; 2] = [&amp;Dog, &amp;Cat];
+
+    for animal in animals.iter() {
+        println!("{} says {}", animal.name(), animal.make_sound());
+    }
+}</code></pre></pre>
+<p>在C ++中，類似的概念是接口interface。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+class Animal {
+public:
+    virtual const char* name() = 0;
+    virtual const char* make_sound() = 0;
+};
+
+class Dog : public Animal {
+public:
+    const char* name() override { return "Dog"; }
+    const char* make_sound() override { return "Bark"; }
+};
+
+class Cat : public Animal {
+public:
+    const char* name() override { return "Cat"; }
+    const char* make_sound() override { return "Meow"; }
+};
+
+int main() {
+    Animal* animals[2] = { new Dog(), new Cat() };
+
+    for (int i = 0; i &lt; 2; i++) {
+        std::cout &lt;&lt; animals[i]-&gt;name() &lt;&lt; " says " &lt;&lt; animals[i]-&gt;make_sound() &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="ownership-and-borrowing"><a class="header" href="#ownership-and-borrowing">Ownership and Borrowing</a></h3>
+<p>在 Rust 中，每個值都有一個擁有者(Owner)，該擁有者負責管理其值的生命週期，並自動在不再需要該值時銷毀它。</p>
+<pre><pre class="playground"><code class="language-rust">fn print_string(s: String) {
+    println!("{}", s);
+}
+
+fn main() {
+    let s = String::from("Hello, Rust!");
+
+    print_string(s);
+
+    // s has been moved and is no longer valid
+    // println!("{}", s); // error: use of moved value: `s`
+}</code></pre></pre>
+<p>在C++中，類似的概念是對象的所有權(Ownership)，但是C++沒有自動回收機制，因此需要使用智能指針等手段來管理資源的生命週期。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+#include &lt;string&gt;
+
+void print_string(const std::string&amp; s) {
+    std::cout &lt;&lt; s &lt;&lt; std::endl;
+}
+
+int main() {
+    std::unique_ptr&lt;std::string&gt; s = std::make_unique&lt;std::string&gt;("Hello, C++!");
+
+    print_string(*s);
+
+    // s will be automatically destroyed when it goes out of scope
+    return 0;
+}
+</code></pre>
+<p>在 Rust 中，為了避免所有權所有權被移動，可以使用引用(Reference)。引用是對某個值的參考，而不擁有該值本身。</p>
+<pre><pre class="playground"><code class="language-rust">fn print_string(s: &amp;String) {
+    println!("{}", s);
+}
+
+fn main() {
+    let s = String::from("Hello, Rust!");
+
+    print_string(&amp;s);
+
+    // s is still valid
+    println!("{}", s);
+}</code></pre></pre>
+<p>在C++中，引用與Rust中的引用類似，但在C++中引用是非空的，而且可以在函數中更改值。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+void print_string(const std::string&amp; s) {
+    std::cout &lt;&lt; s &lt;&lt; std::endl;
+}
+
+int main() {
+    std::string s = "Hello, C++!";
+
+    print_string(s);
+
+    // s is still valid
+    std::cout &lt;&lt; s &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p>在Rust中，為了同時允許讀取和寫入某個值，可以使用可變引用(Mutable Reference)。</p>
+<pre><pre class="playground"><code class="language-rust">fn add_one(mut x: &amp;mut i32) {
+    *x += 1;
+}
+
+fn main() {
+    let mut x = 0;
+
+    add_one(&amp;mut x);
+
+    // x is now 1
+    println!("{}", x);
+}</code></pre></pre>
+<p>在C++中，類似的概念是指針(Pointer)。指針是一種特殊的變數，其值是另一個變數的地址。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+void add_one(int* x) {
+    (*x)++;
+}
+
+int main() {
+    int x = 0;
+
+    add_one(&amp;x);
+
+    // x is now 1
+    std::cout &lt;&lt; x &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<h3 id="pattern-matching"><a class="header" href="#pattern-matching">Pattern Matching</a></h3>
+<p>在 Rust 中，可以使用模式匹配(Pattern Matching)來進行分支處理。模式匹配可以用於匹配不同類型的值，比如整數、枚舉、結構體、元組等。</p>
+<pre><pre class="playground"><code class="language-rust">enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+}
+
+fn handle_message(msg: Message) {
+    match msg {
+        Message::Quit =&gt; println!("Quit"),
+        Message::Move { x, y } =&gt; println!("Move to ({}, {})", x, y),
+        Message::Write(text) =&gt; println!("Write '{}'", text),
+    }
+}
+
+fn main() {
+    let msg1 = Message::Quit;
+    let msg2 = Message::Move { x: 10, y: 20 };
+    let msg3 = Message::Write(String::from("Hello"));
+
+    handle_message(msg1);
+    handle_message(msg2);
+    handle_message(msg3);
+}</code></pre></pre>
+<p>在C++中，也可以使用switch語句來進行分支處理，但是switch語句只能匹配整數值。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+enum class Message { Quit, Move, Write };
+
+struct MoveMessage {
+    int x, y;
+};
+
+void handle_message(Message msg) {
+    switch (msg) {
+        case Message::Quit:
+            std::cout &lt;&lt; "Quit" &lt;&lt; std::endl;
+            break;
+        case Message::Move:
+            {
+                MoveMessage move_msg = {10, 20};
+                std::cout &lt;&lt; "Move to (" &lt;&lt; move_msg.x &lt;&lt; ", " &lt;&lt; move_msg.y &lt;&lt; ")" &lt;&lt; std::endl;
+            }
+            break;
+        case Message::Write:
+            std::cout &lt;&lt; "Write 'Hello'" &lt;&lt; std::endl;
+            break;
+    }
+}
+
+int main() {
+    Message msg1 = Message::Quit;
+    Message msg2 = Message::Move;
+    Message msg3 = Message::Write;
+
+    handle_message(msg1);
+    handle_message(msg2);
+    handle_message(msg3);
+
+    return 0;
+}
+</code></pre>
+<p>在Rust中，模式匹配也可以用於解構(Deconstruction)元組和結構體。</p>
+<pre><pre class="playground"><code class="language-rust">struct Point {
+    x: i32,
+    y: i32,
+}
+
+fn main() {
+    let point = Point { x: 10, y: 20 };
+
+    match point {
+        Point { x, y } =&gt; println!("({}, {})", x, y),
+    }
+
+    let tuple = (1, "hello");
+
+    match tuple {
+        (i, s) =&gt; println!("({}, {})", i, s),
+    }
+}</code></pre></pre>
+<p>在C++中，也可以使用解構來獲取元組和結構體的成員。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;tuple&gt;
+#include &lt;string&gt;
+
+struct Point {
+    int x, y;
+};
+
+int main() {
+    Point point = {10, 20};
+    std::tie(std::ignore, std::ignore, point.y) = point;
+
+    std::cout &lt;&lt; "(" &lt;&lt; point.x &lt;&lt; ", " &lt;&lt; point.y &lt;&lt; ")" &lt;&lt; std::endl;
+
+    std::tuple&lt;int, std::string&gt; tuple = std::make_tuple(1, "hello");
+    int i;
+    std::string s;
+    std::tie(i, s) = tuple;
+
+    std::cout &lt;&lt; "(" &lt;&lt; i &lt;&lt; ", " &lt;&lt; s &lt;&lt; ")" &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<h3 id="智能指針"><a class="header" href="#智能指針">智能指針</a></h3>
+<p>Rust 中有三種智能指針：Box、Rc、Arc。</p>
+<p>Box<T> 表示一個指向堆上的 T 類型值的指針，它是唯一所有權的。Box<T> 主要用於解決擁有大量資料或者需要在運行時創建出來的資料的所有權問題。Box<T> 的內存佈局和指針類似，只是多了一個 vtable 指向 T 的方法表。</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = Box::new(42);
+
+    println!("{}", x);
+}</code></pre></pre>
+<p>在 C++ 中也有智能指針，主要有 unique_ptr、shared_ptr 和 weak_ptr。</p>
+<p>unique_ptr<T> 表示一個唯一所有權的指針，它負責釋放 T 類型對象的內存。unique_ptr<T> 可以通過 move 轉移所有權，也可以使用 std::move 函數轉移所有權。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+int main() {
+    std::unique_ptr&lt;int&gt; x(new int(42));
+
+    std::cout &lt;&lt; *x &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p>shared_ptr<T> 表示一個共享所有權的指針，多個 shared_ptr<T> 可以指向同一個 T 類型對象，它們共享 T 類型對象的所有權。shared_ptr<T> 使用引用計數的方式來實現所有權管理，當引用計數為 0 時，shared_ptr<T> 會自動釋放對象的內存。</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+int main() {
+    std::shared_ptr&lt;int&gt; x(new int(42));
+
+    std::cout &lt;&lt; *x &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p>weak_ptr<T> 表示一個弱引用指針，它不擁有對 T 類型對象的所有權，可以從一個 shared_ptr<T> 構造出來。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+int main() {
+    std::shared_ptr&lt;int&gt; x(new int(42));
+    std::weak_ptr&lt;int&gt; y(x);
+
+    std::cout &lt;&lt; *x &lt;&lt; std::endl;
+    std::cout &lt;&lt; *y.lock() &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<h3 id="trait-和-interface"><a class="header" href="#trait-和-interface">Trait 和 Interface</a></h3>
+<p>在 Rust 中，Trait 是一個定義方法的集合，可以實現多態性。一個類型可以實現多個 Trait，實現 Trait 的類型必須實現 Trait 中定義的方法。Trait 可以與泛型一起使用，讓函數和類型更加通用。</p>
+<pre><pre class="playground"><code class="language-rust">trait Printable {
+    fn print(&amp;self);
+}
+
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl Printable for Point {
+    fn print(&amp;self) {
+        println!("({}, {})", self.x, self.y);
+    }
+}
+
+fn print_all&lt;T: Printable&gt;(list: Vec&lt;T&gt;) {
+    for item in list {
+        item.print();
+    }
+}
+
+fn main() {
+    let list = vec![Point { x: 1, y: 2 }, Point { x: 3, y: 4 }];
+    print_all(list);
+}</code></pre></pre>
+<p>在 C++ 中，Interface 是一個包含純虛函數的抽象基類，純虛函數沒有實現，需要子類實現。Interface 可以實現多態性，也可以與泛型一起使用，讓函數和類型更加通用。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+class Printable {
+public:
+    virtual void print() = 0;
+};
+
+class Point : public Printable {
+public:
+    Point(int x, int y) : x(x), y(y) {}
+
+    void print() override {
+        std::cout &lt;&lt; "(" &lt;&lt; x &lt;&lt; ", " &lt;&lt; y &lt;&lt; ")" &lt;&lt; std::endl;
+    }
+
+private:
+    int x, y;
+};
+
+template&lt;typename T&gt;
+void print_all(std::vector&lt;T&gt;&amp; list) {
+    for (auto&amp; item : list) {
+        item.print();
+    }
+}
+
+int main() {
+    std::vector&lt;Point&gt; list = { Point(1, 2), Point(3, 4) };
+    print_all(list);
+
+    return 0;
+}
+</code></pre>
+<h3 id="oo"><a class="header" href="#oo">OO</a></h3>
+<p>Rust 支持面向對象編程，但與 C++ 相比，其面向對象特性較為簡化。Rust 的結構體可以包含方法，但是不能繼承和多態，也沒有 C++ 中的訪問控制和友元等機制。</p>
+<pre><pre class="playground"><code class="language-rust">struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl Circle {
+    fn area(&amp;self) -&gt; f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+}
+
+fn main() {
+    let c = Circle { x: 0.0, y: 0.0, radius: 2.0 };
+    println!("The area of the circle is {}", c.area());
+}</code></pre></pre>
+<p>C++</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+
+class Circle {
+private:
+    double x;
+    double y;
+    double radius;
+
+public:
+    Circle(double _x, double _y, double _r) : x(_x), y(_y), radius(_r) {}
+
+    double area() {
+        return M_PI * (radius * radius);
+    }
+};
+
+int main() {
+    Circle c(0.0, 0.0, 2.0);
+    std::cout &lt;&lt; "The area of the circle is " &lt;&lt; c.area() &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre>
+<h3 id="異常處理"><a class="header" href="#異常處理">異常處理</a></h3>
+<p>Rust 和 C++ 都支援異常處理，但是 Rust 推崇使用 Result 類型來處理錯誤，而 C++ 則常常使用 try-catch 塊來捕獲和處理異常。</p>
+<pre><pre class="playground"><code class="language-rust">use std::fs::File;
+use std::io::prelude::*;
+use std::io::Error;
+
+fn read_file(path: &amp;str) -&gt; Result&lt;String, Error&gt; {
+    let mut file = File::open(path)?;
+    let mut contents = String::new();
+    file.read_to_string(&amp;mut contents)?;
+    Ok(contents)
+}
+
+fn main() {
+    let path = "test.txt";
+    match read_file(path) {
+        Ok(contents) =&gt; println!("The contents of the file are:\n{}", contents),
+        Err(err) =&gt; eprintln!("Error reading file: {}", err),
+    }
+}</code></pre></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+void read_file(const std::string&amp; path) {
+    std::ifstream file(path);
+    if (!file.is_open()) {
+        throw std::runtime_error("Error opening file");
+    }
+    std::string line;
+    while (getline(file, line)) {
+        std::cout &lt;&lt; line &lt;&lt; std::endl;
+    }
+}
+
+int main() {
+    std::string path = "test.txt";
+    try {
+        read_file(path);
+    } catch (const std::exception&amp; e) {
+        std::cerr &lt;&lt; "Exception caught: " &lt;&lt; e.what() &lt;&lt; std::endl;
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="rust-中的-trait"><a class="header" href="#rust-中的-trait">Rust 中的 Trait</a></h2>
+<p>在 Rust 中，<code>Trait</code> 是一種定義共享行為的方式，可以看作是 C++ 中的介面（interface）或抽象基類（abstract base class）。它們用於定義一組必須由實現該 trait 的類型提供的方法。以下是 Rust 中 <code>Trait</code> 和 C++ 中類似概念的一些比較：</p>
+<p>在 Rust 中，<code>Trait</code> 定義了一組方法，這些方法可以由實現該 trait 的類型提供。以下是一個簡單的例子：</p>
+<pre><pre class="playground"><code class="language-rust">trait Animal {
+    fn make_sound(&amp;self);
+}
+
+struct Dog;
+
+impl Animal for Dog {
+    fn make_sound(&amp;self) {
+        println!("Woof!");
+    }
+}
+
+struct Cat;
+
+impl Animal for Cat {
+    fn make_sound(&amp;self) {
+        println!("Meow!");
+    }
+}
+
+fn main() {
+    let dog = Dog;
+    let cat = Cat;
+    
+    dog.make_sound();
+    cat.make_sound();
+}</code></pre></pre>
+<h3 id="c-中的介面抽象基類"><a class="header" href="#c-中的介面抽象基類">C++ 中的介面/抽象基類</a></h3>
+<p>在 C++ 中，可以使用抽象基類來實現類似的功能。抽象基類是包含純虛擬函式的類，這些函數必須由派生類實現。以下是一個簡單的例子：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+class Animal {
+public:
+    virtual void makeSound() const = 0; // 純虛函數
+    virtual ~Animal() = default; // 虛析構函數
+};
+
+class Dog : public Animal {
+public:
+    void makeSound() const override {
+        std::cout &lt;&lt; "Woof!" &lt;&lt; std::endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void makeSound() const override {
+        std::cout &lt;&lt; "Meow!" &lt;&lt; std::endl;
+    }
+};
+
+int main() {
+    Dog dog;
+    Cat cat;
+    
+    dog.makeSound();
+    cat.makeSound();
+    
+    return 0;
+}
+</code></pre>
+<h3 id="比較"><a class="header" href="#比較">比較</a></h3>
+<ol>
+<li><strong>定義和實現</strong>：
+<ul>
+<li>在 Rust 中，使用 <code>trait</code> 關鍵字定義 trait，使用 <code>impl</code> 關鍵字為類型實現該 trait。</li>
+<li>在 C++ 中，使用抽象基類和純虛擬函式來定義介面，並在派生類中實現這些虛擬函式。</li>
+</ul>
+</li>
+<li><strong>靜態 vs 動態分發</strong>：
+<ul>
+<li>Rust 默認使用靜態分發（即在編譯時決定函數呼叫）。可以使用特徵對象（<code>dyn Trait</code>）來實現動態分發。</li>
+<li>C++ 使用虛擬函式表（vtable）來實現動態分發。</li>
+</ul>
+</li>
+<li><strong>所有權和生命週期</strong>：
+<ul>
+<li>Rust 中的 trait 和實現需要遵循所有權和生命週期規則，以確保記憶體安全。</li>
+<li>C++ 中的抽象基類和派生類遵循不同的記憶體管理模型，需要顯式處理記憶體分配和釋放。</li>
+</ul>
+</li>
+<li><strong>泛型和特化</strong>：
+<ul>
+<li>Rust 的 trait 可以與泛型結合使用，提供更多的靈活性和擴展性。</li>
+<li>C++ 中的範本和特化也提供了類似的功能，但實現方式和語法不同。</li>
+</ul>
+</li>
+</ol>
+<p>通過這些比較，可以看出 Rust 的 trait 和 C++ 的抽象基類在概念上類似，但在具體實現和使用方式上有顯著差異。</p>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../rust/rust_memory.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../rust/rust_file_format.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../rust/rust_memory.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../rust/rust_file_format.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

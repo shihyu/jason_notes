@@ -1,0 +1,756 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Go併發 - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="go-的並發goroutine-與-channel-介紹"><a class="header" href="#go-的並發goroutine-與-channel-介紹">Go 的並發：Goroutine 與 Channel 介紹</a></h1>
+<p>Goroutine 像是 Go 語言的 thread, 使 Go 建立多工處理, 搭配 Channel 使 Goroutine 操作簡單化, 本文介紹 Goroutine 及 Channel 的使用方式。</p>
+<blockquote>
+<p>範例程式碼可以在 <a href="https://github.com/peterhpchen/golang-concurrency-example">golang-concurrency-example</a> 中找到，每個程式第一行可以找到其範例檔名。</p>
+</blockquote>
+<h2 id="單執行緒"><a class="header" href="#單執行緒">單執行緒</a></h2>
+<p>在單執行緒下，每行程式碼都會依照順序執行。</p>
+<pre><code class="language-go">// single-thread.go
+func say(s string) {
+    for i := 0; i &lt; 5; i++ {
+        time.Sleep(100 * time.Millisecond)
+        fmt.Println(s)
+    }
+}
+
+func main() {g
+    say("world")
+    say("hello")
+}
+world
+world
+world
+world
+world
+hello
+hello
+hello
+hello
+hello
+</code></pre>
+<p>上例會先執行完 <code>say("world")</code> 後再執行 <code>say("hello")</code>。</p>
+<p><img src="images/single-thread.png" alt="" /></p>
+<p>但有時個別方法的處理是沒有先後順序的，這時善用多執行緒就可以大大的提升效率。</p>
+<h2 id="多執行緒"><a class="header" href="#多執行緒">多執行緒</a></h2>
+<p>在多執行緒下，最多可以同時執行與 CPU 數相等的 Goroutine。</p>
+<pre><code class="language-go">// multi-thread.go
+func main() {
+    go say("world")
+    say("hello")
+}
+world
+hello
+hello
+world
+world
+hello
+hello
+world
+world
+hello
+</code></pre>
+<p>如此一來, <code>say("world")</code>會跑在另一個執行緒(Goroutine)上，使其並行執行。</p>
+<p><img src="images/multi-thread.png" alt="" /></p>
+<blockquote>
+<p>CPU 數可以使用 <code>runtime.NumCPU()</code> 取得。</p>
+</blockquote>
+<h2 id="goroutine-介紹"><a class="header" href="#goroutine-介紹">Goroutine 介紹</a></h2>
+<p>可以想成建立了一個 Goroutine 就是建立了一個新的 Thread。</p>
+<pre><code class="language-go">go f(x, y, z)
+</code></pre>
+<ul>
+<li>以 <code>go</code> 開頭的函式叫用可以使 <code>f</code> 跑在另一個 Goroutine 上</li>
+<li><code>f</code>, <code>x</code>, <code>y</code>, <code>z</code> 取自目前的 goroutine</li>
+<li><code>main</code> 函式也是跑在 Goroutine 上</li>
+<li>Main Goroutine 執行結束後, 其他的 Goroutine 會跟著強制關閉</li>
+</ul>
+<h2 id="等待"><a class="header" href="#等待">等待</a></h2>
+<p>多執行緒下，經常需要處理的是執行緒之間的狀態管理，其中一個經常發生的事情是<strong>等待</strong>，例如A執行緒需要等B執行緒計算並取得資料後才能繼續往下執行，在這情況下<strong>等待</strong>就變得十分重要。</p>
+<h3 id="應該等待的時機"><a class="header" href="#應該等待的時機">應該等待的時機</a></h3>
+<pre><code class="language-go">func main() {
+    go say("world")
+    go say("hello")
+}
+</code></pre>
+<p>這個狀態下會有三個 Goroutine:</p>
+<ul>
+<li><code>main</code></li>
+<li><code>say("world")</code></li>
+<li><code>say("hello")</code></li>
+</ul>
+<p>這裡的問題發生在 <code>main</code> Goroutine 結束時，另外兩個 <code>say</code> Goroutine 會被強制關閉導致結果錯誤，這時就需要等待其他的 Goroutine 結束後 <code>main</code> Goroutine 才能結束。</p>
+<p>接下來會介紹三種等待的方式，並且分析其利弊：</p>
+<ul>
+<li><code>time.Sleep</code>: 休眠指定時間</li>
+<li><code>sync.WaitGroup</code>: 等待直到指定數量的 <code>Done()</code> 叫用</li>
+<li>Channel 阻塞: 使用 Channel 阻塞機制，使用接收時等待的特性避免執行緒繼續執行</li>
+</ul>
+<h4 id="timesleep"><a class="header" href="#timesleep">time.Sleep</a></h4>
+<p>使 Goroutine 休眠，讓其他的 Goroutine 在 main 結束前有時間執行完成。</p>
+<pre><code class="language-go">// sleep.go
+func main() {
+    go say("world")
+    go say("hello")
+
+    time.Sleep(5 * time.Second)
+}
+</code></pre>
+<p><img src="images/sleep.png" alt="" /></p>
+<p>缺點：</p>
+<ul>
+<li>休息指定時間可能會比 Goroutine 需要執行的時間長或短，<strong>太長會耗費多餘的時間，太短會使其他 Goroutine 無法完成</strong></li>
+</ul>
+<h4 id="syncwaitgroup"><a class="header" href="#syncwaitgroup">sync.WaitGroup</a></h4>
+<pre><code class="language-go">// wait-group.go
+func say(s string, wg *sync.WaitGroup) {
+    defer wg.Done()
+
+    for i := 0; i &lt; 5; i++ {
+        time.Sleep(100 * time.Millisecond)
+        fmt.Println(s)
+    }
+}
+
+func main() {
+    wg := new(sync.WaitGroup)
+    wg.Add(2)
+
+    go say("world", wg)
+    go say("hello", wg)
+
+    wg.Wait()
+}
+</code></pre>
+<p><img src="images/wait-group.png" alt="" /></p>
+<ul>
+<li>產生與想要等待的 Goroutine 同樣多的 <code>WaitGroup</code> Counter</li>
+<li>將 <code>WaitGroup</code> 傳入 Goroutine 中，在執行完成後叫用 <code>wg.Done()</code> 將 Counter 減一</li>
+<li><code>wg.Wait()</code> 會等待直到 Counter 減為零為止</li>
+</ul>
+<p>優點</p>
+<ul>
+<li>避免時間預估的錯誤</li>
+</ul>
+<p>缺點</p>
+<ul>
+<li>需要手動配置對應的 Counter</li>
+</ul>
+<h4 id="channel"><a class="header" href="#channel">Channel</a></h4>
+<p>最後介紹的是使用 Channel 等待, 原為 Goroutine 溝通時使用的，但因其阻塞的特性，使其可以當作等待 Goroutine 的方法。</p>
+<pre><code class="language-go">// channel-wait.go
+func say(s string, c chan string) {
+    for i := 0; i &lt; 5; i++ {
+        time.Sleep(100 * time.Millisecond)
+        fmt.Println(s)
+    }
+    c &lt;- "FINISH"
+}
+
+func main() {
+    ch := make(chan string)
+
+    go say("world", ch)
+    go say("hello", ch)
+
+    &lt;-ch
+    &lt;-ch
+}
+</code></pre>
+<p><img src="images/channel-wait.png" alt="" /></p>
+<p>起了兩個 Goroutine(<code>say("world", ch)</code>, <code>say("hello", ch)</code>) ，因此需要等待兩個 <code>FINISH</code> 推入 Channel 中才能結束 Main Goroutine。</p>
+<p>優點</p>
+<ul>
+<li>避免時間預估的錯誤</li>
+<li>語法簡潔</li>
+</ul>
+<blockquote>
+<p>Channel 阻塞的方法為 Go 語言中等待的主要方式。</p>
+</blockquote>
+<h2 id="多執行緒下的共享變數"><a class="header" href="#多執行緒下的共享變數">多執行緒下的共享變數</a></h2>
+<p>在執行緒間使用同樣的變數時，最重要的是確保變數在當前的正確性，在沒有控制的情況下極有可能發生問題，下面有個例子：</p>
+<pre><code class="language-go">// total-error.go
+func main() {
+    total := 0
+    for i := 0; i &lt; 1000; i++ {
+        go func() {
+            total++
+        }()
+    }
+    time.Sleep(time.Second)
+    fmt.Println(total)
+}
+</code></pre>
+<p><img src="images/total-error.png" alt="" /></p>
+<p>假設目前加到28，在多執行緒的情況下：</p>
+<ul>
+<li><code>goroutine1</code> 取值 28 做運算</li>
+<li><code>goroutine2</code> 有可能在 <code>goroutine1</code> 做 <code>total++</code> 前就取 <code>total</code> 的值，因此有可能取到 28</li>
+<li>這樣的情況下做兩次加法的結果會是 29 而非 30</li>
+</ul>
+<p>在多個 goroutine 裡對同一個變數<code>total</code>做加法運算，在賦值時無法確保其為安全的而導致運算錯誤，此問題稱為 <strong>Race Condition</strong>。</p>
+<h3 id="互斥鎖syncmutex"><a class="header" href="#互斥鎖syncmutex">互斥鎖(sync.Mutex)</a></h3>
+<p>在這種狀況下，可以使用互斥鎖(<code>sync.Mutex</code>)來保證變數的安全：</p>
+<pre><code class="language-go">// total-mutex.go
+type SafeNumber struct {
+    v   int
+    mux sync.Mutex // 互斥鎖
+}
+
+func main() {
+    total := SafeNumber{v: 0}
+    for i := 0; i &lt; 1000; i++ {
+        go func() {
+            total.mux.Lock()
+            total.v++
+            total.mux.Unlock()
+        }()
+    }
+    time.Sleep(time.Second)
+    total.mux.Lock()
+    fmt.Println(total.v)
+    total.mux.Unlock()
+}
+</code></pre>
+<p><img src="images/total-mutex.png" alt="" /></p>
+<p>互斥鎖使用在資料結構(<code>struct</code>)中，用以確保結構中變數讀寫時的安全，它提供兩個方法：</p>
+<ul>
+<li><code>Lock</code></li>
+<li><code>Unlock</code></li>
+</ul>
+<p>在 <code>Lock</code> 及 <code>Unlock</code> 中間，會使其他的 Goroutine 等待，確保此區塊中的變數安全。</p>
+<h3 id="藉由-channel-保證變數的安全性"><a class="header" href="#藉由-channel-保證變數的安全性">藉由 Channel 保證變數的安全性</a></h3>
+<pre><code class="language-go">// total-channel.go
+func main() {
+    total := 0
+    ch := make(chan int, 1)
+    ch &lt;- total
+    for i := 0; i &lt; 1000; i++ {
+        go func() {
+            ch &lt;- &lt;-ch + 1
+        }()
+    }
+    time.Sleep(time.Second)
+    fmt.Println(&lt;-ch)
+}
+</code></pre>
+<p><img src="images/total-channel.png" alt="" /></p>
+<ul>
+<li>goroutine1 拉出 <code>total</code> 後，Channel 中沒有資料了</li>
+<li>因為 Channel 中沒有資料，因此造成 goroutine2 等待</li>
+<li>goroutine1 計算完成後，將 <code>total</code> 推入 Channel</li>
+<li>goroutine2 等到 Channel 中有資料，拉出後結束等待，繼續做運算</li>
+</ul>
+<p>因為 Channel 推入及拉出時等待的特性，被拉出來做計算的值會保證是安全的。</p>
+<blockquote>
+<blockquote>
+<p>因為此範例一定要拉出 Channel 資料才能做運算，所以使用非立即阻塞的 Buffered Channel ，與 Unbuffered Channel 的差別等下會說明。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>上述的三個例子在 main goroutine 中都使用 <code>time.Sleep</code> 避免程式提前結束。</p>
+</blockquote>
+</blockquote>
+<h2 id="channel-介紹"><a class="header" href="#channel-介紹">Channel 介紹</a></h2>
+<p>上面藉由兩個在多執行緒中重要的議題：<strong>等待</strong>及<strong>變數的共享</strong>，帶出 Channel 強大的處理能力，接著來深入瞭解一下 Channel。</p>
+<p>Channel 可以想成一條管線，這條管線可以推入數值，並且也可以將數值拉取出來。</p>
+<p>因為 Channel 會等待至另一端完成推入/拉出的動作後才會繼續往下處理，這樣的特性使其可以在 Goroutines 間同步的處理資料，而不用使用明確的 <code>lock</code>, <code>unlock</code> 等方法。</p>
+<p>建立 Channel</p>
+<pre><code class="language-go">ch := make(chan int) // 建立 int 型別的 Channel
+</code></pre>
+<p>推入/拉出 Channel 內的值，使用 <code>&lt;-</code> 箭頭運算子：</p>
+<ul>
+<li>Channel 在 <code>&lt;-</code> 左邊：將箭頭右邊的數值推入 Channel 中</li>
+</ul>
+<pre><code class="language-go">ch &lt;- v    // Send v to channel ch.
+v := &lt;-ch  // Receive from ch, and assign value to v.
+</code></pre>
+<h3 id="channel-的阻塞"><a class="header" href="#channel-的阻塞">Channel 的阻塞</a></h3>
+<p>Goroutine 使用 Channel 時有兩種情況會造成阻塞：</p>
+<ul>
+<li>將資料推入 Channel，但其他 Goroutine 還未拉取資料時，將資料推入的 Goroutine 會被迫等待其他 Goroutine 拉取資料才能往下執行</li>
+</ul>
+<p><img src="images/channel-sleep-push.png" alt="" /></p>
+<ul>
+<li>
+<p>當 Channel 中沒有資料，但要從中拉取時，想要拉取資料的 Goroutine 會被迫等待其他 Goroutine 推入資料並自己完成拉取後才能往下執行</p>
+<p><img src="images/channel-sleep-pull.png" alt="" /></p>
+</li>
+</ul>
+<h4 id="goroutine-推資料入-channel-時的等待情境"><a class="header" href="#goroutine-推資料入-channel-時的等待情境">Goroutine 推資料入 Channel 時的等待情境</a></h4>
+<pre><code class="language-go">// channel-block-push.go
+func main() {
+    ch := make(chan string)
+
+    go func() { // calculate goroutine
+        fmt.Println("calculate goroutine starts calculating")
+        time.Sleep(time.Second) // Heavy calculation
+        fmt.Println("calculate goroutine ends calculating")
+
+        ch &lt;- "FINISH" // goroutine 執行會在此被迫等待
+
+        fmt.Println("calculate goroutine finished")
+    }()
+
+    time.Sleep(2 * time.Second) // 使 main 比 goroutine 慢
+    fmt.Println(&lt;-ch)
+    time.Sleep(time.Second)
+    fmt.Println("main goroutine finished")
+}
+</code></pre>
+<pre><code class="language-sh">calculate goroutine starts calculating
+calculate goroutine ends calculating
+FINISH
+calculate goroutine finished
+main goroutine finished
+</code></pre>
+<p>此例使用 <code>time.Sleep</code> 強迫 main 執行慢於 calculate，現在來觀察輸出的結果：</p>
+<ul>
+<li>calculate 會先執行並且計算完成</li>
+<li>calculate 將 <code>FINISH</code> 訊號推入 Channel</li>
+<li>但由於目前 main 還未拉取 Channel 中的資料，所以 calculate 會被迫等待，因此 calculate 的最後一行 <code>fmt.Println("main goroutine finished")</code> 沒有馬上輸出在畫面上</li>
+<li>main 拉取了 Channel 中的資料</li>
+<li>calculate 執行<code>fmt.Println("main goroutine finished")</code> 並結束</li>
+<li>main 執行完成</li>
+</ul>
+<h4 id="goroutine-拉資料出-channel-時的等待情境"><a class="header" href="#goroutine-拉資料出-channel-時的等待情境">Goroutine 拉資料出 Channel 時的等待情境</a></h4>
+<pre><code class="language-go">// channel-block-pull.go
+func main() {
+    ch := make(chan string)
+
+    go func() {
+        fmt.Println("calculate goroutine starts calculating")
+        time.Sleep(time.Second) // Heavy calculation
+        fmt.Println("calculate goroutine ends calculating")
+
+        ch &lt;- "FINISH"
+
+        fmt.Println("calculate goroutine finished")
+    }()
+
+    fmt.Println("main goroutine is waiting for channel to receive value")
+    fmt.Println(&lt;-ch) // goroutine 執行會在此被迫等待
+    fmt.Println("main goroutine finished")
+}
+</code></pre>
+<pre><code class="language-sh">main goroutine is waiting for channel to receive value
+calculate goroutine starts calculating
+calculate goroutine ends calculating
+calculate goroutine finished
+FINISH
+main goroutine finished
+</code></pre>
+<ul>
+<li>main 因拉取的時候 calculate 還沒將資料推入 Channel 中，因此 main 會被迫等待，因此 main 的最後一行 <code>fmt.println</code> 沒有馬上輸出在畫面上</li>
+<li>calculate 執行並且計算完成</li>
+<li>calculate 將 <code>FINISH</code> 推入 Channel</li>
+<li>calculate 執行完成</li>
+<li>main 拉取了 Channel 中的資料並且執行完成</li>
+</ul>
+<h3 id="unbuffered-channel"><a class="header" href="#unbuffered-channel">Unbuffered Channel</a></h3>
+<p>前面一直提到的是 Unbuffered Channel，此種 Channel 只要</p>
+<ul>
+<li>推入一個資料會造成推入方的等待</li>
+<li>拉出時沒有資料會造成拉出方的等待</li>
+</ul>
+<p>使用 Unbuffered Channel 的壞處是：如果推入方的執行一次的時間較拉取方短，會造成推入方被迫等待拉取方才能在做下一次的處理，這樣的等待是不必要並且需要被避免的。</p>
+<p>為瞭解決推入方等待問題，可以使用另一種 Channel：Buffered Channel。</p>
+<h3 id="buffered-channel"><a class="header" href="#buffered-channel">Buffered Channel</a></h3>
+<pre><code class="language-go">ch: make(chan int, 100)
+</code></pre>
+<p>Buffered Channel 的宣告會在第二個參數中定義 buffer 的長度，它只會在 Buffered 中資料填滿<strong>以後</strong>才會阻塞造成等待，以上例來說：第101個資料推入的時候，推入方的 Goroutine 才會等待。</p>
+<p><img src="images/buffered-channel.png" alt="" /></p>
+<p>下面的例子分別使用 Buffered Channel 跟 Unbuffered Channel 的差別：</p>
+<pre><code class="language-go">// unbuffered-channel-error.go
+func main() {
+    ch := make(chan int)
+    ch &lt;- 1 // 等到天荒地老
+    fmt.Println(&lt;-ch)
+}
+</code></pre>
+<pre><code class="language-sh">fatal error: all goroutines are asleep - deadlock!
+
+goroutine 1 [chan send]:
+main.main()
+        /go/unbuffered-channel-error.go:9 +0x59
+exit status 2
+</code></pre>
+<p>上例使用 Unbuffered Channel：</p>
+<ul>
+<li>只有一條 Goroutine：main</li>
+<li>推入 1 後因為還沒有其他 Goroutine 拉取 Channel 中的資料，所以進入阻塞狀態</li>
+<li>因為 main 已經在推入資料時阻塞，所以拉取的程式永遠不會被執行，造成死結</li>
+</ul>
+<p><img src="images/unbuffered-channel-error.png" alt="" /></p>
+<p>在相同的情況下，Buffered Channel 並不會被阻塞：</p>
+<pre><code class="language-go">// buffered-channel.go
+func main() {
+    ch := make(chan int, 1)
+    ch &lt;- 1
+    fmt.Println(&lt;-ch)
+}
+</code></pre>
+<p>原因是：</p>
+<ul>
+<li>推入 1 後 Channel 內的資料數為1並沒有超過 Buffer 的長度1，所以不會被阻塞</li>
+<li>因為沒有阻塞，所以下一行拉取的程式碼可以被執行，並且完成執行</li>
+</ul>
+<p><img src="images/buffered-channel-work.png" alt="" /></p>
+<h3 id="loop-中的-channel"><a class="header" href="#loop-中的-channel">Loop 中的 Channel</a></h3>
+<p>在迴圈中的 Channel 可以藉由第二個回傳值 <code>ok</code> 確認 Channel 是否被關閉，如果被關閉的話代表此 Channel 已經不再使用，可以結束巡覽。</p>
+<pre><code class="language-go">// for-loop.go
+func main() {
+    c := make(chan int)
+    go func() {
+        for i := 0; i &lt; 10; i++ {
+            c &lt;- i
+        }
+        close(c) // 關閉 Channel
+    }()
+    for {
+        v, ok := &lt;-c
+        if !ok { // 判斷 Channel 是否關閉
+            break
+        }
+        fmt.Println(v)
+    }
+}
+</code></pre>
+<pre><code class="language-sh">0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</code></pre>
+<p>如果對 Closed Channel 推入資料的話會造成 Panic：</p>
+<pre><code class="language-go">// closed-channel-panic.go
+func main() {
+    c := make(chan int)
+    close(c)
+    c &lt;- 0 // Panic!!!
+}
+panic: send on closed channel
+</code></pre>
+<blockquote>
+<p>為了避免將資料推入已關閉的 Channel 中造成 Panic，Channel 的關閉應該由推入的 Goroutine 處理。</p>
+</blockquote>
+<h3 id="range-中的-channel"><a class="header" href="#range-中的-channel">range 中的 Channel</a></h3>
+<p><code>range</code> 是可以巡覽 Channel 的，終止條件為 Channel 的狀態為已關閉的(Closed)：</p>
+<pre><code class="language-go">// range.go
+func main() {
+    c := make(chan int, 10)
+    go func() {
+        for i := 0; i &lt; 10; i++ {
+            c &lt;- i
+        }
+        close(c) // 關閉 Channel
+    }()
+    for i := range c { // 在 close 後跳出迴圈
+        fmt.Println(i)
+    }
+}
+</code></pre>
+<h3 id="使用-select-避免等待"><a class="header" href="#使用-select-避免等待">使用 select 避免等待</a></h3>
+<p>在 Channel 推入/拉取時，會有一段等待的時間而造成 Goroutine 無法回應，如果此 Goroutine 是負責處理畫面的，使用者就會看到畫面 lag 的情況，這是我們不想見的情況。</p>
+<p>例如之前提到的例子：</p>
+<pre><code class="language-go">// block.go
+func main() {
+    ch := make(chan string)
+
+    go func() {
+        fmt.Println("calculate goroutine starts calculating")
+        time.Sleep(time.Second) // Heavy calculation
+        fmt.Println("calculate goroutine ends calculating")
+
+        ch &lt;- "FINISH"
+
+        fmt.Println("calculate goroutine finished")
+    }()
+
+    fmt.Println("main goroutine is waiting for channel to receive value")
+    fmt.Println(&lt;-ch) // goroutine 執行會在此被迫等待
+    fmt.Println("main goroutine finished")
+}
+</code></pre>
+<pre><code class="language-sh">main goroutine is waiting for channel to receive value # main goroutine 阻塞
+calculate goroutine starts calculating
+calculate goroutine ends calculating
+calculate goroutine finished
+FINISH # main goroutine 解除阻塞
+main goroutine finished
+</code></pre>
+<p>main goroutine 要拉取 <code>ch</code> 的資料時，會被迫等待，這時會無法回饋目前的狀態給使用者，造成卡頓的清況。</p>
+<p>這時可以使用 Go 提供的 <code>select</code> 語法，讓開發者可以很輕鬆的處理 Channel 的多種情況，包括阻塞時的處理。</p>
+<pre><code class="language-go">// select.go
+func main() {
+    ch := make(chan string)
+
+    go func() {
+        fmt.Println("calculate goroutine starts calculating")
+        time.Sleep(time.Second) // Heavy calculation
+        fmt.Println("calculate goroutine ends calculating")
+
+        ch &lt;- "FINISH"
+        time.Sleep(time.Second)
+        fmt.Println("calculate goroutine finished")
+    }()
+
+    for {
+        select {
+        case &lt;-ch: // Channel 中有資料執行此區域
+            fmt.Println("main goroutine finished")
+            return
+        default: // Channel 阻塞的話執行此區域
+            fmt.Println("WAITING...")
+            time.Sleep(500 * time.Millisecond)
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-sh">WAITING... # main goroutine 在阻塞時可以回應
+calculate goroutine starts calculating
+WAITING... # main goroutine 在阻塞時可以回應
+WAITING... # main goroutine 在阻塞時可以回應
+calculate goroutine ends calculating
+main goroutine finished # main goroutine 解除阻塞並結束程式
+</code></pre>
+<p>將剛剛的例子改為 <code>select</code> 來處理，可以使 Channel 的推入/拉取不會阻塞：</p>
+<ul>
+<li>會在沒有阻塞的情況下才會執行對應的區塊</li>
+<li><code>case &lt;-ch:</code>: 會等到沒有阻塞情況時(<code>ch</code> 內有資料)才會執行</li>
+<li><code>default:</code>: 在所有的 <code>case</code> 都阻塞的情況下執行</li>
+</ul>
+<p>因為有 <code>default</code> 可以設置，當 Channel 阻塞時也可以藉由 <code>default</code> 輸出資訊讓使用者知道。</p>
+<h2 id="總結"><a class="header" href="#總結">總結</a></h2>
+<p>一開始提到了單執行緒跟多執行緒的差別，接著帶出 Goroutine ，並介紹各種等待方式(<code>time.Sleep</code>, <code>sync.WaitGroup</code> 及 Channel)和執行緒間分享變數的問題(Race Condition)及解決方法(<code>sync.Mutex</code> 及 Channel)，從而帶出 Channel 在執行緒中方便強大的能力。</p>
+<p>再來講述 Channel 的使用方式，及其阻塞的時機(推入阻塞及拉取阻塞)，接著說明 Unbuffered 及 Buffered Channel 的差別，並且說明可以藉由 Unbuffered Channel 降低效能上的損失。</p>
+<p>Channel 傳回的第二個參數：<code>ok</code>，可以判斷此 Channel 是否已經關閉，並被 <code>range</code> 用在結束巡覽的判斷中。</p>
+<p>最後說明瞭 <code>select</code> 可以 Channel 在阻塞時讓 Goroutine 保持非阻塞的狀態避免卡頓。</p>
+<p>藉由 Goroutine 及 Channel 簡單的語法但是強大的能力使工程師開發多工程式的時候可以寫出優雅又易於維護的代碼，是 Go 語言的優勢之一。</p>
+<h2 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h2>
+<ul>
+<li><a href="https://tour.golang.org/concurrency">A tour of Go - Goroutines</a></li>
+<li><a href="https://medium.com/@trevor4e/learning-gos-concurrency-through-illustrations-8c4aff603b3">Trevor Forrey - Learning Go’s Concurrency Through Illustrations</a></li>
+</ul>
+<h2 id="出處"><a class="header" href="#出處">出處</a></h2>
+<p>https://peterhpchen.github.io/2020/03/08/goroutine-and-channel.html</p>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../go/Coroutine.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../go/websocket.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../go/Coroutine.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../go/websocket.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

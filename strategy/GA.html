@@ -1,0 +1,877 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>GA - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>這些最佳化方法比起暴力搜尋可以讓策略更加robust</p>
+<p>基因演算法 :  https://medium.com/geekculture/optimising-trading-strategies-by-using-a-genetic-algorithm-bc90d7ddbefd</p>
+<p>向前優化 :  https://algotrading101.com/learn/walk-forward-optimization/</p>
+<pre><code>回到半年多前樓主的原帖稍微總結一下：
+1. 基因演算法在優化投資策略(即「選股」、「擇時」)確實是很重要且相關的。
+2. 基因演算法其實算「最佳化」的方法，所以什麼「模擬退火」、「粒子群(其實是鳥群和魚群)」、「梯次下降」等都是，而「線性規劃」、「二次規劃」、「牛頓法」也是，「向前優化」其實也是，族繁不及備載。基因是「演化類」，常見的是 GA (單目標), NSGA-II (多目標), NSGA-III (很多目標)等。
+3. Danny Grove 在一年半前(西洋方格子)的文章，最早提出了使用基因演算法來優化策略的觀點，經過我們Finlab-er的實踐，特別是 TNeagle 在半年前率先使用，到現在我們使用的程度已經進化很多了。
+4. 這種進化之所以可能，其實是奠基在韓老師建立的Finlab 資料和API以及很多個策略範例上，開創新的道路通常都是最難的。
+5. 世界上的主流討論，看起來還是機器學習上面，包括討論少量參數(節儉原則)、大量參數甚至巨量參數跑出的效能。但我對機器學習在開發策略的成效如何還有待了解。
+6. 目前 QuantCon 竟然沒有亞洲的場次，連中國、印度、新加坡也沒有，只偏重在歐美，是不是亞洲的量化人口還不夠多？
+7. 至於向前優化部分，因為要切資料集，我也沒去研究這一塊；提出者是 algotrading101 的 Lucas Liew，只能再看有沒有進展。
+量化投資其實很有趣的。
+</code></pre>
+<pre><code>其實基因演算法就是適者生存，如果有學過生物的"育種"會更瞭解這個概念。
+簡單說把策略視為個體，選股條件就是基因
+一個好策略，一定有好基因
+所以從一堆策略，篩選出比較好的策略後進行"雜交"
+ex.
+甲策略：A、B、C、D
+乙策略：E、F、G、H
+
+交配做出甲乙、乙甲策略
+甲乙：A、B、G、H
+乙甲：E、F、C、D
+
+然後重複篩選和雜交的動作，就可以得到一群有著不錯基因的策略。
+展開來講真的可以寫一大篇，核心概念就是上面所說的 "適者生存"。
+
+結論：
+這個方法不一定能找到 "最好" 的策略，但是可以找到 "比較好"的策略
+前提是有辦法定義什麼是"好策略"
+</code></pre>
+<h2 id="股市的自然選擇會進化的策略finlab-讀書會"><a class="header" href="#股市的自然選擇會進化的策略finlab-讀書會">股市的自然選擇：會進化的策略｜FinLab 讀書會</a></h2>
+<p>https://discord.com/channels/897386624067969034/1123838318027755581/1193378774163669103</p>
+<p>https://www.youtube.com/live/W-jxEZXu-pQ</p>
+<p>我對於"策略的可解釋性"一直不理解為什麼要執著於這件事。首先，人類不是全知全能的。
+當人類不是全知全能，就一定有不可解釋的事情，但這並不代表不可解釋的事情不合理，而是目前我們無法解讀。
+我PPT上面才會有"存在即合理"這一句話。
+其實目前大部分的AI，複雜性都已經超出人類可以解釋的範圍，但這並不代表AI給出的答案不合理(這也是有些人會認為AI有智慧的原因)</p>
+<p>再來，GA會執著於某個數字，通常代表那邊就是平衡點。是"目前"基於歷史數據的平衡點，在數據的積累以及時間流動下這個平衡點是會"變動"的。
+&lt;@284659625175941121&gt; 說 "感覺是在解空間中硬畫出一條線來擬合訓練資料" 。
+其實這一點就是機器學習的目標，只是我們要找到的是"擬合的這條線"和"市場的隨機性"中取得最佳的平衡。
+這樣才不會出現"過擬合"
+而基因演算法從底層邏輯上就很難過擬合，所以可以不太去關注過擬合這個議題</p>
+<p>ex. close.average(20) &gt; close.average(60) 這樣一個條件在機器學習裡面就是2個參數 n種組合。
+這樣的解空間真正是無限大，雖然直接限縮解空間範圍，但只要選股條件數量及品質不錯，也可以找到不錯的解。</p>
+<p>我自己其實是在研究機器學習的過程中，發現機器學習的難度太大，短時間很難有一個不錯的成果。
+所以我抽取機器學習的概念從邏輯底層去找一個簡單好用的替代辦法，所以才有分享的內容。
+機器學習:
+輸入許多特徵資料=&gt;調參=&gt;建立模型</p>
+<p>基因演算法:
+利用人類已經研究多年的選股條件將特徵資料先進行預先處理=&gt;簡化調參=&gt;建立模型</p>
+<p>簡單來說，這一套就是機器學習的下位替代版。
+只是因為引入很多人類已經研究過的經驗，所以可以在初期表現比機器學習好。
+其實對我們來說，我們沒有必要去找到最佳的那個解，只要找到"相對"不錯的解然後可以在股市裡賺錢就好。
+至於可解釋性，看有沒有經濟學家要拿去寫論文吧。</p>
+<pre><code>年化報酬率/abs(MDD) * 日索提諾
+</code></pre>
+<h2 id="ga--vectotbt"><a class="header" href="#ga--vectotbt">GA + Vectotbt</a></h2>
+<p>https://www.youtube.com/watch?v=W-jxEZXu-pQ</p>
+<pre><code class="language-py">import numpy as np
+import yfinance as yf
+import multiprocessing
+import time
+import vectorbt as vbt
+import warnings
+from deap import base, creator, tools, algorithms
+
+warnings.filterwarnings("ignore")
+
+
+def run_strategy_bt(data, fast_ma, slow_ma):
+    fast_ma = vbt.MA.run(data, fast_ma)
+    slow_ma = vbt.MA.run(data, slow_ma)
+    entries = fast_ma.ma_crossed_above(slow_ma)
+    exits = fast_ma.ma_crossed_below(slow_ma)
+    return vbt.Portfolio.from_signals(data, entries, exits, init_cash=100)
+
+
+# 定義適應度函數
+def trade_fitness(individual, data):
+    sma1, sma2 = individual
+    if sma1 &lt; sma2:
+        fast_ma = sma1
+        slow_ma = sma2
+    else:
+        fast_ma = sma2
+        slow_ma = sma1
+
+    pf = run_strategy_bt(data, fast_ma, slow_ma)
+    returns_stats = pf.returns_stats(column=10, settings=dict(freq="d"))
+    Annualized_Return = returns_stats["Annualized Return [%]"]
+    Max_Drawdown = returns_stats["Max Drawdown [%]"]
+    Sortino_Ratio = returns_stats["Sortino Ratio"]
+    # print(Annualized_Return)
+    # print(Max_Drawdown)
+    # print(Sortino_Ratio)
+    fitness = (Annualized_Return / abs(Max_Drawdown)) * Sortino_Ratio
+    if np.isnan(fitness):
+        fitness = 0
+
+    print(
+        f"pid: {multiprocessing.current_process().pid}, individual: {individual}, fitness: {fitness}"
+    )
+    return (fitness,)
+
+
+if __name__ == "__main__":
+    # 下載股票歷史數據
+    ticker = "AAPL"
+    data = yf.download(ticker, start="2020-01-01", end="2023-04-30")
+    # fast_ma = vbt.MA.run(data, 10)
+    # slow_ma = vbt.MA.run(data, 50)
+    # entries = fast_ma.ma_crossed_above(slow_ma)
+    # exits = fast_ma.ma_crossed_below(slow_ma)
+    # pf = vbt.Portfolio.from_signals(data, entries, exits, init_cash=100)
+    # returns_stats = pf.returns_stats(column=10, settings=dict(freq="d"))
+    # print(data.head())
+    # input()
+    # 設置基因演算法參數
+    creator.create("FitnessMax", base.Fitness, weights=(1.0,))
+    creator.create("Individual", list, fitness=creator.FitnessMax)
+
+    """
+    在這個示例中,我們首先定義了交易策略的適應度函數 trade_fitness。這個函數計算了四個移動平均線的值,並根據它們的交叉關係生成交易訊號。然後,它計算了基於這個交易訊號的策略收益。適應度函數的輸出是策略的總收益。
+    接下來,我們設置了基因演算法的參數,包括個體表示、交叉、變異、選擇等操作。個體由四個整數表示,分別對應四個移動平均線的天數,範圍為 5 到 250 天。
+    然後,我們執行基因演算法優化,輸出了最優解及其適應度值(總收益)。
+    運行這個程式碼,您將獲得最佳的四個移動平均線天數,以及使用這些天數時的最大策略收益。
+    您可以根據需要調整適應度函數、個體表示等,以找到更複雜的交易策略。此外,您還可以添加其他約束條件,例如最大回撤等,使得優化更加全面。
+    """
+    toolbox = base.Toolbox()
+    toolbox.register("attr_int", np.random.randint, 5, 100)
+
+    toolbox.register(
+        "individual", tools.initRepeat, creator.Individual, toolbox.attr_int, n=2
+    )
+    toolbox.register("population", tools.initRepeat, list, toolbox.individual)
+    toolbox.register("evaluate", trade_fitness, data=data["Close"])
+    toolbox.register("mate", tools.cxTwoPoint)
+    toolbox.register("mutate", tools.mutUniformInt, low=5, up=100, indpb=0.2)
+    toolbox.register("select", tools.selTournament, tournsize=3)
+
+    """
+    創建一個進程池,裡面有8個工作進程
+    使用toolbox.register("map", pool.map)將pool.map函數註冊為toolbox中的"map"函數。
+    這樣在評估個體時,就會使用pool.map進行並行計算。
+    在優化結束後,使用pool.close()關閉進程池,並使用pool.join()等待所有工作進程結束。
+    """
+    pool = multiprocessing.Pool(processes=8)
+    # 使用toolbox.register將pool.map註冊為"map"函數
+    toolbox.register("map", pool.map)
+
+    # 執行基因演算法優化
+    pop = toolbox.population(n=100)
+    hof = tools.HallOfFame(1)
+    stats = tools.Statistics(lambda ind: ind.fitness.values)
+    stats.register("avg", np.mean)
+    stats.register("std", np.std)
+    stats.register("min", np.min)
+    stats.register("max", np.max)
+
+    start_time = time.time()
+    pop, log = algorithms.eaSimple(
+        pop,
+        toolbox,
+        cxpb=0.5,
+        mutpb=0.2,
+        ngen=100,
+        stats=stats,
+        halloffame=hof,
+        verbose=True,
+    )
+
+    # 關閉進程池並等待所有結果
+    pool.close()
+    pool.join()
+    end_time = time.time()
+    print("Time taken: ", end_time - start_time)
+
+    # 輸出最優解
+    best_ind = hof.items[0]
+    print("Best individual: ", best_ind)
+    print("Best fitness: ", best_ind.fitness.values[0])
+
+    sma1, sma2 = best_ind
+    if sma1 &lt; sma2:
+        fast_ma = sma1
+        slow_ma = sma2
+    else:
+        fast_ma = sma2
+        slow_ma = sma1
+
+    pf = run_strategy_bt(data["Close"], fast_ma, slow_ma)
+    returns_stats = pf.returns_stats(column=10, settings=dict(freq="d"))
+    print(returns_stats)
+    stats = pf.stats(column=10, settings=dict(freq="d"))
+    print(stats)
+</code></pre>
+<h2 id="ga_six_fa_finlab"><a class="header" href="#ga_six_fa_finlab">GA_Six_FA_Finlab</a></h2>
+<pre><code class="language-python">from finlab import data
+from finlab.backtest import sim
+from functools import reduce
+from deap import base, creator, tools
+import json
+import finlab
+import numpy as np
+import pandas as pd
+import random
+import multiprocessing
+import warnings
+
+warnings.filterwarnings("ignore")
+
+
+def eval(index_list, df_list, eval_dict):
+    # Cache:
+    id = "".join([str(value) for value in index_list])
+    if id in eval_dict:
+        return eval_dict[id]
+    else:
+        # Filter the MyClass instances which are selected (index == 1)
+        selected_dfs = [df for index, df in zip(index_list, df_list) if index == 1]
+
+        # If no DataFrames are selected, return an empty DataFrame
+        if not selected_dfs:
+            result = pd.DataFrame()
+        else:
+            # Perform the intersection operation on the selected DataFrames using reduce
+            result = reduce(lambda x, y: x &amp; y, selected_dfs)
+
+        if result.empty:
+            value = 0
+        else:
+            # 年化報酬率 (daily_mean)
+            # 年化夏普率 (daily_sharpe)
+            # 年化所提諾率 (daily_sortino)
+            # 最大回撤率 (max_drawdown)
+            report = sim(result, resample="W", market="TW_STOCK", upload=False)
+            日索提諾 = report.get_stats()["daily_sortino"]
+            max_drawdown = report.get_stats()["max_drawdown"]
+            daily_mean = report.get_stats()["daily_mean"]
+            print(f"日索提諾: {日索提諾}")
+            print(f"最大回撤: {max_drawdown}")
+            print(f"年報酬: {daily_mean}")
+            value = daily_mean / abs(max_drawdown) * 日索提諾
+            print(f"fitness value: {value}")
+            # metrics = report.get_metrics()
+            # value = (
+            #    metrics["profitability"]["annualReturn"]
+            #    / abs(metrics["risk"]["maxDrawdown"])
+            # ) * metrics["ratio"]["sortinoRatio"]
+
+        eval_dict[id] = (value,)
+        return (value,)  # Return a tuple
+
+
+def main(Population_size, Generation_num, Threshold, df_list):
+    # Initialization
+    Cond_num = len(df_list)
+
+    # Creator
+    creator.create("FitnessMax", base.Fitness, weights=(1.0,))
+    creator.create("Individual", list, fitness=creator.FitnessMax)
+
+    # Toolbox
+    toolbox = base.Toolbox()
+    # Attribute generator
+    toolbox.register("attr_bool", random.randint, 0, 1)
+    # Structure initializers
+    toolbox.register(
+        "individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, Cond_num
+    )
+    toolbox.register("population", tools.initRepeat, list, toolbox.individual)
+
+    # Operators
+    num_cpus = multiprocessing.cpu_count() - 1
+    pool = multiprocessing.Pool(processes=num_cpus)
+    toolbox.register("map", pool.imap)
+
+    # Use Manager to create a shared dictionary
+    manager = multiprocessing.Manager()
+    eval_dict = manager.dict()
+
+    # Pass eval_dict to the evaluate function
+    toolbox.register("evaluate", eval, df_list=df_list, eval_dict=eval_dict)
+    # 交配
+    # cxOnePoint: 隨機選取一個點，將這個點之後的基因交換
+    # cxTwoPoint: 隨機選取兩個點，將這兩個點之間的基因交換
+    # cxUniform: 對每個基因以 indpb 的機率進行交換
+    toolbox.register("mate", tools.cxTwoPoint)
+    # 變異
+    # mutFlipBit: 對每個位元以 indpb 的機率進行反轉 0-&gt;1, 1-&gt;0
+    toolbox.register("mutate", tools.mutFlipBit, indpb=0.05)
+    # 選擇
+    # selTournament: 隨機選取 tournsize 個個體，再從這 tournsize 個個體中選擇適應度最好的個體
+    # SelRoulette: 依照適應度的比例選擇個體
+    # selBest: 選擇適應度最好的個體
+    toolbox.register("select", tools.selTournament, tournsize=3)
+
+    pop = toolbox.population(n=Population_size)
+
+    # Evaluate the initial population
+    fitnesses = list(toolbox.map(toolbox.evaluate, pop))
+    for ind, fit in zip(pop, fitnesses):
+        ind.fitness.values = fit
+
+    CXPB, MUTPB = 0.5, 0.2
+    g = 0
+
+    # Initialize fits list
+    fits = [ind.fitness.values[0] for ind in pop]
+
+    while max(fits) &lt; Threshold and g &lt; Generation_num:
+        g += 1
+        print("-- Generation %i --" % g)
+
+        offspring = toolbox.select(pop, len(pop))
+        offspring = list(pool.imap(toolbox.clone, offspring))
+
+        for child1, child2 in zip(offspring[::2], offspring[1::2]):
+            if random.random() &lt; CXPB:
+                toolbox.mate(child1, child2)
+                del child1.fitness.values
+                del child2.fitness.values
+
+        for mutant in offspring:
+            if random.random() &lt; MUTPB:
+                toolbox.mutate(mutant)
+                del mutant.fitness.values
+
+        invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
+        fitnesses = list(toolbox.map(toolbox.evaluate, invalid_ind))
+
+        for ind, fit in zip(invalid_ind, fitnesses):
+            ind.fitness.values = fit
+
+        pop[:] = offspring
+
+        fits = [ind.fitness.values[0] for ind in pop]
+
+        length = len(pop)
+        mean = sum(fits) / length
+        sum2 = sum(x * x for x in fits)
+        std = abs(sum2 / length - mean**2) ** 0.5
+
+        print("  Min %s" % min(fits))
+        print("  Max %s" % max(fits))
+        print("  Avg %s" % mean)
+        print("  Std %s" % std)
+
+    return dict(eval_dict)
+
+
+if __name__ == "__main__":
+    finlab.login(
+        ""
+    )
+
+    # Data preparation
+    close = data.get("price:收盤價")
+    monthly_revenue_grow = data.get("monthly_revenue:去年同月增減(%)").fillna(0)
+    operating_profit = data.get("fundamental_features:營業利益率")
+    net_income_grow = data.get("fundamental_features:稅後淨利成長率")
+    eps = data.get("financial_statement:每股盈餘")
+    stock = data.get("financial_statement:存貨")
+    stock_turnover = data.get("fundamental_features:存貨週轉率").replace(
+        [np.nan, np.inf], 0
+    )
+    season_revenue = data.get("financial_statement:營業收入淨額")
+    fcf_in = data.get("financial_statement:投資活動之淨現金流入_流出")
+    fcf_out = data.get("financial_statement:營業活動之淨現金流入_流出")
+
+    # Processing
+    # Revenue growth
+    monthly_revenue_grow_aa = (
+        ((monthly_revenue_grow &gt; 0).sustain(6))
+        &amp; (monthly_revenue_grow.average(6) &gt; 25)
+        &amp; (monthly_revenue_grow.rise())
+    )
+    # Profit rate
+    operating_profit_stable = (
+        ((operating_profit.diff() / operating_profit.shift().abs()).rolling(3).min())
+        * 100
+    ) &gt; -20
+    operating_profit_aa_1 = operating_profit_stable &amp; (operating_profit.average(4) &gt; 15)
+    operating_profit_aa_2 = operating_profit_stable &amp; (
+        (operating_profit.average(4) &lt;= 15)
+        &amp; ((operating_profit.average(4) &gt; 10))
+        &amp; operating_profit.rise()
+    )
+    operating_profit_aa = operating_profit_aa_1 | operating_profit_aa_2
+    # Profit growth
+    net_income_grow_aa_1 = ((net_income_grow &gt; 0).sustain(3)) &amp; (net_income_grow.rise())
+    net_income_grow_aa_2 = (net_income_grow &gt; 50).sustain(3)
+    net_income_grow_aa = net_income_grow_aa_1 | net_income_grow_aa_2
+    # Profit strength
+    eps_aa = (eps.rolling(4).sum() &gt; 5) &amp; (eps &gt; 0)
+    # Inventory turnover
+    stock_low = (
+        (stock_turnover &lt;= 0)
+        | (stock_turnover &gt; 10)
+        | ((stock / season_revenue) &lt;= 0.04)
+    )
+    # stock_low = ~stock_low
+    # stock_low = stock_low.apply(lambda x: -x)
+    stock_turnover_stable = (
+        stock_turnover.diff() / stock_turnover.shift().abs()
+    ).rolling(3).min() * 100 &gt; -20
+    stock_turnover_cumulate_loss_gt_m20 = (stock_turnover.fall().sustain(3, 2)) &amp; (
+        stock_turnover.pct_change()[stock_turnover.pct_change() &lt; 0].rolling(2).sum()
+        * 100
+        &lt; -20
+    )
+    stock_turnover_aa = (
+        # (~stock_low)
+        stock_low.apply(lambda x: -x)
+        &amp; stock_turnover_stable
+        &amp; (stock_turnover.average(4) &gt; 1.5)
+        # &amp; ~(stock_turnover_cumulate_loss_gt_m20)
+        &amp; stock_turnover_cumulate_loss_gt_m20.apply(lambda x: -x)
+    )
+    # Cash flow
+    fcf = fcf_in + fcf_out
+    fcf_aa = fcf.rolling(6).min() &gt; 0
+
+    # Moving average
+    sma5 = close.average(5)
+    sma20 = close.average(20)
+    sma60 = close.average(60)
+    sma240 = close.average(240)
+    long_sma = (close &gt; sma5) &amp; (sma5 &gt; sma20) &amp; (sma20 &gt; sma60) &amp; (sma60 &gt; sma240)
+
+    df_list = [
+        monthly_revenue_grow_aa,
+        operating_profit_aa,
+        net_income_grow_aa,
+        eps_aa,
+        stock_turnover_aa,
+        fcf_aa,
+        long_sma,
+    ]
+
+    # Example usage:
+    Population_size = 30
+    Generation_num = 5
+    Threshold = 30
+
+    result = main(Population_size, Generation_num, Threshold, df_list)
+    print(json.dumps(result, indent=4))
+</code></pre>
+<hr />
+<h2 id="基於遺傳演算法deap的配詞問題與deap框架"><a class="header" href="#基於遺傳演算法deap的配詞問題與deap框架">基於遺傳演算法（deap）的配詞問題與deap框架</a></h2>
+<h3 id="基於deap的程序框架"><a class="header" href="#基於deap的程序框架">基於deap的程序框架</a></h3>
+<pre><code class="language-python">import numpy as np
+from deap import base, tools, creator, algorithms
+import random
+
+# 問題定義；定式
+creator.create('Fitness...', base.Fitness, weights=(...1.0,)) #　最大化問題
+creator.create('Individual', list, fitness=creator.Fitness...)
+
+# 個體編碼；主要依靠人為設計
+geneLength=...
+toolbox = base.Toolbox()
+toolbox.register('個體實現方法的名稱',...)
+toolbox.register('individual', tools.initRepeat, creator.Individual, toolbox.個體實現方法的名稱, n=geneLength)
+#print(toolbox.individual())#列印檢查個體
+
+#建立種群；定式
+N_POP = ...#種群內個體數量，參數過小，則搜尋速度過慢
+toolbox.register('population',tools.initRepeat,list,toolbox.individual)
+pop = toolbox.population(n=...)#建立一個種群pop
+#for ind in pop:#列印一個種群檢查
+#   print(ind)
+
+#評價函數；主要依靠人為設計
+def evaluate(ind):
+    pass
+    
+#註冊各種工具，人為選擇具體的方法；寫法定式
+toolbox.register('evaluate', evaluate)#評價函數
+toolbox.register('select', tools...)#選擇
+toolbox.register('mate', tools...)#交叉
+toolbox.register('mutate', tools...)#突變
+
+#超參數設定；人為根據理論與經驗設定
+NGEN = ...#迭代步數，參數過小，則在收斂之前就結束搜尋
+CXPB = ...#交叉機率，參數過小，則族群不能有效更新
+MUTPB = ...#突變機率，參數過小，則容易陷入局部最優
+
+#開始工作，先對初始的種群計算適應度；定式
+invalid_ind = [ind for ind in pop if not ind.fitness.valid]
+fitnesses = toolbox.map(toolbox.evaluate,invalid_ind)
+for ind ,fitness in zip(invalid_ind,fitnesses):
+    ind.fitness.values = fitness
+    
+#循環迭代，近似定式，但是可以自行增加一些提高遺傳演算法性能的方法
+for gen in range(NGEN):
+    offspring = toolbox.select(pop,N_POP)#先選擇一次
+    offspring = [toolbox.clone(_) for _ in offspring]#再克隆一次，克隆是必須的
+
+    for ind1,ind2 in zip(offspring[::2],offspring[1::2]):#交叉操作
+        if random.random() &lt; CXPB:#交叉
+            toolbox.mate(ind1,ind2)
+            del ind1.fitness.values
+            del ind2.fitness.values
+    for ind in offspring:#變異操作
+        if random.random() &lt;MUTPB:
+            toolbox.mutate(ind)
+            del ind.fitness.values
+    invalid_ind = [ind for ind in offspring if not ind.fitness.valid]#將刪除了適應度的個體重新評估
+    fitnesses = toolbox.map(toolbox.evaluate, invalid_ind)
+    for fitness, ind in zip(fitnesses, invalid_ind):
+        ind.fitness.values = fitness
+   #精英選擇策略，加速收斂 
+    combinedPop = pop + offspring#將子代與父代結合起來
+    pop = tools.selBest(combinedPop,N_POP)#再從子代與父代的結閤中選擇出適應度最高的一批作為新的種群
+
+#顯示演算法運行結果
+bestInd = tools.selBest(pop,1)[0]#選擇出最好的個體編號
+bestFit = bestInd.fitness.values[0]#最好的個體適應度
+print('best solution: '+str(bestInd))#列印解
+print('best fitness: '+str(bestFit))#列印適應度
+
+</code></pre>
+<p> 由以上的程序框架可知：</p>
+<ul>
+<li>（1）個體編碼方式、評價函數基本依靠個人根據實際問題設計。</li>
+<li>（2）選擇方法註冊工具、迭代運算等基本是定式。</li>
+<li>（3）迭代運算雖然可以當做定式用，但是適當增加一些諸如精英選擇策略這樣的程式碼可以明顯提高演算法性能。</li>
+</ul>
+<h3 id="配詞問題"><a class="header" href="#配詞問題">配詞問題</a></h3>
+<p>  配詞問題內容比較簡單，比如有個字串‘<code>woshidaxuesheng</code>’，希望能用隨機演算法經過尋優將等長的隨機字母序列生成同樣的內容。在遺傳演算法裡就等於是生成一個擁有很多隨機字母個體的種群，經過運算後得到一個個體內容最接近於‘<code>woshidaxuesheng</code>’。
+  先貼上完整的原始碼，再分析問題。這裡可以看到配詞問題程式碼用了兩種評價函數：一種是將配詞問題轉化為最小化問題，令個體的內容與目標字串差異最小；一種是將配詞問題轉化為最大化問題，令個體的內容與目標字串相同性最強。
+  本程式碼將最小化思路程序片段進行了註釋，使用最大化思路程序。</p>
+<pre><code class="language-python">import numpy as np
+from deap import base, tools, creator, algorithms
+import random
+
+# 問題定義
+#creator.create('FitnessMin', base.Fitness, weights=(-1.0,)) #　最小化問題
+#creator.create('Individual', list, fitness=creator.FitnessMin)
+creator.create('FitnessMax', base.Fitness, weights=(1.0,)) #　最大化問題
+creator.create('Individual', list, fitness=creator.FitnessMax)
+
+# 個體編碼
+geneLength = 14#字串內有14個字元
+toolbox = base.Toolbox()
+toolbox.register('genASCII',random.randint, 97, 122)#英文小寫字符的ASCII碼範圍為97~122
+toolbox.register('individual', tools.initRepeat, creator.Individual, toolbox.genASCII, n=geneLength)
+#print(toolbox.individual())
+
+#建立種群
+N_POP = 100#種群內個體數量，參數過小，則搜尋速度過慢
+toolbox.register('population',tools.initRepeat,list,toolbox.individual)
+pop = toolbox.population(n=N_POP)
+#for ind in pop:#列印一個種群檢查
+#   print(ind)
+
+#評價函數
+#def evaluate(ind):
+#    target = list('zzyshiwodedidi')
+#    target = [ord(item) for item in target]
+#    return (sum(np.abs(np.asarray(target) - np.asarray(ind)))),
+def evaluate(ind):
+    target = list('zzyshiwodedidi')#需要匹配的字串
+    target = [ord(item) for item in target]#將字串內的字元都轉換成ASCII碼
+    return (sum(np.abs(np.asarray(target) == np.asarray(ind)))),
+    
+#註冊各種工具
+toolbox.register('evaluate', evaluate)#評價函數
+toolbox.register('select', tools.selTournament, tournsize=2)#錦標賽選擇
+toolbox.register('mate', tools.cxUniform, indpb=0.5)#均勻交叉
+toolbox.register('mutate', tools.mutShuffleIndexes, indpb=0.5)#亂序突變
+
+#超參數設定
+NGEN = 300#迭代步數，參數過小，則在收斂之前就結束搜尋
+CXPB = 0.8#交叉機率，參數過小，則族群不能有效更新
+MUTPB = 0.2#突變機率，參數過小，則容易陷入局部最優
+
+#開始工作，先對初始的種群計算適應度
+invalid_ind = [ind for ind in pop if not ind.fitness.valid]
+fitnesses = toolbox.map(toolbox.evaluate,invalid_ind)
+for ind ,fitness in zip(invalid_ind,fitnesses):
+    ind.fitness.values = fitness
+    
+#循環迭代
+for gen in range(NGEN):
+    offspring = toolbox.select(pop,N_POP)#先選擇一次
+    offspring = [toolbox.clone(_) for _ in offspring]#再克隆一次
+
+    for ind1,ind2 in zip(offspring[::2],offspring[1::2]):#交叉
+        if random.random() &lt; CXPB:#交叉
+            toolbox.mate(ind1,ind2)
+            del ind1.fitness.values
+            del ind2.fitness.values
+    for ind in offspring:#變異
+        if random.random() &lt;MUTPB:
+            toolbox.mutate(ind)
+            del ind.fitness.values
+    invalid_ind = [ind for ind in offspring if not ind.fitness.valid]#將刪除了適應度的個體重新評估
+    fitnesses = toolbox.map(toolbox.evaluate, invalid_ind)
+    for fitness, ind in zip(fitnesses, invalid_ind):
+        ind.fitness.values = fitness
+   #精英選擇策略，加速收斂 
+    combinedPop = pop + offspring#將子代與父代結合起來
+    pop = tools.selBest(combinedPop,N_POP)#再從子代與父代的結閤中選擇出適應度最高的一批作為新的種群
+
+bestInd = tools.selBest(pop,1)[0]#選擇出最好的個體編號
+bestFit = bestInd.fitness.values[0]#最好的個體適應度
+bestInd = [chr(item) for item in bestInd]#將該個體裡的ASCII碼轉換成字元形式
+print('best solution: '+str(bestInd))#列印字元
+print('best fitness: '+str(bestFit))#列印適應度，這裡可以看到適應度並不是我們需要的問題的解，僅僅是對解的一種評估得分
+</code></pre>
+<h3 id="程式設計"><a class="header" href="#程式設計">程式設計</a></h3>
+<h4 id="個體設計"><a class="header" href="#個體設計">個體設計</a></h4>
+<p>首先考慮個體是如何設計編碼的。</p>
+<p>我們要得到一個與’<code>zzyshiwodedidi</code>‘最相近的字串，顯然這個個體也得是個小寫字母的字串，而且長度得和’<code>zzyshiwodedidi</code>'相同，所以個體的基因長度肯定是14。
+綜上，個體應該是個長度為14的隨機小寫字母列表。</p>
+<pre><code class="language-python"># 個體編碼
+geneLength = 14#字串內有14個字元
+toolbox = base.Toolbox()
+toolbox.register('genASCII',random.randint, 97, 122)#英文小寫字符的ASCII碼範圍為97~122
+toolbox.register('individual', tools.initRepeat, creator.Individual, toolbox.genASCII, n=geneLength)
+#print(toolbox.individual())
+</code></pre>
+<p>小寫英文字母的ASCII碼範圍是97~122，而且ASCII碼肯定是整數，所以隨機函數應該是隨機生成整形（int），所以註冊函數寫成：</p>
+<pre><code class="language-python">toolbox.register('genASCII',random.randint, 97, 122)
+</code></pre>
+<p>再將這個註冊函數代入到個體的註冊函數裡面即可。</p>
+<pre><code class="language-python">toolbox.register('individual', tools.initRepeat, creator.Individual, toolbox.genASCII, n=geneLength)
+</code></pre>
+<h4 id="評價函數設計"><a class="header" href="#評價函數設計">評價函數設計</a></h4>
+<p>  我們想要評價一個個體和’<code>zzyshiwodedidi</code>‘的相似程度，自然要進行比較，字元顯然不方便直接比，但是轉換成ASCII碼（數字）顯然就方便的多。
+  於是評價函數的設計思路就是：將目標’<code>zzyshiwodedidi</code>'轉化為ASCII碼，然後與個體的基因依次對比（個體本身就是ASCII碼）。</p>
+<pre><code class="language-python">def evaluate(ind):
+    target = list('zzyshiwodedidi')#需要匹配的字串
+    target = [ord(item) for item in target]#將字串內的字元都轉換成ASCII碼
+    return (sum(np.abs(np.asarray(target) == np.asarray(ind)))),
+</code></pre>
+<p>使用<code>ord</code>函數將字串裡的字元依次轉換為ASCII碼。</p>
+<pre><code class="language-python">	target = list('zzyshiwodedidi')#需要匹配的字串
+    target = [ord(item) for item in target]#將字串內的字元都轉換成ASCII碼
+</code></pre>
+<p>依次轉換完成後需要依次比對，這裡需要注意一件事，<strong>將目標字串轉換為ASCII碼序列，與直接的隨機數列表個體的資料形式不同</strong>。</p>
+<p><img src="images/20201202111748717.jpg" alt="在這裡插入圖片描述" />  
+  </p>
+<p><strong>由上圖可見，第一行個體是列表格式，元素之間用<code>,</code>割開；而第二行目標字串轉換完後是矩陣形式，是一個行向量</strong>。
+  因此需要將個體使用<code>np.asarry</code>函數轉換為矩陣形式：</p>
+<pre><code class="language-python"> return (sum(np.abs(np.asarray(target) == np.asarray(ind)))),
+</code></pre>
+<p>  當然只需要轉換個體就行了：</p>
+<pre><code class="language-python"> return (sum(np.abs(target == np.asarray(ind)))),
+</code></pre>
+<h4 id="精英選擇策略"><a class="header" href="#精英選擇策略">精英選擇策略</a></h4>
+<p>精英選擇策略，即在每一輪迭代循環中，將父代與交叉變異後的子代整一塊，形成一個雙倍於之前規模的大種群，隨後在這個大種群中提取出一半適應度最優的個體。
+說白了就是父代子代一起評，前一半的全提走，後一半的全踢走。
+顯然，這樣的做法會加速收斂，快速得到一個充滿高適應度個體的精英種群。
+這個策略以後也可以叫<code>內卷策略</code>。</p>
+<pre><code class="language-python">#精英選擇策略，加速收斂 
+    combinedPop = pop + offspring#將子代與父代結合起來
+</code></pre>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../strategy/cis.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../strategy/stock.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../strategy/cis.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../strategy/stock.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>

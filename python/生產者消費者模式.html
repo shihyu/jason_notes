@@ -1,0 +1,597 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>生產者消費者模式 - Jason Notes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Jason Notes</a></li><li class="chapter-item expanded "><a href="ubuntu/ubuntu_setup.html">Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ubuntu/command.html">Command</a></li><li class="chapter-item "><a href="ubuntu/gcp.html">GCP ssh</a></li><li class="chapter-item "><a href="ubuntu/wine.html">Wine</a></li></ol></li><li class="chapter-item expanded "><a href="android/android.html">Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="android/install_sdk.html">SDK install</a></li><li class="chapter-item "><a href="android/flutter.html">Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="tools/tools.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="tools/asciinema.html">asciinema 把終端操作錄製成 gif 動畫</a></li><li class="chapter-item "><a href="tools/finmind.html">Finmind</a></li><li class="chapter-item "><a href="tools/add-enter-and-exit-trace-for-your-function.html">addr2line</a></li><li class="chapter-item "><a href="tools/cmake.html">cmake</a></li><li class="chapter-item "><a href="tools/network.html">Network</a></li><li class="chapter-item "><a href="tools/python-pycryptodome-aes-symmetric-encryption-tutorial-examples.html">實作 AES 對稱式加密</a></li></ol></li><li class="chapter-item expanded "><a href="html/html.html">HTML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="html/vue.html">Vue</a></li></ol></li><li class="chapter-item expanded "><a href="vim/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="vim/copilot.html">copilot</a></li><li class="chapter-item "><a href="vim/tabnine.html">tabnine</a></li></ol></li><li class="chapter-item expanded "><a href="gdb/gdb.html">Gdb</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="gdb/常用指令.html">常用指令</a></li><li class="chapter-item "><a href="gdb/jemalloc.html">jemalloc</a></li><li class="chapter-item "><a href="gdb/graphs.html">graphs</a></li><li class="chapter-item "><a href="gdb/rust-gdb.html">rust gdb</a></li><li class="chapter-item "><a href="gdb/qemu-gdb-risc-v64.html">qemu-gdb-risc-v64-kernel</a></li><li class="chapter-item "><a href="gdb/go-rust-gdb-debug.html">使用gdb 追蹤go/rust程式碼</a></li><li class="chapter-item "><a href="gdb/gdb-function-trace-to-flowchart-guide.html">GDB函數調用軌跡分析與流程圖生成完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="c++/cpp.html">C++</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="c++/benchmark.html">benchmark</a></li><li class="chapter-item "><a href="c++/乘以0.01和除以100哪個快.html">乘以 0.01 和除以 100 哪個快</a></li><li class="chapter-item "><a href="c++/smart_pointer.html">Smart pointer</a></li><li class="chapter-item "><a href="c++/l&rvalue.html">L&amp;R value</a></li><li class="chapter-item "><a href="c++/move.html">Move</a></li><li class="chapter-item "><a href="c++/CAS.html">CAS</a></li><li class="chapter-item "><a href="c++/HFT.html">HFT</a></li><li class="chapter-item "><a href="c++/cpp_note.html">Note</a></li><li class="chapter-item "><a href="c++/高性能程式設計實戰.html">高性能程式設計實戰</a></li><li class="chapter-item "><a href="c++/如何高效地儲存並操作超大規模.html">如何高效地儲存並操作超大規模</a></li><li class="chapter-item "><a href="c++/UC_CAPITAL.html">UC_CAPITAL</a></li><li class="chapter-item "><a href="c++/cpp-smart-pointers-guide.html">unique_ptr vs shared_ptr</a></li><li class="chapter-item "><a href="c++/cpp-move-semantics-guide.html">C++ Move 語意完整指南</a></li><li class="chapter-item "><a href="c++/interview.html">interview</a></li></ol></li><li class="chapter-item expanded "><a href="mojo/mojo.html">Mojo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mojo/mojo_crawler_guide.html">Mojo 爬蟲完整指南</a></li></ol></li><li class="chapter-item expanded "><a href="riscv/riscv.html">RISC-V</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="riscv/qemu_riscv_linux.html">QEMU上運行RISV-V Linux</a></li><li class="chapter-item "><a href="riscv/qemi_gdb.html">QEMU GDB</a></li><li class="chapter-item "><a href="riscv/qemu_gdb_lab.html">Qemu Gdb Lab</a></li></ol></li><li class="chapter-item expanded "><a href="centos/centos.html">CentOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="centos/tqdb_setup.html">TQDB 安裝紀錄</a></li></ol></li><li class="chapter-item expanded "><a href="ssh/ssh.html">SSH</a></li><li class="chapter-item expanded "><a href="network/socket.html">Network</a></li><li class="chapter-item expanded "><a href="docker/docker_helloworld.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="docker/docker.html">Docker 基本教學</a></li><li class="chapter-item "><a href="docker/example.html">簡單範例</a></li><li class="chapter-item "><a href="docker/creating-the-perfect-python-dockerfile.html">Perfect python dockerfile</a></li><li class="chapter-item "><a href="docker/dockerfile-from-docker-image.html">由 Docker image 反推其 Dockerfile</a></li><li class="chapter-item "><a href="docker/python_connect_redis.html">Python連接Redis</a></li><li class="chapter-item "><a href="docker/command.html">Command</a></li><li class="chapter-item "><a href="docker/docker_compose.html">Docker compose</a></li><li class="chapter-item "><a href="docker/docker_compse_example.html">Docker compose example</a></li><li class="chapter-item "><a href="docker/python_redis.html">Python-Redis</a></li><li class="chapter-item "><a href="docker/redash.html">Redash</a></li><li class="chapter-item "><a href="docker/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="docker/clickhouse-setup.html">clickhouse-setup</a></li><li class="chapter-item "><a href="docker/python_run_from_local.html">Docker run local</a></li><li class="chapter-item "><a href="docker/redpanda.html">Redpanda</a></li><li class="chapter-item "><a href="docker/gcc.html">運行最新版GCC</a></li></ol></li><li class="chapter-item expanded "><a href="rust/rust.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/note.html">Rust筆記</a></li><li class="chapter-item "><a href="rust/basic.html">Rust 基本教學</a></li><li class="chapter-item "><a href="rust/ownership.html">Rust 所有權系統</a></li><li class="chapter-item "><a href="rust/lifetime.html">Rust 生命週期 (Lifetime)</a></li><li class="chapter-item "><a href="rust/type.html">Rust 型別系統</a></li><li class="chapter-item "><a href="rust/rust_setup.html">Rust Tools</a></li><li class="chapter-item "><a href="rust/polars.html">Polars</a></li><li class="chapter-item "><a href="rust/rust_call_c.html">Rust call C</a></li><li class="chapter-item "><a href="rust/pyo3.html">PyO3</a></li><li class="chapter-item "><a href="rust/10-rust-an-introduction.html">給 C++ 使用者的 Rust 簡介</a></li><li class="chapter-item "><a href="rust/可視化Rust各資料結構的記憶體佈局.html">可視化Rust各資料結構的記憶體佈局</a></li><li class="chapter-item "><a href="rust/rust_note.html">學習順序</a></li><li class="chapter-item "><a href="rust/overview.html">大局觀</a></li><li class="chapter-item "><a href="rust/String.html">理解字串</a></li><li class="chapter-item "><a href="rust/easy_rust.html">Easy Rust</a></li><li class="chapter-item "><a href="rust/rust_easy.html">Rust 新手</a></li><li class="chapter-item "><a href="rust/module.html">Rust 模組結構</a></li><li class="chapter-item "><a href="rust/rust_memory.html">Rust與記憶體</a></li><li class="chapter-item "><a href="rust/rust_vs_cpp.html">Rust vs C++語法</a></li><li class="chapter-item "><a href="rust/rust_file_format.html">Rust 檔案格式</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-in-oop.html">Rust OO</a></li><li class="chapter-item "><a href="rust/rust-an-introduction-smart-pointer.html">Rust Pointer</a></li><li class="chapter-item "><a href="rust/pointer.html">Pointer</a></li><li class="chapter-item "><a href="rust/copy_trait.html">Copy Trait</a></li><li class="chapter-item "><a href="rust/binary_lib.html">Rust 函數庫/執行檔</a></li><li class="chapter-item "><a href="rust/reqwest.html">Reqwest</a></li><li class="chapter-item "><a href="rust/print-function-name-dump-stack.html">印出函數名稱</a></li><li class="chapter-item "><a href="rust/criterion.html">criterion</a></li><li class="chapter-item "><a href="rust/Rust的精髓.html">Rust的精髓</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列.html">30天深入淺出Rust系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/rust_30_day.html">Rust 30 Day</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Move_Borrow_Ownership.html">變數的所有權與借出變數</a></li><li class="chapter-item "><a href="rust/30天深入淺出Rust系列/Lifetime.html">Lifetime： Borrow 的存活時間</a></li></ol></li><li class="chapter-item "><a href="rust/cpp_vs_rust_comparison.html">C++ vs. Rust: 全面特性比較</a></li><li class="chapter-item "><a href="rust/cpp-move-vs-rust-ownership.html">C++ Move 語義 vs Rust 所有權系統的核心差異</a></li><li class="chapter-item "><a href="rust/Rust-RESTful-API-完整開發指南.html">Rust-RESTful-API-完整開發指南</a></li><li class="chapter-item "><a href="rust/Rust-self-Self-與-C++-this-對比指南.html">Rust-self-Self-與-C++-this-對比指南</a></li><li class="chapter-item "><a href="rust/rust-derive-traits-comparison.html">Rust Derive Traits 比較：自動生成 vs 手動實作</a></li><li class="chapter-item "><a href="rust/rust_traits_explained.html">Rust Traits 白話解釋：與 C++ 的比較</a></li><li class="chapter-item "><a href="rust/rust_trait_impl_markdown.html">Rust 中 trait 和 impl 的差異</a></li><li class="chapter-item "><a href="rust/rust_cpp_comparison_md.html">Rust vs C++ 詳細對比指南</a></li><li class="chapter-item "><a href="rust/rust_module_system_markdown.html">Rust 模組系統完整指南</a></li><li class="chapter-item "><a href="rust/ownership_vs_borrowing_guide.html">Rust 擁有權 vs 借用：生命週期問題指南🦀</a></li><li class="chapter-item "><a href="rust/rust_ownership_guide.html">Rust 所有權系統 - 生活化詳解</a></li><li class="chapter-item "><a href="rust/rust_ownership_complete_guide.html">Rust 所有權完整指南 - 從基礎到精通</a></li><li class="chapter-item "><a href="rust/rust_memory_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li><li class="chapter-item "><a href="rust/rust_wrappers_guide.html">Rust 記憶體配置指南：Stack vs Heap</a></li></ol></li><li class="chapter-item expanded "><a href="go/go.html">Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="go/note.html">Golang  Note</a></li><li class="chapter-item "><a href="go/pytago.html">pytago</a></li><li class="chapter-item "><a href="go/Go編程實戰派基礎入門.html">Go編程實戰派基礎入門</a></li><li class="chapter-item "><a href="go/Go編程實戰派Web開發基礎.html">Go編程實戰派Web開發基礎</a></li><li class="chapter-item "><a href="go/golang_debugger.html">Golang Deubgger</a></li><li class="chapter-item "><a href="go/golang-go-module-tutorial.html">從一知半解到略懂 Go modules</a></li><li class="chapter-item "><a href="go/go_mod.html">Go modules</a></li><li class="chapter-item "><a href="go/trace.html">Golang大殺器之跟蹤剖析trace</a></li><li class="chapter-item "><a href="go/Coroutine.html">行程、執行緒、協程，傻傻分得清楚！</a></li><li class="chapter-item "><a href="go/goroutine-and-channel.html">Go併發</a></li><li class="chapter-item "><a href="go/websocket.html">Websocket</a></li><li class="chapter-item "><a href="go/returning-pointer-from-a-function-in-go.html">Returning Pointer from a Function in Go</a></li><li class="chapter-item "><a href="go/golang-memory-management.html">GC 全面解析</a></li><li class="chapter-item "><a href="go/golang-goroutine.html">Goroutine 與 GMP 原理全面分析</a></li><li class="chapter-item "><a href="go/oo.html">OO</a></li><li class="chapter-item "><a href="go/mutex-rwmutex.html">sync.Mutex 和 sync.RWMutex</a></li><li class="chapter-item "><a href="go/interface.html">interface</a></li><li class="chapter-item "><a href="go/example.html">Example</a></li><li class="chapter-item "><a href="go/LiveKit.html">LiveKit</a></li></ol></li><li class="chapter-item expanded "><a href="ml/ml.html">ML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ml/pytorch.html">Pytorch</a></li><li class="chapter-item "><a href="ml/pytorch_setup.html">Pytorch 安裝</a></li><li class="chapter-item "><a href="ml/deap.html">Deap</a></li><li class="chapter-item "><a href="ml/cudf.html">CUDF</a></li><li class="chapter-item "><a href="ml/初探基因演算法.html">初探基因演算法-用 OneMax 問題示範</a></li><li class="chapter-item "><a href="ml/簡單解釋梯度下降法.html">簡單解釋梯度下降法</a></li><li class="chapter-item "><a href="ml/梯度下降法_gradient_descent.html">梯度下降法 gradient descent</a></li><li class="chapter-item "><a href="ml/梯度最佳解相關算法.html">梯度最佳解相關算法</a></li><li class="chapter-item "><a href="ml/基於DEAP庫的Python進化演算法從入門到入土.html">基於DEAP庫的Python進化演算法從入門到入土</a></li><li class="chapter-item "><a href="ml/GA.html">GA</a></li><li class="chapter-item "><a href="ml/XGBoost.html">XGBoost</a></li><li class="chapter-item "><a href="ml/YOLO.html">YOLO</a></li><li class="chapter-item "><a href="ml/yolov8手勢識別.html">YOLOv8手勢識別</a></li><li class="chapter-item "><a href="ml/Roboflow.html">Roboflow</a></li></ol></li><li class="chapter-item expanded "><a href="python/python.html">Python</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python/Poetry完全入門指南.html">Poetry完全入門指南</a></li><li class="chapter-item "><a href="python/搭建gRPC服務.html">搭建gRPC服務</a></li><li class="chapter-item "><a href="python/python_debugger.html">Python Debugger</a></li><li class="chapter-item "><a href="python/decorator.html">Python decorator</a></li><li class="chapter-item "><a href="python/python-decorator.html">裝飾器看這一篇就夠了</a></li><li class="chapter-item "><a href="python/import-concept.html">import-concept</a></li><li class="chapter-item "><a href="python/process_thread.html">Process/Thread優缺點</a></li><li class="chapter-item "><a href="python/processing_communcation.html">Processing 通訊</a></li><li class="chapter-item "><a href="python/condition.html">Python中的wait和notify</a></li><li class="chapter-item "><a href="python/生產者消費者模式.html">生產者消費者模式</a></li><li class="chapter-item "><a href="python/Loguru.html">Loguru</a></li><li class="chapter-item "><a href="python/cython.html">Cython</a></li><li class="chapter-item "><a href="python/WebSocket_reconnect.html">Python WebSocket長連接心跳與短連接</a></li><li class="chapter-item "><a href="python/bloomrpc.html">bloomrpc</a></li><li class="chapter-item "><a href="python/concurrent.futures.html">Concurrent futures</a></li><li class="chapter-item "><a href="python/schedule.html">任務調度</a></li><li class="chapter-item "><a href="python/plot/plot.html">Plot</a></li><li class="chapter-item "><a href="python/plot/dash.html">Dash</a></li><li class="chapter-item "><a href="python/Rust_bindings_for_Python.html">Rust bindings for Python</a></li><li class="chapter-item "><a href="python/pandas.html">Pandas</a></li><li class="chapter-item "><a href="python/coroutine.html">Coroutine</a></li><li class="chapter-item "><a href="python/finmind.html">FinMind</a></li><li class="chapter-item "><a href="python/telegram_bot.html">Telegram Bot</a></li><li class="chapter-item "><a href="python/python-different-ways-to-kill-a-thread.html">Different ways kill thread</a></li><li class="chapter-item "><a href="python/websocket_client_server.html">Websocket client/server</a></li><li class="chapter-item "><a href="python/poetry.html">從零開始使用 Poetry</a></li><li class="chapter-item "><a href="python/fil-memory-usage-profiler.html">Fil-memory-usage-profiler</a></li><li class="chapter-item "><a href="python/plot.html">繪圖</a></li><li class="chapter-item "><a href="python/shioaji.html">永豐shioaji</a></li><li class="chapter-item "><a href="python/other.html">Other</a></li></ol></li><li class="chapter-item expanded "><a href="mermaid/mermaid.html">Mermaid</a></li><li class="chapter-item expanded "><a href="linux_system/linux_system.html">Linux System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux_system/1_day_socket.html">Socket</a></li><li class="chapter-item "><a href="linux_system/cgroup.html">Cgroup</a></li><li class="chapter-item "><a href="linux_system/perf.html">Perf</a></li><li class="chapter-item "><a href="linux_system/自製Lib.html">build Lib</a></li><li class="chapter-item "><a href="linux_system/performance.html">performance</a></li></ol></li><li class="chapter-item expanded "><a href="strategy/bollmaker.html">Strategy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/造市/market_market.html">造市</a></li><li class="chapter-item "><a href="strategy/tw_futures.html">臺指</a></li><li class="chapter-item "><a href="strategy/arbitrage.html">套利</a></li><li class="chapter-item "><a href="strategy/配對交易.html">配對交易</a></li><li class="chapter-item "><a href="strategy/海龜交易.html">海龜交易</a></li><li class="chapter-item "><a href="strategy/股海筋肉人.html">股海筋肉人</a></li><li class="chapter-item "><a href="strategy/如何避免過擬合.html">如何避免過擬合</a></li><li class="chapter-item "><a href="strategy/多空操作術.html">多空操作術</a></li><li class="chapter-item "><a href="strategy/資金控管才是王道.html">資金控管才是王道</a></li><li class="chapter-item "><a href="strategy/00713_00675L正二蜈蚣策略.html">正二蜈蚣策略</a></li><li class="chapter-item "><a href="strategy/質押00713+正二.html">質押00713+正二</a></li><li class="chapter-item "><a href="strategy/phcebus/phcebus.html">phcebus</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/phcebus/菲式思考.html">菲式思考</a></li><li class="chapter-item "><a href="strategy/phcebus/買股3心法.html">買股3心法</a></li></ol></li><li class="chapter-item "><a href="strategy/Option/option.html">選擇權</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/Option/option_note.html">Option note</a></li></ol></li><li class="chapter-item "><a href="strategy/vectorbt.html">VectorBT</a></li><li class="chapter-item "><a href="strategy/orderbook.html">Orderbook</a></li><li class="chapter-item "><a href="strategy/選股條件.html">選股條件</a></li><li class="chapter-item "><a href="strategy/如何進場.html">如何進場</a></li><li class="chapter-item "><a href="strategy/如何出場.html">如何出場</a></li><li class="chapter-item "><a href="strategy/建倉加碼.html">建倉加碼</a></li><li class="chapter-item "><a href="strategy/DT.html">當沖</a></li><li class="chapter-item "><a href="strategy/當沖做空.html">當沖做空</a></li><li class="chapter-item "><a href="strategy/抄底.html">抄底</a></li><li class="chapter-item "><a href="strategy/麻道明/麻道明.html">麻道明</a></li><li class="chapter-item "><a href="strategy/賺贏大盤的動能投資法.html">賺贏大盤的動能投資法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/麻道明/假突破.html">假突破</a></li></ol></li><li class="chapter-item "><a href="strategy/奇正/奇正.html">奇正</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/奇正/資金控管與試單策略.html">資金控管與試單策略</a></li><li class="chapter-item "><a href="strategy/奇正/如何出場.html">如何出場</a></li></ol></li><li class="chapter-item "><a href="strategy/ptt_stock/a0808996.html">PTT Stock</a></li><li class="chapter-item "><a href="strategy/Book/JG.html">JG</a></li><li class="chapter-item "><a href="strategy/bnf.html">BNF</a></li><li class="chapter-item "><a href="strategy/cis.html">CIS</a></li><li class="chapter-item "><a href="strategy/GA.html">GA</a></li><li class="chapter-item "><a href="strategy/stock.html">Stock</a></li><li class="chapter-item "><a href="strategy/note.html">Resource</a></li><li class="chapter-item "><a href="strategy/nansen.html">Nansen</a></li><li class="chapter-item "><a href="strategy/example.html">Example</a></li><li class="chapter-item "><a href="strategy/other.html">Other</a></li><li class="chapter-item "><a href="strategy/sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/shioaji.html">shioaji 模擬</a></li><li class="chapter-item "><a href="strategy/grid.html">Grid</a></li><li class="chapter-item "><a href="strategy/pine-script.html">pine-script</a></li><li class="chapter-item "><a href="strategy/拾人牙慧.html">拾人牙慧</a></li><li class="chapter-item "><a href="strategy/sharpe_ratio.html">夏普值</a></li><li class="chapter-item "><a href="strategy/display_mae_mfe_analysis.html">MAE&amp;MFE分析</a></li><li class="chapter-item "><a href="strategy/海龜投資法則.html">海龜投資法則</a></li><li class="chapter-item "><a href="strategy/edge-ratio-follow-application.html">彈性進出場的判斷</a></li><li class="chapter-item "><a href="strategy/三心法順勢操作陳族元10年資產翻10倍.html">三心法順勢操作陳族元10年資產翻10倍</a></li><li class="chapter-item "><a href="strategy/Jump.html">JUMP</a></li><li class="chapter-item "><a href="strategy/張松允投資心法.html">張允投資心法</a></li><li class="chapter-item "><a href="strategy/vectorbt_配對.html">vectorbt 配對</a></li><li class="chapter-item "><a href="strategy/交易的行為與思維分享.html">交易的行為與思維分享</a></li><li class="chapter-item "><a href="strategy/投資投機的觀念與心得分享.html">投資投機的觀念與心得分享</a></li><li class="chapter-item "><a href="strategy/finlab.html">Finlab</a></li><li class="chapter-item "><a href="strategy/backtrader/basis.html">Backtrader</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="strategy/backtrader/Python回測框架一Backtrader介紹.html">Python回測框架一Backtrader介紹</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架二定期定額投資.html">Python 回測框架（二）定期定額投資</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架三技術指標.html">Python 回測框架（三）技術指標</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架四CrossOver和Signal.html">Python 回測框架（四）CrossOver 和 Signal</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架五Sizer.html">Python 回測框架（五）Sizer</a></li><li class="chapter-item "><a href="strategy/backtrader/Python回測框架六Analyzers.html">Python 回測框架（六）Analyzers</a></li><li class="chapter-item "><a href="strategy/backtrader/多股組合操作策略.html">多股組合操作</a></li><li class="chapter-item "><a href="strategy/backtrader/均線交叉策略.html">均線交叉策略</a></li><li class="chapter-item "><a href="strategy/backtrader/唐奇安通道策略.html">唐奇安通道策略</a></li><li class="chapter-item "><a href="strategy/backtrader/Sizers模組.html">Sizers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Observers模組.html">Observers模組</a></li><li class="chapter-item "><a href="strategy/backtrader/Pyfolio.html">Pyfolio</a></li><li class="chapter-item "><a href="strategy/backtrader/Sample.html">Sample</a></li><li class="chapter-item "><a href="strategy/backtrader/performance.html">Performance</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="mq/kafka.html">MQ</a></li><li class="chapter-item expanded "><a href="mq/kafka-python.html">Kafka的通俗總結</a></li><li class="chapter-item expanded "><a href="database/database.html">Database</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/redis.html">Redis</a></li><li class="chapter-item "><a href="database/hash.html">Redis Hash</a></li><li class="chapter-item "><a href="database/clickhouse.html">ClickHouse</a></li><li class="chapter-item "><a href="database/dolphin.html">Dolphin</a></li><li class="chapter-item "><a href="database/sqlite.html">Sqlite</a></li></ol></li><li class="chapter-item expanded "><a href="cryptotrade/cryptotrade.html">CryptoTrade</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptotrade/binance/binance.html">Binance</a></li><li class="chapter-item "><a href="cryptotrade/binance/oco.html">如何將OCO訂單發送到Binance</a></li></ol></li><li class="chapter-item expanded "><a href="git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="git/git-remove-commited-files.html">git-remove-commited-files</a></li><li class="chapter-item "><a href="git/cheat-sheet.html">Git 常用</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Jason Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/shihyu/jason_notes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>本文主要講解生產者消費者模式，它基於執行緒之間的通訊。</p>
+<p>生產者消費者模式是指一部分程式用於生產資料，一部分程式用於處理資料，兩部分分別放在兩個執行緒中來執行。</p>
+<p>舉幾個例子</p>
+<ul>
+<li>一個程式專門往列表中新增數字，另一個程式專門提取數字進行處理，二者共同維護這樣一個列表</li>
+<li>一個程式去抓取待爬取的url，另一個程式專門解析url將資料儲存到檔案中，這相當於維護一個url佇列</li>
+<li>維護ip池，一個程式在消耗ip進行爬蟲，另一個程式看ip不夠用了就啟動開始抓取</li>
+</ul>
+<p>我們可以想象到，這種情況不使用併發機制（如多執行緒）是難以實現的。如果程式線性執行，只能做到先把所有url抓取到列表中，再遍歷列表解析資料；或者解析的過程中將新抓到的url加入列表，但是列表的增添和刪減並不是同時發生的。對於更復雜的機制，執行緒程式更是難以做到，比如維護url列表，當列表長度大於100時停止填入，小於50時再啟動開始填入。</p>
+<h4 id="本文結構"><a class="header" href="#本文結構">本文結構</a></h4>
+<p>本文思路如下</p>
+<ul>
+<li>首先，兩個執行緒維護同一個列表，需要使用鎖保證對資源修改時不會出錯</li>
+<li><code>threading</code>模組提供了<code>Condition</code>物件專門處理生產者消費者問題</li>
+<li>但是為了呈現由淺入深的過程，我們先用普通鎖來實現這個過程，通過考慮程式的不足，再使用<code>Condition</code>來解決，讓讀者更清楚<code>Condition</code>的用處</li>
+<li>下一步，python中的<code>queue</code>模組封裝了<code>Condition</code>的特性，為我們提供了一個方便易用的佇列結構。用<code>queue</code>可以讓我們不需要了解鎖是如何設定的細節</li>
+<li>執行緒安全的概念解釋</li>
+<li>這個過程其實就是執行緒之間的通訊，除了<code>Condition</code>，再補充一種通訊方式<code>Event</code></li>
+</ul>
+<p>本文分為下面幾個部分</p>
+<ul>
+<li>Lock與Condition的對比</li>
+<li>生產者與消費者的相互等待</li>
+<li>Queue</li>
+<li>執行緒安全</li>
+<li>Event</li>
+</ul>
+<h4 id="lock與condition的對比"><a class="header" href="#lock與condition的對比">Lock與Condition的對比</a></h4>
+<p>下面我們實現這樣一個過程</p>
+<ul>
+<li>維護一個整數列表<code>integer_list</code>，共有兩個執行緒</li>
+<li><code>Producer</code>類對應一個執行緒，功能：隨機產生一個整數，加入整數列表之中</li>
+<li><code>Consumer</code>類對應一個執行緒，功能：從整數列表中<code>pop</code>掉一個整數</li>
+<li>通過<code>time.sleep</code>來表示兩個執行緒執行速度，設定成<code>Producer</code>產生的速度沒有<code>Consumer</code>消耗的快</li>
+</ul>
+<p>程式碼如下</p>
+<pre><code class="language-python">import time
+import threading
+import random
+class Producer(threading.Thread):
+    # 產生隨機數，將其加入整數列表
+    def __init__(self, lock, integer_list):
+        threading.Thread.__init__(self)
+        self.lock = lock
+        self.integer_list = integer_list
+    def run(self):
+        while True: # 一直嘗試獲得鎖來新增整數
+            random_integer = random.randint(0, 100)
+            with self.lock:
+                self.integer_list.append(random_integer)
+                print('integer list add integer {}'.format(random_integer))
+            time.sleep(1.2 * random.random()) # sleep隨機時間，通過乘1.2來減慢生產的速度
+class Consumer(threading.Thread):
+    def __init__(self, lock, integer_list):
+        threading.Thread.__init__(self)
+        self.lock = lock
+        self.integer_list = integer_list
+    def run(self):
+        while True: # 一直嘗試去消耗整數
+            with self.lock:
+                if self.integer_list: # 只有列表中有元素才pop
+                    integer = self.integer_list.pop()
+                    print('integer list lose integer {}'.format(integer))
+                    time.sleep(random.random())
+                else:
+                    print('there is no integer in the list')
+def main():
+    integer_list = []
+    lock = threading.Lock()
+    th1 = Producer(lock, integer_list)
+    th2 = Consumer(lock, integer_list)
+    th1.start()
+    th2.start()
+if __name__ == '__main__':
+    main()
+</code></pre>
+<p>程式會無休止地執行下去，一個產生，另一個消耗，擷取前面一部分執行結果如下</p>
+<pre><code>integer list add integer 100
+integer list lose integer 100
+there is no integer in the list
+there is no integer in the list
+... 幾百行一樣的 ...
+there is no integer in the list
+integer list add integer 81
+integer list lose integer 81
+there is no integer in the list
+there is no integer in the list
+there is no integer in the list
+......
+複製程式碼
+</code></pre>
+<p>我們可以看到，整數每次產生都會被迅速消耗掉，消費者沒有東西可以處理，但是依然不停地詢問是否有東西可以處理（<code>while True</code>），這樣不斷地詢問會比較浪費CPU等資源（特別是詢問之後不只是print而是加入計算等）。</p>
+<p>如果可以在第一次查詢到列表為空的時候就開始等待，直到列表不為空（收到通知而不是一遍一遍地查詢），資源開銷就可以節省很多。<code>Condition</code>物件就可以解決這個問題，它與一般鎖的區別在於，除了可以<code>acquire release</code>，還多了兩個方法<code>wait notify</code>，下面我們來看一下上面過程如何用<code>Condition</code>來實現</p>
+<pre><code class="language-python">import time
+import threading
+import random
+class Producer(threading.Thread):
+    def __init__(self, condition, integer_list):
+        threading.Thread.__init__(self)
+        self.condition = condition
+        self.integer_list = integer_list
+    def run(self):
+        while True:
+            random_integer = random.randint(0, 100)
+            with self.condition:
+                self.integer_list.append(random_integer)
+                print('integer list add integer {}'.format(random_integer))
+                self.condition.notify()
+            time.sleep(1.2 * random.random())
+class Consumer(threading.Thread):
+    def __init__(self, condition, integer_list):
+        threading.Thread.__init__(self)
+        self.condition = condition
+        self.integer_list = integer_list
+    def run(self):
+        while True:
+            with self.condition:
+                if self.integer_list:
+                    integer = self.integer_list.pop()
+                    print('integer list lose integer {}'.format(integer))
+                    time.sleep(random.random())
+                else:
+                    print('there is no integer in the list')
+                    self.condition.wait()
+def main():
+    integer_list = []
+    condition = threading.Condition()
+    th1 = Producer(condition, integer_list)
+    th2 = Consumer(condition, integer_list)
+    th1.start()
+    th2.start()
+if __name__ == '__main__':
+    main()
+</code></pre>
+<p>相比於<code>Lock</code>，<code>Condition</code>只有兩個變化</p>
+<ul>
+<li>在生產出整數時<code>notify</code>通知<code>wait</code>的執行緒可以繼續了</li>
+<li>消費者查詢到列表為空時呼叫<code>wait</code>等待通知（<code>notify</code>）</li>
+</ul>
+<p>這樣結果就井然有序</p>
+<pre><code>integer list add integer 7
+integer list lose integer 7
+there is no integer in the list
+integer list add integer 98
+integer list lose integer 98
+there is no integer in the list
+integer list add integer 84
+integer list lose integer 84
+.....
+複製程式碼
+</code></pre>
+<h4 id="生產者與消費者的相互等待"><a class="header" href="#生產者與消費者的相互等待">生產者與消費者的相互等待</a></h4>
+<p>上面是最基本的使用，下面我們多實現一個功能：生產者一次產生三個數，在列表數量大於5的時候停止生產，小於4的時候再開始</p>
+<pre><code class="language-python">import time
+import threading
+import random
+class Producer(threading.Thread):
+    def __init__(self, condition, integer_list):
+        threading.Thread.__init__(self)
+        self.condition = condition
+        self.integer_list = integer_list
+    def run(self):
+        while True:
+            with self.condition:
+                if len(self.integer_list) &gt; 5:
+                    print('Producer start waiting')
+                    self.condition.wait()
+                else:
+                    for _ in range(3):
+                        self.integer_list.append(random.randint(0, 100))
+                    print('now {} after add '.format(self.integer_list))
+                    self.condition.notify()
+            time.sleep(random.random())
+class Consumer(threading.Thread):
+    def __init__(self, condition, integer_list):
+        threading.Thread.__init__(self)
+        self.condition = condition
+        self.integer_list = integer_list
+    def run(self):
+        while True:
+            with self.condition:
+                if self.integer_list:
+                    integer = self.integer_list.pop()
+                    print('all {} lose {}'.format(self.integer_list, integer))
+                    time.sleep(random.random())
+                    if len(self.integer_list) &lt; 4:
+                        self.condition.notify()
+                        print("Producer don't need to wait")
+                else:
+                    print('there is no integer in the list')
+                    self.condition.wait()
+def main():
+    integer_list = []
+    condition = threading.Condition()
+    th1 = Producer(condition, integer_list)
+    th2 = Consumer(condition, integer_list)
+    th1.start()
+    th2.start()
+if __name__ == '__main__':
+    main()
+</code></pre>
+<p>可以看下面的結果體會消長過程</p>
+<pre><code>now [33, 94, 68] after add
+all [33, 94] lose 68
+Producer don't need to wait
+now [33, 94, 53, 4, 95] after add
+all [33, 94, 53, 4] lose 95
+all [33, 94, 53] lose 4
+Producer don't need to wait
+now [33, 94, 53, 27, 36, 42] after add
+all [33, 94, 53, 27, 36] lose 42
+all [33, 94, 53, 27] lose 36
+all [33, 94, 53] lose 27
+Producer don't need to wait
+now [33, 94, 53, 79, 30, 22] after add
+all [33, 94, 53, 79, 30] lose 22
+all [33, 94, 53, 79] lose 30
+now [33, 94, 53, 79, 60, 17, 34] after add
+all [33, 94, 53, 79, 60, 17] lose 34
+all [33, 94, 53, 79, 60] lose 17
+now [33, 94, 53, 79, 60, 70, 76, 21] after add
+all [33, 94, 53, 79, 60, 70, 76] lose 21
+Producer start waiting
+all [33, 94, 53, 79, 60, 70] lose 76
+all [33, 94, 53, 79, 60] lose 70
+all [33, 94, 53, 79] lose 60
+all [33, 94, 53] lose 79
+Producer don't need to wait
+all [33, 94] lose 53
+Producer don't need to wait
+all [33] lose 94
+Producer don't need to wait
+all [] lose 33
+Producer don't need to wait
+there is no integer in the list
+now [16, 67, 23] after add
+all [16, 67] lose 23
+Producer don't need to wait
+now [16, 67, 49, 62, 50] after add
+複製程式碼
+</code></pre>
+<h4 id="queue"><a class="header" href="#queue">Queue</a></h4>
+<p>queue模組內部實現了<code>Condition</code>，我們可以非常方便地使用生產者消費者模式</p>
+<pre><code class="language-python">import time
+import threading
+import random
+from queue import Queue
+class Producer(threading.Thread):
+    def __init__(self, queue):
+        threading.Thread.__init__(self)
+        self.queue = queue
+    def run(self):
+        while True:
+            random_integer = random.randint(0, 100)
+            self.queue.put(random_integer)
+            print('add {}'.format(random_integer))
+            time.sleep(random.random())
+class Consumer(threading.Thread):
+    def __init__(self, queue):
+        threading.Thread.__init__(self)
+        self.queue = queue
+    def run(self):
+        while True:
+            get_integer = self.queue.get()
+            print('lose {}'.format(get_integer))
+            time.sleep(random.random())
+def main():
+    queue = Queue()
+    th1 = Producer(queue)
+    th2 = Consumer(queue)
+    th1.start()
+    th2.start()
+if __name__ == '__main__':
+    main()
+</code></pre>
+<p><code>Queue</code>中</p>
+<ul>
+<li><code>get</code>方法會移除並賦值（相當於list中的<code>pop</code>），但是它在佇列為空的時候會被阻塞（wait）</li>
+<li><code>put</code>方法是往裡面新增值</li>
+<li>如果想設定佇列最大長度，初始化時這樣做<code>queue = Queue(10)</code>指定最大長度，超過這個長度就會被阻塞（wait）</li>
+</ul>
+<p>使用<code>Queue</code>，全程不需要顯式地呼叫鎖，非常簡單易用。不過內建的<code>queue</code>有一個缺點在於不是可迭代物件，不能對它迴圈也不能檢視其中的值，可以通過構造一個新的類來實現，詳見<a href="https://link.juejin.im/?target=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F16506429%2Fcheck-if-element-is-already-in-a-queue">這裡</a>。</p>
+<p>下面消防之前<code>Condition</code>方法，用<code>Queue</code>實現生產者一次加3個，消費者一次消耗1個，每次都返回當前佇列內容，改寫程式碼如下</p>
+<pre><code class="language-python">import time
+import threading
+import random
+from queue import Queue
+# 為了能檢視佇列資料，繼承Queue定義一個類
+class ListQueue(Queue):
+    def _init(self, maxsize):
+        self.maxsize = maxsize
+        self.queue = [] # 將資料儲存方式改為list
+    def _put(self, item):
+        self.queue.append(item)
+    def _get(self):
+        return self.queue.pop()
+class Producer(threading.Thread):
+    def __init__(self, myqueue):
+        threading.Thread.__init__(self)
+        self.myqueue = myqueue
+    def run(self):
+        while True:
+            for _ in range(3): # 一個執行緒加入3個，注意：條件鎖時上在了put上而不是整個迴圈上
+                self.myqueue.put(random.randint(0, 100))
+            print('now {} after add '.format(self.myqueue.queue))
+            time.sleep(random.random())
+class Consumer(threading.Thread):
+    def __init__(self, myqueue):
+        threading.Thread.__init__(self)
+        self.myqueue = myqueue
+    def run(self):
+        while True:
+            get_integer = self.myqueue.get()
+            print('lose {}'.format(get_integer), 'now total', self.myqueue.queue)
+            time.sleep(random.random())
+def main():
+    queue = ListQueue(5)
+    th1 = Producer(queue)
+    th2 = Consumer(queue)
+    th1.start()
+    th2.start()
+if __name__ == '__main__':
+    main()
+</code></pre>
+<p>得到結果如下</p>
+<pre><code>now [79, 39, 64] after add
+lose 64 now total [79, 39]
+now [79, 39, 9, 42, 14] after add
+lose 14 now total [79, 39, 9, 42]
+lose 42 now total [79, 39, 9]
+lose 27 now total [79, 39, 9, 78]
+now [79, 39, 9, 78, 30] after add
+lose 30 now total [79, 39, 9, 78]
+lose 21 now total [79, 39, 9, 78]
+lose 100 now total [79, 39, 9, 78]
+now [79, 39, 9, 78, 90] after add
+lose 90 now total [79, 39, 9, 78]
+lose 72 now total [79, 39, 9, 78]
+lose 5 now total [79, 39, 9, 78]
+複製程式碼
+</code></pre>
+<p>上面限制佇列最大為5，有以下細節需要注意</p>
+<ul>
+<li>首先<code>ListQueue</code>類的構造：因為<code>Queue</code>類的原始碼中，<code>put</code>是呼叫了<code>_put</code>，<code>get</code>呼叫<code>_get</code>，<code>_init</code>也是一樣，所以我們重寫這三個方法就將資料儲存的型別和存取方式改變了。而其他部分鎖的設計都沒有變，也可以正常使用。改變之後我們就可以通過呼叫<code>self.myqueue.queue</code>來訪問這個列表資料</li>
+<li>輸出結果很怪異，並不是我們想要的。這是因為<code>Queue</code>類的原始碼中，如果佇列數量達到了<code>maxsize</code>，則<code>put</code>的操作<code>wait</code>，而<code>put</code>一次插入一個元素，所以經常插入一個等一次，迴圈無法一次執行完，而<code>print</code>是在插入三個之後才有的，所以很多時候其實加進去值了卻沒有在執行結果中顯示，所以結果看起來比較怪異。所以要想靈活使用還是要自己來定義鎖的位置，不能簡單依靠<code>queue</code></li>
+</ul>
+<p>另外，<code>queue</code>模組中有其他類，分別實現先進先出、先進後出、優先順序等佇列，還有一些異常等，可以參考<a href="https://link.juejin.im/?target=http%3A%2F%2Fpython.jobbole.com%2F88413%2F">這篇文章</a>和<a href="https://link.juejin.im/?target=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fqueue.html">官網</a>。</p>
+<h4 id="執行緒安全"><a class="header" href="#執行緒安全">執行緒安全</a></h4>
+<p>講到了<code>Queue</code>就提一提執行緒安全。執行緒安全其實就可以理解成執行緒同步。</p>
+<p>官方定義是：指某個函式、函式庫在多執行緒環境中被呼叫時，能夠正確地處理多個執行緒之間的共享變數，使程式功能正確完成。</p>
+<p>我們常常提到的說法是，某某某是執行緒安全的，比如<code>queue.Queue</code>是執行緒安全的，而<code>list</code>不是。</p>
+<p>根本原因在於前者實現了鎖原語，而後者沒有。</p>
+<p>原語指由若干個機器指令構成的完成某種特定功能的一段程式，具有不可分割性；即原語的執行必須是連續的，在執行過程中不允許被中斷。</p>
+<p><code>queue.Queue</code>是執行緒安全的，即指對他進行寫入和提取的操作不會被中斷而導致錯誤，這也是在實現生產者消費者模式時，使用List就要特意去加鎖，而用這個佇列就不用的原因。</p>
+<h4 id="event"><a class="header" href="#event">Event</a></h4>
+<p><code>Event</code>與<code>Condition</code>的區別在於：<code>Condition = Event + Lock</code>，所以Event非常簡單，只是一個沒有帶鎖的<code>Condition</code>，也是滿足一定條件等待或者執行，這裡不想說很多，只舉一個簡單的例子來看一下</p>
+<pre><code class="language-python">import threading
+import time
+class MyThread(threading.Thread):
+    def __init__(self, event):
+        threading.Thread.__init__(self)
+        self.event = event
+    def run(self):
+        print('first')
+        self.event.wait()
+        print('after wait')
+event = threading.Event()
+MyThread(event).start()
+print('before set')
+time.sleep(1)
+event.set()
+複製程式碼
+</code></pre>
+<p>可以看到結果</p>
+<pre><code>first
+before set
+複製程式碼
+</code></pre>
+<p>先出現，1s之後才出現</p>
+<pre><code>after wait
+複製程式碼
+</code></pre>
+
+                        <script src="https://utteranc.es/client.js"
+                            repo="imxood/imxood.github.io"
+                            issue-term="pathname"
+                            theme="boxy-light"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../python/condition.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../python/Loguru.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../python/condition.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../python/Loguru.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/custom/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/custom/mermaid-init.js"></script>
+
+
+    </body>
+</html>
