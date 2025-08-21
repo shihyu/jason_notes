@@ -271,6 +271,7 @@
     - [ClickHouse](database/clickhouse.md)
     - [Dolphin](database/dolphin.md)
     - [Sqlite](database/sqlite.md)
+    - [MySQL Ubuntu Guide](database/mysql_ubuntu_guide.md)
 - [CryptoTrade](cryptotrade/cryptotrade.md)
     - [Binance](cryptotrade/binance/binance.md)
     - [如何將OCO訂單發送到Binance](cryptotrade/binance/oco.md)
