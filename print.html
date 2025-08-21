@@ -99490,6 +99490,75 @@ if __name__ == "__main__":
     # 獲取key的列表
     db.keys()
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ubuntu-2404-mysql-安裝與客戶端工具指南"><a class="header" href="#ubuntu-2404-mysql-安裝與客戶端工具指南">Ubuntu 24.04 MySQL 安裝與客戶端工具指南</a></h1>
+<h2 id="mysql-server-安裝"><a class="header" href="#mysql-server-安裝">MySQL Server 安裝</a></h2>
+<h3 id="1-更新系統套件"><a class="header" href="#1-更新系統套件">1. 更新系統套件</a></h3>
+<pre><code class="language-bash">sudo apt update
+sudo apt upgrade
+</code></pre>
+<h3 id="2-安裝-mysql-server"><a class="header" href="#2-安裝-mysql-server">2. 安裝 MySQL Server</a></h3>
+<pre><code class="language-bash">sudo apt install mysql-server
+</code></pre>
+<h3 id="3-啟動並啟用-mysql-服務"><a class="header" href="#3-啟動並啟用-mysql-服務">3. 啟動並啟用 MySQL 服務</a></h3>
+<pre><code class="language-bash">sudo systemctl start mysql
+sudo systemctl enable mysql
+</code></pre>
+<h3 id="4-執行安全設定"><a class="header" href="#4-執行安全設定">4. 執行安全設定</a></h3>
+<pre><code class="language-bash">sudo mysql_secure_installation
+</code></pre>
+<p>安全設定會詢問以下選項：</p>
+<ul>
+<li>設定 root 密碼</li>
+<li>移除匿名使用者</li>
+<li>禁止 root 遠端登入</li>
+<li>移除測試資料庫</li>
+<li>重新載入權限表</li>
+</ul>
+<h2 id="mysql-客戶端工具推薦"><a class="header" href="#mysql-客戶端工具推薦">MySQL 客戶端工具推薦</a></h2>
+<h3 id="命令列工具"><a class="header" href="#命令列工具">命令列工具</a></h3>
+<h4 id="mysql-client-官方命令列工具"><a class="header" href="#mysql-client-官方命令列工具">MySQL Client (官方命令列工具)</a></h4>
+<pre><code class="language-bash"># 安裝
+sudo apt install mysql-client
+
+# 使用
+mysql -u username -p
+mysql -h hostname -u username -p database_name
+</code></pre>
+<h4 id="mycli-改良版命令列工具"><a class="header" href="#mycli-改良版命令列工具">mycli (改良版命令列工具)</a></h4>
+<pre><code class="language-bash"># 安裝
+sudo apt install mycli
+
+# 使用 (支援自動完成和語法高亮)
+mycli -u username -p
+</code></pre>
+<h3 id="圖形化界面工具"><a class="header" href="#圖形化界面工具">圖形化界面工具</a></h3>
+<h4 id="1-mysql-workbench-官方推薦"><a class="header" href="#1-mysql-workbench-官方推薦">1. MySQL Workbench (官方推薦)</a></h4>
+<pre><code class="language-bash"># 安裝
+sudo apt install mysql-workbench
+</code></pre>
+<p><strong>特色功能：</strong></p>
+<ul>
+<li>官方開發，功能完整</li>
+<li>資料庫設計與建模</li>
+<li>SQL 開發與執行</li>
+<li>伺服器管理</li>
+<li>資料匯入/匯出</li>
+<li>視覺化 ER 圖設計</li>
+</ul>
+<h4 id="2-dbeaver-community-edition-免費功能豐富"><a class="header" href="#2-dbeaver-community-edition-免費功能豐富">2. DBeaver Community Edition (免費、功能豐富)</a></h4>
+<pre><code class="language-bash"># 方法 1: Snap 安裝
+sudo snap install dbeaver-ce
+
+# 方法 2: 下載 .deb 套件
+wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
+sudo dpkg -i dbeaver-ce_latest_amd64.deb
+sudo apt-get install -f
+</code></pre>
+<p><strong>特色功能：</strong></p>
+<ul>
+<li>支援多種資料庫 (MySQL, PostgreSQL, SQLite 等)</li>
+<li></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cryptotrade"><a class="header" href="#cryptotrade">CryptoTrade</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="python-binance-api-教學"><a class="header" href="#python-binance-api-教學">Python Binance API 教學</a></h1>
 <h2 id="幣安帳務下單-websocket"><a class="header" href="#幣安帳務下單-websocket">幣安帳務下單＆ websocket</a></h2>
