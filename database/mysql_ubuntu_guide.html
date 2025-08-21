@@ -245,8 +245,123 @@ sudo apt-get install -f
 <p><strong>特色功能：</strong></p>
 <ul>
 <li>支援多種資料庫 (MySQL, PostgreSQL, SQLite 等)</li>
-<li></li>
+<li>現代化用戶界面</li>
+<li>強大的 SQL 編輯器</li>
+<li>資料視覺化</li>
+<li>ER 圖生成</li>
+<li>資料匯入/匯出工具</li>
 </ul>
+<h4 id="3-phpmyadmin-web-界面"><a class="header" href="#3-phpmyadmin-web-界面">3. phpMyAdmin (Web 界面)</a></h4>
+<pre><code class="language-bash"># 安裝
+sudo apt install phpmyadmin apache2 php
+
+# 配置 Apache
+sudo a2enconf phpmyadmin
+sudo systemctl reload apache2
+</code></pre>
+<p><strong>存取方式：</strong></p>
+<ul>
+<li>瀏覽器開啟：<code>http://localhost/phpmyadmin</code></li>
+</ul>
+<p><strong>特色功能：</strong></p>
+<ul>
+<li>Web 界面，無需安裝客戶端</li>
+<li>適合遠端管理</li>
+<li>支援多語言</li>
+<li>資料庫備份與還原</li>
+</ul>
+<h4 id="4-adminer-輕量級-web-工具"><a class="header" href="#4-adminer-輕量級-web-工具">4. Adminer (輕量級 Web 工具)</a></h4>
+<pre><code class="language-bash"># 下載
+sudo wget https://www.adminer.org/latest.php -O /var/www/html/adminer.php
+
+# 存取
+# http://localhost/adminer.php
+</code></pre>
+<h3 id="程式碼編輯器擴充套件"><a class="header" href="#程式碼編輯器擴充套件">程式碼編輯器擴充套件</a></h3>
+<h4 id="visual-studio-code"><a class="header" href="#visual-studio-code">Visual Studio Code</a></h4>
+<p>推薦擴充套件：</p>
+<ul>
+<li><strong>MySQL</strong> - 官方 MySQL 擴充</li>
+<li><strong>SQLTools</strong> - 多資料庫支援</li>
+<li><strong>SQL Database Projects</strong> - 資料庫專案管理</li>
+</ul>
+<h4 id="jetbrains-datagrip-付費"><a class="header" href="#jetbrains-datagrip-付費">JetBrains DataGrip (付費)</a></h4>
+<p>專業的資料庫 IDE，功能最為強大。</p>
+<h2 id="連線測試與基本使用"><a class="header" href="#連線測試與基本使用">連線測試與基本使用</a></h2>
+<h3 id="測試-mysql-服務狀態"><a class="header" href="#測試-mysql-服務狀態">測試 MySQL 服務狀態</a></h3>
+<pre><code class="language-bash">sudo systemctl status mysql
+</code></pre>
+<h3 id="連線到-mysql"><a class="header" href="#連線到-mysql">連線到 MySQL</a></h3>
+<pre><code class="language-bash"># 使用 root 帳戶連線
+sudo mysql
+
+# 或使用密碼連線
+mysql -u root -p
+</code></pre>
+<h3 id="基本-mysql-指令"><a class="header" href="#基本-mysql-指令">基本 MySQL 指令</a></h3>
+<pre><code class="language-sql">-- 顯示所有資料庫
+SHOW DATABASES;
+
+-- 建立新資料庫
+CREATE DATABASE myapp;
+
+-- 選擇資料庫
+USE myapp;
+
+-- 顯示資料表
+SHOW TABLES;
+
+-- 建立使用者
+CREATE USER 'myuser'@'localhost' IDENTIFIED BY 'mypassword';
+
+-- 授予權限
+GRANT ALL PRIVILEGES ON myapp.* TO 'myuser'@'localhost';
+FLUSH PRIVILEGES;
+</code></pre>
+<h2 id="工具選擇建議"><a class="header" href="#工具選擇建議">工具選擇建議</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>使用情境</th><th>推薦工具</th><th>原因</th></tr></thead><tbody>
+<tr><td>日常開發</td><td>MySQL Workbench</td><td>官方工具，功能完整</td></tr>
+<tr><td>多資料庫環境</td><td>DBeaver CE</td><td>支援多種資料庫</td></tr>
+<tr><td>遠端管理</td><td>phpMyAdmin</td><td>Web 界面方便</td></tr>
+<tr><td>輕量級使用</td><td>mycli</td><td>命令列但更友善</td></tr>
+<tr><td>專業開發</td><td>DataGrip</td><td>功能最強大（付費）</td></tr>
+</tbody></table>
+</div>
+<h2 id="安全性建議"><a class="header" href="#安全性建議">安全性建議</a></h2>
+<ol>
+<li><strong>定期更新 MySQL</strong></li>
+</ol>
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade mysql-server
+</code></pre>
+<ol start="2">
+<li><strong>配置防火牆</strong></li>
+</ol>
+<pre><code class="language-bash">sudo ufw allow mysql
+</code></pre>
+<ol start="3">
+<li><strong>備份資料庫</strong></li>
+</ol>
+<pre><code class="language-bash">mysqldump -u root -p database_name &gt; backup.sql
+</code></pre>
+<ol start="4">
+<li><strong>監控日誌</strong></li>
+</ol>
+<pre><code class="language-bash">sudo tail -f /var/log/mysql/error.log
+</code></pre>
+<h2 id="疑難排解"><a class="header" href="#疑難排解">疑難排解</a></h2>
+<h3 id="忘記-root-密碼"><a class="header" href="#忘記-root-密碼">忘記 root 密碼</a></h3>
+<pre><code class="language-bash">sudo mysql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'new_password';
+FLUSH PRIVILEGES;
+EXIT;
+</code></pre>
+<h3 id="檢查-mysql-版本"><a class="header" href="#檢查-mysql-版本">檢查 MySQL 版本</a></h3>
+<pre><code class="language-bash">mysql --version
+</code></pre>
+<h3 id="檢查連接埠"><a class="header" href="#檢查連接埠">檢查連接埠</a></h3>
+<pre><code class="language-bash">sudo netstat -tlnp | grep mysql
+</code></pre>
+<p>選擇適合你需求的工具，開始你的 MySQL 開發之旅！</p>
 
                     </main>
 
